@@ -5,15 +5,13 @@
 // Get the button element
 const browseFoldersButton = document.getElementById('browseFoldersButton');
 
-// Add event listener to the button
-browseFoldersButton.addEventListener('click', () => {
-    // Open the file dialog to browse folders
-    const folderPath = dialog.showOpenDialogSync({ properties: ['openDirectory'] });
-
-    // Check if a folder was selected
+async function browseFolders() {
+    // Allows browseFolder.js to use dialog.showOpenDialog
+    const folderPath = await window.dialogAPI.showOpenDialog();
     if (folderPath && folderPath.length > 0) {
-        // Display the folder name in the textbox
-        const folderNameTextbox = document.getElementById('folderNameTextbox');
-        folderNameTextbox.value = folderPath[0];
+        folderNameInput.value = folderPath[0];
     }
-});
+}
+
+// Add click listener to the button
+browseFoldersButton.addEventListener('click', browseFolders);

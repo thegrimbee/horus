@@ -2,12 +2,31 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Hello World!</title>
-
+    <title>Horus</title>
+    <link rel="stylesheet" href="node_modules/bulma/css/bulma.min.css"/>
   </head>
   <body>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
-    <script type="module" src="/src/renderer.js"></script>
+    <div class="container">
+      <section class="hero is-primary">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">Welcome to Horus!</h1>
+            <p class="subtitle"></p>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="container">
+      <div class="field has-addons">
+        <div class="control">
+          <input class="input" type="text" placeholder="Enter folder path" id="folderNameInput">
+        </div>
+        <div class="control">
+          <button class="button is-primary" id="browseFoldersButton">Browse Folders</button>
+        </div>
+      </div>
+    </div>
+    <script defer type="module" src="/src/browseFolders.js"></script>
+    <script defer type="module" src="/src/renderer.js"></script>
   </body>
 </html>
