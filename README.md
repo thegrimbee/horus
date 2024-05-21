@@ -9,4 +9,4 @@ Our tech stack will include:
 1. Electron, to design the app itself including its UI and file watching system
 2. Python, to handle the backend processing and the AI to analyse the TOS
 
-Our progress can be seen here: [https://github.com/users/thegrimbee/projects/1/]
+Our progress can be seen here: https://github.com/users/thegrimbee/projects/1/
