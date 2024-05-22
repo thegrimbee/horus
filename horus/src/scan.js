@@ -3,7 +3,7 @@ const scanButton = document.getElementById("scanButton");
 const folderNameInput = document.getElementById("folderNameInput");
 
 // NOTE: need to improve efficiency
-function tosNameCheck(name) {
+function isTos(name) {
     name = name.toLowerCase();
     var possibleNames = ["license", "eula", "terms", "terms_of_service", "readme"];
     var possibleFileTypes = [".txt", ".md"];
@@ -17,6 +17,10 @@ function tosNameCheck(name) {
     return false;
 }
 
+function isFolder(name) {
+    return !name.includes(".");
+}
+
 // Function to get TOS text
 // REMINDER to standardise Tos or tos instead of TOS when naming function and variables
 // NOTE: make it recurse through subdirectories
@@ -26,13 +30,14 @@ async function getTos(path) {
     // Get the possible TOS files
     console.log(typeof files);
     console.log(files);
-    const tosFiles = files.filter(tosNameCheck);
-    const tosFilePaths = tosFiles.map(file => path + '/' + file);
     var tosText = "";
-    console.log(tosFiles);
-    for (const file of tosFiles) {
-        const fileContent = await window.dialogAPI.fs.readFile(path + '/' + file);
-        tosText += '\n' + fileContent;
+    for (const file of files) {
+        if (isFolder(file)) {
+            tosText += await getTos(path + '/' + file) + '\n';
+        } else if (isTos(file)) {
+            const fileContent = await window.dialogAPI.fs.readFile(path + '/' + file);
+            tosText += fileContent + '\n';
+        }
     }
     return tosText;
 }
