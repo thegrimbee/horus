@@ -1,6 +1,12 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('node:path');
 
+const { ipcMain, dialog } = require('electron');
+
+ipcMain.handle('show-open-dialog', () => {
+  return dialog.showOpenDialogSync({ properties: ['openDirectory'] });
+});
+
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   app.quit();
@@ -13,6 +19,7 @@ const createWindow = () => {
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
+      contextIsolation: true,
     },
   });
 
