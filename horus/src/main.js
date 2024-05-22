@@ -2,6 +2,27 @@ const { app, BrowserWindow } = require('electron');
 const path = require('node:path');
 
 const { ipcMain, dialog } = require('electron');
+const fs = require('fs').promises;
+
+ipcMain.handle('read-file', async (event, path) => {
+  try {
+    const data = await fs.readFile(path, 'utf8');
+    return data;
+  } catch (error) {
+    console.error('Failed to read file', error);
+    throw error;
+  }
+});
+
+ipcMain.handle('read-dir', async (event, path) => {
+  try {
+    const files = await fs.readdir(path);
+    return files;
+  } catch (error) {
+    console.error('Failed to read directory', error);
+    throw error;
+  }
+});
 
 ipcMain.handle('show-open-dialog', () => {
   return dialog.showOpenDialogSync({ properties: ['openDirectory'] });
@@ -19,6 +40,7 @@ const createWindow = () => {
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
+      // prevent the renderer process from accessing the Node.js API to increase security
       contextIsolation: true,
     },
   });
