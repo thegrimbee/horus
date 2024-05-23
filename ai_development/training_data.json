@@ -1,0 +1,22 @@
+[
+    {
+        "input": "give up your right",
+        "output": "sus"
+    },
+    {
+        "input": "must be 18",
+        "output": "not sus"
+    },
+    {
+        "input": "we have full right over your content",
+        "output": "sus"
+    },
+    {
+        "input": "we will never sell your data",
+        "output": "not sus"
+    },
+    {
+        "input": "we will sell all your data",
+        "output": "sus"
+    }
+]

@@ -1,6 +1,7 @@
 from textblob import TextBlob
 from textblob.classifiers import NaiveBayesClassifier
 import pickle
+import json
 
 # Define your untrained AI model
 class UntrainedAI:
@@ -25,14 +26,12 @@ if __name__ == "__main__":
     ai_model = UntrainedAI()
 
     # Train the AI model with your training data
-    training_data = [
-        ("give up your right", "sus"),
-        ("must be 18", "not sus"),
-        ("we have full right over your content", "sus"),
-        ("we will never sell your data", "not sus"),
-        ("we will sell all your data", "sus"),
+    # Load training data from external JSON file
+    with open("training_data.json", "r") as file:
+        training_data = json.load(file)
 
-    ]
+    ai_model.train(training_data)
+    
 
     ai_model.train(training_data)
     # Save the trained AI model to a file
