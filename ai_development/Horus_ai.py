@@ -1,5 +1,6 @@
 from textblob import TextBlob
 from textblob.classifiers import NaiveBayesClassifier
+import pickle
 
 # Define your untrained AI model
 class UntrainedAI:
@@ -29,12 +30,16 @@ if __name__ == "__main__":
         ("must be 18", "not sus"),
         ("we have full right over your content", "sus"),
         ("we will never sell your data", "not sus"),
-
+        ("we will sell all your data", "sus"),
 
     ]
+
     ai_model.train(training_data)
+    # Save the trained AI model to a file
+    with open("trained_model2.pkl", "wb") as file:
+        pickle.dump(ai_model, file)
 
     # Make predictions using the AI model
-    text = "We store all your data"
+    text = "abandon your right"
     prediction = ai_model.predict(text)
     print(f"Prediction: {prediction}")
