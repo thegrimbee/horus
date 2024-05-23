@@ -29,16 +29,13 @@ if __name__ == "__main__":
     # Load training data from external JSON file
     with open("training_data.json", "r") as file:
         training_data = json.load(file)
-
     ai_model.train(training_data)
     
-
-    ai_model.train(training_data)
     # Save the trained AI model to a file
-    with open("trained_model2.pkl", "wb") as file:
+    with open("trained_model.pkl", "wb") as file:
         pickle.dump(ai_model, file)
 
     # Make predictions using the AI model
-    text = "abandon your right"
+    text = "we steal data"
     prediction = ai_model.predict(text)
     print(f"Prediction: {prediction}")

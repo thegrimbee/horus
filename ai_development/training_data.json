@@ -1,22 +1,37 @@
 [
     {
-        "input": "give up your right",
-        "output": "sus"
+        "give up your right" : "input",
+        "sus": "output"
     },
+
     {
-        "input": "must be 18",
-        "output": "not sus"
+        "we sell your data" : "input",
+        "sus": "output"
     },
+
     {
-        "input": "we have full right over your content",
-        "output": "sus"
+        "we steal your data" : "input",
+        "sus": "output"
     },
+
     {
-        "input": "we will never sell your data",
-        "output": "not sus"
+        "must be 18" : "input",     
+        "not sus": "output"
     },
+
     {
-        "input": "we will sell all your data",
-        "output": "sus"
+        "we are a scam" : "input",
+        "sus": "output"
+    },
+
+    {
+        "we protect your data" : "input",
+        "not sus": "output"
+    },
+
+    {
+        "we value privacy" : "input",
+        "not sus": "output"
     }
+
 ]
