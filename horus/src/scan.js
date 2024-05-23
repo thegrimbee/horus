@@ -64,6 +64,7 @@ function updateLoading(intervalId) {
  */
 function startLoading() {
     loadingBar.value = 0;
+    loadingBar.style.display = "block";
     var intervalId = setInterval(function() {
         updateLoading(intervalId)
     }, 100);
