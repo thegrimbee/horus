@@ -2,11 +2,11 @@ const { app, BrowserWindow } = require('electron');
 const path = require('node:path');
 
 const { ipcMain, dialog } = require('electron');
-const fs = require('fs').promises;
+const fs = require('fs');
 
 ipcMain.handle('read-file', async (event, path) => {
   try {
-    const data = await fs.readFile(path, 'utf8');
+    const data = await fs.promises.readFile(path, 'utf8');
     return data;
   } catch (error) {
     console.error('Failed to read file', error);
@@ -16,11 +16,20 @@ ipcMain.handle('read-file', async (event, path) => {
 
 ipcMain.handle('read-dir', async (event, path) => {
   try {
-    const files = await fs.readdir(path);
+    const files = await fs.promises.readdir(path);
     return files;
   } catch (error) {
     console.error('Failed to read directory', error);
     throw error;
+  }
+});
+
+ipcMain.handle('stat-sync', async (event, path) => {
+  try {
+    return fs.statSync(path).isDirectory();
+  } catch (error) {
+    console.error(`Error reading path: ${path}`, error);
+    return false;
   }
 });
 
