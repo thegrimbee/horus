@@ -10,7 +10,8 @@ class UntrainedAI:
 
     def train(self, training_data):
         # Convert training data to the required format
-        formatted_data = [(TextBlob(text), label) for text, label in training_data]
+        
+        formatted_data = [(TextBlob(text), training_data[text]) for text in training_data]
         
         # Train the Naive Bayes classifier
         self.classifier = NaiveBayesClassifier(formatted_data)

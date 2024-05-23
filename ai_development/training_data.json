@@ -1,37 +1,5 @@
-[
-    {
-        "give up your right" : "input",
-        "sus": "output"
-    },
-
-    {
-        "we sell your data" : "input",
-        "sus": "output"
-    },
-
-    {
-        "we steal your data" : "input",
-        "sus": "output"
-    },
-
-    {
-        "must be 18" : "input",     
-        "not sus": "output"
-    },
-
-    {
-        "we are a scam" : "input",
-        "sus": "output"
-    },
-
-    {
-        "we protect your data" : "input",
-        "not sus": "output"
-    },
-
-    {
-        "we value privacy" : "input",
-        "not sus": "output"
-    }
-
-]
+{
+    "we steal data" : "sus",
+    "we value privacy" : "not sus",
+    "we are a good company" : "not sus"
+}
