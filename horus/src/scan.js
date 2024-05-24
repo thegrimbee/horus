@@ -10,10 +10,9 @@ const folderNameInput = document.getElementById("folderNameInput");
  */
 function isTos(name, isFolder = false, includeAll = false) {
     name = name.toLowerCase();
-    var possibleNames = ["license", "eula", "terms", "terms_of_service", "readme", "docs", "legal", "policy", "tos",
-        "terms_of_use", "license_agreement", "agreement", "privacy_policy", "terms_and_conditions"
-    ];
-    var possibleFileTypes = [".txt", ".md"];
+    var possibleNames = ["agreement", "docs", "eula", "legal", "license", "license_agreement", "policy", "privacy_policy", 
+    "readme", "terms", "terms_and_conditions", "terms_of_service", "terms_of_use", "tos"];
+    var possibleFileTypes = [".md", ".txt"];
     if (includeAll) {
         for (const possibleFileType of possibleFileTypes) {
             if (name.endsWith(possibleFileType)) {
