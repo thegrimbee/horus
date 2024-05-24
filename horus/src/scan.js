@@ -3,11 +3,10 @@ const scanButton = document.getElementById("scanButton");
 const folderNameInput = document.getElementById("folderNameInput");
 
 /**
- * Performs a binary search on a sorted array to find the target element.
- * @param {Array} arr - The sorted array to search in.
- * @param {string} x - The target element to search for.
- * @param {string} type - The filetype of the target element.
- * @returns {boolean} `true` if the target element is found, `false` otherwise.
+ * Performs a binary search on the array of possible names
+ * @param {Array} arr - The sorted array of possible file names.
+ * @param {string} file - The name of the file.
+ * @returns {boolean} `true` if the file is found, `false` otherwise.
  */
 function binarySearch(arr, file) {
     var start = 0, end = arr.length - 1;
