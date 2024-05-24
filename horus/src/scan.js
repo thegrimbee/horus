@@ -1,6 +1,7 @@
 // Get the button element
 const scanButton = document.getElementById("scanButton");
 const folderNameInput = document.getElementById("folderNameInput");
+const loadingBar = document.getElementById("loadingBar");
 
 /**
  * Performs a binary search on the array of possible names
@@ -103,14 +104,40 @@ async function analyseTos(tosText) {
     return tosText;
 }
 
+/**
+ * Function to update the loading bar
+ * @param {number} intervalId - the interval id for the setInterval function
+ */
+function updateLoading(intervalId) {
+    if (loadingBar.value < 95) {
+        loadingBar.value += 5;
+    } else {
+        clearInterval(intervalId);
+    }
+}
+
+/**
+ * Function to start the loading bar
+ */
+function startLoading() {
+    loadingBar.value = 0;
+    loadingBar.style.display = "block";
+    var intervalId = setInterval(function() {
+        updateLoading(intervalId)
+    }, 100);
+
+}
+
 // Add a click event listener to the button
 scanButton.addEventListener("click", function() {
     const folderPath = folderNameInput.value;
+    startLoading();
     if (folderPath) {
         getTos(folderPath)
             .then(tosText => analyseTos(tosText))
             .then(result => {
                 console.log(result);
+                loadingBar.value = 100;
             })
             .catch(error => {
                 console.error(error);
