@@ -10,6 +10,7 @@ contextBridge.exposeInMainWorld(
     fs: {
       readDir: (path) => ipcRenderer.invoke('read-dir', path),
       readFile: (path) => ipcRenderer.invoke('read-file', path),
+      statSync: (path) => ipcRenderer.invoke('stat-sync', path),
     }
   }
 );
