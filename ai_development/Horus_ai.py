@@ -1,7 +1,6 @@
 from textblob import TextBlob
 from textblob.classifiers import NaiveBayesClassifier
 import pickle
-import json
 import csv
 
 # Define your untrained AI model
@@ -41,6 +40,6 @@ if __name__ == "__main__":
         pickle.dump(ai_model, file)
 
     # Make predictions using the AI model
-    text = "we steal data"
+    text = "your data will be sold to third party companies"
     prediction = ai_model.predict(text)
     print(f"Prediction: {prediction}")
