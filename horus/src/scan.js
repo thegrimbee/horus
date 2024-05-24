@@ -4,6 +4,24 @@ const folderNameInput = document.getElementById("folderNameInput");
 const loadingBar = document.getElementById("loadingBar");
 
 /**
+ * Performs a binary search on the array of possible names
+ * @param {Array} arr - The sorted array of possible file names.
+ * @param {string} file - The name of the file.
+ * @returns {boolean} `true` if the file is found, `false` otherwise.
+ */
+function binarySearch(arr, file) {
+    var start = 0, end = arr.length - 1;
+    while (start <= end) {
+        var mid = Math.floor((start + end) / 2);
+        if (arr[mid] === file) return true;
+        else if (arr[mid] < file) start = mid + 1;
+        else end = mid - 1;
+    }
+    return false;
+
+}
+
+/**
  * Function to check if the given name corresponds to a Terms of Service (TOS) file or folder.
  * @param {string} name - The name to check.
  * @param {boolean} [isFolder=false] - Indicates if the name corresponds to a folder.
@@ -11,24 +29,29 @@ const loadingBar = document.getElementById("loadingBar");
  */
 function isTos(name, isFolder = false, includeAll = false) {
     name = name.toLowerCase();
-    var possibleNames = ["license", "eula", "terms", "terms_of_service", "readme", "docs", "legal", "policy", "tos",
-        "terms_of_use", "license_agreement", "agreement", "privacy_policy", "terms_and_conditions"
-    ];
-    var possibleFileTypes = [".txt", ".md"];
+    // Keep this array sorted alphabetically
+    var possibleNames = ["agreement", "docs", "eula", "legal", "license", "license_agreement", "policy", "privacy_policy", 
+    "readme", "terms", "terms_and_conditions", "terms_of_service", "terms_of_use", "tos"];
+    var possibleFileTypes = [".md", ".txt"];
+    // Update the minimum and maximum length of the TOS file name accordingly
+    const MIN_LENGTH = 3;
+    const MAX_LENGTH = 24;
     if (includeAll) {
         for (const possibleFileType of possibleFileTypes) {
             if (name.endsWith(possibleFileType)) {
                 return true;
             }
         }
-    }
-    for (const possibleName of possibleNames) {
-        if (isFolder && name == possibleName) {
-            return true;
-        }
+    } else if (name.length < MIN_LENGTH || name.length > MAX_LENGTH) {
+        return false;
+    } else if (isFolder) {
+        return binarySearch(possibleNames, name);
+    } else {
         for (const possibleFileType of possibleFileTypes) {
-            if (name == possibleName + possibleFileType) {
-                return true;
+            if (name.endsWith(possibleFileType)) {
+                if (binarySearch(possibleNames, name.substring(0, name.length - possibleFileType.length))) {
+                    return true;
+                }
             }
         }
     }
