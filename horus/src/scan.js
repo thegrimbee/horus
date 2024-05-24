@@ -86,8 +86,8 @@ async function analyseTos(tosText) {
  * @param {number} intervalId - the interval id for the setInterval function
  */
 function updateLoading(intervalId) {
-    if (loadingBar.value < 95) {
-        loadingBar.value += 5;
+    if (loadingBar.value < 99.5) {
+        loadingBar.value += 0.5;
     } else {
         clearInterval(intervalId);
     }
@@ -101,7 +101,7 @@ function startLoading() {
     loadingBar.style.display = "block";
     var intervalId = setInterval(function() {
         updateLoading(intervalId)
-    }, 100);
+    }, 20);
 
 }
 
