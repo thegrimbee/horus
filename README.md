@@ -21,3 +21,4 @@ Our tech stack will include:
 2. Python, to handle the backend processing and the AI to analyse the TOS
 
 Our progress can be seen here: https://github.com/users/thegrimbee/projects/1/
+Our AI model will be trained based on this data: https://docs.google.com/spreadsheets/d/1r6mS8WzukVhHnVFOEGmQtwL2VmSqkGXQy1H2Al6IO2o/edit?usp=sharing
