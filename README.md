@@ -1,5 +1,14 @@
 # Horus <br/>
 
+**Team ID:** 5778
+
+**Team Members:** Gabriel Mario Antaputra, Le Tu Quoc Dat
+
+**Level of Achievement:** Gemini 
+<br/>
+
+# Project details
+
 This is the repository for the desktop application, Horus. Horus is an app that scans terms of services of apps for the user and highlights potentially harmful terms.
 
 Currently, Horus is in its earliest stage of development and our team will focus on implementing the following over the few weeks:
