@@ -138,6 +138,11 @@ scanButton.addEventListener("click", function() {
             .then(result => {
                 console.log(result);
                 loadingBar.value = 100;
+                // Open a new window or tab
+                let resultWindow = window.open('result.html', '_self');
+
+                // Write the results to the new page
+                resultWindow.document.write(`<pre>${result}</pre>`);
             })
             .catch(error => {
                 console.error(error);
