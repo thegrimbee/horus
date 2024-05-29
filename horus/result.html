@@ -9,20 +9,21 @@
     
 </head>
 <body>
-    <p id = 'resultParagraph'></p>
-
-    <script>
-
-        window.addEventListener('message', function(event) {
-            // event.data contains the result
-            var result = event.data;
-            // Get the paragraph element
-            var resultParagraph = document.getElementById('resultParagraph');
-            // Set the text of the paragraph to the result
-            resultParagraph.textContent = result;
-        });
-
-    </script>
+    <div class="container">
+        <section class="hero is-primary">
+          <div class="hero-body">
+            <div class="container">
+              <h1 class="title">Here are what we found:</h1>
+              <p class="subtitle"></p>
+            </div>
+          </div>
+        </section>
+        <br>
+        <br>
+        <p id = 'resultParagraph'></p>
+      </div>
+    
+    <script src="/src/result.js"></script>
         
     
 </body>
