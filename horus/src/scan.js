@@ -2,6 +2,7 @@
 const scanButton = document.getElementById("scanButton");
 const folderNameInput = document.getElementById("folderNameInput");
 const loadingBar = document.getElementById("loadingBar");
+console.log("scan.js loaded");
 
 /**
  * Performs a binary search on the array of possible names
@@ -101,7 +102,10 @@ async function getTos(path, includeAll = false) {
  * @returns {Promise<string>} A promise that resolves to the highlighted potentially harmful terms in the TOS text.
  */
 async function analyseTos(tosText) {
-    return tosText;
+    const scriptPath = window.spawnAPI.pathJoin('..', 'python_scripts', 'analyse.py');
+    const result = window.spawnAPI.spawn('python', [scriptPath, tosText]);
+    console.log(result);
+    return result;
 }
 
 /**

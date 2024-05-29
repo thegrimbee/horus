@@ -1,8 +1,39 @@
+console.log('main.js loaded');
 const { app, BrowserWindow } = require('electron');
 const path = require('node:path');
 
 const { ipcMain, dialog } = require('electron');
 const fs = require('fs');
+
+const spawn = require('child_process').spawn;
+
+ipcMain.handle('spawn', async (event, command, args, options) => {
+  return new Promise((resolve, reject) => {
+    const process = spawn(command, args, options);
+
+    let result = '';
+
+    process.stdout.on('data', (data) => {
+      result += data.toString();
+    });
+
+    process.stderr.on('data', (data) => {
+      reject(data.toString());
+    });
+
+    process.on('close', (code) => {
+      if (code === 0) {
+        resolve(result);
+      } else {
+        reject(`Process exited with code ${code}`);
+      }
+    });
+  });
+});
+
+ipcMain.handle('path-join', async (event, ...args) => {
+  return path.join(__dirname, ...args);
+});
 
 ipcMain.handle('read-file', async (event, path) => {
   try {
