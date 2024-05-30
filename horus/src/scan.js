@@ -102,9 +102,9 @@ async function getTos(path, includeAll = false) {
  * @returns {Promise<string>} A promise that resolves to the highlighted potentially harmful terms in the TOS text.
  */
 async function analyseTos(tosText) {
-    const scriptPath = window.spawnAPI.pathJoin('..', 'python_scripts', 'analyse.py');
+    console.log('analysing TOS')
+    const scriptPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts', 'analyse.py');
     const result = window.spawnAPI.spawn('python', [scriptPath, tosText]);
-    console.log(result);
     return result;
 }
 

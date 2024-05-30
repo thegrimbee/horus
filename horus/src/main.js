@@ -9,6 +9,7 @@ const spawn = require('child_process').spawn;
 
 ipcMain.handle('spawn', async (event, command, args, options) => {
   return new Promise((resolve, reject) => {
+    console.log('main')
     const process = spawn(command, args, options);
 
     let result = '';
@@ -20,7 +21,11 @@ ipcMain.handle('spawn', async (event, command, args, options) => {
     process.stderr.on('data', (data) => {
       reject(data.toString());
     });
-
+    
+    process.stderr.on('data', (data) => {
+      reject(data.toString());
+    });
+    console.log('result', result);
     process.on('close', (code) => {
       if (code === 0) {
         resolve(result);
