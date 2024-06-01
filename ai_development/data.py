@@ -7,8 +7,6 @@ def get_data():
     # Read the CSV data
     df = pd.read_csv(url)
     df = df[df['Gabriel'] == 'Yes']
-    terms_of_service_list = df['Terms of Service Sentence'].tolist()
-    result = df['Harm Level'].tolist()
-
-    return terms_of_service_list, result
+    df.drop(['Gabriel', 'Dat', 'Proposed Level', 'Reason'], axis=1, inplace=True)
+    return df
 

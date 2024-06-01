@@ -1,72 +1,97 @@
-from transformers import AutoModelForSequenceClassification, AutoTokenizer, Trainer, TrainingArguments
-from torch.utils.data import Dataset
-from data import get_data
-import torch
+import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+from transformers import BertTokenizer, BertForSequenceClassification, Trainer, TrainingArguments
+import torch
+from torch.utils.data import DataLoader, Dataset, RandomSampler, SequentialSampler
+from sklearn.metrics import accuracy_score, precision_recall_fscore_support
+from data import get_data
 
-class CustomDataset(Dataset):
-    def __init__(self, encodings, labels):
-        self.encodings = encodings
+
+
+data = get_data()
+
+# Train-test split
+train_data, val_data = train_test_split(data, test_size=0.2)
+
+# Load tokenizer
+tokenizer = BertTokenizer.from_pretrained('nlpaueb/legal-bert-base-uncased')
+
+class TOSDataset(Dataset):
+    def __init__(self, sentences, labels, tokenizer, max_len):
+        self.sentences = sentences
         self.labels = labels
-
-    def __getitem__(self, idx):
-        item = {key: torch.tensor(val[idx]) for key, val in self.encodings.items()}
-        item['labels'] = torch.tensor(self.labels[idx])
-        return item
+        self.tokenizer = tokenizer
+        self.max_len = max_len
 
     def __len__(self):
-        return len(self.labels)
+        return len(self.sentences)
+
+    def __getitem__(self, item):
+        sentence = str(self.sentences[item])
+        label = self.labels[item]
+
+        encoding = self.tokenizer.encode_plus(
+            sentence,
+            add_special_tokens=True,
+            max_length=self.max_len,
+            return_token_type_ids=False,
+            padding='max_length',
+            truncation=True,
+            return_attention_mask=True,
+            return_tensors='pt',
+        )
+
+        return {
+            'sentence_text': sentence,
+            'input_ids': encoding['input_ids'].flatten(),
+            'attention_mask': encoding['attention_mask'].flatten(),
+            'labels': torch.tensor(label, dtype=torch.long)
+        }
     
-def compute_metrics(pred):
-    labels = pred.label_ids
-    preds = pred.predictions.argmax(-1)
+model = BertForSequenceClassification.from_pretrained(
+    'nlpaueb/legal-bert-base-uncased',
+    num_labels=3,  # 0, 1, 2 harm levels
+    output_attentions=False,
+    output_hidden_states=False
+)
+
+# Move model to GPU
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+model.to(device)
+
+training_args = TrainingArguments(
+    output_dir='./results',          # output directory
+    num_train_epochs=5,              # number of training epochs
+    per_device_train_batch_size=16,  # batch size for training
+    per_device_eval_batch_size=16,   # batch size for evaluation
+    warmup_steps=500,                # number of warmup steps for learning rate scheduler
+    weight_decay=0.05,               # strength of weight decay
+    logging_dir='./logs',            # directory for storing logs
+    logging_steps=10,
+    evaluation_strategy="epoch",     # Evaluate every epoch
+    save_strategy="epoch"            # Save checkpoint every epoch
+)
+
+def compute_metrics(p):
+    preds = p.predictions.argmax(-1)
+    labels = p.label_ids
+    precision, recall, f1, _ = precision_recall_fscore_support(labels, preds, average='weighted')
     acc = accuracy_score(labels, preds)
     return {
         'accuracy': acc,
+        'f1': f1,
+        'precision': precision,
+        'recall': recall
     }
 
-texts, labels = get_data()
-
-train_texts, test_texts, train_labels, test_labels = train_test_split(texts, labels, test_size=0.1, random_state=42)
-
-# Load LegalBERT
-model = AutoModelForSequenceClassification.from_pretrained("nlpaueb/legal-bert-base-uncased", num_labels=3)
-tokenizer = AutoTokenizer.from_pretrained("nlpaueb/legal-bert-base-uncased")
-
-# Tokenize your data
-train_encodings = tokenizer(train_texts, truncation=True, padding=True)
-test_encodings = tokenizer(test_texts, truncation=True, padding=True)
-
-# Convert your data to tensors
-train_labels = train_labels
-test_labels = test_labels
-
-# Prepare your data for the Trainer
-train_dataset = CustomDataset(train_encodings,
-                              train_labels)
-test_dataset = CustomDataset(test_encodings,
-                              test_labels)
-
-# Set up the Trainer
-training_args = TrainingArguments(
-    output_dir='./results',
-    num_train_epochs=3,
-    per_device_train_batch_size=16,
-    per_device_eval_batch_size=64,
-    warmup_steps=500,
-    weight_decay=0.01,
-    logging_dir='./logs',
-)
-
+# Initialize Trainer and train the model
 trainer = Trainer(
     model=model,
     args=training_args,
     train_dataset=train_dataset,
-    eval_dataset=test_dataset,
+    eval_dataset=val_dataset,
+    tokenizer=tokenizer,
     compute_metrics=compute_metrics
 )
-# Train the model
-trainer.train()
 
-trainer.predict(test_dataset)
+trainer.train()
