@@ -10,5 +10,9 @@ def analyse_tos(tos):
     return categorized_sentences
 
 if __name__ == '__main__':
-    tos = sys.argv[1]
-    print(analyse_tos(tos))
+    tos = sys.argv[1] # sys.argv[0] is the script name
+    analysis = analyse_tos(tos)
+    print("Terms which you should be aware of:")
+    print(analysis[2])
+    print("Terms which you might need to take note of:")
+    print(analysis[1])
