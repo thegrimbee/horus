@@ -22,3 +22,8 @@ Our tech stack will include:
 
 Our progress can be seen here: https://github.com/users/thegrimbee/projects/1/<br/>
 Our AI model will be trained based on this data: https://docs.google.com/spreadsheets/d/1r6mS8WzukVhHnVFOEGmQtwL2VmSqkGXQy1H2Al6IO2o/edit?usp=sharing
+
+We are currently trying different approaches for our AI and analysing which one works best:
+1. Training the pre-trained LegalBERT model
+2. Training the TextBlob model
+3. Using GPT API
