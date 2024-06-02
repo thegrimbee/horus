@@ -4,5 +4,6 @@ window.addEventListener('message', function(event) {
     // Get the paragraph element
     var resultParagraph = document.getElementById('resultParagraph');
     // Set the text of the paragraph to the result
-    resultParagraph.textContent = result;
+    result = result.replace(/\n/g, '<br>');
+    resultParagraph.innerHTML = result
 });
