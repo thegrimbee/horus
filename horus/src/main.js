@@ -1,7 +1,73 @@
+console.log('main.js loaded');
 const { app, BrowserWindow } = require('electron');
 const path = require('node:path');
 
 const { ipcMain, dialog } = require('electron');
+const fs = require('fs');
+
+const spawn = require('child_process').spawn;
+
+ipcMain.handle('spawn', async (event, command, args, options) => {
+  return new Promise((resolve, reject) => {
+    console.log('main')
+    const process = spawn(command, args, options);
+
+    let result = '';
+
+    process.stdout.on('data', (data) => {
+      result += data.toString();
+    });
+
+    process.stderr.on('data', (data) => {
+      reject(data.toString());
+    });
+    
+    process.stderr.on('data', (data) => {
+      reject(data.toString());
+    });
+    console.log('result', result);
+    process.on('close', (code) => {
+      if (code === 0) {
+        resolve(result);
+      } else {
+        reject(`Process exited with code ${code}`);
+      }
+    });
+  });
+});
+
+ipcMain.handle('path-join', async (event, ...args) => {
+  return path.join(__dirname, ...args);
+});
+
+ipcMain.handle('read-file', async (event, path) => {
+  try {
+    const data = await fs.promises.readFile(path, 'utf8');
+    return data;
+  } catch (error) {
+    console.error('Failed to read file', error);
+    throw error;
+  }
+});
+
+ipcMain.handle('read-dir', async (event, path) => {
+  try {
+    const files = await fs.promises.readdir(path);
+    return files;
+  } catch (error) {
+    console.error('Failed to read directory', error);
+    throw error;
+  }
+});
+
+ipcMain.handle('stat-sync', async (event, path) => {
+  try {
+    return fs.statSync(path).isDirectory();
+  } catch (error) {
+    console.error(`Error reading path: ${path}`, error);
+    return false;
+  }
+});
 
 ipcMain.handle('show-open-dialog', () => {
   return dialog.showOpenDialogSync({ properties: ['openDirectory'] });
@@ -19,6 +85,7 @@ const createWindow = () => {
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
+      // prevent the renderer process from accessing the Node.js API to increase security
       contextIsolation: true,
     },
   });
