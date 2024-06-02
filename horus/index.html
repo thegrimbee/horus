@@ -31,7 +31,42 @@
         </div>
       </div>
     </div>
+    <br>
+    <div class="progress-container">
+      <progress class="progress is-primary is-large" id="loadingBar" value="0" max="100" style="display:none;"></progress>
+    </div>
+    <section class="section" id="userGuide">
+      <div class="container">
+        <h2 class="title">User Guide</h2>
+        <p>
+          To start using Horus, select the main folder your app is located in. 
+          Then click on the "Scan" button to start the scanning process. 
+        </p>
+        
+        
+        <a href="#" id="userGuideHyperlink">How do I locate the folder?</a>
+        <div id="userGuidePopup" class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <div class="box">
+              <h2 class="title">User Guide</h2>
+              <p>
+                To start using Horus, select the main folder your app is located in. 
+                Then click on the "Scan" button to start the scanning process. 
+              </p>
+              <p>
+                Your app's main folder will most likely be in the "Program Files" or "Program Files (x86)" folder.<br><br>
+                If you are using a Mac, it will be in the "Applications" folder.
+              </p>
+            </div>
+          </div>
+          <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+      </div>
+    </section>
     <script defer type="module" src="/src/browseFolders.js"></script>
     <script defer type="module" src="/src/renderer.js"></script>
+    <script defer type="module" src="/src/scan.js"></script>
+    <script defer type="module" src="/src/userGuide.js"></script>
   </body>
 </html>
