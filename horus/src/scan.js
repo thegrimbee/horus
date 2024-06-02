@@ -140,8 +140,11 @@ scanButton.addEventListener("click", function() {
         getTos(folderPath)
             .then(tosText => analyseTos(tosText))
             .then(result => {
-                console.log(result);
                 loadingBar.value = 100;
+                const resultArray = result.split('!--------------------!');
+                console.log(resultArray[0]);
+                console.log(resultArray[1]);
+                // Continue with the rest of your code using the resultArray
             })
             .catch(error => {
                 console.error(error);
