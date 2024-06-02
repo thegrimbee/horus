@@ -5,6 +5,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report
 from textblob import TextBlob
 import numpy as np
+import pickle
+import os
 
 train_data, val_data = train_test_split(get_data(), test_size=0.2)
 # Initialize the model
@@ -31,6 +33,11 @@ X_test_features = np.array([extract_features(sentence) for sentence in X_test])
 # Train the model
 model.fit(X_train_features, Y_train)
 
+model_path = os.path.join(os.path.dirname(__file__), '../horus/ai_models/model2.pkl')
+# Save the model to a file
+with open('C:/Users/gabri/horus/horus/ai_models/model2.pkl', 'wb') as file:
+    pickle.dump(model, file)
+
 # Predict on the test set
 Y_pred = model.predict(X_test_features)
 
@@ -39,3 +46,5 @@ accuracy = accuracy_score(Y_test, Y_pred)
 print(f'Accuracy: {accuracy}')
 print('Classification Report:')
 print(classification_report(Y_test, Y_pred))
+print(Y_pred)
+print(Y_test)

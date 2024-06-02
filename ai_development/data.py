@@ -7,6 +7,7 @@ def get_data():
     # Read the CSV data
     df = pd.read_csv(url)
     df = df[df['Gabriel'] == 'Yes']
-    df.drop(['Gabriel', 'Dat', 'Proposed Level', 'Reason'], axis=1, inplace=True)
+    df.drop(['Gabriel', 'Dat', 'Proposed Level', 'Reason', 'Note'], axis=1, inplace=True)
+    print(df)
     return df
 
