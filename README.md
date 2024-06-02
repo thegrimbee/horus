@@ -1,4 +1,14 @@
-# Horus
+# Horus <br/>
+
+**Team ID:** 6004
+
+**Team Members:** Gabriel Mario Antaputra, Le Tu Quoc Dat
+
+**Level of Achievement:** Gemini 
+<br/>
+
+# Project details
+
 This is the repository for the desktop application, Horus. Horus is an app that scans terms of services of apps for the user and highlights potentially harmful terms.
 
 Currently, Horus is in its earliest stage of development and our team will focus on implementing the following over the few weeks:
@@ -10,4 +20,10 @@ Our tech stack will include:
 1. Electron, to design the app itself including its UI and file watching system
 2. Python, to handle the backend processing and the AI to analyse the TOS
 
-Our progress can be seen here: https://github.com/users/thegrimbee/projects/1/
+Our progress can be seen here: https://github.com/users/thegrimbee/projects/1/<br/>
+Our AI model will be trained based on this data: https://docs.google.com/spreadsheets/d/1r6mS8WzukVhHnVFOEGmQtwL2VmSqkGXQy1H2Al6IO2o/edit?usp=sharing
+
+We are currently trying different approaches for our AI and analysing which one works best:
+1. Training the pre-trained LegalBERT model
+2. Training the TextBlob model
+3. Using GPT API
