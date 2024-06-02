@@ -3,6 +3,7 @@
 const scanButton = document.getElementById("scanButton");
 const folderNameInput = document.getElementById("folderNameInput");
 const loadingBar = document.getElementById("loadingBar");
+console.log("scan.js loaded");
 
 /**
  * Performs a binary search on the array of possible names
@@ -102,7 +103,10 @@ async function getTos(path, includeAll = false) {
  * @returns {Promise<string>} A promise that resolves to the highlighted potentially harmful terms in the TOS text.
  */
 async function analyseTos(tosText) {
-    return tosText;
+    console.log('analysing TOS')
+    const scriptPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts', 'analyse.py');
+    const result = window.spawnAPI.spawn('python', [scriptPath, tosText]);
+    return result;
 }
 
 /**
@@ -137,16 +141,15 @@ scanButton.addEventListener("click", function() {
         getTos(folderPath)
             .then(tosText => analyseTos(tosText))
             .then(result => {
-                console.log(result);
-                loadingBar.value = 100;           
+                loadingBar.value = 100;        
+                const resultArray = result.split('!--------------------!');
                 // Open a new window or tab
                 let resultWindow = window.open('result.html', '_blank');
                 // Pass the result to the new window
                 resultWindow.addEventListener('load', function() {
                     // Pass the result to the new window
-                    resultWindow.postMessage(result, '*');
+                    resultWindow.postMessage(resultArray[0] + '\n' + resultArray[1], '*');
                 });
-                
             })
             .catch(error => {
                 console.error(error);
