@@ -21,7 +21,7 @@
     "@electron-forge/plugin-fuses": "^7.4.0",
     "@electron-forge/plugin-vite": "^7.4.0",
     "@electron/fuses": "^1.8.0",
-    "electron": "30.0.6",
+    "electron": "^30.0.6",
     "electron-packager": "^17.1.2",
     "vite": "^5.2.11"
   },
