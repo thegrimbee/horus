@@ -83,6 +83,7 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    icon: path.join(__dirname,'../public/Logo.ico'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       // prevent the renderer process from accessing the Node.js API to increase security
@@ -98,7 +99,7 @@ const createWindow = () => {
   }
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
