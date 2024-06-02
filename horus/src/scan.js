@@ -145,10 +145,12 @@ scanButton.addEventListener("click", function() {
                 const resultArray = result.split('!--------------------!');
                 // Open a new window or tab
                 let resultWindow = window.open('result.html', '_blank');
+                const endResult = resultArray[0] + '\n' + resultArray[1];
+                console.log(endResult);
                 // Pass the result to the new window
                 resultWindow.addEventListener('load', function() {
                     // Pass the result to the new window
-                    resultWindow.postMessage(resultArray[0] + '\n' + resultArray[1], '*');
+                    resultWindow.postMessage(endResult, '*');
                 });
             })
             .catch(error => {
