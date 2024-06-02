@@ -1,3 +1,4 @@
+
 // Get the button element
 const scanButton = document.getElementById("scanButton");
 const folderNameInput = document.getElementById("folderNameInput");
@@ -140,11 +141,15 @@ scanButton.addEventListener("click", function() {
         getTos(folderPath)
             .then(tosText => analyseTos(tosText))
             .then(result => {
-                loadingBar.value = 100;
+                loadingBar.value = 100;        
                 const resultArray = result.split('!--------------------!');
-                console.log(resultArray[0]);
-                console.log(resultArray[1]);
-                // Continue with the rest of your code using the resultArray
+                // Open a new window or tab
+                let resultWindow = window.open('result.html', '_blank');
+                // Pass the result to the new window
+                resultWindow.addEventListener('load', function() {
+                    // Pass the result to the new window
+                    resultWindow.postMessage(resultArray[0] + '\n' + resultArray[1], '*');
+                });
             })
             .catch(error => {
                 console.error(error);
