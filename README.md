@@ -1,4 +1,4 @@
-# Horus <br/>
+![image](https://github.com/thegrimbee/horus/assets/54467946/5c1ea477-1c37-4596-9278-102d9102c1b4)# Horus <br/>
 
 **Team ID:** 6004
 
@@ -11,10 +11,12 @@
 
 This is the repository for the desktop application, Horus. Horus is an app that scans terms of services of apps for the user and highlights potentially harmful terms.
 
-Currently, Horus is in its earliest stage of development and our team will focus on implementing the following over the few weeks:
-1. Being able to locate the terms of service files
-2. Being able to scan potentially harmful terms (may not have high accuracy)
-3. Having a functional UI
+Our current available features:
+1. Active Scanning, allows the user to scan a folder of the app of their choice to find the harmful terms and conditions of their chosen app
+a. Choosing folder: Users can click the browse button and select one of their application folders (usually in Program Files or Program Files(x86) refer to app's user guide)
+b. Scanning: Users can click the scan button and a loading bar will show the progress of the scan
+c. Showing results: A new window of the app will be opened once the scanning is done
+2. User Guide, the user can click the hyperlink in the user guide section to show a popup explaining how to locate the folders
 
 Our tech stack will include:
 1. Electron, to design the app itself including its UI and file watching system
@@ -27,3 +29,10 @@ We are currently trying different approaches for our AI and analysing which one 
 1. Training the pre-trained LegalBERT model
 2. Training the TextBlob model
 3. Using GPT API
+
+Here is a diagram to show the structure of our app:
+![image](https://github.com/thegrimbee/horus/assets/54467946/0810e789-3cfa-45d9-bfbf-f6e09fa2c926)
+
+
+
+
