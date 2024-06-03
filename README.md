@@ -36,7 +36,6 @@ Our tech stack will include:
 Our progress can be seen here: https://github.com/users/thegrimbee/projects/1/<br/>
 Our AI model will be trained based on this data: https://docs.google.com/spreadsheets/d/1r6mS8WzukVhHnVFOEGmQtwL2VmSqkGXQy1H2Al6IO2o/edit?usp=sharing
 
-We are currently having difficulties packaging the python scripts together with electron, however it is still possible to package it, although scanning will give an error (since the python scripts cannot be accessed). To get the package, clone the main-in-review-with-ai branch (for more updated ai) or show-result (for more updated ui). Make sure node.js and python is installed. Then, run npm run make to package or npm start to simply run the app.
 
 We are currently trying different approaches for our AI and analysing which one works best:
 1. Training the pre-trained LegalBERT model
@@ -48,6 +47,17 @@ Here is a diagram to show the structure of our app:
 
 # Our Workflow
 We work mostly independently by posting issues on github (usually features we havent built) and working on our branch. E.g. Dat was the one that built the show-result branch and made the results show up in a new window. I then, merged it with the scan branch which was the show-result's parent branch. We post the issues based on the 3 milestones, meaning that we have an expectation of which issues to fix by which milestone.
+
+# Installation Guide
+We are currently having difficulties packaging the python scripts together with electron, as such our .exe is not fully functional (the scanning will not work since the python scripts are not included in the executable)
+
+If you want to install the one mentioned above, you can download the zip file in this link:
+https://drive.google.com/file/d/1Hj9xKhbJZ9D3dMFqY7A42eBjlr87K9JG/view?usp=sharing
+
+If you want the fully functional version there are a few steps:
+1. Clone our github branch (either show-results for the version with the newer UI or main-in-review-with-ai for the version with the newer AI)
+2. Ensure you have node.js and python installed
+3. Run the command: npm start
 
 
 
