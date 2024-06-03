@@ -21,6 +21,14 @@ b. Scanning: Users can click the scan button and a loading bar will show the pro
 c. Showing results: A new window of the app will be opened once the scanning is done
 2. User Guide, the user can click the hyperlink in the user guide section to show a popup explaining how to locate the folders
 
+Future Possible Features:
+1. Online scanning, allows the app to search for the app's terms of service online, since some apps may not store it locally
+2. Improved active scanning, gives the users choices of apps instead of asking the users to find folders. This is because some users may still be confused on how to locate the app's folder
+3. Passive scanning, allow the app to run in the background and notify the user of harmful terms of service when installing app
+4. Database, improves efficiency by checking if the app have been scanned before (possibly by other users), thus removing the need to scan again. This is because, from what we have seen, the AI takes around half a second to process each sentence, which can build up to a very large scan time
+5. Contextualised scanning, we realise that some users may want to use the app differently (e.g. a personal user, or an enterprise). This means, the terms and conditions also apply differently depending on the context. We want to modify our AI to take this into account
+6. App Suggestion, suggests similar apps with safer terms and conditions to the users
+
 Our tech stack will include:
 1. Electron, to design the app itself including its UI and file watching system
 2. Python, to handle the backend processing and the AI to analyse the TOS
