@@ -6,6 +6,8 @@
 **Team Members:** Gabriel Mario Antaputra, Le Tu Quoc Dat
 
 **Level of Achievement:** Gemini 
+
+**Github link:** https://github.com/thegrimbee/horus/
 <br/>
 
 # Project details
