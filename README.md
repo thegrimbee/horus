@@ -26,7 +26,7 @@ Our tech stack will include:
 Our progress can be seen here: https://github.com/users/thegrimbee/projects/1/<br/>
 Our AI model will be trained based on this data: https://docs.google.com/spreadsheets/d/1r6mS8WzukVhHnVFOEGmQtwL2VmSqkGXQy1H2Al6IO2o/edit?usp=sharing
 
-We are currently having difficulties packaging the python scripts together with electron, however it is still possible to package it, although scanning will give an error (since the python scripts cannot be accessed). To get the package, clone the main-in-review-with-ai branch. Make sure node.js and python is installed. Then, run npm run make to package or npm start to simply run the app.
+We are currently having difficulties packaging the python scripts together with electron, however it is still possible to package it, although scanning will give an error (since the python scripts cannot be accessed). To get the package, clone the main-in-review-with-ai branch (for more updated ai) or show-result (for more updated ui). Make sure node.js and python is installed. Then, run npm run make to package or npm start to simply run the app.
 
 We are currently trying different approaches for our AI and analysing which one works best:
 1. Training the pre-trained LegalBERT model
