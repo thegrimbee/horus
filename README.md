@@ -21,6 +21,15 @@ If you want the fully functional version there are a few steps:
 2. Ensure you have node.js and python installed
 3. Run the command: npm start
 
+# Motivation
+Terms and services have been infamous for being very long winded and confusing to read. As such, people normally skip reading these terms and conditions. However, these terms and conditions may have terms which are harmful for the users. As such, an application is needed to summarise and highlight these harmful terms for the users.
+
+User Stories:
+1. As a user of certain apps, I do not want to read long terms and conditions
+2. As a user of certain apps, I want to know if an application has harmful terms and conditions
+3. As a user of certain apps, I want to know which apps are safe to use and which aren't
+
+4. 
 # Project details
 
 This is the repository for the desktop application, Horus. Horus is an app that scans terms of services of apps for the user and highlights potentially harmful terms.
