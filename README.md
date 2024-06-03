@@ -13,7 +13,7 @@
 # Installation Guide
 We are currently having difficulties packaging the python scripts together with electron, as such our .exe is not fully functional (the scanning will not work since the python scripts are not included in the executable)
 
-If you want to install the one mentioned above, you can download the zip file in this link:
+If you want to install the one mentioned above, you can download the zip file in the drive link, then run the horus.exe in the horus-win32-x64 folder:
 https://drive.google.com/file/d/1Hj9xKhbJZ9D3dMFqY7A42eBjlr87K9JG/view?usp=sharing
 
 If you want the fully functional version there are a few steps:
