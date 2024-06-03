@@ -10,6 +10,17 @@
 **Github link:** https://github.com/thegrimbee/horus/
 <br/>
 
+# Installation Guide
+We are currently having difficulties packaging the python scripts together with electron, as such our .exe is not fully functional (the scanning will not work since the python scripts are not included in the executable)
+
+If you want to install the one mentioned above, you can download the zip file in this link:
+https://drive.google.com/file/d/1Hj9xKhbJZ9D3dMFqY7A42eBjlr87K9JG/view?usp=sharing
+
+If you want the fully functional version there are a few steps:
+1. Clone our github branch (either show-results for the version with the newer UI or main-in-review-with-ai for the version with the newer AI)
+2. Ensure you have node.js and python installed
+3. Run the command: npm start
+
 # Project details
 
 This is the repository for the desktop application, Horus. Horus is an app that scans terms of services of apps for the user and highlights potentially harmful terms.
@@ -29,13 +40,12 @@ Future Possible Features:
 5. Contextualised scanning, we realise that some users may want to use the app differently (e.g. a personal user, or an enterprise). This means, the terms and conditions also apply differently depending on the context. We want to modify our AI to take this into account
 6. App Suggestion, suggests similar apps with safer terms and conditions to the users
 
-Our tech stack will include:
+Our tech stack includes:
 1. Electron, to design the app itself including its UI and file watching system
 2. Python, to handle the backend processing and the AI to analyse the TOS
 
 Our progress can be seen here: https://github.com/users/thegrimbee/projects/1/<br/>
 Our AI model will be trained based on this data: https://docs.google.com/spreadsheets/d/1r6mS8WzukVhHnVFOEGmQtwL2VmSqkGXQy1H2Al6IO2o/edit?usp=sharing
-
 
 We are currently trying different approaches for our AI and analysing which one works best:
 1. Training the pre-trained LegalBERT model
@@ -46,18 +56,9 @@ Here is a diagram to show the structure of our app:
 ![image](https://github.com/thegrimbee/horus/assets/54467946/0810e789-3cfa-45d9-bfbf-f6e09fa2c926)
 
 # Our Workflow
-We work mostly independently by posting issues on github (usually features we havent built) and working on our branch. E.g. Dat was the one that built the show-result branch and made the results show up in a new window. I then, merged it with the scan branch which was the show-result's parent branch. We post the issues based on the 3 milestones, meaning that we have an expectation of which issues to fix by which milestone.
+We work mostly independently by posting issues on github (usually features we havent built) and working on our branch. E.g. Dat was the one that built the show-result branch and made the results show up in a new window. I then merged it with the scan branch which was the show-result's parent branch. We post the issues based on the 3 milestones, meaning that we have an expectation of which issues to fix by which milestone.
 
-# Installation Guide
-We are currently having difficulties packaging the python scripts together with electron, as such our .exe is not fully functional (the scanning will not work since the python scripts are not included in the executable)
 
-If you want to install the one mentioned above, you can download the zip file in this link:
-https://drive.google.com/file/d/1Hj9xKhbJZ9D3dMFqY7A42eBjlr87K9JG/view?usp=sharing
-
-If you want the fully functional version there are a few steps:
-1. Clone our github branch (either show-results for the version with the newer UI or main-in-review-with-ai for the version with the newer AI)
-2. Ensure you have node.js and python installed
-3. Run the command: npm start
 
 
 
