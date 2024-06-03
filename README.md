@@ -1,5 +1,4 @@
-![clean very simple design of eye of horus as the letter O with a white background](https://github.com/thegrimbee/horus/assets/54467946/7afc167c-70e9-476b-b91e-0ba8fa57a570)<br/>
-
+<img src="https://github.com/thegrimbee/horus/assets/54467946/7afc167c-70e9-476b-b91e-0ba8fa57a570" alt="alt text" width="200"/><br/>
 # Horus <br/>
 
 **Team ID:** 6004
