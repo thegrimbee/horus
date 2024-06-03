@@ -26,7 +26,7 @@ Our tech stack will include:
 Our progress can be seen here: https://github.com/users/thegrimbee/projects/1/<br/>
 Our AI model will be trained based on this data: https://docs.google.com/spreadsheets/d/1r6mS8WzukVhHnVFOEGmQtwL2VmSqkGXQy1H2Al6IO2o/edit?usp=sharing
 
-We are currently having difficulties packaging the python scripts together with electron, however we managed to package it, although scanning will give an error (since the python scripts cannot be accessed). To get the package, simply download the horus-win32-x64 folder in the main-in-review-with-ai branch or clone the branch and open the folder. NOTE: This only works on windows, we have not made the packages for Mac and other OS.
+We are currently having difficulties packaging the python scripts together with electron, however it is still possible to package it, although scanning will give an error (since the python scripts cannot be accessed). To get the package, clone the main-in-review-with-ai branch. Make sure node.js and python is installed. Then, run npm run make to package or npm start to simply run the app.
 
 We are currently trying different approaches for our AI and analysing which one works best:
 1. Training the pre-trained LegalBERT model
@@ -35,6 +35,9 @@ We are currently trying different approaches for our AI and analysing which one 
 
 Here is a diagram to show the structure of our app:
 ![image](https://github.com/thegrimbee/horus/assets/54467946/0810e789-3cfa-45d9-bfbf-f6e09fa2c926)
+
+# Our Workflow
+We work mostly independently by posting issues on github (usually features we havent built) and working on our branch. E.g. Dat was the one that built the show-result branch and made the results show up in a new window. I then, merged it with the scan branch which was the show-result's parent branch. We post the issues based on the 3 milestones, meaning that we have an expectation of which issues to fix by which milestone.
 
 
 
