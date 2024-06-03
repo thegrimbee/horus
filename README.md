@@ -1,4 +1,6 @@
-![image](https://github.com/thegrimbee/horus/assets/54467946/5c1ea477-1c37-4596-9278-102d9102c1b4)# Horus <br/>
+![clean very simple design of eye of horus as the letter O with a white background](https://github.com/thegrimbee/horus/assets/54467946/7afc167c-70e9-476b-b91e-0ba8fa57a570)<br/>
+
+# Horus <br/>
 
 **Team ID:** 6004
 
@@ -24,6 +26,8 @@ Our tech stack will include:
 
 Our progress can be seen here: https://github.com/users/thegrimbee/projects/1/<br/>
 Our AI model will be trained based on this data: https://docs.google.com/spreadsheets/d/1r6mS8WzukVhHnVFOEGmQtwL2VmSqkGXQy1H2Al6IO2o/edit?usp=sharing
+
+We are currently having difficulties packaging the python scripts together with electron, however we managed to package it, although scanning will give an error (since the python scripts cannot be accessed). To get the package, simply download the horus-win32-x64 folder in the main-in-review-with-ai branch or clone the branch and open the folder. NOTE: This only works on windows, we have not made the packages for Mac and other OS.
 
 We are currently trying different approaches for our AI and analysing which one works best:
 1. Training the pre-trained LegalBERT model
