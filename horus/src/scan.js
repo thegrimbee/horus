@@ -134,7 +134,8 @@ function startLoading() {
 }
 
 // Add a click event listener to the button
-scanButton.addEventListener("click", function() {
+scanButton.addEventListener("click", function(event) {
+    event.preventDefault();
     const folderPath = folderNameInput.value;
     startLoading();
     if (folderPath) {
@@ -142,16 +143,22 @@ scanButton.addEventListener("click", function() {
             .then(tosText => analyseTos(tosText))
             .then(result => {
                 loadingBar.value = 100;        
-                const resultArray = result.split('!--------------------!');
-                // Open a new window or tab
-                let resultWindow = window.open('result.html', '_blank');
-                const endResult = resultArray[0] + '\n' + resultArray[1];
-                console.log(endResult);
-                // Pass the result to the new window
-                resultWindow.addEventListener('load', function() {
-                    // Pass the result to the new window
-                    resultWindow.postMessage(endResult, '*');
+                const resultArray = result.split('!--------------------!');        
+                var endResult = resultArray[0] + '\n' + resultArray[1];
+
+                //Send the result to the result paragraph
+                var resultParagraph = document.getElementById('resultParagraph');
+                // Set the text of the paragraph to the result
+                endResult = endResult.replace(/\n/g, '<br>');
+                resultParagraph.innerHTML = endResult;
+
+                const resultModal = document.getElementById('resultModal');
+                const modalClose2 = resultModal.querySelector('.modal-close');
+                resultModal.classList.add('is-active');
+                modalClose2.addEventListener('click', () => {
+                    resultModal.classList.remove('is-active');
                 });
+
             })
             .catch(error => {
                 console.error(error);
