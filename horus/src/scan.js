@@ -104,7 +104,7 @@ async function getTos(path, includeAll = false) {
  */
 async function analyseTos(tosText) {
     console.log('analysing TOS')
-    const scriptPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts', 'analyse.py');
+    const scriptPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts','analyse.py');
     const result = window.spawnAPI.spawn('python', [scriptPath, tosText]);
     return result;
 }
