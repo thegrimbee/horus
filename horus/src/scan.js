@@ -152,12 +152,8 @@ scanButton.addEventListener("click", function(event) {
                 endResult = endResult.replace(/\n/g, '<br>');
                 resultParagraph.innerHTML = endResult;
 
-                const resultModal = document.getElementById('resultModal');
-                const modalClose2 = resultModal.querySelector('.modal-close');
-                resultModal.classList.add('is-active');
-                modalClose2.addEventListener('click', () => {
-                    resultModal.classList.remove('is-active');
-                });
+                // Display the result paragraph
+                resultParagraph.style.display = "block";
 
             })
             .catch(error => {

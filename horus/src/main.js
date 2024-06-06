@@ -6,6 +6,7 @@ const { ipcMain, dialog } = require('electron');
 const fs = require('fs');
 
 const spawn = require('child_process').spawn;
+const { Menu } = require('electron');
 
 ipcMain.handle('spawn', async (event, command, args, options) => {
   return new Promise((resolve, reject) => {
@@ -78,9 +79,10 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+let mainWindow;
 const createWindow = () => {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
@@ -115,6 +117,99 @@ app.whenReady().then(() => {
     }
   });
 });
+
+const template = [
+  {
+    label: 'File',
+    submenu: [
+      {
+        label: 'Open',
+        accelerator: 'CmdOrCtrl+O',
+        click: () => {
+          // Add your open file logic here
+        }
+      },
+      {
+        label: 'Save',
+        accelerator: 'CmdOrCtrl+S',
+        click: () => {
+          // Add your save file logic here
+        }
+      },
+      {
+        label: 'Exit',
+        accelerator: 'CmdOrCtrl+Q',
+        click: () => {
+          app.quit();
+        }
+      }
+    ]
+  },
+  {
+    label: 'Edit',
+    submenu: [
+      {
+        label: 'Undo',
+        accelerator: 'CmdOrCtrl+Z',
+        role: 'undo'
+      },
+      {
+        label: 'Redo',
+        accelerator: 'Shift+CmdOrCtrl+Z',
+        role: 'redo'
+      },
+      { type: 'separator' },
+      {
+        label: 'Cut',
+        accelerator: 'CmdOrCtrl+X',
+        role: 'cut'
+      },
+      {
+        label: 'Copy',
+        accelerator: 'CmdOrCtrl+C',
+        role: 'copy'
+      },
+      {
+        label: 'Paste',
+        accelerator: 'CmdOrCtrl+V',
+        role: 'paste'
+      },
+      {
+        label: 'Select All',
+        accelerator: 'CmdOrCtrl+A',
+        role: 'selectAll'
+      }
+    ]
+  },
+  {
+    label: 'View',
+    submenu: [
+      {
+        label: 'Reload',
+        accelerator: 'CmdOrCtrl+R',
+        click: () => {
+          mainWindow.reload();
+        }
+      },
+      {
+        label: 'Toggle Developer Tools',
+        accelerator: 'CmdOrCtrl+Shift+I',
+        click: () => {
+          mainWindow.webContents.toggleDevTools();
+        }
+      }
+    ]
+  },
+  {
+    label: 'Help',
+    click: () => {
+      mainWindow.webContents.send('open-user-guide');
+    }
+  }
+];
+
+const menu = Menu.buildFromTemplate(template);
+Menu.setApplicationMenu(menu);
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits

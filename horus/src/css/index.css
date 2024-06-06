@@ -18,8 +18,26 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif;
   margin: auto;
-  max-width: 60rem;
+  max-width: 38rem;
   padding: 2rem;
+  text-align: justify;
 }
 
+#resultParagraph {
+  text-align: justify;
+}
+#left {
+  float: left;
+  width: 30%;
+}
 
+#right2 {
+  float: right;
+  width: 70%;
+  
+}
+
+#browseFoldersButton {
+  transform: scaleX(0.7);
+  float: left;
+}

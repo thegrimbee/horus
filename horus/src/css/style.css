@@ -1,0 +1,25 @@
+
+body::after {
+    content: ""; 
+    background: url('Logo.jpeg');
+    opacity: 0.3; /* Adjust to your preference, 0 is fully transparent, 1 is fully opaque */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;  
+    background-position: center top 10%;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+      Arial, sans-serif;
+    margin: auto;
+    max-width: 60rem;
+    padding: 2rem;
+  }
+  
+  

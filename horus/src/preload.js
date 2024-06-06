@@ -25,3 +25,10 @@ contextBridge.exposeInMainWorld(
     pathJoin: (...args) => ipcRenderer.invoke('path-join', ...args),
   }
 );
+
+contextBridge.exposeInMainWorld(
+  'electron', {
+    openUserGuide: () => ipcRenderer.send('open-user-guide'),
+    on: (channel, func) => ipcRenderer.on(channel, (event, ...args) => func(...args))
+  }
+);
