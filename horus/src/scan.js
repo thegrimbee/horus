@@ -102,10 +102,10 @@ async function getTos(path, includeAll = false) {
  * @param {string} tosText - The TOS text to analyse.
  * @returns {Promise<string>} A promise that resolves to the highlighted potentially harmful terms in the TOS text.
  */
-async function analyseTos(tosText) {
+async function analyseTos(tosText, appName) {
     console.log('analysing TOS')
     const scriptPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts','analyse.py');
-    const result = window.spawnAPI.spawn('python', [scriptPath, tosText]);
+    const result = window.spawnAPI.spawn('python', [scriptPath, tosText, appName]);
     return result;
 }
 
@@ -137,10 +137,11 @@ function startLoading() {
 scanButton.addEventListener("click", function(event) {
     event.preventDefault();
     const folderPath = folderNameInput.value;
+    const appName = folderPath.split("\\").pop();
     startLoading();
     if (folderPath) {
         getTos(folderPath)
-            .then(tosText => analyseTos(tosText))
+            .then(tosText => analyseTos(tosText, appName))
             .then(result => {
                 loadingBar.value = 100;        
                 const resultArray = result.split('!--------------------!');        
