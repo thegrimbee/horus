@@ -1,0 +1,277 @@
+2 or v3
+,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+ Everyone is permitted to copy and distribute verbatim copies
+ of this license document, but changing it is not allowed
+
+
+  When we speak of free software, we are referring to freedom, not
+price
+)  Each licensee is addressed as "you"
+ You may modify your copy or copies of the Program or any portion
+of it, thus forming a work based on the Program, and copy and
+distribute such modifications or work under the terms of Section 1
+above, provided that you also meet all of these conditions:
+
+    a) You must cause the modified files to carry prominent notices
+    stating that you changed the files and the date of any change
+  (Exception: if the Program itself is interactive but
+    does not normally print such an announcement, your work based on
+    the Program is not required to print an announcement
+
+
+Thus, it is not the intent of this section to claim rights or contest
+your rights to work written entirely by you; rather, the intent is to
+exercise the right to control the distribution of derivative or
+collective works based on the Program
+ You may copy and distribute the Program (or a work based on it,
+under Section 2) in object code or executable form under the terms of
+Sections 1 and 2 above provided that you also do one of the following:
+
+    a) Accompany it with the complete corresponding machine-readable
+    source code, which must be distributed under the terms of Sections
+    1 and 2 above on a medium customarily used for software interchange; or,
+
+    b) Accompany it with a written offer, valid for at least three
+    years, to give any third party, for a charge no more than your
+    cost of physically performing source distribution, a complete
+    machine-readable copy of the corresponding source code, to be
+    distributed under the terms of Sections 1 and 2 above on a medium
+    customarily used for software interchange; or,
+
+    c) Accompany it with the information you received as to the offer
+    to distribute corresponding source code
+)
+
+The source code for a work means the preferred form of the work for
+making modifications to it
+  Any attempt
+otherwise to copy, modify, sublicense or distribute the Program is
+void, and will automatically terminate your rights under this License
+  Therefore, by
+modifying or distributing the Program (or any work based on the
+Program), you indicate your acceptance of this License to do so, and
+all its terms and conditions for copying, distributing or modifying
+the Program or works based on it
+
+
+It is not the purpose of this section to induce you to infringe any
+patents or other property right claims or to contest validity of any
+such claims; this section has the sole purpose of protecting the
+integrity of the free software distribution system, which is
+implemented by public license practices
+ If you wish to incorporate parts of the Program into other free
+programs whose distribution conditions are different, write to the author
+to ask for permission
+  Our decision will be guided by the two goals
+of preserving the free status of all derivatives of our free software and
+of promoting the sharing and reuse of software generally
+  THE ENTIRE RISK AS
+TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU
+, hereby disclaims all copyright interest in the program
+  `Gnomovision' (which makes passes at compilers) written by James Hacker
+
+
+GCM supports (in alphabetical order) [Azure DevOps][azure-devops], Azure DevOps
+Server (formerly Team Foundation Server), Bitbucket, GitHub, and GitLab
+
+
+## Current status
+
+Git Credential Manager is currently available for Windows, macOS, and Linux\*
+ You don't have to do anything special, and GCM isn't intended to be
+called directly by the user
+
+When using GitHub logos, please be sure to follow the
+[GitHub logo guidelines][github-logos]
+md
+[dotnet]: https://dotnet
+md#http-proxy
+[gcm-license]: LICENSE
+[gcm-usage]: https://github
+com/GitCredentialManager/git-credential-manager/blob/release/docs/usage
+svg
+[ci_url]: https://github
+com/git-lfs/git-lfs/actions?query=workflow%3ACI
+
+[Git LFS](https://git-lfs
+/install
+
+- Place the `git-lfs` binary, which can be found in `bin`, on your system’s executable `$PATH` or equivalent
+psd"
+```
+
+(Where `*
+
+
+> *Note:* the quotation marks surrounding the pattern are important to
+> prevent the glob pattern from being expanded by the shell
+
+ Related projects are listed on the [Implementations wiki
+page](https://github
+
+
+In alphabetical order:
+
+| [@bk2204][bk2204-user] | [@chrisd8088][chrisd8088-user] | [@larsxschneider][larsxschneider-user] |
+| :---: | :---: | :---: |
+| [![][bk2204-img]][bk2204-user] | [![][chrisd8088-img]][chrisd8088-user] | [![][larsxschneider-img]][larsxschneider-user] |
+| [PGP 0223B187][bk2204-pgp] | [PGP 088335A9][chrisd8088-pgp] | [PGP A5795889][larsxschneider-pgp] |
+
+[bk2204-img]: https://avatars1
+com/u/497054?s=100&v=4
+[chrisd8088-img]: https://avatars1
+githubusercontent
+com/u/477434?s=100&v=4
+[bk2204-user]: https://github
+ubuntu
+ Git LFS would
+not be possible without them
+githubusercontent
+com/andyneff
+[PastelMobileSuit-user]: https://github
+com/rubyist
+[technoweenie-user]: https://github
+I
+ Dickey                                      --
+-- Copyright 1998-2012,2018 Free Software Foundation, Inc
+  The money goes to Uganda anyway
+  If there has been no negotiation
+	  then this license, or a later version, also applies to your changes
+org and/or comp
+  Once the maintainer has confirmed that he has
+	  received your changes they will not have to be sent again
+  If you make additional changes the
+	  text under a) applies to those changes
+  This may be done in the form of a
+	  context diff
+
+       d) When you have a modified Vim which includes changes as mentioned
+	  under c), you can distribute it without the source code for the
+	  changes if the following three conditions are met:
+	  - The license that applies to the changes permits you to distribute
+	    the changes to the Vim maintainer without fee or restriction, and
+	    permits the Vim maintainer to include the changes in the official
+	    version of Vim without fee or restriction
+  When the maintainer
+	    or someone who you distributed the modified Vim to asks you (in
+	    any way) for the changes within this period, you must make them
+	    available to him
+
+       e) When the GNU General Public License (GPL) applies to the changes,
+	  you can distribute the modified Vim under the GNU GPL version 2 or
+	  any later version
+  Although AIDS
+is now mostly under control, the problems are still continuing
+
+
+The key to solving the problems in this area is education
+  This has been
+neglected in the past years with president Idi Amin and the following civil
+wars
+  There is
+also help for people who are ill and hungry, but the primary goal is to
+prevent people from getting ill and to teach them how to grow healthy food
+
+
+Most of the orphans are living in an extended family
+  KCC helps schools to improve their teaching methods
+  Since 2020 a maternity ward was added and 24/7 service is
+available
+  I have helped to expand the centre and worked in the area of water
+and sanitation
+
+2
+  Less than
+5% is used for administration
+  You can
+		send them a one time donation directly
+org/germany
+vim	browsing (remote) directories and editing remote files
+tar
+vim	HTML
+javascriptcomplete
+vim  Javascript
+phpcomplete
+
+
+The colorschemes were updated for the Vim 9 release
+  If you don't like the
+changes you can find the old ones here:
+https://github
+
+	endif
+
+You can use `:highlight clear` to reset everything to the defaults, and then
+change the groups that you want differently
+vim set background=dark
+
+Replace "blue_sky" with the name of the colorscheme
+
+
+The default color settings can be found in the source file src/syntax
+
+
+These scripts usually set options, for example 'errorformat'
+vim in this directory and subdirectories will be sourced
+by Vim when it detects the filetype that matches the name of the file or
+subdirectory
+
+And please stick to the rules below
+g
+  This
+depends on the value of the "v:lang" variable
+ "
+950
+  Let the UTF-8 menu file source the latin1 menu file,
+and put "scriptencoding latin1" in that one
+c by "11"
+Thanks to John Tromp (tromp@piring
+ansi
+
+The URM macro package was written by Rudolf Koenig ("Rudi")
+(rudolf@koeniglich
+
+Here it proves that vim is a general problem solver (if you bring enough
+patience)
+
+
+
+Commands:
+a<n>		increment register <n>
+s<n>		decrement register <n>
+<x>;<y>		execute command <x> and then <y>
+(<x>)<n>	execute command <x> while register <n> is nonzero
+
+  Uses synload
+vim
+
+
+
+A few special files:
+
+2html
+
+hitest
+  Include instructions for detecting the file type for this
+language, by file name extension or by checking a few lines in the file
+
+
+efm_filter
+*:	Perl script to filter compiler messages to QuickFix format
+
+
+xcmdsrv_client
+
+
+Most new users can get through it in less than one hour
+
+
+I have considered adding more advanced lessons but have not found the
+time
+utf-8 files are translated files (where xx is the
+language code)
+xx for historical reasons
+)
+
+[This file was modified for Vim by Bram Moolenaar et al

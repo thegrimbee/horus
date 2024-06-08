@@ -40,6 +40,14 @@ ipcMain.handle('path-join', async (event, ...args) => {
   return path.join(__dirname, ...args);
 });
 
+ipcMain.handle('write-file', async (event, path, data) => {
+  try {
+    fs.writeFileSync(path, data);
+  } catch (error) {
+    console.error('Failed to write file', error);
+  }
+});
+
 ipcMain.handle('read-file', async (event, path) => {
   try {
     const data = await fs.promises.readFile(path, 'utf8');
