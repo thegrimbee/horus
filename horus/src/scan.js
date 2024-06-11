@@ -144,18 +144,13 @@ scanButton.addEventListener("click", function(event) {
             .then(tosText => analyseTos(tosText, appName))
             .then(result => {
                 loadingBar.value = 100;        
-                const resultArray = result.split('!--------------------!');        
-                var endResult = resultArray[0] + '\n' + resultArray[1];
-
-                //Send the result to the result paragraph
-                var resultParagraph = document.getElementById('resultParagraph');
+                const resultArray = result.split('!--------------------!');  
+                for (var i = 0; i < resultArray.length; i++) {
+                    resultArray[i] = resultArray[i].replace(/\n/g, '<br>');
+                }
+                var endResult = {'danger': resultArray[2], 'warning': resultArray[1], 'normal': resultArray[0]};
                 // Set the text of the paragraph to the result
-                endResult = endResult.replace(/\n/g, '<br>');
-                resultParagraph.innerHTML = endResult;
-
-                // Display the result paragraph
-                resultParagraph.style.display = "block";
-
+                window.scanResult = endResult;
             })
             .catch(error => {
                 console.error(error);

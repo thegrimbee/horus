@@ -1,9 +1,22 @@
-window.addEventListener('message', function(event) {
-    // event.data contains the result
-    var result = event.data;
-    // Get the paragraph element
-    var resultParagraph = document.getElementById('resultParagraph');
-    // Set the text of the paragraph to the result
-    result = result.replace(/\n/g, '<br>');
-    resultParagraph.innerHTML = result;
-});
+const dangerButton = document.getElementById('dangerButton');
+const warningButton = document.getElementById('warningButton');
+const normalButton = document.getElementById('normalButton');
+const resultParagraph = document.getElementById('resultParagraph');
+
+async function updateResult(type) {
+    resultParagraph.style.display = 'block';
+    resultParagraph.innerHTML = window.scanResult[type];
+}
+
+dangerButton.addEventListener("click", function(event) {    
+        updateResult('danger');
+    }
+);
+warningButton.addEventListener("click", function(event) {
+        updateResult('warning');
+    }
+);
+normalButton.addEventListener("click", function(event) {
+        updateResult('normal');
+    }
+);
