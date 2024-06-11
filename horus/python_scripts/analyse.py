@@ -17,10 +17,12 @@ def analyse_tos(tos, app=""):
         categorized_sentences = ["\n".join(categorized_sentences[0]), 
                                 "\n".join(categorized_sentences[1]), 
                                 "\n".join(categorized_sentences[2])]
-        scans = scans.append({'App': app, 
+        dct = {'App': app, 
                               'Level_0': categorized_sentences[0], 
                               'Level_1': categorized_sentences[1], 
-                              'Level_2': categorized_sentences[2]}, 
+                              'Level_2': categorized_sentences[2]}
+        dct = {k:[v] for k,v in dct.items()}
+        scans = pd.concat([scans, pd.DataFrame(dct)], 
                               ignore_index=True)
         scans.to_csv(scans_path, index=False)
     return categorized_sentences
