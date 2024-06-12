@@ -1,3 +1,4 @@
+//const { app } = require("electron");
 
 // Get the button element
 const scanButton = document.getElementById("scanButton");
@@ -137,13 +138,14 @@ function startLoading() {
 scanButton.addEventListener("click", function(event) {
     event.preventDefault();
     const folderPath = folderNameInput.value;
-    const appName = folderPath.split("\\").pop();
+    //I made this change to get the app name from the folder path, assuming it's always after Program Files
+    const appName = folderPath.split("\\")[2];
     startLoading();
     if (folderPath) {
         getTos(folderPath)
             .then(tosText => analyseTos(tosText, appName))
             .then(result => {
-                loadingBar.value = 100;        
+                loadingBar.value = 100;    
                 const resultArray = result.split('!--------------------!');  
                 for (var i = 0; i < resultArray.length; i++) {
                     resultArray[i] = resultArray[i].replace(/\n/g, '<br>');
@@ -151,6 +153,20 @@ scanButton.addEventListener("click", function(event) {
                 var endResult = {'danger': resultArray[2], 'warning': resultArray[1], 'normal': resultArray[0]};
                 // Set the text of the paragraph to the result
                 window.scanResult = endResult;
+
+                // Add a list item to the scannedAppList, make sure the list items are unique
+                const scannedAppList = document.getElementById("appScannedList");
+                const listItem = document.createElement("li");
+                listItem.id = appName;
+                listItem.className = "list-group-item list-group-item-action";
+                listItem.innerHTML = `<a class="app-scanned link-offset-2 link-underline link-underline-opacity-0" data-toggle="list" href="#${appName}">${appName}</a>`;
+                if (!document.getElementById(appName)) {
+                    scannedAppList.appendChild(listItem);
+                }
+                //For now I'm relying on frame to store the result, might change later
+                listItem.addEventListener("click", function(event) {
+                    window.scanResult = endResult;
+                });
             })
             .catch(error => {
                 console.error(error);
@@ -159,3 +175,4 @@ scanButton.addEventListener("click", function(event) {
         console.error("No folder path provided");
     }
 });
+

@@ -20,3 +20,5 @@ normalButton.addEventListener("click", function(event) {
         updateResult('normal');
     }
 );
+
+
