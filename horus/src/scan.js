@@ -2,7 +2,7 @@
 
 // Get the button element
 const scanButton = document.getElementById("scanButton");
-const folderNameInput = document.getElementById("folderNameInput");
+// const folderNameInput = document.getElementById("folderNameInput");
 const loadingBar = document.getElementById("loadingBar");
 console.log("scan.js loaded");
 
@@ -137,7 +137,8 @@ function startLoading() {
 // Add a click event listener to the button
 scanButton.addEventListener("click", function(event) {
     event.preventDefault();
-    const folderPath = folderNameInput.value;
+    const folderPath = window.selectedAppFolder;
+    console.log(folderPath);
     //I made this change to get the app name from the folder path, assuming it's always after Program Files
     const appName = folderPath.split("\\")[2];
     startLoading();
