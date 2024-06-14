@@ -8,6 +8,8 @@ const folders86 = await window.dialogAPI.fs.readDir(programFiles86Path);
 
 const allFolders = [...folders, ...folders86];
 
+window.allFolders = allFolders;
+
 for (var i = 0; i < allFolders.length; i++) {
     var folderPath;
     const folder = allFolders[i];
