@@ -56,59 +56,283 @@
       <br>
       <progress class="progress is-primary is-large" id="loadingBar" value="0" max="100" style="display:none;"></progress>
     </nav>
-      <br>
-      
-      <div class="row">
-        <div class="col-md-4" id="browse and scan">
-          
-          <br>
+    <br>
+    
+    <div class="row">
+      <div class="col-md-4" id="browse and scan">
+        
+        <br>
 
-          <div id="Apps">
-            <div class="p-3 mb-2 bg-secondary text-white">
-              <h3>
-                Apps scanned
-              </h3>
-            </div>
-            <div class="overflow-auto" id="appScannedOverflow">
-              <div class="list-group" id="appScannedList" role="tablist">
-                
-              </div>
-            </div>
+        <div id="Apps">
+          <div class="p-3 mb-2 bg-secondary text-white">
+            <h3>
+              Apps scanned
+            </h3>
           </div>
-        </div>
-
-        <div class="col-md-8" id="result">
-          <h3>
-            Here are the result
-          </h3>
-          <br>
-          
-          <form class="form-inline" id="level buttons">
+          <div class="overflow-auto" id="appScannedOverflow">
+            <div class="list-group" id="appScannedList" role="tablist">
               
-              <button type="button" class="btn btn-outline-danger mr-2" id="dangerButton">
-                Danger
-              </button>
-              
-              <button type="button" class="btn btn-outline-warning mr-2" id="warningButton">
-                Warning
-              </button>
-              
-              <button type="button" class="btn btn-outline-success" id="normalButton">
-                Normal
-              </button>
-          </form>
-          <br>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="overflow-auto" id="resultOverflow">
-                <p id="resultParagraph" style="display: none; padding:10px"></p>
-                </div>
             </div>
           </div>
         </div>
       </div>
-      <br>
-      <br>
+
+      <div class="col-md-8" id="result">
+        <h3>
+          Here are the result
+        </h3>
+        <br>
+        
+        <form class="form-inline" id="level buttons">
+            
+            <button type="button" class="btn btn-outline-danger mr-2" id="dangerButton">
+              Danger
+            </button>
+            
+            <button type="button" class="btn btn-outline-warning mr-2" id="warningButton">
+              Warning
+            </button>
+            
+            <button type="button" class="btn btn-outline-success" id="normalButton">
+              Normal
+            </button>
+        </form>
+        <br>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="overflow-auto" id="resultOverflow">
+              <p id="resultParagraph" style="display: none; padding:10px"></p>
+            </div>
+            <br>
+            <button id="myBtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#altAppModal">
+              Alternative Apps
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+  
+  <!-- The Modal -->
+  <div id="altAppModal" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Alternative Apps</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="accordion">
+            <div class="card" id="noteTakingApps">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#noteTakingAppsList" aria-expanded="false">
+                    Note Taking Apps
+                  </button>
+                </h5>
+              </div>
+              <div id="noteTakingAppsList" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                  <ul>
+                    <li><a href="https://www.microsoft.com/en-us/microsoft-365/get-started-with-office-2019">Microsoft Office</a></li>
+                    <li><a href="https://workspace.google.com">Google Workspace</a></li>
+                    <li><a href="https://www.notion.so/desktop">Notion</a></li>
+                    <li><a href="https://evernote.com/download">Evernote</a></li>
+                    <li><a href="https://trello.com/platforms">Trello</a></li>
+                    <li><a href="https://slack.com/downloads">Slack</a></li>
+                    <li><a href="https://todoist.com/downloads">Todoist</a></li>
+                    <li><a href="https://www.onenote.com/download">Microsoft OneNote</a></li>
+                    <li><a href="https://asana.com/download">Asana</a></li>
+                    <li><a href="https://clickup.com/download">ClickUp</a></li>
+                </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card" id="graphicDesigningApps">
+              <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#graphicDesigningAppsList" aria-expanded="false" aria-controls="collapseOne">
+                    Graphic Designing Apps
+                  </button>
+                </h5>
+              </div>
+              <div id="graphicDesigningAppsList" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                  <ul>
+                    <li><a href="https://www.adobe.com/products/photoshop.html">Adobe Photoshop</a></li>
+                    <li><a href="https://www.adobe.com/products/illustrator.html">Adobe Illustrator</a></li>
+                    <li><a href="https://www.coreldraw.com/en/pages/download/">CorelDRAW</a></li>
+                    <li><a href="https://affinity.serif.com/en-us/designer/">Affinity Designer</a></li>
+                    <li><a href="https://www.sketch.com/">Sketch</a></li>
+                    <li><a href="https://www.canva.com/download/">Canva</a></li>
+                    <li><a href="https://www.gimp.org/downloads/">GIMP</a></li>
+                    <li><a href="https://inkscape.org/release/">Inkscape</a></li>
+                    <li><a href="https://www.figma.com/downloads/">Figma</a></li>
+                    <li><a href="https://www.blender.org/download/">Blender</a></li>
+                </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card" id="webBorwsersApps">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#webBrowsersAppsList" aria-expanded="false" aria-controls="collapseOne">
+                    Web Browsers
+                  </butto>
+                </h5>
+              </div>
+              <div  id="webBrowsersAppsList" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                  <ul>
+                    <li><a href="https://www.google.com/chrome/">Google Chrome</a></li>
+                    <li><a href="https://www.mozilla.org/firefox/new/">Mozilla Firefox</a></li>
+                    <li><a href="https://www.microsoft.com/edge">Microsoft Edge</a></li>
+                    <li><a href="https://www.opera.com/download">Opera</a></li>
+                    <li><a href="https://support.apple.com/downloads/safari">Safari</a></li>
+                    <li><a href="https://brave.com/download/">Brave</a></li>
+                    <li><a href="https://vivaldi.com/download/">Vivaldi</a></li>
+                    <li><a href="https://www.torproject.org/download/">Tor Browser</a></li>
+                    <li><a href="https://www.maxthon.com/mx5/">Maxthon</a></li>
+                    <li><a href="https://www.ucweb.com/">UC Browser</a></li>
+                </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card" id="mediaPlayersApps">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#mediaPlayersAppsList" aria-expanded="false" aria-controls="collapseOne">
+                    Media Players
+                  </button>
+                </h5>
+              </div>
+              <div id="mediaPlayersAppsList" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                  <ul>
+                    <li><a href="https://www.videolan.org/vlc/index.html">VLC Media Player</a></li>
+                    <li><a href="https://support.microsoft.com/windows/windows-media-player-12-836e3e69-2da5-c65a-6391-86dfe0f666e3">Windows Media Player</a></li>
+                    <li><a href="https://support.apple.com/downloads/quicktime">QuickTime Player</a></li>
+                    <li><a href="http://www.kmplayer.com/">KMPlayer</a></li>
+                    <li><a href="https://potplayer.daum.net/">PotPlayer</a></li>
+                    <li><a href="https://www.gomlab.com/gomplayer-media-player/">GOM Player</a></li>
+                    <li><a href="https://www.real.com/">RealPlayer</a></li>
+                    <li><a href="https://www.mediamonkey.com/download/">MediaMonkey</a></li>
+                    <li><a href="https://mpc-hc.org/downloads/">MPC-HC</a></li>
+                    <li><a href="https://www.apple.com/itunes/download/">iTunes</a></li>
+                </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card" id="communicationApps">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#communicationAppsList" aria-expanded="false" aria-controls="collapseOne">
+                    Communication Apps
+                  </button>
+                </h5>
+              </div>
+              <div id="communicationAppsList" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                  <ul>
+                    <li><a href="https://zoom.us/download">Zoom</a></li>
+                    <li><a href="https://www.microsoft.com/microsoft-teams/download-app">Microsoft Teams</a></li>
+                    <li><a href="https://www.skype.com/en/get-skype/">Skype</a></li>
+                    <li><a href="https://discord.com/download">Discord</a></li>
+                    <li><a href="https://www.whatsapp.com/download/">WhatsApp</a></li>
+                    <li><a href="https://slack.com/downloads">Slack</a></li>
+                    <li><a href="https://signal.org/download/">Signal</a></li>
+                    <li><a href="https://desktop.telegram.org/">Telegram</a></li>
+                    <li><a href="https://www.viber.com/en/download/">Viber</a></li>
+                    <li><a href="https://apps.google.com/meet/">Google Meet</a></li>
+                </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card" id="securityAntivirusApps">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#securityAntivirusAppsList" aria-expanded="false" aria-controls="collapseOne">
+                    Security/Antivirus Apps
+                  </button>
+                </h5>
+              </div>
+              <div id="securityAntivirusAppsList" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                  <ul>
+                    <li><a href="https://us.norton.com/downloads">Norton Antivirus</a></li>
+                    <li><a href="https://www.mcafee.com/en-us/antivirus/mcafee-total-protection.html">McAfee Total Protection</a></li>
+                    <li><a href="https://www.bitdefender.com/solutions/total-security.html">Bitdefender</a></li>
+                    <li><a href="https://www.kaspersky.com/downloads">Kaspersky</a></li>
+                    <li><a href="https://www.avast.com/en-us/index#pc">Avast</a></li>
+                    <li><a href="https://www.avg.com/en-us/free-antivirus-download">AVG AntiVirus</a></li>
+                    <li><a href="https://www.malwarebytes.com/">Malwarebytes</a></li>
+                    <li><a href="https://www.microsoft.com/en-us/windows/comprehensive-security">Windows Defender</a></li>
+                    <li><a href="https://www.eset.com/us/home/antivirus/download/">ESET NOD32</a></li>
+                    <li><a href="https://www.trendmicro.com/en_us/forHome/products/maximum-security.html">Trend Micro</a></li>
+                </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card" id="fileManagementApps">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#fileManagementAppsList" aria-expanded="false" aria-controls="collapseOne">
+                    File Management Apps
+                  </button>
+                </h5>
+              </div>
+              <div id="fileManagementAppsList" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                  <ul>
+                    <li><a href="https://www.win-rar.com/download.html">WinRAR</a></li>
+                    <li><a href="https://www.7-zip.org/download.html">7-Zip</a></li>
+                    <li><a href="https://www.winzip.com/win/en/download.html">WinZip</a></li>
+                    <li><a href="https://www.ghisler.com/download.htm">Total Commander</a></li>
+                    <li><a href="https://freefilesync.org/download.php">FreeFileSync</a></li>
+                    <li><a href="https://filezilla-project.org/download.php?type=client">FileZilla</a></li>
+                    <li><a href="https://www.codesector.com/teracopy">TeraCopy</a></li>
+                    <li><a href="https://www.voidtools.com/downloads/">Everything</a></li>
+                    <li><a href="https://www.dropbox.com/install">Dropbox</a></li>
+                    <li><a href="https://www.sync.com/downloads/">Sync.com</a></li>
+                </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card" id="developmentTools">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#developmentToolsList" aria-expanded="false" aria-controls="collapseOne">
+                    Development Tools
+                  </button>
+                </h5>
+              </div>
+              <div id="developmentToolsList" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                  <ul>
+                    <li><a href="https://code.visualstudio.com/download">Visual Studio Code</a></li>
+                    <li><a href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA</a></li>
+                    <li><a href="https://www.eclipse.org/downloads/">Eclipse</a></li>
+                    <li><a href="https://atom.io/">Atom</a></li>
+                    <li><a href="https://www.sublimetext.com/3">Sublime Text</a></li>
+                    <li><a href="https://developer.android.com/studio">Android Studio</a></li>
+                    <li><a href="https://www.xamarin.com/download">Xamarin</a></li>
+                    <li><a href="https://netbeans.apache.org/download/index.html">NetBeans</a></li>
+                    <li><a href="https://www.jetbrains.com/pycharm/download/">PyCharm</a></li>
+                    <li><a href="https://www.mysql.com/products/workbench/">MySQL Workbench</a></li>
+                </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
 
     <script src="/src/js/jquery.min.js"></script>

@@ -21,4 +21,3 @@ normalButton.addEventListener("click", function(event) {
     }
 );
 
-
