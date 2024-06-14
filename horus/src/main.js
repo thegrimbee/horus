@@ -8,6 +8,10 @@ const fs = require('fs');
 const spawn = require('child_process').spawn;
 const { Menu } = require('electron');
 
+ipcMain.handle('get-env', (event, variable) => {
+  return process.env[variable];
+});
+
 ipcMain.handle('spawn', async (event, command, args, options) => {
   return new Promise((resolve, reject) => {
     console.log('main')
@@ -38,6 +42,10 @@ ipcMain.handle('spawn', async (event, command, args, options) => {
 });
 
 ipcMain.handle('path-join', async (event, ...args) => {
+  return path.join(...args);
+});
+
+ipcMain.handle('path-join-with-dirname', async (event, ...args) => {
   return path.join(__dirname, ...args);
 });
 

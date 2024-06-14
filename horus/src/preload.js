@@ -12,6 +12,7 @@ contextBridge.exposeInMainWorld(
       readDir: (path) => ipcRenderer.invoke('read-dir', path),
       readFile: (path) => ipcRenderer.invoke('read-file', path),
       statSync: (path) => ipcRenderer.invoke('stat-sync', path),
+      pathJoin: (...args) => ipcRenderer.invoke('path-join', ...args),
     }
   }
 );
@@ -22,7 +23,7 @@ contextBridge.exposeInMainWorld(
   'spawnAPI',
   {
     spawn: (command, args, options) => ipcRenderer.invoke('spawn', command, args, options),
-    pathJoin: (...args) => ipcRenderer.invoke('path-join', ...args),
+    pathJoin: (...args) => ipcRenderer.invoke('path-join-with-dirname', ...args),
   }
 );
 
@@ -30,5 +31,11 @@ contextBridge.exposeInMainWorld(
   'electron', {
     openUserGuide: () => ipcRenderer.send('open-user-guide'),
     on: (channel, func) => ipcRenderer.on(channel, (event, ...args) => func(...args))
+  }
+);
+
+contextBridge.exposeInMainWorld(
+  'processAPI', {
+    getEnv: (variable) => ipcRenderer.invoke('get-env', variable)
   }
 );
