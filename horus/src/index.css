@@ -22,4 +22,11 @@ body {
   padding: 2rem;
 }
 
+.dropdown-menu {
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
 
