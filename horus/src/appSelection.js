@@ -8,20 +8,18 @@ const folders86 = await window.dialogAPI.fs.readDir(programFiles86Path);
 
 const allFolders = [...folders, ...folders86];
 
-window.allFolders = allFolders;
-
 for (var i = 0; i < allFolders.length; i++) {
-    var folderPath;
-    const folder = allFolders[i];
     var newOption = document.createElement("a");
+    const folder = allFolders[i];
     newOption.className = "dropdown-item";
     newOption.href = "#";
     newOption.textContent = allFolders[i];
     if (i < folders.length) {
-        folderPath = await window.dialogAPI.fs.pathJoin(programFilesPath, folder);
+        allFolders[i] = await window.dialogAPI.fs.pathJoin(programFilesPath, folder);
     } else {
-        folderPath = await window.dialogAPI.fs.pathJoin(programFiles86Path, folder);
+        allFolders[i] = await window.dialogAPI.fs.pathJoin(programFiles86Path, folder);
     }
+    const folderPath = allFolders[i];
     newOption.onclick = (function(path) {
         return function() {
             dropdownButton.textContent = this.textContent;
@@ -32,4 +30,5 @@ for (var i = 0; i < allFolders.length; i++) {
     dropdown.appendChild(newOption);
     console.log('success')
 }
-
+console.log(allFolders);
+window.allFolders = allFolders;
