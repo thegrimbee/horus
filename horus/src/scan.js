@@ -2,7 +2,7 @@
 
 // Get the button element
 const scanButton = document.getElementById("scanButton");
-// const folderNameInput = document.getElementById("folderNameInput");
+const folderNameInput = document.getElementById("folderNameInput");
 const loadingBar = document.getElementById("loadingBar");
 console.log("scan.js loaded");
 
@@ -105,9 +105,21 @@ async function getTos(path, includeAll = false) {
  */
 async function analyseTos(tosText, appName) {
     console.log('analysing TOS')
-    const scriptPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts','analyse.py');
-    const result = window.spawnAPI.spawn('python', [scriptPath, tosText, appName]);
-    return result;
+    
+    // NOTE: change these two paths when packaging the app
+    const scriptPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts', 'analyse.py');
+    const tosPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts', 'tos.txt');
+
+    window.dialogAPI.fs.writeFile(tosPath, tosText);
+    window.spawnAPI.spawn('python', [scriptPath, appName]);
+
+    const normalPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts', 'results', 'normal.txt');
+    const normal = await window.dialogAPI.fs.readFile(normalPath);
+    const warningPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts', 'results', 'warning.txt');
+    const warning = await window.dialogAPI.fs.readFile(warningPath);
+    const dangerPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts', 'results', 'danger.txt');
+    const danger = await window.dialogAPI.fs.readFile(dangerPath);
+    return [normal, warning, danger];
 }
 
 /**
@@ -137,7 +149,7 @@ function startLoading() {
 // Add a click event listener to the button
 scanButton.addEventListener("click", function(event) {
     event.preventDefault();
-    const folderPath = window.selectedAppFolder;
+    const folderPath = folderNameInput.value;
     console.log(folderPath);
     //I made this change to get the app name from the folder path, assuming it's always after Program Files
     const appName = folderPath.split("\\")[2];
@@ -146,8 +158,10 @@ scanButton.addEventListener("click", function(event) {
         getTos(folderPath)
             .then(tosText => analyseTos(tosText, appName))
             .then(result => {
-                loadingBar.value = 100;    
-                const resultArray = result.split('!--------------------!');  
+                loadingBar.value = 100;
+                console.log(result);
+                const resultArray = result;
+                console.log(typeof resultArray[0]);
                 for (var i = 0; i < resultArray.length; i++) {
                     resultArray[i] = resultArray[i].replace(/\n/g, '<br>');
                 }
