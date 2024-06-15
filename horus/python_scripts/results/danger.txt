@@ -1,35 +1,825 @@
-1 of the License, or (at your option) any later version
-
-
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE
-dll that implements LZFSE data decompression
-  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer
-
-
-    2
-
-
-    The license for original unRAR code has the following restriction:
-
-      The unRAR sources cannot be used to re-create the RAR compression algorithm,
-      which is proprietary
- Distribution of modified unRAR sources in separate form
-      or as a part of other software is permitted, provided that it is clearly
-      stated in the documentation and source comments that the code may
-      not be used to develop a RAR (WinRAR) compatible archiver
-
-     - Unpacking only: APFS, AR, ARJ, Base64, CAB, CHM, CPIO, CramFS, DMG, EXT, FAT, GPT, HFS,
-                       IHEX, ISO, LZH, LZMA, MBR, MSI, NSIS, NTFS, QCOW2, RAR, 
-                       RPM, SquashFS, UDF, UEFI, VDI, VHD, VHDX, VMDK, XAR and Z
 
 
 
-  This distribution package contains the following files:
 
-  7zFM
-dll     - Plugin for Windows Shell
-  7-zip32
-dll   - Plugin for Windows Shell (32-bit plugin for 64-bit system) 
-  7zg
+
+
+
+
+
+
+
+
+
+
+
+
+ Note that the only valid version of the GPL as far as this project
+ is concerned is _this_ particular version of the license (ie v2, not
+ v2
+2 or v3
+x or whatever), unless explicitly otherwise stated
+
+
+ HOWEVER, in order to allow a migration to GPLv3 if that seems like
+ a good idea, I also ask that people involved with the project make
+ their preferences known
+ In particular, if you trust me to make that
+ decision, you might note so in your copyright message, ie something
+ like
+
+	This file is licensed under the GPL v2, or a later version
+	at the discretion of Linus
+,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+ Everyone is permitted to copy and distribute verbatim copies
+ of this license document, but changing it is not allowed
+
+
+			    Preamble
+
+  The licenses for most software are designed to take away your
+freedom to share and change it
+  (Some other Free Software Foundation software is covered by
+the GNU Lesser General Public License instead
+)  You can apply it to
+your programs, too
+
+
+  We protect your rights with two steps: (1) copyright the software, and
+(2) offer you this license which gives you legal permission to copy,
+distribute and/or modify the software
+  The "Program", below,
+refers to any such program or work, and a "work based on the Program"
+means either the Program or any derivative work under copyright law:
+that is to say, a work containing the Program or a portion of it,
+either verbatim or with modifications and/or translated into another
+language
+)  Each licensee is addressed as "you"
+
+
+You may charge a fee for the physical act of transferring a copy, and
+you may at your option offer warranty protection in exchange for a fee
+
+
+  2
+
+
+    b) You must cause any work that you distribute or publish, that in
+    whole or in part contains or is derived from the Program or any
+    part thereof, to be licensed as a whole at no charge to all third
+    parties under the terms of this License
+
+
+    c) If the modified program normally reads commands interactively
+    when run, you must cause it, when started running for such
+    interactive use in the most ordinary way, to print or display an
+    announcement including an appropriate copyright notice and a
+    notice that there is no warranty (or else, saying that you provide
+    a warranty) and that users may redistribute the program under
+    these conditions, and telling the user how to view a copy of this
+    License
+  But when you
+distribute the same sections as part of a whole which is a work based
+on the Program, the distribution of the whole must be on the terms of
+this License, whose permissions for other licensees extend to the
+entire whole, and thus to each and every part regardless of who wrote it
+ You may copy and distribute the Program (or a work based on it,
+under Section 2) in object code or executable form under the terms of
+Sections 1 and 2 above provided that you also do one of the following:
+
+    a) Accompany it with the complete corresponding machine-readable
+    source code, which must be distributed under the terms of Sections
+    1 and 2 above on a medium customarily used for software interchange; or,
+
+    b) Accompany it with a written offer, valid for at least three
+    years, to give any third party, for a charge no more than your
+    cost of physically performing source distribution, a complete
+    machine-readable copy of the corresponding source code, to be
+    distributed under the terms of Sections 1 and 2 above on a medium
+    customarily used for software interchange; or,
+
+    c) Accompany it with the information you received as to the offer
+    to distribute corresponding source code
+  For an executable work, complete source
+code means all the source code for all modules it contains, plus any
+associated interface definition files, plus the scripts used to
+control compilation and installation of the executable
+
+
+If distribution of executable or object code is made by offering
+access to copy from a designated place, then offering equivalent
+access to copy the source code from the same place counts as
+distribution of the source code, even though third parties are not
+compelled to copy the source along with the object code
+  These actions are
+prohibited by law if you do not accept this License
+  Therefore, by
+modifying or distributing the Program (or any work based on the
+Program), you indicate your acceptance of this License to do so, and
+all its terms and conditions for copying, distributing or modifying
+the Program or works based on it
+
+
+  6
+  You may not impose any further
+restrictions on the recipients' exercise of the rights granted herein
+  If you cannot
+distribute so as to satisfy simultaneously your obligations under this
+License and any other pertinent obligations, then as a consequence you
+may not distribute the Program at all
+  For example, if a patent
+license would not permit royalty-free redistribution of the Program by
+all those who receive copies directly or indirectly through you, then
+the only way you could satisfy both it and this License would be to
+refrain entirely from distribution of the Program
+
+
+  8
+ The Free Software Foundation may publish revised and/or new versions
+of the General Public License from time to time
+  Such new versions will
+be similar in spirit to the present version, but may differ in detail to
+address new problems or concerns
+
+
+Each version is given a distinguishing version number
+  If the Program
+specifies a version number of this License which applies to it and "any
+later version", you have the option of following the terms and conditions
+either of that version or of any later version published by the Free
+Software Foundation
+  If the Program does not specify a version number of
+this License, you may choose any version ever published by the Free Software
+Foundation
+ If you wish to incorporate parts of the Program into other free
+programs whose distribution conditions are different, write to the author
+to ask for permission
+  Our decision will be guided by the two goals
+of preserving the free status of all derivatives of our free software and
+of promoting the sharing and reuse of software generally
+
+
+		     END OF TERMS AND CONDITIONS
+
+	    How to Apply These Terms to Your New Programs
+
+  If you develop a new program, and you want it to be of the greatest
+possible use to the public, the best way to achieve this is to make it
+free software which everyone can redistribute and change under these terms
+>
+    Copyright (C) <year>  <name of author>
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version
+  See the
+    GNU General Public License for more details
+
+
+Also add information on how to contact you by electronic and paper mail
+
+
+The hypothetical commands `show w' and `show c' should show the appropriate
+parts of the General Public License
+
+
+You should also get your employer (if you work as a programmer) or your
+school, if any, to sign a "copyright disclaimer" for the program, if
+necessary
+
+
+  <signature of Ty Coon>, 1 April 1989
+  Ty Coon, President of Vice
+
+This General Public License does not permit incorporating your program into
+proprietary programs
+
+
+
+# Git Credential Manager
+
+[![Build Status][build-status-badge]][workflow-status]
+
+---
+
+[Git Credential Manager][gcm] (GCM) is a secure
+[Git credential helper][git-credential-helper] built on [
+
+
+GCM supports (in alphabetical order) [Azure DevOps][azure-devops], Azure DevOps
+Server (formerly Team Foundation Server), Bitbucket, GitHub, and GitLab
+
+
+GCM replaces both the 
+
+
+## Install
+
+See the [installation instructions][install] for the current version of GCM for
+install options for your operating system
+
+
+## Current status
+
+Git Credential Manager is currently available for Windows, macOS, and Linux\*
+
+GCM only works with HTTP(S) remotes; you can still use Git with SSH:
+
+- [Azure DevOps SSH][azure-devops-ssh]
+- [GitHub SSH][github-ssh]
+- [Bitbucket SSH][bitbucket-ssh]
+
+Feature|Windows|macOS|Linux\*
+-|:-:|:-:|:-:
+Installer/uninstaller|&#10003;|&#10003;|&#10003;
+Secure platform credential storage [(see more)][gcm-credstores]|&#10003;|&#10003;|&#10003;
+Multi-factor authentication support for Azure DevOps|&#10003;|&#10003;|&#10003;
+Two-factor authentication support for GitHub|&#10003;|&#10003;|&#10003;
+Two-factor authentication support for Bitbucket|&#10003;|&#10003;|&#10003;
+Two-factor authentication support for GitLab|&#10003;|&#10003;|&#10003;
+Windows Integrated Authentication (NTLM/Kerberos) support|&#10003;|_N/A_|_N/A_
+Basic HTTP authentication support|&#10003;|&#10003;|&#10003;
+Proxy support|&#10003;|&#10003;|&#10003;
+`amd64` support|&#10003;|&#10003;|&#10003;
+`x86` support|&#10003;|_N/A_|&#10007;
+`arm64` support|best effort|&#10003;|best effort, no packages
+`armhf` support|_N/A_|_N/A_|best effort, no packages
+
+(\*) GCM guarantees support only for [the Linux distributions that are officially
+supported by dotnet][dotnet-distributions]
+
+
+## Supported Git versions
+
+Git Credential Manager tries to be compatible with the broadest set of Git
+versions (within reason)
+ However there are some know problematic releases of
+Git that are not compatible
+26
+ For example, when pushing (`git push`) to
+[Azure DevOps][azure-devops], [Bitbucket][bitbucket], or [GitHub][github], a
+window will automatically open and walk you through the sign-in process
+
+
+## License
+
+We're [MIT][gcm-license] licensed
+azure
+svg
+[docs-index]: https://github
+com/GitCredentialManager/git-credential-manager/blob/release/docs/README
+com/docs/gitcredentials
+[gcm]: https://github
+com/GitCredentialManager/git-credential-manager/blob/release/docs/credstores
+md
+[gcm-for-mac-and-linux]: https://github
+com/microsoft/Git-Credential-Manager-for-Mac-and-Linux
+[gcm-for-windows]: https://github
+md
+[git-tools-credential-storage]: https://git-scm
+com/book/en/v2/Git-Tools-Credential-Storage
+[github]: https://github
+microsoft
+com/repos/
+[workflow-status]: https://github
+com)
+for an overview of features
+
+
+## Getting Started
+
+### Downloading
+
+You can install the Git LFS client in several different ways, depending on your
+setup and preferences
+io/github/git-lfs/install)
+
+* **macOS users**
+ [Homebrew](https://brew
+ In addition, [binary packages](https://github
+org), and the
+available instructions in our
+[Wiki](https://github
+asc` file and verify
+the file you want like so:
+
+```ShellSession
+$ gpg -d sha256sums
+asc | grep git-lfs-linux-amd64-v2
+ You can read
+more about this pattern syntax
+[here](https://git-scm
+gitattributes` file_
+gitattributes
+$ git commit -m "track *
+ For example, changing a file named `my
+psd`
+(tracked above via `*
+ To migrate existing large files
+> in your history to use Git LFS, use `git lfs migrate`
+psd" --everything
+```
+
+**Note that this will rewrite history and change all of the Git object IDs in your
+repository, just like the import version of this command
+
+
+## Limitations
+
+Git LFS maintains a list of currently known limitations, which you can find and
+edit [here](https://github
+  Please do not import the `git-lfs`
+module into other Go code and do not rely on it as a source code dependency
+  There's also a [FAQ](https://github
+adoc)
+shipped with Git LFS which answers some common questions
+ Related projects are listed on the [Implementations wiki
+page](https://github
+com/u/28857117?s=100&v=4
+[larsxschneider-img]: https://avatars1
+
+
+In alphabetical order:
+
+| [@andyneff][andyneff-user] | [@PastelMobileSuit][PastelMobileSuit-user] | [@rubyist][rubyist-user] | [@sinbad][sinbad-user] | [@technoweenie][technoweenie-user] | [@ttaylorr][ttaylorr-user] |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| [![][andyneff-img]][andyneff-user] | [![][PastelMobileSuit-img]][PastelMobileSuit-user] | [![][rubyist-img]][rubyist-user] | [![][sinbad-img]][sinbad-user] | [![][technoweenie-img]][technoweenie-user] | [![][ttaylorr-img]][ttaylorr-user] |
+
+[andyneff-img]: https://avatars1
+githubusercontent
+com/u/37254014?s=100&v=4
+[rubyist-img]: https://avatars1
+githubusercontent
+com/u/443245?s=100&v=4
+[andyneff-user]: https://github
+com/sinbad
+[rubyist-user]: https://github
+
+
+Copyright 1998 by the Massachusetts Institute of Technology
+I
+I
+                                    --
+--                                                                           --
+-- Except as contained in this notice, the name(s) of the above copyright    --
+-- holders shall not be used in advertising or otherwise to promote the      --
+-- sale, use or other dealings in this Software without prior written        --
+-- authorization
+                                                            --
+-------------------------------------------------------------------------------
+-- $Id: README,v 1
+2
+  Last change: 2022 Mar 02
+
+
+		  VIM REFERENCE MANUAL    by Bram Moolenaar
+
+
+			*uganda* *Uganda* *copying* *copyright* *license*
+SUMMARY
+								*iccf* *ICCF*
+Vim is Charityware
+  Please see |kcc|
+below or visit the ICCF web site, available at these URLs:
+
+	https://iccf-holland
+org/
+	https://www
+vim
+org/iccf/
+	https://www
+  Vim sponsors can vote for
+features
+  You can also distribute
+    unmodified parts of Vim, likewise unrestricted except that they must
+    include this license text
+  You are also allowed to include executables
+    that you made from the unmodified Vim sources, plus your own usage
+    examples and Vim scripts
+org>
+net, www
+vim
+
+       d) When you have a modified Vim which includes changes as mentioned
+	  under c), you can distribute it without the source code for the
+	  changes if the following three conditions are met:
+	  - The license that applies to the changes permits you to distribute
+	    the changes to the Vim maintainer without fee or restriction, and
+	    permits the Vim maintainer to include the changes in the official
+	    version of Vim without fee or restriction
+
+    3) A message must be added, at least in the output of the ":version"
+       command and in the intro screen, such that the user of the modified Vim
+       is able to see that it was modified
+  When distributing as mentioned
+       under 2)e) adding the message is only required for as far as this does
+       not conflict with the license used for the changes
+  The preferred way to do this is
+     by e-mail or by uploading the files to a server and e-mailing the URL
+
+
+=== end of license ===
+
+Note:
+
+- If you are happy with Vim, please express that by reading the rest of this
+  file and consider helping needy children in Uganda
+
+  A few minor changes have been made since he checked it, but that should not
+  make a difference
+  Also when you didn't actually change
+  anything in Vim
+
+
+- Once a change is included that goes under the GNU GPL, this forces all
+  further changes to also be made under the GNU GPL or a compatible license
+  The area is known as Rakai
+District
+  The population is mostly farmers
+  Some say that it started there
+  In this district about 60,000 children
+have lost one or both parents, out of a population of 350,000
+  Now that the government is stable again, the children and parents have
+to learn how to take care of themselves and how to avoid infections
+  Because these families are big and the income
+(if any) is low, a child is lucky if it gets healthy food
+  To help these needy children, a
+sponsorship program was put into place
+
+For a few dollars a month KCC sees to it that the child gets indispensable
+items, is healthy, goes to school and KCC takes care of anything else that
+needs to be done for the child and the family that supports it
+
+Health workers are being trained, hygiene education is carried out and
+households are stimulated to build a proper latrine
+
+They are sold below cost price
+
+
+There is a clinic at the project, which provides children and their family
+medical help
+  When needed, transport to a hospital is offered
+  This is possible because this is a small
+organization that works with volunteers
+  If you would like to sponsor a
+child, you should have the intention to do this for at least one year
+
+
+How do you know that the money will be spent right?  First of all you have my
+personal guarantee as the author of Vim
+org>
+o
+kuwasha
+
+		Please send me a note so that I know what has been donated
+		because of Vim
+kuwasha
+  This will allow for tax deduction if you live in
+		Holland
+org/germany
+  See "Others" below for the
+		swift code and IBAN number
+  This is
+		the most widely used Internet based payment system
+paypal
+vim	for editing compressed files
+netrw*
+vim	browsing (remote) directories and editing remote files
+tar
+vim		browsing tar files
+zip
+vim, menu
+vim
+spellfile
+vim	downloading of a missing spell file
+
+Omni completion files:
+ccomplete
+vim		C
+csscomplete
+vim		HTML / CSS
+htmlcomplete
+vim		PHP
+pythoncomplete
+vim	from syntax highlighting
+xmlcomplete
+vim		XML (uses files in the xml directory)
+
+
+
+
+README
+txt for color scheme files
+
+These files are used for the `:colorscheme` command
+  They appear in the
+"Edit/Color Scheme" menu in the GUI
+com/vim/colorschemes/tree/master/legacy_colors
+
+
+Hints for writing a color scheme file:
+
+There are two basic ways to define a color scheme:
+
+1
+ Use the default Normal color and automatically adjust to the value of
+   'background'
+
+  This will also work for groups
+that are added in later versions of Vim
+
+Some attributes (e
+g
+
+	augroup MyColorscheme
+	  au!
+	  au ColorSchemePre * unlet g:term_ansi_colors
+	  au ColorSchemePre * au! MyColorscheme
+	augroup END
+
+To customize a colorscheme use another name, e
+  "~/
+vim
+	" change the color of statements
+	hi Statement ctermfg=Blue guifg=Blue
+
+To see which highlight group is used where, see `:help highlight-groups` and
+`:help group-name` 
+  Use the color names instead for better portability
+ as possible
+
+
+- Is "g:terminal_ansi_colors" set to a list of 16 #RRGGBB values?
+
+- Try to keep your color scheme simple by avoiding unnecessary logic and
+  refraining from adding options
+  The best color scheme is one that only
+  requires: >
+
+  	colorscheme foobar
+
+The color schemes distributed with Vim are built with lifepillar/colortemplate
+(https://github
+
+
+If you want to write your own compiler plugin, have a look at the other files
+for how to do it, the format is simple
+
+
+If you think a compiler plugin you have written is useful for others, please
+send it to Bram@vim
+vim in this directory and subdirectories will be sourced
+by Vim when it detects the filetype that matches the name of the file or
+subdirectory
+vim
+	c_extra
+vim" is required to separate the filetype name
+from the following arbitrary name
+  See ":help ftplugin" in Vim
+
+
+
+
+
+This directory contains files to automatically compute the indent for a
+type of file
+
+
+If you want to add your own indent file for your personal use, read the docs
+at ":help indent-expression"
+
+
+If you make a new indent file which would be useful for others, please send it
+to Bram@vim
+org
+
+And please stick to the rules below
+org
+
+
+If you are the maintainer of an indent file and make improvements, e-mail the
+new version to Bram@vim
+
+
+
+Rules for making an indent file:
+
+You should use this check for "b:did_indent":
+
+	" Only load this indent file when no other was loaded yet
+g
+, "hebrew", "greek")
+
+{layout}	Optional: name of the keyboard layout (e
+g
+  When omitted the layout of the standard
+		US-english keyboard is assumed
+  If necessary, report a problem to the maintainer
+
+
+The format of the keymap lines below "loadkeymap" is explained in the Vim help
+files, see ":help keymap-file-format"
+ v:lang 
+vim"
+
+When the 'menutrans' option is set, its value will be used instead of v:lang
+
+
+For example, to use the Big5 (Taiwan) menus on MS-Windows the $LANG will be
+
+	Chinese(Taiwan)_Taiwan
+vim
+
+On Unix you should set $LANG, depending on your shell:
+
+	csh/tcsh:	setenv LANG "zh_TW
+
+
+
+AUTOMATIC CONVERSION
+
+When Vim was compiled with multi-byte support, conversion between latin1 and
+UTF-8 will always be possible
+  Other conversions depend on the iconv
+library, which is not always available
+, between iso-8859-# and
+MS-Windows codepages), thus the converted menu file must be available
+78
+	press "g"
+
+The "-u maze
+
+
+
+The original README:
+
+To prove that you can do anything in vi, I wrote a couple of macros that
+allows vi to solve mazes
+ run uudecode on the file "maze
+macros
+macros"
+	(If you can't wait to see the action, jump to step 4)
+	2
+ compile maze
+c with "cc -o maze maze
+ run maze > maze
+ edit the maze (vi maze
+macros and all will be revealed
+
+Tested on a sparc, a sun and a pyramid (although maze
+c will not compile
+on the pyramid)
+
+
+Anyone who can't get the maze
+c by "11"
+Thanks to John Tromp (tromp@piring
+c
+
+Thanks to antonyc@nntp-server
+ Cat) for maze
+au
+Greg McFarlane	     UUCP:  {uunet,mcvax}!otc
+oz
+
+maze	Macros that solve a maze (amazing!)
+  Add the command to your
+vimrc file to use the package:
+
+packadd! dvorak		" Dvorak keyboard support; adds mappings
+
+packadd! editexisting	" when editing a file that is already edited with
+			" another Vim instance, go to that Vim instance
+
+packadd! justify	" justifying text
+
+
+Getting started:
+
+type
+in your shell:	 vim urm<RETURN>
+in vim:		 :so urm
+ The URM
+concept is used in theoretical computer science to aid in theorem proving
+  A dot marks the end of a program
+ (Bug: there must be a space
+after the dot
+
+
+Commands:
+a<n>		increment register <n>
+s<n>		decrement register <n>
+<x>;<y>		execute command <x> and then <y>
+(<x>)<n>	execute command <x> while register <n> is nonzero
+
+
+Note, undo may take a while after a division
+
+
+All files here ending in 
+vim will be sourced by Vim when it starts up
+vim	     edit files over a network and browse (remote) directories
+rrhelper
+vim	     used for --remote-wait editing
+spellfile
+vim	     edit (compressed) tar files
+tohtml
+vim plugin has
+taken over browsing directories (also for remote directories)
+
+
+
+
+
+
+This directory contains Vim scripts for syntax highlighting
+vim
+
+
+synload
+
+
+nosyntax
+vim	Used for the ":syntax off" command
+vim	Check for color names and actual color on screen
+
+hitest
+
+whitespace
+vim  View Tabs and Spaces
+
+
+
+If you want to write a syntax file, read the docs at ":help usr_44
+org
+  Only when you get no response send a message to Bram@vim
+
+
+If you are the maintainer of a syntax file and make improvements, send the new
+version to Bram@vim
+org
+
+
+
+Some tools that can be used with Vim:
+
+blink
+c:	C program to make the cursor blink in an xterm
+*		Awk script to filter error messages to QuickFix format
+pl:	Perl script to create a tags file from Perl scripts
+
+
+ref:		Shell script for the K command
+*:	Perl script to create a tags file from a shell script
+*:	Shell script for highlighting spelling mistakes
+
+
+vim_vs_net
+cmd: MS-Windows command file to use Vim with MS Visual Studio 7 and
+		later
+
+
+xcmdsrv_client
+
+
+unicode
+
+
+Tutor is a file that contains the tutorial lessons
+ You can simply
+execute "vim tutor" and then follow the instructions in the lessons
+
+The lessons tell you to modify the file, so DON'T DO THIS ON YOUR
+ORIGINAL COPY
+
+
+On Unix you can also use the "vimtutor" program
+
+
+Bob Ware, Colorado School of Mines, Golden, Co 80401, USA
+(303) 273-3987
+bware@mines
+bitnet
+
+
+Translation
+-----------
+
+The tutor
+xx
+  The encoding of tutor
+  If you don't need a translation with such traditional encoding,
+you just need to prepare the tutor
+utf-8 file
+enc
+(replace enc with the actual encoding name)
+  You might also need to adjust the
+tutor
+xx
+utf-8
+xx for historical reasons
+)
+
+[This file was modified for Vim by Bram Moolenaar et al

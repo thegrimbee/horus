@@ -6,6 +6,9 @@ const scanButton = document.getElementById("scanButton");
 const scanAllButton = document.getElementById("scanAllButton");
 const loadingBar = document.getElementById("loadingBar");
 const dangerButton = document.getElementById('dangerButton');
+const HIGHLIGHT_COLOR = 'rgba(34, 139, 34, 0.5)'; //'#3a3a3a' for grey;
+const DEFAULT_COLOR = 'transparent';
+window.selectedApp = null;
 console.log("scan.js loaded");
 
 /**
@@ -148,6 +151,14 @@ function startLoading() {
 
 }
 
+function selectApp(listItem) {
+    if (window.selectedApp) {
+        window.selectedApp.style.backgroundColor = DEFAULT_COLOR;
+    }
+    window.selectedApp = listItem;
+    window.selectedApp.style.backgroundColor = HIGHLIGHT_COLOR;
+}
+
 function scan() {
     const folderPath = window.selectedAppFolder;
     console.log(folderPath);
@@ -181,7 +192,10 @@ function scan() {
                 listItem.addEventListener("click", function(event) {
                     window.scanResult = endResult;
                     dangerButton.click();
+                    selectApp(listItem);
                 });
+
+                selectApp(listItem);
                 dangerButton.click();
             })
             .catch(error => {
