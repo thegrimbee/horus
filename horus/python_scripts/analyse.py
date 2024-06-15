@@ -9,6 +9,7 @@ def analyse_tos(tos, app=""):
     scans = pd.read_csv(scans_path)
     if app in scans['App'].values:
         categorized_sentences = scans[scans['App'] == app].iloc[0].tolist()
+        print(categorized_sentences)
     else:
         sentences = tos.split('.')
         categorized_sentences = [[], [], []]
@@ -17,17 +18,6 @@ def analyse_tos(tos, app=""):
         categorized_sentences = ["\n".join(categorized_sentences[0]), 
                                 "\n".join(categorized_sentences[1]), 
                                 "\n".join(categorized_sentences[2])]
-        
-        normal_path = os.path.join(os.path.dirname(__file__), 'results', 'normal.txt')
-        with open(normal_path, 'w') as f:
-            f.write(categorized_sentences[0])
-        warning_path = os.path.join(os.path.dirname(__file__), 'results', 'warning.txt')
-        with open(warning_path, 'w') as f:
-            f.write(categorized_sentences[1])
-        danger_path = os.path.join(os.path.dirname(__file__), 'results', 'danger.txt')
-        with open(danger_path, 'w') as f:
-            f.write(categorized_sentences[2])
-            
         dct = {'App': app, 
                               'Level_0': categorized_sentences[0], 
                               'Level_1': categorized_sentences[1], 
@@ -36,6 +26,16 @@ def analyse_tos(tos, app=""):
         scans = pd.concat([scans, pd.DataFrame(dct)], 
                               ignore_index=True)
         scans.to_csv(scans_path, index=False)
+
+    normal_path = os.path.join(os.path.dirname(__file__), 'results', 'normal.txt')
+    with open(normal_path, 'w') as f:
+        f.write(str(categorized_sentences[0]))
+    warning_path = os.path.join(os.path.dirname(__file__), 'results', 'warning.txt')
+    with open(warning_path, 'w') as f:
+        f.write(str(categorized_sentences[1]))
+    danger_path = os.path.join(os.path.dirname(__file__), 'results', 'danger.txt')
+    with open(danger_path, 'w') as f:
+        f.write(str(categorized_sentences[2]))
     return categorized_sentences
 
 if __name__ == '__main__':
@@ -44,3 +44,4 @@ if __name__ == '__main__':
         tos = f.read()
     app = sys.argv[1]
     analysis = analyse_tos(tos, app)
+

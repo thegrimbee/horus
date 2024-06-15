@@ -1,1018 +1,147 @@
-2 or v3
+
+  7-Zip
+  ~~~~~
+  License for use and distribution
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  7-Zip Copyright (C) 1999-2023 Igor Pavlov
 
 
- HOWEVER, in order to allow a migration to GPLv3 if that seems like
- a good idea, I also ask that people involved with the project make
- their preferences known
- In particular, if you trust me to make that
- decision, you might note so in your copyright message, ie something
- like
+  The licenses for files are:
 
-	This file is licensed under the GPL v2, or a later version
-	at the discretion of Linus
-
-
-  might avoid issues
-  By contrast, the GNU General Public
-License is intended to guarantee your freedom to share and change free
-software--to make sure the software is free for all its users
-  This
-General Public License applies to most of the Free Software
-Foundation's software and to any other program whose authors commit to
-using it
-  (Some other Free Software Foundation software is covered by
-the GNU Lesser General Public License instead
+    1) 7z
+dll:
+         - The "GNU LGPL" as main license for most of the code
+         - The "GNU LGPL" with "unRAR license restriction" for some code
+         - The "BSD 3-clause License" for some code
+    2) All other files: the "GNU LGPL"
 
 
-  When we speak of free software, we are referring to freedom, not
-price
+  Redistributions in binary form must reproduce related license information from this file
 
 
-  To protect your rights, we need to make restrictions that forbid
-anyone to deny you these rights or to ask you to surrender the rights
-
-
-  For example, if you distribute copies of such a program, whether
-gratis or for a fee, you must give the recipients all the rights that
-you have
-  You must make sure that they, too, receive or can get the
-source code
-
-
-  Finally, any free program is threatened constantly by software
-patents
-  We wish to avoid the danger that redistributors of a free
-program will individually obtain patent licenses, in effect making the
-program proprietary
- This License applies to any program or other work which contains
-a notice placed by the copyright holder saying it may be distributed
-under the terms of this General Public License
-  The act of
-running the Program is not restricted, and the output from the Program
-is covered only if its contents constitute a work based on the
-Program (independent of having been made by running the Program)
- You may copy and distribute verbatim copies of the Program's
-source code as you receive it, in any medium, provided that you
-conspicuously and appropriately publish on each copy an appropriate
-copyright notice and disclaimer of warranty; keep intact all the
-notices that refer to this License and to the absence of any warranty;
-and give any other recipients of the Program a copy of this License
-along with the Program
- You may modify your copy or copies of the Program or any portion
-of it, thus forming a work based on the Program, and copy and
-distribute such modifications or work under the terms of Section 1
-above, provided that you also meet all of these conditions:
-
-    a) You must cause the modified files to carry prominent notices
-    stating that you changed the files and the date of any change
-
-
-    b) You must cause any work that you distribute or publish, that in
-    whole or in part contains or is derived from the Program or any
-    part thereof, to be licensed as a whole at no charge to all third
-    parties under the terms of this License
-
-
-    c) If the modified program normally reads commands interactively
-    when run, you must cause it, when started running for such
-    interactive use in the most ordinary way, to print or display an
-    announcement including an appropriate copyright notice and a
-    notice that there is no warranty (or else, saying that you provide
-    a warranty) and that users may redistribute the program under
-    these conditions, and telling the user how to view a copy of this
-    License
-  If
-identifiable sections of that work are not derived from the Program,
-and can be reasonably considered independent and separate works in
-themselves, then this License, and its terms, do not apply to those
-sections when you distribute them as separate works
-
-
-Thus, it is not the intent of this section to claim rights or contest
-your rights to work written entirely by you; rather, the intent is to
-exercise the right to control the distribution of derivative or
-collective works based on the Program
-
-
-  3
-  Any attempt
-otherwise to copy, modify, sublicense or distribute the Program is
-void, and will automatically terminate your rights under this License
- You are not required to accept this License, since you have not
-signed it
-
-
-  6
-
-You are not responsible for enforcing compliance by third parties to
-this License
-
-
-  7
- If, as a consequence of a court judgment or allegation of patent
-infringement or for any other reason (not limited to patent issues),
-conditions are imposed on you (whether by court order, agreement or
-otherwise) that contradict the conditions of this License, they do not
-excuse you from the conditions of this License
-
-
-If any portion of this section is held invalid or unenforceable under
-any particular circumstance, the balance of the section is intended to
-apply and the section as a whole is intended to apply in other
-circumstances
-
-
-This section is intended to make thoroughly clear what is believed to
-be a consequence of the rest of this License
- If the distribution and/or use of the Program is restricted in
-certain countries either by patents or by copyrighted interfaces, the
-original copyright holder who places the Program under this License
-may add an explicit geographical distribution limitation excluding
-those countries, so that distribution is permitted only in or among
-countries not thus excluded
- If you wish to incorporate parts of the Program into other free
-programs whose distribution conditions are different, write to the author
-to ask for permission
-  SHOULD THE
-PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING,
-REPAIR OR CORRECTION
-
-
-  12
- IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
-WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR
-REDISTRIBUTE THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES,
-INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING
-OUT OF THE USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED
-TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY
-YOU OR THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER
-PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE
-POSSIBILITY OF SUCH DAMAGES
-
-
-		     END OF TERMS AND CONDITIONS
-
-	    How to Apply These Terms to Your New Programs
-
-  If you develop a new program, and you want it to be of the greatest
-possible use to the public, the best way to achieve this is to make it
-free software which everyone can redistribute and change under these terms
-
-
-  To do so, attach the following notices to the program
-
-
-    <one line to give the program's name and a brief idea of what it does
-  See the
-    GNU General Public License for more details
-,
-    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
-
-
-If the program is interactive, make it output a short notice like this
-when it starts in an interactive mode:
-
-    Gnomovision version 69, Copyright (C) year name of author
-    Gnomovision comes with ABSOLUTELY NO WARRANTY; for details type `show w'
-
-
-The hypothetical commands `show w' and `show c' should show the appropriate
-parts of the General Public License
-
-
-You should also get your employer (if you work as a programmer) or your
-school, if any, to sign a "copyright disclaimer" for the program, if
-necessary
-  Here is a sample; alter the names:
-
-  Yoyodyne, Inc
+  Note:
+    You can use 7-Zip on any computer, including a computer in a commercial
+    organization
+ You don't need to register or pay for 7-Zip
 
 
 
-# Git Credential Manager
+  GNU LGPL information
+  --------------------
 
-[![Build Status][build-status-badge]][workflow-status]
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2
+  See the GNU
+    Lesser General Public License for more details
+
+
+    You can receive a copy of the GNU Lesser General Public License from
+    http://www
+gnu
+org/
+
+
+
+
+  BSD 3-clause License
+  --------------------
+
+    The "BSD 3-clause License" is used for the code in 7z
+
+    That code was derived from the code in the "LZFSE compression library" developed by Apple Inc,
+    that also uses the "BSD 3-clause License":
+
+    ----
+    Copyright (c) 2015-2016, Apple Inc
+
+
+    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+    1
+  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer
+        in the documentation and/or other materials provided with the distribution
+
+
+    3
+  Neither the name of the copyright holder(s) nor the names of any contributors may be used to endorse or promote products derived
+        from this software without specific prior written permission
+ IN NO EVENT SHALL THE
+    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+    HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE
+
+    ----
+
+
+
+
+  unRAR license restriction
+  -------------------------
+
+    The decompression engine for RAR archives was developed using source
+    code of unRAR program
+
+    All copyrights to original unRAR code are owned by Alexander Roshal
+
+
+
+  --
+  Igor Pavlov
+
+7-Zip 23
+01
+-----------
+
+7-Zip is a file archiver for Windows
+
+
+7-Zip Copyright (C) 1999-2023 Igor Pavlov
+
+
+The main features of 7-Zip: 
+
+  - High compression ratio in the new 7z format
+  - Supported formats:
+     - Packing / unpacking: 7z, XZ, BZIP2, GZIP, TAR, ZIP and WIM
+
+  - Fast compression and decompression
+  - Self-extracting capability for 7z format
+  - Strong AES-256 encryption in 7z and ZIP formats
+  - Integration with Windows Shell
+  - Powerful File Manager
+  - Powerful command line version
+  - Localizations for 90 languages
+
+
+7-Zip is free software distributed under the GNU LGPL (except for unRar code)
+
+Read License
+exe      - 7-Zip File Manager
+  7-zip
+exe        - Command line version
+  7z
+dll        - 7-Zip engine module
+  7z
+sfx     - SFX module (Console version)
+
+  License
+txt   - License information
+  readme
+txt    - This file
+  History
+txt   - History of 7-Zip
+  7-zip
+chm     - User's Manual in HTML Help format
+  descript
+ttt   - English (base) localization file
+  Lang\*
+txt    - Localization files
+
 
 ---
+End of document
 
-[Git Credential Manager][gcm] (GCM) is a secure
-[Git credential helper][git-credential-helper] built on [
-NET Framework-based
-[Git Credential Manager for Windows][gcm-for-windows] and the Java-based
-[Git Credential Manager for Mac and Linux][gcm-for-mac-and-linux]
- However there are some know problematic releases of
-Git that are not compatible
-
-
-- Git 1
- For example, when pushing (`git push`) to
-[Azure DevOps][azure-devops], [Bitbucket][bitbucket], or [GitHub][github], a
-window will automatically open and walk you through the sign-in process
- (This
-process will look slightly different for each Git host, and even in some cases,
-whether you've connected to an on-premises or cloud-hosted Git host
-
-
-## Additional Resources
-
-See the [documentation index][docs-index] for links to additional resources
-com/
-[azure-devops-ssh]: https://docs
-microsoft
-com/bitbucket/ssh-keys-935365775
-html
-[build-status-badge]: https://github
-com
-[dotnet-distributions]: https://learn
-microsoft
-com/GitCredentialManager/git-credential-manager
-[gcm-coc]: CODE_OF_CONDUCT
-com/GitCredentialManager/git-credential-manager/blob/release/docs/credstores
-com/GitCredentialManager/git-credential-manager/blob/release/docs/netconfig
-com/GitCredentialManager/git-credential-manager/blob/release/docs/windows-broker
-com/en/articles/connecting-to-github-with-ssh
-[github-logos]: https://github
-com/logos
-[install]: https://github
-com/GitCredentialManager/git-credential-manager/blob/release/docs/install
-md
-[ms-package-repos]: https://packages
-com/git-lfs/git-lfs/workflows/CI/badge
-com)
-for an overview of features
-
-
-## Getting Started
-
-### Downloading
-
-You can install the Git LFS client in several different ways, depending on your
-setup and preferences
- Git LFS is included in the distribution of
-  [Git for Windows](https://gitforwindows
-org/)
-
-* **Binary packages**
-com/git-lfs/git-lfs/releases) are
-available for Linux, macOS, Windows, and FreeBSD
- [This repository](https://github
-git) can also be
-built from source using the latest version of [Go](https://golang
-com/git-lfs/git-lfs/wiki/Installation#source)
-
-- On Windows, install `goversioninfo` with `go install github
-com/josephspurrier/goversioninfo/cmd/goversioninfo@latest`
-
-- Place the `git-lfs` binary, which can be found in `bin`, on your system’s executable `$PATH` or equivalent
- This can be done by
-running:
-
-```ShellSession
-$ git lfs install
-```
-
-#### Verifying releases
-
-Releases are signed with the OpenPGP key of one of the core team members
-github
-10
-0
-
-This can be done by running the following _from within a Git repository_:
-
-```bash
-$ git lfs track "*
-com/docs/gitattributes))
-
-
-After any invocation of `git-lfs-track(1)` or `git-lfs-untrack(1)`, you _must
-commit changes to your `
-adoc)
-psd
-```
-
-Once you've made your commits, push your files to the Git remote:
-
-```bash
-$ git push origin main
-Uploading LFS objects: 100% (1/1), 810 B, 1
-
-To https://github
-
-8
-5 on macOS
-psd" --everything
-```
-
-**Note that this will rewrite history and change all of the Git object IDs in your
-repository, just like the import version of this command
-**
-
-If there's some reason that things aren't working out for you, please let us
-know in an issue, and we'll definitely try to help or get it fixed
-
-
-## Limitations
-
-Git LFS maintains a list of currently known limitations, which you can find and
-edit [here](https://github
-com/git-lfs/git-lfs/wiki/Limitations)
-adoc)
-shipped with Git LFS which answers some common questions
-com/git-lfs/git-lfs/issues), and
-one of the Core Team members will respond to you
- The output of `git lfs env`, which displays helpful information about your
-   Git repository useful in debugging
-md](CONTRIBUTING
-md) for info on working on Git LFS and
-sending patches
- Related projects are listed on the [Implementations wiki
-page](https://github
-
-
-See also [SECURITY
-md](SECURITY
-com/u/477434?s=100&v=4
-[bk2204-user]: https://github
-com/bk2204
-[chrisd8088-user]: https://github
-com/pks/lookup?op=get&search=0x86cd3297749375bcf8206715f54fe648088335a9
-[larsxschneider-pgp]: https://keyserver
-ubuntu
-githubusercontent
-com/u/37254014?s=100&v=4
-[rubyist-img]: https://avatars1
-githubusercontent
-com/u/21?v=3&s=100
-[ttaylorr-img]: https://avatars2
-com/rubyist
-[technoweenie-user]: https://github
-com/ttaylorr
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# c-ares license
-
-Copyright (c) 2007 - 2018, Daniel Stenberg with many contributors, see AUTHORS
-file
- not be used in advertising or publicity pertaining to
-distribution of the software without specific, written prior permission
-  It is provided "as is" without express or implied warranty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
--------------------------------------------------------------------------------
--- Copyright 2020,2021 Thomas E
- Dickey                                      --
--- Copyright 1998-2012,2018 Free Software Foundation, Inc
- IN --
--- NO EVENT SHALL THE ABOVE COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,       --
--- DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR     --
--- OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE --
--- USE OR OTHER DEALINGS IN THE SOFTWARE
-                                                            --
--------------------------------------------------------------------------------
--- $Id: README,v 1
-txt*    For Vim version 8
-2
-org/
-	https://www
-vim
-nl/
-
-You can also sponsor the development of Vim
-  The money goes to Uganda anyway
-  You can also distribute
-    unmodified parts of Vim, likewise unrestricted except that they must
-    include this license text
-  When the maintainer asks you
-	  (in any way) for a copy of the modified Vim you distributed, you
-	  must make your changes, including source code, available to the
-	  maintainer without fee
-  The maintainer reserves the right to
-	  include your changes in the official version of Vim
-  If this
-	  changes it will be announced in appropriate places (most likely
-	  vim
-editors)
-
-       b) If you have received a modified Vim that was distributed as
-	  mentioned under a) you are allowed to further distribute it
-	  unmodified, as mentioned at I)
-  If you make additional changes the
-	  text under a) applies to those changes
-  You can choose what license to use for new code you
-	  add
-
-	  - You keep the changes for at least three years after last
-	    distributing the corresponding modified Vim
-
-    4) The contact information as required under 2)a) and 2)d) must not be
-       removed or changed, except that the person himself can make
-       corrections
-
-
-III) If you distribute a modified version of Vim, you are encouraged to use
-     the Vim license for your changes and make them available to the
-     maintainer, including the source code
-g
-, a modified Makefile) e-mailing a
-     context diff will do
-
-
-- Once a change is included that goes under the GNU GPL, this forces all
-  further changes to also be made under the GNU GPL or a compatible license
-  But this district is suffering from AIDS more than
-any other part of the world
-  Food and medical care to keep them
-healthy now, and education so that they can take care of themselves in the
-future
-
-
-The key to solving the problems in this area is education
-  This has been
-neglected in the past years with president Idi Amin and the following civil
-wars
-  There is
-also help for people who are ill and hungry, but the primary goal is to
-prevent people from getting ill and to teach them how to grow healthy food
-
-
-Besides helping the child directly, the environment where the child grows up
-needs to be improved
-
-There is a demonstration school at the centre and teacher trainings are given
-  These are used to build a good latrine
-  Immunization
-programs are carried out and help is provided when an epidemic is breaking out
-(measles and cholera have been a problem)
-  I have helped to expand the centre and worked in the area of water
-and sanitation
-  To do this
-I'm raising funds and organizing the sponsorship program
-  Please consider one
-of these possibilities:
-
-1
-  Sponsor a child in primary school: 17 euro a month (or more)
-
-2
-  Sponsor the clinic: Any amount a month or quarter
-4
-
-
-How do you know that the money will be spent right?  First of all you have my
-personal guarantee as the author of Vim
-  I trust the people that are working
-at the centre, I know them personally
-
-
-If you have any further questions, send me e-mail: <Bram@vim
-
-
-The address of the centre is:
-			Kibaale Children's Centre
-			p
- box 1658
-			Masaka, Uganda, East Africa
-
-Sending money:						*iccf-donations*
-
-Check the ICCF web site for the latest information!  See |iccf| for the URL
-  Look on their site for information about
-		sponsorship: https://www
-org/germany
-html
-
-Europe:		Use a bank transfer if possible
-  It's
-		really simple to use
-  See ":help autoload"
-vim		browsing tar files
-zip
-vim, menu
-vim	HTML
-javascriptcomplete
-vim		PHP
-pythoncomplete
-txt for color scheme files
-
-These files are used for the `:colorscheme` command
-com/vim/colorschemes/tree/master/legacy_colors
-
-
-Hints for writing a color scheme file:
-
-There are two basic ways to define a color scheme:
-
-1
-
-
-
-
-2
-
-
-	  
-
-  Use something like "gui=NONE" to remove the
-attributes
-
-
-To clean up just before loading another colorscheme, use the ColorSchemePre
-autocommand event
-  For example: >
-
-	let g:term_ansi_colors = 
-
-	augroup MyColorscheme
-	  au!
-	  au ColorSchemePre * unlet g:term_ansi_colors
-	  au ColorSchemePre * au! MyColorscheme
-	augroup END
-
-To customize a colorscheme use another name, e
-vim/colors/mine
-
-
-You can use ":highlight" to find out the current colors
-
-Search for "highlight_init"
-
-
-- Do not use hard coded escape sequences, these will not work in other
-  terminals
-
-
-- When targetting 8-16 colors terminals, don't count on "darkblue" to be blue
-  and dark, or on "2" to be even vaguely reddish
-
-
-- When targetting 256 colors terminals, prefer colors 16-255 to colors 0-15
-  for the same reason
-  Don't count on any of them
-
-
-- Is "g:terminal_ansi_colors" set to a list of 16 #RRGGBB values?
-
-- Try to keep your color scheme simple by avoiding unnecessary logic and
-  refraining from adding options
-
-
-If you would like your color scheme to be distributed with Vim, make sure
-that:
-
-- it satisfies the guidelines above,
-- it was made with colortemplate,
-
-and join us at vim/colorschemes: (https://github
-
-See ":help write-compiler-plugin"
-
-
-If you want to write your own compiler plugin, have a look at the other files
-for how to do it, the format is simple
-
-
-If you think a compiler plugin you have written is useful for others, please
-send it to Bram@vim
-vim in this directory and subdirectories will be sourced
-by Vim when it detects the filetype that matches the name of the file or
-subdirectory
-
-
-
-
-
-This directory contains files to automatically compute the indent for a
-type of file
-
-
-If you make a new indent file which would be useful for others, please send it
-to Bram@vim
-
-
-To trigger the indenting after typing a word like "endif", add the word to the
-'indentkeys' option with "+="
-txt
-, "hebrew", "greek")
-
-{layout}	Optional: name of the keyboard layout (e
-
-
-{encoding}	Optional: character encoding for which this keymap works
-vim" file will search for a menu translation file
-  This
-depends on the value of the "v:lang" variable
-
-
-The file name is always lower case
-
-For UTF-8 menu files which only use latin1 characters, you can rely on Vim
-doing the conversion
-78
-	press "g"
-
-The "-u maze
-
-
-
-The original README:
-
-To prove that you can do anything in vi, I wrote a couple of macros that
-allows vi to solve mazes
-
-
-Just follow this recipe and SEE FOR YOURSELF
- run uudecode on the file "maze
- run maze > maze
-out and input a small number (for example 10 if
-		you are on a fast machine, 3-5 if slow) which
-		is the size of the maze to produce
-	4
-vi
- type the letter "g" (for "go") and watch vi solve the maze
-	7
- now look at maze
-vi
-macros and all will be revealed
-
-Tested on a sparc, a sun and a pyramid (although maze
-ansi
-cwi
-c
-otca
-otca
-oz
-	The life macros can be used for performance comparisons
-
-maze	Macros that solve a maze (amazing!)
-sh + less
-  Add the command to your
-vimrc file to use the package:
-
-packadd! dvorak		" Dvorak keyboard support; adds mappings
-
-packadd! editexisting	" when editing a file that is already edited with
-			" another Vim instance, go to that Vim instance
-
-packadd! justify	" justifying text
-vim<RETURN>
-in vim:		 *	(to load the registers and boot the URM-machine :-)
-in vim:		 g	(for 'go') and watch the fun
- The URM
-concept is used in theoretical computer science to aid in theorem proving
-  A dot marks the end of a program
-
-The program is the first line after the registers
-
-Note, undo may take a while after a division
-
-
-getscriptPlugin
-vim  get latest version of Vim scripts
-gzip
-vim	     logical operators on patterns
-manpager
-vim	     using Vim as manpager
-matchparen
-vim	     highlight paren matching the one under the cursor
-netrwPlugin
-vim	     edit files over a network and browse (remote) directories
-rrhelper
-vim	     download a spellfile when it's missing
-tarPlugin
-vim	     edit (compressed) tar files
-tohtml
-vim	     convert a file with syntax highlighting to HTML
-vimballPlugin
-vim    create and unpack 
-vim	     edit zip archives
-
-Note: the explorer
-
-
-
-
-
-
-This directory contains Vim scripts for syntax highlighting
-
-
-These scripts are not for a language, but are used by Vim itself:
-
-syntax
-vim	Used for the ":syntax manual" command
-vim
-vim	Used for the ":syntax off" command
-vim
-
-
-
-A few special files:
-
-2html
-vim	Converts any highlighted file to HTML (GUI only)
-vim	Check for color names and actual color on screen
-
-whitespace
-txt"
-
-
-For further info see ":help syntax" in Vim
-c:	C program to make the cursor blink in an xterm
-*:	Perl script to filter compiler messages to QuickFix format
-*		Awk script to filter error messages to QuickFix format
-pl:	Perl script to create a tags file from Perl scripts
-
-
-xcmdsrv_client
-c:  Example for a client program that communicates with a Vim
-		   server through the X-Windows interface
-c
- The result
-is that you can do a simple editing task using the Vim editor
-
-
-Tutor is a file that contains the tutorial lessons
-
-The lessons tell you to modify the file, so DON'T DO THIS ON YOUR
-ORIGINAL COPY
-colorado
-edu bware@mines
-xx and tutor
-  If you don't need a translation with such traditional encoding,
-you just need to prepare the tutor
-utf-8 file
-  You might also need to adjust the
-tutor
-xx from tutor

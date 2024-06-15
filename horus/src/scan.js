@@ -5,6 +5,7 @@ const scanButton = document.getElementById("scanButton");
 // const folderNameInput = document.getElementById("folderNameInput");
 const scanAllButton = document.getElementById("scanAllButton");
 const loadingBar = document.getElementById("loadingBar");
+const dangerButton = document.getElementById('dangerButton');
 console.log("scan.js loaded");
 
 /**
@@ -112,7 +113,7 @@ async function analyseTos(tosText, appName) {
     const tosPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts', 'tos.txt');
 
     window.dialogAPI.fs.writeFile(tosPath, tosText);
-    window.spawnAPI.spawn('python', [scriptPath, appName]);
+    await window.spawnAPI.spawn('python', [scriptPath, appName]);
 
     const normalPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts', 'results', 'normal.txt');
     const normal = await window.dialogAPI.fs.readFile(normalPath);
@@ -158,29 +159,30 @@ function scan() {
             .then(tosText => analyseTos(tosText, appName))
             .then(result => {
                 loadingBar.value = 100;
-                console.log(result);
                 const resultArray = result;
-                console.log(typeof resultArray[0]);
                 for (var i = 0; i < resultArray.length; i++) {
                     resultArray[i] = resultArray[i].replace(/\n/g, '<br>');
                 }
                 var endResult = {'danger': resultArray[2], 'warning': resultArray[1], 'normal': resultArray[0]};
+                console.log(endResult);
                 // Set the text of the paragraph to the result
                 window.scanResult = endResult;
 
                 // Add a list item to the scannedAppList, make sure the list items are unique
                 const scannedAppList = document.getElementById("appScannedList");
                 const listItem = document.createElement("li");
-                listItem.id = appName;
+                listItem.id = "appListItem-" + appName;
                 listItem.className = "list-group-item list-group-item-action";
-                listItem.innerHTML = `<a class="app-scanned link-offset-2 link-underline link-underline-opacity-0" data-toggle="list" href="#${appName}">${appName}</a>`;
-                if (!document.getElementById(appName)) {
+                listItem.innerHTML = `<a class="app-scanned link-offset-2 link-underline link-underline-opacity-0" data-toggle="list" href="#appListItem-${appName}">${appName}</a>`;
+                if (!document.getElementById("appListItem-appName")) {
                     scannedAppList.appendChild(listItem);
                 }
                 //For now I'm relying on frame to store the result, might change later
                 listItem.addEventListener("click", function(event) {
                     window.scanResult = endResult;
+                    dangerButton.click();
                 });
+                dangerButton.click();
             })
             .catch(error => {
                 console.error(error);
