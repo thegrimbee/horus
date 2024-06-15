@@ -106,9 +106,21 @@ async function getTos(path, includeAll = false) {
  */
 async function analyseTos(tosText, appName) {
     console.log('analysing TOS')
-    const scriptPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts','analyse.py');
-    const result = window.spawnAPI.spawn('python', [scriptPath, tosText, appName]);
-    return result;
+    
+    // NOTE: change these two paths when packaging the app
+    const scriptPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts', 'analyse.py');
+    const tosPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts', 'tos.txt');
+
+    window.dialogAPI.fs.writeFile(tosPath, tosText);
+    window.spawnAPI.spawn('python', [scriptPath, appName]);
+
+    const normalPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts', 'results', 'normal.txt');
+    const normal = await window.dialogAPI.fs.readFile(normalPath);
+    const warningPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts', 'results', 'warning.txt');
+    const warning = await window.dialogAPI.fs.readFile(warningPath);
+    const dangerPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts', 'results', 'danger.txt');
+    const danger = await window.dialogAPI.fs.readFile(dangerPath);
+    return [normal, warning, danger];
 }
 
 /**
@@ -145,8 +157,10 @@ function scan() {
         getTos(folderPath)
             .then(tosText => analyseTos(tosText, appName))
             .then(result => {
-                loadingBar.value = 100;    
-                const resultArray = result.split('!--------------------!');  
+                loadingBar.value = 100;
+                console.log(result);
+                const resultArray = result;
+                console.log(typeof resultArray[0]);
                 for (var i = 0; i < resultArray.length; i++) {
                     resultArray[i] = resultArray[i].replace(/\n/g, '<br>');
                 }

@@ -17,6 +17,17 @@ def analyse_tos(tos, app=""):
         categorized_sentences = ["\n".join(categorized_sentences[0]), 
                                 "\n".join(categorized_sentences[1]), 
                                 "\n".join(categorized_sentences[2])]
+        
+        normal_path = os.path.join(os.path.dirname(__file__), 'results', 'normal.txt')
+        with open(normal_path, 'w') as f:
+            f.write(categorized_sentences[0])
+        warning_path = os.path.join(os.path.dirname(__file__), 'results', 'warning.txt')
+        with open(warning_path, 'w') as f:
+            f.write(categorized_sentences[1])
+        danger_path = os.path.join(os.path.dirname(__file__), 'results', 'danger.txt')
+        with open(danger_path, 'w') as f:
+            f.write(categorized_sentences[2])
+            
         dct = {'App': app, 
                               'Level_0': categorized_sentences[0], 
                               'Level_1': categorized_sentences[1], 
@@ -28,11 +39,8 @@ def analyse_tos(tos, app=""):
     return categorized_sentences
 
 if __name__ == '__main__':
-    tos = sys.argv[1] # sys.argv[0] is the script name
-    app = sys.argv[2]
+    tos_path = os.path.join(os.path.dirname(__file__), 'tos.txt')
+    with open(tos_path, 'r') as f:
+        tos = f.read()
+    app = sys.argv[1]
     analysis = analyse_tos(tos, app)
-    print(analysis[0])
-    print('!--------------------!')
-    print(analysis[1])
-    print('!--------------------!')
-    print(analysis[2])
