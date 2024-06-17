@@ -18,6 +18,7 @@
 
   </head>
   <body>
+    
     <div id="userGuidePopup" class="modal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -43,47 +44,48 @@
         </div>
       </div>
     </div>
-    <nav class="navbar navbar-dark bg-dark justify-content-between">
-      <a class="navbar-brand">
-        <h1>Horus</h1>
-      </a>
-      <form class="form-inline">
-        <!-- <input class="form-control mr-sm-2" type="search" placeholder="Enter folder path" aria-label="Search" id="folderNameInput"> -->
-        <div class="dropdown" style="padding: 10px;">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="appSelectionDropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Select an app
-          </button>
-          <div class="dropdown-menu" aria-labelledby="appSelectionDropdownButton" id="appSelectionDropdown">
-          </div>
-        </div>
-        <br>
-        </div>
-        <!-- <button class="btn btn-outline-info my-2 my-sm-0 mr-2" type="button" id="browseFoldersButton">Browse</button> -->
-        <button class="btn btn-outline-info my-2 my-sm-0 mr-2" type="button" id="scanButton" >Scan</button>
-        <button class="btn btn-outline-info my-2 my-sm-0" type="button" id="scanAllButton" >Scan All</button>
-      </form>
-      <br>
-      
-      <progress class="progress is-primary is-large" id="loadingBar" value="0" max="100" style="display:none;"></progress>
-    </nav>
-    <br>
     <div class="row">
-      <div class="col-md-4" id="browse and scan">
-        <br>
-        <div id="Apps">
-          <div class="p-3 mb-2 bg-secondary text-white">
-            <h3>
-              Apps scanned
-            </h3>
-          </div>
-          <div class="overflow-auto" id="appScannedOverflow">
-            <div class="list-group" id="appScannedList" role="tablist">
+      <div class="col-md-4 shadow-lg p-3 mb-5 bg-dark rounded">
+        <div class="position-relative">
+          <nav class="navbar navbar-dark bg-dark justify-content-between">
+            <h1 class="position-absolute start-30">Horus</h1>
+            <br>
+            <br>
+            <form class="form">
+              <!-- <input class="form-control mr-sm-2" type="search" placeholder="Enter folder path" aria-label="Search" id="folderNameInput"> -->
+              <div class="dropdown" style="padding: 10px;">
+                <button class="btn btn-secondary dropdown-toggle position-absolute top-50 start-50 translate-middle" type="button" id="appSelectionDropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select an app
+                </button>
+                <br>
+                <div class="dropdown-menu" aria-labelledby="appSelectionDropdownButton" id="appSelectionDropdown">
+                </div>
+              </div>
+              <br>
+              <!-- <button class="btn btn-outline-info my-2 my-sm-0 mr-2" type="button" id="browseFoldersButton">Browse</button> -->
+              <button class="btn btn-outline-info my-2 my-sm-0 mr-2" type="button" id="scanButton" >Scan</button>
+              <button class="btn btn-outline-info my-2 my-sm-0" type="button" id="scanAllButton" >Scan All</button>
+            </form>
+            <br>
+            
+            <progress class="progress is-primary is-large" id="loadingBar" value="0" max="100" style="display:none;"></progress>
+          </nav>
+          <br>
+          <div id="Apps" >
+            <div class="p-3 mb-2 bg-secondary text-white">
+              <h3>
+                Apps scanned
+              </h3>
+            </div>
+            <div class="overflow-auto" id="appScannedOverflow">
+              <div class="list-group" id="appScannedList" role="tablist">
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="col-md-8" id="result">
+      <br>
+      <div class="col-md-8 shadow-lg p-3 mb-5 bg-dark rounded" id="result">
         <h3>
           Here are the results
         </h3>
@@ -106,15 +108,15 @@
         <br>
         <div class="row">
           <div class="col-md-12">
-            <div class="overflow-auto" id="resultOverflow">
+            <div class="overflow-auto shadow-lg p-3 mb-5 bg-dark rounded" id="resultOverflow">
               <p id="resultParagraph" style="display: none; padding:10px"></p>
               </div>
           </div>
         </div>
       </div>
+      <br>
+      <br>
     </div>
-    <br>
-    <br>
   </div>
 
     <script src="/src/js/jquery.min.js"></script>
