@@ -28,20 +28,19 @@ def analyse_tos(tos, app=""):
         scans.to_csv(scans_path, index=False)
 
     normal_path = os.path.join(os.path.dirname(__file__), 'results', 'normal.txt')
-    with open(normal_path, 'w') as f:
+    with open(normal_path, 'w', encoding='utf-8', errors='ignore') as f:
         f.write(str(categorized_sentences[0]))
     warning_path = os.path.join(os.path.dirname(__file__), 'results', 'warning.txt')
-    with open(warning_path, 'w') as f:
+    with open(warning_path, 'w', encoding='utf-8', errors='ignore') as f:
         f.write(str(categorized_sentences[1]))
     danger_path = os.path.join(os.path.dirname(__file__), 'results', 'danger.txt')
-    with open(danger_path, 'w') as f:
+    with open(danger_path, 'w', encoding='utf-8', errors='ignore') as f:
         f.write(str(categorized_sentences[2]))
     return categorized_sentences
 
 if __name__ == '__main__':
     tos_path = os.path.join(os.path.dirname(__file__), 'tos.txt')
-    with open(tos_path, 'r') as f:
+    with open(tos_path, 'r', encoding='utf-8', errors='ignore') as f:
         tos = f.read()
     app = sys.argv[1]
     analysis = analyse_tos(tos, app)
-

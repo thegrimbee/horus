@@ -109,7 +109,7 @@ async function getTos(path, includeAll = false) {
  * @returns {Promise<string>} A promise that resolves to the highlighted potentially harmful terms in the TOS text.
  */
 async function analyseTos(tosText, appName) {
-    console.log('analysing TOS')
+    console.log('analysing TOS of', appName);
     
     // NOTE: change these two paths when packaging the app
     const scriptPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts', 'analyse.py');
@@ -119,11 +119,11 @@ async function analyseTos(tosText, appName) {
     await window.spawnAPI.spawn('python', [scriptPath, appName]);
 
     const normalPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts', 'results', 'normal.txt');
-    const normal = await window.dialogAPI.fs.readFile(normalPath);
+    const normal = await window.dialogAPI.fs.readFile(normalPath, 'utf8');
     const warningPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts', 'results', 'warning.txt');
-    const warning = await window.dialogAPI.fs.readFile(warningPath);
+    const warning = await window.dialogAPI.fs.readFile(warningPath, 'utf8');
     const dangerPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts', 'results', 'danger.txt');
-    const danger = await window.dialogAPI.fs.readFile(dangerPath);
+    const danger = await window.dialogAPI.fs.readFile(dangerPath, 'utf8');
     return [normal, warning, danger];
 }
 
