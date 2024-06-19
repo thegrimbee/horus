@@ -14,12 +14,12 @@ body {
 }
 
 #resultOverflow {
-  max-height: 400px;
+  max-height: 300px;
   border: 1px solid #606065;
 }
 
 #appScannedOverflow {
-  max-height: 300px;
+  max-height: 200px;
 }
 
 
