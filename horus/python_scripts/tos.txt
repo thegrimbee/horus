@@ -319,126 +319,122 @@ This product uses MediaInfo (https://mediaarea.net/en/MediaInfo) library, Copyri
 
 
 
+This directory contains Vim scripts for syntax highlighting.
 
+These scripts are not for a language, but are used by Vim itself:
 
+syntax.vim	Used for the ":syntax on" command.  Uses synload.vim.
 
+manual.vim	Used for the ":syntax manual" command.  Uses synload.vim.
 
+synload.vim	Contains autocommands to load a language file when a certain
+		file name (extension) is used.  And sets up the Syntax menu
+		for the GUI.
 
+nosyntax.vim	Used for the ":syntax off" command.  Undo the loading of
+		synload.vim.
 
 
+A few special files:
 
+2html.vim	Converts any highlighted file to HTML (GUI only).
+colortest.vim	Check for color names and actual color on screen.
+hitest.vim	View the current highlight settings.
+whitespace.vim  View Tabs and Spaces.
 
 
+If you want to write a syntax file, read the docs at ":help usr_44.txt".
 
+If you make a new syntax file which would be useful for others, please send it
+to Bram@vim.org.  Include instructions for detecting the file type for this
+language, by file name extension or by checking a few lines in the file.
+And please write the file in a portable way, see ":help 44.12".
 
+If you have remarks about an existing file, send them to the maintainer of
+that file.  Only when you get no response send a message to Bram@vim.org.
 
+If you are the maintainer of a syntax file and make improvements, send the new
+version to Bram@vim.org.
 
+For further info see ":help syntax" in Vim.
 
 
+Some tools that can be used with Vim:
 
+blink.c:	C program to make the cursor blink in an xterm.
 
+ccfilter*:	C program to filter the output of a few compilers to a common
+		QuickFix format.
 
+efm_filter.*:	Perl script to filter compiler messages to QuickFix format.
 
+efm_perl.pl:	Perl script to filter error messages from the Perl interpreter
+		for use with Vim quickfix mode.
 
+mve.*		Awk script to filter error messages to QuickFix format.
 
+pltags.pl:	Perl script to create a tags file from Perl scripts.
 
+ref:		Shell script for the K command.
 
+shtags.*:	Perl script to create a tags file from a shell script.
 
+vim132:		Shell script to edit in 132 column mode on vt100 compatible
+		terminals.
 
+vimm:		Shell script to start Vim on a DEC terminal with mouse
+		enabled.
 
+vimspell.*:	Shell script for highlighting spelling mistakes.
 
+vim_vs_net.cmd: MS-Windows command file to use Vim with MS Visual Studio 7 and
+		later.
 
+xcmdsrv_client.c:  Example for a client program that communicates with a Vim
+		   server through the X-Windows interface.
 
+unicode.vim	Vim script to generate tables for src/mbyte.c.
 
+[xxd can be found in the src directory]
 
 
+Tutor is a "hands on" tutorial for new users of the Vim editor.
 
+Most new users can get through it in less than one hour. The result
+is that you can do a simple editing task using the Vim editor.
 
+Tutor is a file that contains the tutorial lessons. You can simply
+execute "vim tutor" and then follow the instructions in the lessons.
+The lessons tell you to modify the file, so DON'T DO THIS ON YOUR
+ORIGINAL COPY.
 
+On Unix you can also use the "vimtutor" program.  It will make a
+scratch copy of the tutor first.
 
+I have considered adding more advanced lessons but have not found the
+time. Please let me know how you like it and send any improvements you
+make.
 
+Bob Ware, Colorado School of Mines, Golden, Co 80401, USA
+(303) 273-3987
+bware@mines.colorado.edu bware@slate.mines.colorado.edu bware@mines.bitnet
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Translation
+-----------
+
+The tutor.xx and tutor.xx.utf-8 files are translated files (where xx is the
+language code).  The encoding of tutor.xx might be latin1 or other traditional
+encoding.  If you don't need a translation with such traditional encoding,
+you just need to prepare the tutor.xx.utf-8 file.
+If you need another encoding, you can also prepare a file named tutor.xx.enc
+(replace enc with the actual encoding name).  You might also need to adjust the
+tutor.vim file.
+The "make" command can be used for creating tutor.xx from tutor.xx.utf-8.
+See the Makefile for detail.  (For some languages, tutor.xx.utf-8 is created
+from tutor.xx for historical reasons.)
+
+[This file was modified for Vim by Bram Moolenaar et al.]
 
 
 
