@@ -1,1 +1,147 @@
-Steam
+
+  7-Zip
+  ~~~~~
+  License for use and distribution
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  7-Zip Copyright (C) 1999-2023 Igor Pavlov
+
+
+  The licenses for files are:
+
+    1) 7z
+dll:
+         - The "GNU LGPL" as main license for most of the code
+         - The "GNU LGPL" with "unRAR license restriction" for some code
+         - The "BSD 3-clause License" for some code
+    2) All other files: the "GNU LGPL"
+
+
+  Redistributions in binary form must reproduce related license information from this file
+
+
+  Note:
+    You can use 7-Zip on any computer, including a computer in a commercial
+    organization
+ You don't need to register or pay for 7-Zip
+
+
+
+  GNU LGPL information
+  --------------------
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2
+  See the GNU
+    Lesser General Public License for more details
+
+
+    You can receive a copy of the GNU Lesser General Public License from
+    http://www
+gnu
+org/
+
+
+
+
+  BSD 3-clause License
+  --------------------
+
+    The "BSD 3-clause License" is used for the code in 7z
+
+    That code was derived from the code in the "LZFSE compression library" developed by Apple Inc,
+    that also uses the "BSD 3-clause License":
+
+    ----
+    Copyright (c) 2015-2016, Apple Inc
+
+
+    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+    1
+  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer
+        in the documentation and/or other materials provided with the distribution
+
+
+    3
+  Neither the name of the copyright holder(s) nor the names of any contributors may be used to endorse or promote products derived
+        from this software without specific prior written permission
+ IN NO EVENT SHALL THE
+    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+    HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE
+
+    ----
+
+
+
+
+  unRAR license restriction
+  -------------------------
+
+    The decompression engine for RAR archives was developed using source
+    code of unRAR program
+
+    All copyrights to original unRAR code are owned by Alexander Roshal
+
+
+
+  --
+  Igor Pavlov
+
+7-Zip 23
+01
+-----------
+
+7-Zip is a file archiver for Windows
+
+
+7-Zip Copyright (C) 1999-2023 Igor Pavlov
+
+
+The main features of 7-Zip: 
+
+  - High compression ratio in the new 7z format
+  - Supported formats:
+     - Packing / unpacking: 7z, XZ, BZIP2, GZIP, TAR, ZIP and WIM
+
+  - Fast compression and decompression
+  - Self-extracting capability for 7z format
+  - Strong AES-256 encryption in 7z and ZIP formats
+  - Integration with Windows Shell
+  - Powerful File Manager
+  - Powerful command line version
+  - Localizations for 90 languages
+
+
+7-Zip is free software distributed under the GNU LGPL (except for unRar code)
+
+Read License
+exe      - 7-Zip File Manager
+  7-zip
+exe        - Command line version
+  7z
+dll        - 7-Zip engine module
+  7z
+sfx     - SFX module (Console version)
+
+  License
+txt   - License information
+  readme
+txt    - This file
+  History
+txt   - History of 7-Zip
+  7-zip
+chm     - User's Manual in HTML Help format
+  descript
+ttt   - English (base) localization file
+  Lang\*
+txt    - Localization files
+
+
+---
+End of document
+

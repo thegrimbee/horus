@@ -8,8 +8,7 @@ def analyse_tos(tos, app=""):
     scans_path = os.path.join(os.path.dirname(__file__), '../src/scans.csv')
     scans = pd.read_csv(scans_path)
     if app in scans['App'].values:
-        categorized_sentences = scans[scans['App'] == app].iloc[0].tolist()
-        print(categorized_sentences)
+        categorized_sentences = scans[scans['App'] == app].iloc[0].tolist()[1:]
     else:
         sentences = tos.split('.')
         categorized_sentences = [[], [], []]
