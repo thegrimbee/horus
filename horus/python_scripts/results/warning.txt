@@ -1,54 +1,37 @@
 
 
-  7-Zip
 
-  ~~~~~
 
-  License for use and distribution
 
-  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
-  7-Zip Copyright (C) 1999-2023 Igor Pavlov
 
 
 
 
 
-  The licenses for files are:
 
 
 
-    1) 7z
 
-dll:
 
-         - The "GNU LGPL" as main license for most of the code
 
-         - The "GNU LGPL" with "unRAR license restriction" for some code
 
-         - The "BSD 3-clause License" for some code
 
-    2) All other files: the "GNU LGPL"
 
 
 
 
 
-  Redistributions in binary form must reproduce related license information from this file
 
 
 
 
 
-  Note:
 
-    You can use 7-Zip on any computer, including a computer in a commercial
 
-    organization
 
- You don't need to register or pay for 7-Zip
 
 
 
@@ -56,903 +39,357 @@ dll:
 
 
 
-  GNU LGPL information
 
-  --------------------
 
 
 
-    This library is free software; you can redistribute it and/or
 
-    modify it under the terms of the GNU Lesser General Public
 
-    License as published by the Free Software Foundation; either
 
-    version 2
 
-  See the GNU
 
-    Lesser General Public License for more details
 
+OpenSSL License
+---------------
 
+/* ====================================================================
+ * Copyright (c) 1998-2019 The OpenSSL Project
+  All rights reserved
 
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * 1
 
+ *
+ * 2
 
-    You can receive a copy of the GNU Lesser General Public License from
+ *
+ * 3
+ All advertising materials mentioning features or use of this
+ *    software must display the following acknowledgment:
+ *    "This product includes software developed by the OpenSSL Project
+ *    for use in the OpenSSL Toolkit
+ (http://www
+openssl
+org
 
-    http://www
+ *
+ * 6
+openssl
+org/)"
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE OpenSSL PROJECT ``AS IS'' AND ANY
+ * EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED
 
-gnu
+ * ====================================================================
+ *
+ * This product includes cryptographic software written by Eric Young
+ * (eay@cryptsoft
+com)
+com)
+com)
+ * All rights reserved
 
-org/
+ *
+ * This package is an SSL implementation written
+ * by Eric Young (eay@cryptsoft
+com)
+, code; not just the SSL code
 
-
-
-
-
-
-
-
-
-  BSD 3-clause License
-
-  --------------------
-
-
-
-    The "BSD 3-clause License" is used for the code in 7z
-
-
-
-    That code was derived from the code in the "LZFSE compression library" developed by Apple Inc,
-
-    that also uses the "BSD 3-clause License":
-
-
-
-    ----
-
-    Copyright (c) 2015-2016, Apple Inc
-
-
-
-
-
-    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-
-
-
-    1
-
-  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer
-
-        in the documentation and/or other materials provided with the distribution
-
-
-
-
-
-    3
-
-  Neither the name of the copyright holder(s) nor the names of any contributors may be used to endorse or promote products derived
-
-        from this software without specific prior written permission
-
+ *
+ * Copyright remains Eric Young's, and as such any Copyright notices in
+ * the code are not to be removed
+
+ * This can be in the form of a textual message at program startup or
+ * in documentation (online or textual) provided with the package
+
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1
+ Redistributions of source code must retain the copyright
+ *    notice, this list of conditions and the following disclaimer
+
+ * 2
+ Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution
+
+ * 3
+com)"
+ *    The word 'cryptographic' can be left out if the rouines from the library
+ *    being used are not cryptographic related :-)
+ If you include any Windows specific code (or a derivative thereof) from
+ *    the apps directory (application code) you must include an acknowledgement:
+ *    "This product includes software written by Tim Hudson (tjh@cryptsoft
+com)"
+ *
+ * THIS SOFTWARE IS PROVIDED BY ERIC YOUNG ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED
+  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE
+
+ *
+ * The licence and distribution terms for any publically available version or
+ * derivative of this code cannot be changed
+  i
+ this code cannot simply be
+ * copied and put under another distribution licence
+ * [including the GNU Public Licence
+SharpZipLib License
+ ---------------------------------------
+* The library is released under the MIT license
+github
+ The above copyright notice and this permission notice shall be included in all 
+*    copies or substantial portions of the Software
+
+*
+* THE SOFTWARE IS PROVIDED �AS IS�, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
+* INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
+* PARTICULAR PURPOSE AND NONINFRINGEMENT
+ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
+* HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
+* CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+* OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
+
+*/
+
+==============================================================================
+LLVM Release License
+==============================================================================
+University of Illinois/NCSA
+Open Source License
+
+Copyright (c) 2003-2015 University of Illinois at Urbana-Champaign
+
+All rights reserved
+
+
+Developed by:
+
+    LLVM Team
+
+    University of Illinois at Urbana-Champaign
+
+    http://llvm
+org
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal with
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+    * Redistributions of source code must retain the above copyright notice,
+      this list of conditions and the following disclaimers
+
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
+
+
+==============================================================================
+Copyrights and Licenses for Third Party Software Distributed with LLVM:
+==============================================================================
+The LLVM software contains code written by third parties
+
+
+The disclaimer of warranty in the University of Illinois Open Source License
+applies to all code in the LLVM Distribution, and nothing in any of the
+other licenses gives permission to use the names of the LLVM Team or the
+University of Illinois to endorse or promote products derived from this
+Software
+regex}
+pyyaml tests        llvm/test/YAMLParser/{*
+TXT}
+ARM contributions   llvm/lib/Target/ARM/LICENSE
+h
+
+FTL-SDK
+-------
+
+The MIT License (MIT)
+
+Copyright (c) 2016 Mixer Interactive, Inc
+
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
  IN NO EVENT SHALL THE
-
-    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-
-    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-
-    HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-
-    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE
 
 
 
-    ----
+MediaInfo
+---------
+
+Copyright (c) 2002-2020 MediaArea
+net SARL
+ All rights reserved
+
+    Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution
+ IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE
+
+
+Alternate license for redistributions of the library in binary form:
+Redistributions in binary form must reproduce the following sentence (including the link to the website) in the documentation and/or other materials provided with the distribution
+
+This product uses MediaInfo (https://mediaarea
+net/en/MediaInfo) library, Copyright (c) 2002-2020 MediaArea
+net SARL (info@mediaarea
+vim	Used for the ":syntax on" command
+  Uses synload
+vim
+vim	Used for the ":syntax manual" command
+  Uses synload
+vim	Contains autocommands to load a language file when a certain
+		file name (extension) is used
+  Undo the loading of
+		synload
+vim
 
 
 
+A few special files:
+
+2html
+vim	Converts any highlighted file to HTML (GUI only)
+
+colortest
+vim	Check for color names and actual color on screen
+
+hitest
 
 
 
+If you want to write a syntax file, read the docs at ":help usr_44
+txt"
+org
+
+And please write the file in a portable way, see ":help 44
+12"
 
 
-
-  unRAR license restriction
-
-  -------------------------
-
-
-
-    The decompression engine for RAR archives was developed using source
-
-    code of unRAR program
+If you have remarks about an existing file, send them to the maintainer of
+that file
+  Only when you get no response send a message to Bram@vim
+c:	C program to make the cursor blink in an xterm
 
 
-
-    All copyrights to original unRAR code are owned by Alexander Roshal
-
-
-
+ccfilter*:	C program to filter the output of a few compilers to a common
+		QuickFix format
+*:	Perl script to filter compiler messages to QuickFix format
 
 
+efm_perl
+pl:	Perl script to filter error messages from the Perl interpreter
+		for use with Vim quickfix mode
+pl:	Perl script to create a tags file from Perl scripts
 
 
-  --
-
-  Igor Pavlov
-
+shtags
+*:	Perl script to create a tags file from a shell script
 
 
-7-Zip 23
+vim132:		Shell script to edit in 132 column mode on vt100 compatible
+		terminals
 
-01
 
+vimm:		Shell script to start Vim on a DEC terminal with mouse
+		enabled
+*:	Shell script for highlighting spelling mistakes
+
+
+vim_vs_net
+
+
+xcmdsrv_client
+
+
+unicode
+vim	Vim script to generate tables for src/mbyte
+
+
+[xxd can be found in the src directory]
+
+
+Tutor is a "hands on" tutorial for new users of the Vim editor
+
+
+Most new users can get through it in less than one hour
+ You can simply
+execute "vim tutor" and then follow the instructions in the lessons
+
+The lessons tell you to modify the file, so DON'T DO THIS ON YOUR
+ORIGINAL COPY
+
+
+On Unix you can also use the "vimtutor" program
+  It will make a
+scratch copy of the tutor first
+
+
+I have considered adding more advanced lessons but have not found the
+time
+ Please let me know how you like it and send any improvements you
+make
+
+
+Bob Ware, Colorado School of Mines, Golden, Co 80401, USA
+(303) 273-3987
+bware@mines
+colorado
+edu bware@slate
+mines
+colorado
+bitnet
+
+
+Translation
 -----------
 
-
-
-7-Zip is a file archiver for Windows
-
-
-
-
-
-7-Zip Copyright (C) 1999-2023 Igor Pavlov
-
-
-
-
-
-The main features of 7-Zip: 
-
-
-
-  - High compression ratio in the new 7z format
-
-  - Supported formats:
-
-     - Packing / unpacking: 7z, XZ, BZIP2, GZIP, TAR, ZIP and WIM
-
-
-
-  - Fast compression and decompression
-
-  - Self-extracting capability for 7z format
-
-  - Strong AES-256 encryption in 7z and ZIP formats
-
-  - Integration with Windows Shell
-
-  - Powerful File Manager
-
-  - Powerful command line version
-
-  - Localizations for 90 languages
-
-
-
-
-
-7-Zip is free software distributed under the GNU LGPL (except for unRar code)
-
-
-
-Read License
-
-exe      - 7-Zip File Manager
-
-  7-zip
-
-exe        - Command line version
-
-  7z
-
-dll        - 7-Zip engine module
-
-  7z
-
-sfx     - SFX module (Console version)
-
-
-
-  License
-
-txt   - License information
-
-  readme
-
-txt    - This file
-
-  History
-
-txt   - History of 7-Zip
-
-  7-zip
-
-chm     - User's Manual in HTML Help format
-
-  descript
-
-ttt   - English (base) localization file
-
-  Lang\*
-
-txt    - Localization files
-
-
-
-
-
----
-
-End of document
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Welcome to the Deep Rock Galactic modding readme!
-
-To install mods, open the game and go to the modding tab on the esc menu
-
- Click subscribe to install a mod
-
-
-
-More info can be found here: https://drg
-
-io/ 
-
-If you want to make mods for the game, info can be found here: https://drg
-
-mod
+The tutor
+xx and tutor
+utf-8 files are translated files (where xx is the
+language code)
+  The encoding of tutor
+xx might be latin1 or other traditional
+encoding
+  If you don't need a translation with such traditional encoding,
+you just need to prepare the tutor
+xx
+
+If you need another encoding, you can also prepare a file named tutor
+xx
+vim file
+xx from tutor
+  (For some languages, tutor
+utf-8 is created
+from tutor
+)
+
+[This file was modified for Vim by Bram Moolenaar et al

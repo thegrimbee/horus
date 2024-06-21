@@ -1,2 +1,1 @@
-Steam
-7-Zip
+telegram

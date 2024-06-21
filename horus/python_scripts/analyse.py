@@ -2,15 +2,31 @@ import sys
 from ai import AI
 import pandas as pd
 import os
-
+from googlesearch import search
+from bs4 import BeautifulSoup
+import requests
 ai = AI()
 def analyse_tos(tos, app=""):
     scans_path = os.path.join(os.path.dirname(__file__), '../src/scans.csv')
     scans = pd.read_csv(scans_path)
+    print(scans['App'].values)
     if app in scans['App'].values:
         categorized_sentences = scans[scans['App'] == app].iloc[0].tolist()
-        print(categorized_sentences)
+        #print(categorized_sentences)
     else:
+        if tos== '':
+            print("No terms of service found for " + app + ". Searching the web...")
+            tos_urls = search(app + " terms of service", num=1, stop=1)
+            url = ''
+            for i in tos_urls:
+                url = i
+            html_content = requests.get(url).text
+            soup = BeautifulSoup(html_content, "html.parser")
+            # Find all of the text between paragraph tags and strip out the html
+            tos_list = soup.find_all('p')
+            for i in tos_list:
+                tos += i.get_text()
+            print(tos)
         sentences = tos.split('.')
         categorized_sentences = [[], [], []]
         for sentence in sentences:
@@ -36,6 +52,7 @@ def analyse_tos(tos, app=""):
     danger_path = os.path.join(os.path.dirname(__file__), 'results', 'danger.txt')
     with open(danger_path, 'w', encoding='utf-8', errors='ignore') as f:
         f.write(str(categorized_sentences[2]))
+
     return categorized_sentences
 
 if __name__ == '__main__':
