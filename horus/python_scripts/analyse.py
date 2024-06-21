@@ -7,6 +7,7 @@ ai = AI()
 def analyse_tos(tos, app=""):
     scans_path = os.path.join(os.path.dirname(__file__), '../src/scans.csv')
     scans = pd.read_csv(scans_path)
+    print(scans['App'].values)
     if app in scans['App'].values:
         categorized_sentences = scans[scans['App'] == app].iloc[0].tolist()[1:]
     else:
