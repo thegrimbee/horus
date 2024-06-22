@@ -10,13 +10,22 @@ async function updateResult(type) {
 
 dangerButton.addEventListener("click", function(event) {    
         updateResult('danger');
+        dangerButton.classList.add('active');
+        warningButton.classList.remove('active');
+        normalButton.classList.remove('active');
     }
 );
 warningButton.addEventListener("click", function(event) {
         updateResult('warning');
+        dangerButton.classList.remove('active');
+        warningButton.classList.add('active');
+        normalButton.classList.remove('active');
     }
 );
 normalButton.addEventListener("click", function(event) {
         updateResult('normal');
+        dangerButton.classList.remove('active');
+        warningButton.classList.remove('active');
+        normalButton.classList.add('active');
     }
 );

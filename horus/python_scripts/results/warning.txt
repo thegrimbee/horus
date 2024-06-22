@@ -1,141 +1,147 @@
-Get started with synthesis using a web-based synth and accompanying lessons
-Some tips from 74 Creative Strategies for Electronic Producers
-IMPORTANT:PLEASE CAREFULLY READ THE FOLLOWING LEGAL AGREEMENTPLEASE NOTE THAT THIS DOCUMENT IS INTENDED TO APPLY TO ALL USERS, THOUGH SEVERAL SECTIONS ARE LOCALIZED FOR EUROPE IN ORDER TO COMPLY WITH LOCAL LAWS AND SUCH SECTIONS SHALL ONLY APPLY TO CUSTOMERS WHO ACQUIRED THE ABLETON PRODUCT IN EUROPEThis End User License Agreement (the “EULA”) is a legal agreement between You (either in Your individual capacity, or on behalf of an entity) (“You”), and Ableton in order to give you a license to use the Ableton Products (as defined below) as set forth in this EULA under the conditions in this EULA, as well as to use the additional services provided by Ableton or by third-parties for paying customers
-By clicking the acceptance button that follows this EULA and/or installing and/or otherwise using the Ableton Products, You acknowledge that You have read this EULA, understand its terms and conditions, and agree to be bound by such terms and conditions
- If at any time You no longer agree to be bound by this EULA, You should immediately and permanently cease all use of the Ableton Products
-  If You are accepting the EULA on behalf of a corporation or other entity, You declare that You are authorized to do so
-g
- via the internet or an Authorized Store)
- In addition to this EULA, additional terms may apply, such as the Ableton General Terms and Conditions, or other terms as applicable
-  For these additional/alternative terms and conditions please see Annex 1
-(3) The term "Ableton Product" means all Software, Packs and Software Bundles developed, licensed and/or supplied by Ableton
-(5) The term "Consumer" means You as a natural person who licensed Ableton Products for a purpose which can be regarded as being outside Your trade or profession
-(7) The term "Extensions" means any add-ons to Ableton Products supplied separately by Ableton to You, including, but not limited to, Third-Party Content, Packs and all updates and upgrades to the add-ons
-(8) The term "Free Versions" means Ableton Products that are provided by Ableton for free, including, but not limited to, OEM Versions and Trial Versions
-(10) The term "Note" means the Software “Ableton Note” and all presets, sound samples, loops, musical phrases, musical examples, included software instruments and effects, STEM, data and other contents or versions of other Ableton Products supplied by Ableton with Ableton Note and all updates and upgrades
-(11) The term "OEM Versions" means free modified versions of Ableton Products that are supplied together with third-party hardware
- These components are not licensed hereunder but directly under the respective applicable open source licenses and delivered and included in Ableton Products or Third-Party Content, as the case may be
-(13) The term "Packs" means products supplied separately by Ableton that may contain Software, Third-Party Content, and/or other copyrighted materials, including, but not limited to, presets, sound samples, loops, musical phrases, musical examples, software instruments and effects, STEM, data and other content and all updates and upgrades
-com/packs(14) The term "Previous Version" means a former version of an Ableton Product to which an upgrade/update is made to the most recent version, and a former version of an Ableton Product with limited features to which more features or Extensions are added
-(17) The term "STEM" means a part or separate track of library music
-(18) The term "Third-Party Applications" means third-party applications or websites which Ableton Products may be connected with
-(19) The term "Third-Party Content" means content developed, manufactured, licensed or supplied by third-parties or other copyrighted third-party material, which may be utilized or included in Ableton Products including, but not limited to, presets, sound samples, loops, musical phrases, musical examples, software instruments and effects, STEM, data and other content and all updates and upgrades
-(20) The term "Trial Versions" means Ableton Products available for a limited trial period as determined by Ableton for the purpose of facilitating the decision-making process with regard to acquiring a commercial version
-(21) The term "User Account" means the online account for the registration and authorization of Ableton Products (as the case may be) as well as other user activities, for details please see: ableton
-com/signupThe use of such terms herein of the plural shall include the singular and vice versa
-(2) Trademarks contained in or displayed on Ableton Products are trademarks or registered trademarks of Ableton AG or Ableton Affiliates in Germany, the United States and/or other countries
- Third-party trademarks, trade names, product names and logos may be the trademarks or registered trademarks of their respective owners
- You may not remove or alter any trademark, trade name, product names, logo, copyright or other proprietary notices, legends, symbols or labels in or on any Ableton Product
- This EULA does not authorize You to use Ableton's or its licensors' names or any of their respective trademarks
-(3) NB
-: THIS CLAUSE DOES NOT APPLY IF YOU ACQUIRED THE ABLETON PRODUCT IN EUROPE(a) Ableton, or Ableton's licensor for Third-Party Content included in Ableton Products ("Imputed Content") and for Third-Party Content made available as optional Packs, is the owner of all right, title and interest in and to Ableton Products (including all copyrights, trademarks and patents) regardless of the media or form of the Ableton Product, whether online, by physical media or otherwise
-	(b) You shall not, at any time during or after the effective Term of the EULA, dispute or contest, directly or indirectly, Ableton's, or Ableton's licensors' (with respect to Imputed Content only), exclusive right and title to the Ableton Products or the validity thereof
-(c) You shall not attempt to develop any software or other product that contains the "look and feel" of any Ableton Product, or is otherwise derivative thereof
-Under the condition that:(a) You have legally acquired the Ableton Product or purchased the product key and received the allowance to download the Ableton Product by Ableton or an Authorized Store and have not withdrawn from the applicable purchase agreement,(b) You have paid the applicable price, and(c) You are using an authorized copy of the Ableton Product, and(d) Where applicable, You have registered and are holding a valid User Account or an account of an Authorized Store,Ableton grants You a personal, limited, non-exclusive license to use and/or copy the Ableton Product in accordance with this EULA for use on(a) Your computer or file server for local use within Your network, provided that the Ableton Product is only used on one device at a time; and (b) Your compatible Ableton hardware
-com/support
-(1) You may not translate, reverse engineer, decompile, disassemble, or create derivative works from the Ableton Product or provide the respective Ableton Product as „software as a service”
-g
- terms of Third-Party Content) prevail, the following applies with regard to materials such as presets, sound samples, loops, musical phrases, musical examples, software instruments and effects, STEM, data and other contents that are contained in the Ableton Product: (a) These materials are provided for Your use only with the Ableton Product, for use as musical instruments and sound design elements, and for integration into, or use in development of, musical compositions
- The materials are not to be resold, sublicensed, or otherwise distributed, except as expressly provided herein
- This means You may not reformat, mix, filter, re-synthesize or otherwise alter any of the materials contained in the Ableton Product for use in any kind of standalone commercial sampling product/package or software without the express written consent of Ableton
-(b) Use of unmodified materials appearing in isolation including, but not limited to, in film or game soundtracks, is not permitted without obtaining a separate license
-(c) You may use the materials contained in the Ableton Product such as presets, sound samples, loops, musical phrases and musical examples to create your own original musical compositions, provided that additional material is added, and the respective presets, sound samples, loops, musical phrases and musical examples will be significantly transformed
-(d) You may neither use any demo songs provided to You with the Ableton Product in Your musical composition nor may You reformat, mix, filter, re-synthesize or otherwise alter any demo songs, unless and to the extent there is an exception under applicable copyright law
-(5) All restrictions within this Section 5 only apply to the extent as permitted by law
-(1) You may not rent, lease, or sublicense the Ableton Product on a temporary or permanent basis
- You may, however, transfer the license to use the Ableton Product as a whole to another person or entity
- However, every transfer requires that You uninstall the Ableton Product and/or cease to use the Ableton Product with all components and that the transferee accepts the EULA and other applicable terms (e
-(2) The license to use the Ableton Product labelled NFR („Not for Resale”) may not be sold or transferred
-(3) The license to use a Free Version may not be sold or transferred without the prior written consent of Ableton
-(4) The license to use a Software Bundle may only be sold or transferred as a whole
- The right to use Ableton Products included within the Software Bundle may not be sold or transferred separately
-(5) The license to use a Trial Version is limited to a one time-use per user and per hardware device
- Only one user may register per hardware device
-(6) If You transfer possession of an Ableton Product, including, but not limited to, any copy of the Ableton Product, to another person or entity except as described above, this license is automatically terminated
- (7) With regard to Ableton Products purchased via an Authorized Store, further restrictions may apply that may not allow for a transfer of the license due to technical restrictions outside of Ableton’s control
- Please see Annex 1
-(8) For further information visit Ableton’s website at ableton
-com/support
-(3) In case of an upgrade or update from a Previous Version of an Ableton Product to a Software Bundle, the license to use the Previous Version of the respective Ableton Product will immediately expire and be replaced by the license to use the Software Bundle
- The restriction on transfer described above in Section 6 of this EULA will then apply to all products and components included in the Software Bundle
-(4) Upgrades and updates to Ableton Products will be downloaded automatically
- You may opt out of these automatic downloads by changing the corresponding preferences in Your settings
- Further information about Ableton’s data processing and privacy policies can be found at: ableton
- This condition extends beyond the trial period, regardless of whether the Ableton Product is running with a restricted feature set or not
- Educational Versions may require the inclusion of additional terms and conditions and/or license terms and may only be used in a restricted way; in particular, they may only be transferred to a transferee meeting the requirements for licensing such version of Ableton Product
- Furthermore, Section 5 of this EULA applies
- For more information on such requirements, please refer to the Ableton website at ableton
-I
- I
- In the event of any other kind of negligence, Ableton shall only be liable in the event of a breach of a material contractual obligation, the fulfilment of which is essential for the proper performance of the contract and the observance of which You may regularly rely on, as well as in the event of damage resulting from injury to life, limb or health
- A claim for damages arising from a legal defect or a defect in the Ableton Product with regard to Free Versions is only permissible If Ableton fraudulently conceals such defect
- Subject to any statutory claims You may have under law (which shall not be affected), Ableton is not obliged to provide any additional technical support to Live Lite users
-II
- YOU EXPRESSLY ACKNOWLEDGE AND AGREE THAT USE OF THE ABLETON PRODUCT IS AT YOUR SOLE RISK AND THAT THE ENTIRE RISK AS TO SATISFACTORY QUALITY, PERFORMANCE, AND ACCURACY IS WITH YOU
-  ABLETON DOES NOT WARRANT AGAINST INTERFERENCE WITH YOUR ENJOYMENT OF THE ABLETON PRODUCT, THAT THE FUNCTIONS CONTAINED IN THE ABLETON PRODUCT WILL MEET YOUR REQUIREMENTS, THAT THE OPERATION OF THE ABLETON PRODUCT WILL BE UNINTERRUPTED OR ERROR-FREE, OR THAT DEFECTS IN THE ABLETON PRODUCT WILL BE CORRECTED
-  SHOULD THE ABLETON PRODUCT PROVE DEFECTIVE, ABLETON MAY CHOOSE TO REPLACE YOUR COPY OF THE ABLETON PRODUCT
-  SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF IMPLIED WARRANTIES OR LIMITATION ON APPLICABLE STATUTORY RIGHTS OF A CONSUMER, SO THE ABOVE EXCLUSION AND LIMITATIONS MAY NOT APPLY TO YOU
-I
- IF YOU ACQUIRED THE ABLETON PRODUCT IN EUROPELimitation of Liability:(1) Ableton shall only be liable without restriction according to the statutory provisions for Your damages to You caused by the intentional or grossly negligent conduct of Ableton or its agents, with the exception of liability under the Product Liability Act [ProdHaftG] or comparable laws in other jurisdictions that may apply and due to injury to life, body or health
-(2) Otherwise, the liability of Ableton for damage claims – for whatever legal reason – is limited in accordance with the following conditions, unless otherwise provided by an explicit guarantee of Ableton:(a) For damages caused by slight negligence, Ableton is only liable insofar as they cause damage to contractual obligations („Cardinal Obligations”)
- Cardinal Obligations are those contractual obligations which must be fulfilled in order to ensure orderly implementation of the contract and for which observance You should be able to trust
- Insofar as Ableton is responsible for simple negligence hereafter, the liability of Ableton is limited to the typically foreseeable losses
-(c) The provisions of the above paragraph apply correspondingly to the limitation of damages for unsuccessful expenses (§ 284 of the German Civil Code [BGB])
- IF YOU ACQUIRED THE ABLETON PRODUCT OUTSIDE EUROPELIMITATION OF LIABILITY: TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL ABLETON OR ITS LICENSORS (EXCLUDING YOU) BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THE ABLETON PRODUCT OR ANY DEFECT IN OR CAUSED BY THE ABLETON PRODUCT, INCLUDING BUT NOT LIMITED TO COMPROMISING THE SECURITY OF YOUR COMPUTER, OPERATING SYSTEM OR FILES, OR THE PROVISION OF OR FAILURE TO PROVIDE SUPPORT SERVICES, EVEN IF ABLETON HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES
-  IN ANY CASE, ABLETON’S ENTIRE LIABILITY UNDER ANY PROVISION OF THIS EULA SHALL BE LIMITED TO THE AMOUNT ACTUALLY PAID BY YOU FOR THE ABLETON PRODUCT OR REPLACEMENT OF THE ABLETON PRODUCT WITH PRODUCT OF COMPARABLE RETAIL VALUE, AS ABLETON MAY ELECT IN ITS SOLE DISCRETION
-  BECAUSE SOME STATES AND JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF LIABILITY, THE ABOVE LIMITATION MAY NOT APPLY TO YOU IN PART OR WHOLE
-NB: THIS CLAUSE DOES NOT APPLY IF YOU ACQUIRED THE ABLETON PRODUCT IN EUROPEYou agree to indemnify, defend and hold harmless Ableton and its affiliates and licensors, and each and all of their respective officers, employees, directors, agents, licensees (excluding You), sublicensees (excluding You), successors and assigns, from and against any and all claims, liability, costs, losses, damages, and expenses (including reasonable attorneys’ fees and expenses) arising out of any claim, suit, or cause of action relating to and/or arising from(a) Your breach of any term of this EULA;(b) Your violation of any rights of any third-party to Imputed Content; or(c) Your use or misuse of the Ableton Product
-Your indemnification obligations set forth in the immediately preceding sentence shall survive the termination of this EULA
-(1) The Ableton Product may now or in the future utilize or include Third-Party Content
- The terms and conditions of Your use of Third-Party Content, if any are utilized or included in Ableton Product, can be found on ableton
-com
- Your use of such Third-Party Content is governed by their respective terms and conditions
- By accepting this EULA, You are also accepting the additional terms and conditions, if any, set forth therein
- The license will cease automatically with effect for the future when this EULA terminates, e
-g
- with Ableton or an Authorized Store) or a trial period ends
-  Your use of Third-Party Applications is governed by the terms and conditions thereof
- By accepting this EULA, You are also accepting the additional terms and conditions, if any, set forth therein
-(3) Ableton expressly disclaims any all warranties under this EULA in connection with the Third-Party Content and Third-Party Applications, and shall have no liability in connection therewith
-(5) Rights and obligations under any applicable Open Source license remain unaffected by this EULA
- is subject to Section 12
- I
- (1) of this EULA
- Ableton has no control over the functionality and terms of use of Authorized Stores, respective accounts, services or other terms
- In some instances (and subject to the terms and conditions of your agreement with the applicable Authorized Store from which you purchased said Ableton Product), if there is a failure of the Ableton Product to conform to any applicable warranty, it may be possible for You to notify the applicable Authorized Store for a refund of the purchase price; however, any such refund, if any, is subject to the terms, conditions and policies required by the applicable Authorized Store, which are beyond the control of Ableton
-(1) You may terminate this EULA at any time by irreversibly deleting or destroying the Ableton Product together with all copies in any form
- with an Authorized Store) or other acquisition of the Ableton Product, e
-g
- by rescission, voidance or withdrawal from the contract, at the latest when Your payment has been refunded
- In these cases You are no longer allowed to use the Ableton Product or the included components
-(3) If the termination of this EULA involves Packs, Third-Party Content or other licensed materials (e
-g
-, sound samples, loops, musical phrases, etc
-), You may not redistribute or publicly perform, make available to the public, or otherwise commercially exploit music containing these elements after the termination of this EULA without obtaining a separate license from Ableton for such content
-(4) The right of use in the Ableton Product and/or Third-Party Content ends at the latest when the termination of the EULA becomes effective
-(5)nbsp;Certain terms and conditions contained in this EULA shall survive termination where specified herein
-IF YOU ACQUIRED THE ABLETON PRODUCT OUTSIDE EUROPE: This EULA will also terminate automatically upon conditions set forth elsewhere in this EULA, or if You fail to comply with any term or condition of this EULA, without notice to You
- Upon such termination, You agree to immediately and irreversibly delete or destroy the Ableton Product together with all copies in any form
- Your use of Ableton Cloud and Ableton Products may be subject to the export and import laws of the United States and other countries
- You agree to comply with all applicable export and import laws
- For example, if applicable, You may not export or re-export the Ableton Products except as authorized by United States law and the laws of the jurisdiction in which the Ableton Product was obtained; in particular, but without limitation, the Ableton Product may not be exported or re-exported (a) into or to a nation or a resident of any U
-S
- Department of Commerce Denied Person’s List or Entity List
-  By installing or using any component of the Ableton Product, You represent and warrant that You are not located in, under control of, or a national or resident of any such country or on any such list
-I
- IF YOU ACQUIRED THE ABLETON PRODUCT IN EUROPE(1) This EULA is governed by the laws of the Federal Republic of Germany
- If You are a Consumer this choice of law applies to You, but only insofar as the protection granted by mandatory provisions of the laws of the country, in which You have your habitual residence, is not withdrawn thereby
- The choice of law furthermore only applies to You insofar as no other law is chosen for certain provisions under this EULA
- The provisions of the CISG and the conflict of law rules are not applicable
-(2) The place of performance is Berlin, Germany
-(3) Exclusive jurisdiction for all legal disputes arising from or in connection with this EULA is Berlin, if You are a merchant according to § 14 of the German Civil Code [BGB]
- The same applies, if You have no general jurisdiction in Germany, or if their domicile or habitual residence are not known at the time the action is brought
-(4) By agreeing to these terms and conditions, in the event of any claim You may have arising from or related to Ableton Products or this EULA You hereby agree to waive any right to participate in any type of law suit brought and/or maintained as a class action or similar in nature to a class action
-II
-  IF YOU ACQUIRED THE ABLETON PRODUCT OUTSIDE EUROPEGoverning Law/Dispute Resolution: These Terms will be governed by and construed in accordance with the Federal and State laws of the State of New York and of the United States of America
-A
-BY AGREEING TO THIS EULA, YOU hereby waive any right to participate in any type of lawsuit brought and/or maintained as a class action
-I
- IF YOU ACQUIRED THE ABLETON PRODUCT IN EUROPE(1) All rights not explicitly granted in this EULA are reserved
-(3) As You will make not any direct contractual transactions and purchases with Ableton under this EULA directly, this EULA is not a consumer contract on digital goods according to § 327 of the German Civil Code [BGB]
- All rights not explicitly granted in this EULA are reserved
+
+  7-Zip
+  ~~~~~
+  License for use and distribution
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  7-Zip Copyright (C) 1999-2023 Igor Pavlov
+
+
+  The licenses for files are:
+
+    1) 7z
+dll:
+         - The "GNU LGPL" as main license for most of the code
+         - The "GNU LGPL" with "unRAR license restriction" for some code
+         - The "BSD 3-clause License" for some code
+    2) All other files: the "GNU LGPL"
+
+
+  Redistributions in binary form must reproduce related license information from this file
+
+
+  Note:
+    You can use 7-Zip on any computer, including a computer in a commercial
+    organization
+ You don't need to register or pay for 7-Zip
+
+
+
+  GNU LGPL information
+  --------------------
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2
+  See the GNU
+    Lesser General Public License for more details
+
+
+    You can receive a copy of the GNU Lesser General Public License from
+    http://www
+gnu
+org/
+
+
+
+
+  BSD 3-clause License
+  --------------------
+
+    The "BSD 3-clause License" is used for the code in 7z
+
+    That code was derived from the code in the "LZFSE compression library" developed by Apple Inc,
+    that also uses the "BSD 3-clause License":
+
+    ----
+    Copyright (c) 2015-2016, Apple Inc
+
+
+    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+    1
+  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer
+        in the documentation and/or other materials provided with the distribution
+
+
+    3
+  Neither the name of the copyright holder(s) nor the names of any contributors may be used to endorse or promote products derived
+        from this software without specific prior written permission
+ IN NO EVENT SHALL THE
+    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+    HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE
+
+    ----
+
+
+
+
+  unRAR license restriction
+  -------------------------
+
+    The decompression engine for RAR archives was developed using source
+    code of unRAR program
+
+    All copyrights to original unRAR code are owned by Alexander Roshal
+
+
+
+  --
+  Igor Pavlov
+
+7-Zip 23
+01
+-----------
+
+7-Zip is a file archiver for Windows
+
+
+7-Zip Copyright (C) 1999-2023 Igor Pavlov
+
+
+The main features of 7-Zip: 
+
+  - High compression ratio in the new 7z format
+  - Supported formats:
+     - Packing / unpacking: 7z, XZ, BZIP2, GZIP, TAR, ZIP and WIM
+
+  - Fast compression and decompression
+  - Self-extracting capability for 7z format
+  - Strong AES-256 encryption in 7z and ZIP formats
+  - Integration with Windows Shell
+  - Powerful File Manager
+  - Powerful command line version
+  - Localizations for 90 languages
+
+
+7-Zip is free software distributed under the GNU LGPL (except for unRar code)
+
+Read License
+exe      - 7-Zip File Manager
+  7-zip
+exe        - Command line version
+  7z
+dll        - 7-Zip engine module
+  7z
+sfx     - SFX module (Console version)
+
+  License
+txt   - License information
+  readme
+txt    - This file
+  History
+txt   - History of 7-Zip
+  7-zip
+chm     - User's Manual in HTML Help format
+  descript
+ttt   - English (base) localization file
+  Lang\*
+txt    - Localization files
+
+
+---
+End of document
+
