@@ -39,8 +39,8 @@ function isTos(name, isFolder = false, includeAll = false) {
     name = name.toLowerCase();
     // Keep this array sorted alphabetically
     var possibleNames = ["agreement", "docs", "eula", "legal", "license", "license_agreement", "policy", "privacy_policy", 
-    "readme", "terms", "terms_and_conditions", "terms_of_service", "terms_of_use", "tos"];
-    var possibleFileTypes = [".md", ".txt"];
+     "terms", "terms_and_conditions", "terms_of_service", "terms_of_use", "tos"];
+    var possibleFileTypes = [".md", ".rtf", ".txt"];
     // Update the minimum and maximum length of the TOS file name accordingly
     const MIN_LENGTH = 3;
     const MAX_LENGTH = 24;
@@ -87,20 +87,24 @@ async function getTos(path, includeAll = false) {
     const files = await window.dialogAPI.fs.readDir(path);
     // Get the possible TOS files
     var tosText = "";
+    var tempTos;
     for (const file of files) {
         const filePath = path + '/' + file;
         if (await isFolder(filePath)) {
             if (isTos(file, true) || includeAll) {
-                tosText += await getTos(filePath, true) + '\n';
+                tempTos = (await getTos(filePath, true)).trim();
             } else {
-                tosText += await getTos(filePath) + '\n';
+                tempTos = (await getTos(filePath)).trim();
+            }
+            if (tempTos) {
+                tosText += tempTos + '\n';
             }
         } else if (isTos(file, false, includeAll)) {
             const fileContent = await window.dialogAPI.fs.readFile(filePath);
-            tosText += fileContent + '\n';
+            if (fileContent) tosText += fileContent + '\n';
         }
     }
-    return tosText;
+    return tosText.trim();
 }
 
 /**
@@ -172,7 +176,8 @@ function scan() {
                 loadingBar.value = 100;
                 const resultArray = result;
                 for (var i = 0; i < resultArray.length; i++) {
-                    resultArray[i] = resultArray[i].replace(/\n/g, '<br>');
+                    resultArray[i] = resultArray[i].replace(/\n+/g, '<br>')
+                        .replace(/\\[a-zA-Z]+[0-9]*[ ]?|{\\*\\[^{}]+}|[{}]|\\'..|\\[a-z]+\n|\\[*]/g, '');
                 }
                 var endResult = {'danger': resultArray[2], 'warning': resultArray[1], 'normal': resultArray[0]};
                 console.log(endResult);

@@ -15,6 +15,7 @@ body {
 
 #resultOverflow {
   max-height: 300px;
+  min-height: 300px;
   border: 1px solid #606065;
 }
 
