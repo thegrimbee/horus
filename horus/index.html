@@ -92,18 +92,23 @@
         <br>
         
         <form class="form-inline" id="level buttons">
-            
-            <button type="button" class="btn btn-outline-danger mr-2" id="dangerButton">
-              Danger
-            </button>
-            
-            <button type="button" class="btn btn-outline-warning mr-2" id="warningButton">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-outline-danger active">
+              <input type="radio" name="options" class="btn btn-outline-danger mr-2" data-toggle="button" autocomplete="off" id="dangerButton">
+                Danger
+              </input>
+            </label>
+          <label class="btn btn-outline-warning">
+            <input type="radio" name="options" class="btn btn-outline-warning mr-2" data-toggle="button" autocomplete="off" id="warningButton">
               Warning
-            </button>
-            
-            <button type="button" class="btn btn-outline-success" id="normalButton">
+            </input>
+          </label>
+          <label class="btn btn-outline-success">
+            <input type="radio" name="options" class="btn btn-outline-success" data-toggle="button" autocomplete="off" id="normalButton">
               Normal
-            </button>
+            </input>
+          </label>
+          </div>
         </form>
         <br>
         <div class="row">

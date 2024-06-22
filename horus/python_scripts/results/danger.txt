@@ -1,198 +1,58 @@
- Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer
- Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in
- *    the documentation and/or other materials provided with the
- *    distribution
-org/)"
- *
- * 4
- For written permission, please contact
- *    openssl-core@openssl
- Products derived from this software may not be called "OpenSSL"
- *    nor may "OpenSSL" appear in their names without prior written
- *    permission of the OpenSSL Project
- Redistributions of any form whatsoever must retain the following
- *    acknowledgment:
- *    "This product includes software developed by the OpenSSL Project
- *    for use in the OpenSSL Toolkit (http://www
-  IN NO EVENT SHALL THE OpenSSL PROJECT OR
- * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
- * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
- * OF THE POSSIBILITY OF SUCH DAMAGE
 
- *
- */
 
-Original SSLeay License
------------------------
 
-/* Copyright (C) 1995-1998 Eric Young (eay@cryptsoft
-
- *
- * This library is free for commercial and non-commercial use as long as
- * the following conditions are aheared to
-  The following conditions
- * apply to all code found in this distribution, be it the RC4, RSA,
- * lhash, DES, etc
-  The SSL documentation
- * included with this distribution is covered by the same copyright terms
- * except that the holder is Tim Hudson (tjh@cryptsoft
-com)
- All advertising materials mentioning features or use of this software
- *    must display the following acknowledgement:
- *    "This product includes cryptographic software written by
- *     Eric Young (eay@cryptsoft
-
- * 4
-]
- */
-
-
-Original ICSharpCode
-
-* http://icsharpcode
-io/SharpZipLib/
-
-/* Copyright � 2000-2019 SharpZipLib Contributors
-
-* Permission is hereby granted, free of charge, to any person obtaining a copy of 
-* this software and associated documentation files (the �Software�), to deal in the
-* Software without restriction, including without limitation the rights to use, copy, 
-* modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
-* and to permit persons to whom the Software is furnished to do so, subject to the 
-* following conditions:
-*
-* 1
-
-
-    * Redistributions in binary form must reproduce the above copyright notice,
-      this list of conditions and the following disclaimers in the
-      documentation and/or other materials provided with the distribution
-  IN NO EVENT SHALL THE
-CONTRIBUTORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE
-SOFTWARE
-
-This file will describe the copyrights, license, and restrictions which apply
-to that code
-
-
-The following pieces of software have additional or alternate copyrights,
-licenses, and/or restrictions:
-
-Program             Directory
--------             ---------
-Autoconf            llvm/autoconf
-                    llvm/projects/ModuleMaker/autoconf
-Google Test         llvm/utils/unittest/googletest
-OpenBSD regex       llvm/lib/Support/{reg*, COPYRIGHT
-data, LICENSE
-TXT
-md5 contributions   llvm/lib/Support/MD5
-cpp llvm/include/llvm/Support/MD5
-
-
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-
-    Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer
-
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS” AND ANY EXPRESS OR IMPLIED
-WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIEDWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-PURPOSE ARE DISCLAIMED
-
-
-These scripts are not for a language, but are used by Vim itself:
-
-syntax
-
-
-manual
-vim
-
-
-synload
-  And sets up the Syntax menu
-		for the GUI
-
-
-nosyntax
-vim	Used for the ":syntax off" command
-vim	View the current highlight settings
-
-whitespace
-vim  View Tabs and Spaces
-
-
-If you make a new syntax file which would be useful for others, please send it
-to Bram@vim
-  Include instructions for detecting the file type for this
-language, by file name extension or by checking a few lines in the file
-org
-
-
-If you are the maintainer of a syntax file and make improvements, send the new
-version to Bram@vim
-org
-
-
-For further info see ":help syntax" in Vim
-
-
-
-Some tools that can be used with Vim:
-
-blink
-
-
-efm_filter
-
-
-mve
-
-
-pltags
-
-
-ref:		Shell script for the K command
-
-
-vimspell
-cmd: MS-Windows command file to use Vim with MS Visual Studio 7 and
-		later
-c:  Example for a client program that communicates with a Vim
-		   server through the X-Windows interface
-c
- The result
-is that you can do a simple editing task using the Vim editor
-
-
-Tutor is a file that contains the tutorial lessons
-edu bware@mines
-xx
-enc
-(replace enc with the actual encoding name)
-
-The "make" command can be used for creating tutor
-xx
-utf-8
-
-See the Makefile for detail
-xx
-]
-
-
-
-
-
-
-
-
-
+Watch Talks, Performances and Features from Ableton's Summit for Music MakersLearn the fundamentals of music making right in your browser
+ Ableton, not any Authorized Store, is solely responsible for this application and the content thereof
+As used in this EULA, capitalized terms shall have the following meanings:(1)  "Ableton" means Ableton AG, Schönhauser Allee 6-7, 10119 Berlin, Germany and any Ableton Affiliate (for contact information please see: ableton
+com/contact-us)(2)  The term "Ableton Affiliate" means any entity affiliated with or controlled by Ableton AG, its affiliates and its corporate group, which includes, but is not limited to, Ableton AG’s majority-owned subsidiaries, any parent company having a majority-owned interest in such, and such parent's majority-owned subsidiaries
+(9) The term "Live" means the Software “Ableton Live” and all presets, sound samples, loops, musical phrases, musical examples, included software instruments and effects, STEM, data and other contents or versions of other Ableton Products supplied by Ableton with Ableton Live
+  The term “Live” also includes, but is not limited to, Ableton Live Suite, Ableton Live Intro, LE versions, Lite Versions, OEM versions or modified versions of Live licensed to You by Ableton and all updates and upgrades
+ For details please see: ableton
+ If the license to the Previous Version of the Ableton Product is transferred to another person or entity, no upgrades or updates will be made to it, unless transferred in compliance with Section 6, herein
+(15) The term "Software" means any software product developed, manufactured, licensed and/or supplied by Ableton, including, but not limited to, Live, Note, any software that is included in Ableton hardware and Extensions, any presets, sound samples, loops, musical phrases, musical examples, software instruments and effects, STEM, data and other contents contained and all updates and upgrades
+(16) The term "Software Bundle" means the combination of Software and Extensions and other products that are licensed as a bundle to You, such as Ableton Live Suite
+ Additional terms may be defined throughout the EULA
+(1) You, through your act of downloading, installing, copying or using any Ableton Product, do not acquire any ownership rights to such Ableton Product
+ Ableton Products are protected by copyright laws and international copyright treaties, as well as other intellectual property laws and treaties
+  The rights to use Ableton Products as set out in this EULA are licensed, not sold, to You by Ableton
+In case of the use within a network, the network must be owned, leased and/or controlled by You or a member of your corporate group, which includes a corporate licensee, a corporate licensee's majority-owned subsidiaries, any parent company having a majority-owned interest in such corporate licensee, and such parent's majority-owned subsidiaries
+ For purchases made through Authorized Stores, additional/alternative license terms may apply
+ Please see Annex 1
+ For further information, you can visit Ableton’s website at ableton
+ The transfer or assignment of the User Account without the express consent of Ableton is prohibited
+(2) You may not use, copy, modify or transfer the Ableton Product, or any copy in whole or in part, except as expressly provided for in this license
+  (3) Unless other license terms (e
+(4) You must comply with the applicable terms and conditions of any third-party agreements between You and said third-parties when using the Ableton Products (to the extent not in conflict with this EULA)
+g
+ terms of an Authorized Store), and may require transferee to register for a User Account and activation of the Ableton Product (while your initial installation will be unregistered)
+ You may not re-register under a different name or different account, or from a different hardware device
+(1) In order to upgrade or update Ableton Products, a valid license to use the Previous Version of the respective Ableton Product is required
+Ableton may process information from Your use of the Ableton Products under applicable data protection and privacy regulations
+com/privacy-policyThe purpose of the Trial Versions is to facilitate the decision-making process with regard to acquiring a commercial version only
+ Any other use, including, but not limited to, resale, transfer, or public use, is strictly prohibited
+Educational Versions may only be acquired in an educational context by schools, teachers, instructors and students
+ (1) of this EULA, the liability in connection with the Free Versions is excluded except for intent or gross negligence
+ IF YOU ACQUIRED THE ABLETON PRODUCT OUTSIDE EUROPEDISCLAIMER OF WARRANTIES: FOR PURPOSES OF THIS SUBSECTION II ONLY, THE TERM „ABLETON” INCLUDES ABLETON AND ABLETON’S LICENSORS (EXCLUDING YOU), AND OTHER PARTNERS FOR ABLETON PRODUCTS
+  TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE ABLETON PRODUCT IS PROVIDED „AS IS,” WITH ALL FAULTS AND WITHOUT WARRANTY OF ANY KIND, AND ABLETON HEREBY DISCLAIMS ALL WARRANTIES AND CONDITIONS WITH RESPECT TO THE ABLETON PRODUCT, EITHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES AND/OR CONDITIONS OF MERCHANTABILITY, OF SATISFACTORY QUALITY, OF FITNESS FOR A PARTICULAR PURPOSE, OF ACCURACY, OF QUIET ENJOYMENT, AND NON-INFRINGEMENT OF THIRD PARTY RIGHTS
+  NO ORAL OR WRITTEN INFORMATION OR ADVICE GIVEN BY ABLETON OR AN ABLETON AUTHORIZED REPRESENTATIVE SHALL CREATE A WARRANTY
+(b) The liability of the Ableton for damages caused by loss of data and/or programs lost by slight negligence is limited to the typical cost of restoration, which would have been incurred in case of regular and appropriate your data backup and data protection by You
+(3) The above liability restrictions shall also apply to agents of Ableton
+II
+This clause shall survive the termination of this EULA
+g
+ when You withdraw from the respective purchase agreement (e
+(2) Your use of the Ableton Product may allow You to connect with Third-Party Applications
+(4) Ableton is not liable for costs arising out of services that are not provided by Ableton
+(1) With the regard to purchases made via Authorized Stores, Ableton is not the contracting party selling the product or service
+ Ableton is not affiliated with any Authorized Stores, but uses their services through a separate agreement
+ Access to Authorized Stores may require a registration to the respective store
+(2) The rights to use the Ableton Product and this EULA ceases (expires) automatically if You cancel the separate purchase agreement of this Ableton Product (e
+ embargoed countries or (b) to anyone on the U
+ By agreeing to these Terms, in the event of any claim You may have arising from or related to Ableton Cloud or these Terms You agree to the exclusive personal and subject matter jurisdiction of the courts located within Manhattan, New York, U
+S
+ for making and resolving any such claims, Ableton reserves the right to make any claim against You and seek and be granted any legal or equitable remedy against You in any court anywhere in the world
+(2) The failure or delay of Ableton to exercise any of its rights under this EULA or upon any breach of this EULA shall not be deemed a waiver of those rights or of the breach
+II
+ IF YOU ACQUIRED THE ABLETON PRODUCT OUTSIDE EUROPEThis EULA, together with the other policies and documents expressly referenced herein, constitutes the complete and exclusive agreement between Ableton and You with respect to the subject matter hereof and supersedes all proposals, representations, understandings, and prior agreements, whether oral or written, and all other related communication between the parties
+ Any clause in this EULA, which is found to be invalid or unenforceable shall be deemed deleted and the rest of this EULA shall remain unaffected, and an enforceable term will be substituted reflecting the original intention of the parties as nearly as possible
+ The failure or delay of Ableton to exercise any of its rights under this EULA or upon any breach of this EULA shall not be deemed a waiver of those rights or of the breach

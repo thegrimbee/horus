@@ -1,4 +1,4 @@
-App,Level_0,Level_1,Level_2
+App,Level_0,Level_1,Level_2,Unnamed: 4
 7-Zip,"
   7-Zip
   ~~~~~
@@ -192,13 +192,13 @@ sfx        - SFX module (Windows version)
   7zCon
 ion  - Description for files
 
-  Lang\en"
+  Lang\en",
 4KDownload,"
 
-",,
+",,,
 Adobe,,,"
 
-"
+",
 BraveSoftware,,,"
 
 
@@ -332,7 +332,7 @@ BraveSoftware,,,"
 
 
 
-"
+",
 Git,"
 
   might avoid issues
@@ -1951,1490 +1951,1491 @@ https://github
 	endif
 
 You can use `:highlight clear` to reset everything to the defaults, and then
-change the groups that you want differently
-
-Note that `:highlight clear` uses the value of 'background', thus set it
-before this command
-, bold) might be set in the defaults that you want
-removed in your color scheme
-  Use something like ""gui=NONE"" to remove the
-attributes
-
-
-In case you want to set 'background' depending on the colorscheme selected,
-this autocmd might be useful: >
-
-     autocmd SourcePre */colors/blue_sky
-vim set background=dark
-
-Replace ""blue_sky"" with the name of the colorscheme
-
-
-In case you want to tweak a colorscheme after it was loaded, check out the
-ColorScheme autocommand event
-
-
-To clean up just before loading another colorscheme, use the ColorSchemePre
-autocommand event
-  For example: >
-
-	let g:term_ansi_colors = 
-g
-vim/colors/mine
-vim"",
-and use "":runtime"" to load the original colorscheme: >
-
-	"" load the ""evening"" colorscheme
-	runtime colors/evening
-
-
-You can use "":highlight"" to find out the current colors
-  Exception: the
-ctermfg and ctermbg values are numbers, which are only valid for the current
-terminal
-  See
-`:help cterm-colors` 
-
-
-The default color settings can be found in the source file src/syntax
-c
-
-Search for ""highlight_init""
-
-
-If you think you have a color scheme that is good enough to be used by others,
-please check the following items:
-
-- Source the $VIMRUNTIME/colors/tools/check_colors
-vim script to check for
-  common mistakes
-
-
-- Does it work in a color terminal as well as in the GUI? Is it consistent?
-
-- Is ""g:colors_name"" set to a meaningful value?  In case of doubt you can do
-  it this way: >
-
-  	let g:colors_name = expand('<sfile>:t:r')
-
-- Is 'background' either used or appropriately set to ""light"" or ""dark""?
-
-- Try setting 'hlsearch' and searching for a pattern, is the match easy to
-  spot?
-
-- Split a window with "":split"" and "":vsplit""
-  Are the status lines and
-  vertical separators clearly visible?
-
-- In the GUI, is it easy to find the cursor, also in a file with lots of
-  syntax highlighting?
-
-- In general, test your color scheme against as many filetypes, Vim features,
-  environments, etc
-
-
-- Do not use hard coded escape sequences, these will not work in other
-  terminals
-  Always use #RRGGBB for the GUI
-  Names are more portable
-  than numbers, though
-
-
-- When targetting 256 colors terminals, prefer colors 16-255 to colors 0-15
-  for the same reason
-) are not
-  universally supported
-  Don't count on any of them
-com/lifepillar/vim-colortemplate)
-  It is therefore highly
-recommended
-
-
-If you would like your color scheme to be distributed with Vim, make sure
-that:
-
-- it satisfies the guidelines above,
-- it was made with colortemplate,
-
-and join us at vim/colorschemes: (https://github
-
-
-
-vim: set ft=help :
-
-
-
-This directory contains Vim scripts to be used with a specific compiler
-
-They are used with the "":compiler"" command
-
-
-These scripts usually set options, for example 'errorformat'
-
-See "":help write-compiler-plugin""
-
-
-
-
-The ftplugin directory is for Vim plugin scripts that are only used for a
-specific filetype
-
-For example, these are all loaded for the ""c"" filetype:
-
-	c
-vim
-	c/settings
-vim
-
-Note that the ""_"" in ""c_extra
-
-
-The filetype plugins are only loaded when the "":filetype plugin"" command has
-been used
-
-
-The default filetype plugin files contain settings that 95% of the users will
-want to use
-  They do not contain personal preferences, like the value of
-'shiftwidth'
-
-
-If you want to do additional settings, or overrule the default filetype
-plugin, you can create your own plugin file
-  Looking at the existing files should give you
-inspiration
-
-
-If you have remarks about an existing file, send them to the maintainer of
-that file
-  Only when you get no response send a message to Bram@vim
-org
-
-	if exists(""b:did_indent"")
-	  finish
-	endif
-	let b:did_indent = 1
-
-Always use "":setlocal"" to set 'indentexpr'
-  This avoids it being carried over
-to other buffers
-
-
-You normally set 'indentexpr' to evaluate a function and then define that
-function
-  That function only needs to be defined once for as long as Vim is
-running
-  Add a test if the function exists and use "":finish"", like this:
-	if exists(""*GetMyIndent"")
-	  finish
-	endif
-
-The user may have several options set unlike you, try to write the file such
-that it works with any option settings
-  Also be aware of certain features not
-being compiled in
-
-
-To test the indent file, see testdir/README
-txt
-
-
-
-keymap files for Vim
-
-One of these files is loaded when the 'keymap' option is set
-
-
-The name of the file consists of these parts:
-
-	{language}[-{layout}][_{encoding}]
-vim
-
-{language}	Name of the language (e
-
-
-{encoding}	Optional: character encoding for which this keymap works
-
-		When omitted the ""normal"" encoding for the language is
-		assumed
-
-
-Each file starts with a header, naming the maintainer and the date when it was
-last changed
-  If you find a problem in a keymap file, check if you have the
-most recent version
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Language files for Vim: Translated menus
-
-The contents of each menu file is a sequence of lines with ""menutrans""
-commands
-  Read one of the existing files to get an idea of how this works
-
-
-More information in the on-line help:
-
-	:help multilang-menus
-	:help :menutrans
-	:help 'langmenu'
-	:help :language
-
-The ""$VIMRUNTIME/menu
-vim"" file will search for a menu translation file
-  This
-depends on the value of the ""v:lang"" variable
- ""
-
-
-The file name is always lower case
-  It is the full name as the "":language""
-command shows (the LC_MESSAGES value)
-950
-
-and use the menu translation file:
-
-	$VIMRUNTIME/lang/menu_chinese(taiwan)_taiwan
-950
-Big5""
-	sh/bash/ksh:	export LANG=""zh_TW
-Big5""
-
-and the menu translation file is:
-
-	$VIMRUNTIME/lang/menu_zh_tw
-big5
-vim
-
-The menu translation file should set the ""did_menu_trans"" variable so that Vim
-will not load another file
-
-For UTF-8 menu files which only use latin1 characters, you can rely on Vim
-doing the conversion
-  Let the UTF-8 menu file source the latin1 menu file,
-and put ""scriptencoding latin1"" in that one
-g
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-To run the maze macros with Vim:
-
-	vim -u maze_mac maze_5
-mac"" loads the maze macros and skips loading your 
-vimrc, which
-may contain settings and mappings that get in the way
- It will solve any maze produced by maze
-c
-that was posted to the net recently
-
-
-Just follow this recipe and SEE FOR YOURSELF
-
-	1
-vi
-uu"" to
-		produce the file ""maze
-vi
-c""
-	3
-out and input a small number (for example 10 if
-		you are on a fast machine, 3-5 if slow) which
-		is the size of the maze to produce
-	4
- include the macros with the vi command:
-		:so maze
-macros
-	6
- type the letter ""g"" (for ""go"") and watch vi solve the maze
-	7
- when vi solves the maze, you will see why it lies
-	8
- now look at maze
-vi
-c file to compile, get a new compiler,
-try maze
-ansi
-c which was also posted to the net
-
-If you can get it to compile but the maze comes out looking like a fence
-and not a maze and you are using SysV or DOS replace the ""27"" on the
-last line of maze
-cwi
-caltech
-edu (Bill T
-ansi
-
-
-Any donations should be in unmarked small denomination bills :^)=
-otca
-oz
-otca
-au!gregm
-|||| OTC ||	    Snail:  OTC R&D GPO Box 7000, Sydney 2001, Australia
-		    Phone:  +61 2 287 3139    Fax: +61 2 287 3299
-
-
-
-
-The macros in the maze, hanoi and urm directories can be used to test Vim for
-vi compatibility
-
-life	Macros that run Conway's game of life
-
-urm	Macros that simulate a simple computer: ""Universal Register Machine""
-
-
-
-The other files contain some handy utilities
-  They also serve as examples for
-how to use Vi and Vim functionality
-
-
-less
-sh + less
-vim	make Vim work like less (or more)
-
-
-
-The following have been moved to an optional package
-
-The URM macro package was written by Rudolf Koenig (""Rudi"")
-(rudolf@koeniglich
-de) for hpux-vi in August 1991
-vim<RETURN>
-in vim:		 *	(to load the registers and boot the URM-machine :-)
-in vim:		 g	(for 'go') and watch the fun
- Per default, 3 and 4
-			are multiplied
- Watch the Program counter, it is
-			visible as a komma moving around
-
-
-This is a ""standard URM"" (Universal register machine)  interpreter
-
-Here it proves that vim is a general problem solver (if you bring enough
-patience)
-
-
-The interpreter begins with register 1 (not 0), without macros and more-lines
-capability
-)
-
-The registers are the first few lines, beginning with a '>' 
-
-The program is the first line after the registers
-
-You should always initialize the registers required by the program
-
-
-Output register:	line 2
-Input registers:	line 2 to 
-
-
- 		(""dot blank"")  halt the machine
-
-
-Examples:
-
-Add register 2 to register 3:
-	(a2;s3)3
-
-Multiply register 2 with register 3:
-	(a4;a5;s2)2; ((a2;s4)4; s3; (a1;a4;s5)5; (a5;s1)1)3
-
-
-There are more (complicated) examples in the file examples
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-The plugin directory is for standard Vim plugin scripts
-
-Look in the file for hints on how it can be disabled without deleting it
-
-
-getscriptPlugin
-vim  get latest version of Vim scripts
-gzip
-vim	     edit compressed files
-logiPat
-vim	     logical operators on patterns
-manpager
-vim	     using Vim as manpager
-matchparen
-vim	     highlight paren matching the one under the cursor
-netrwPlugin
-vim	     convert a file with syntax highlighting to HTML
-vimballPlugin
-vim    create and unpack 
-vba files
-zipPlugin
-vim	     edit zip archives
-
-Note: the explorer
-vim plugin is no longer here, the netrw
-
-
-These scripts are not for a language, but are used by Vim itself:
-
-syntax
-vim	Used for the "":syntax on"" command
-  Uses synload
-vim
-
-
-manual
-vim	Used for the "":syntax manual"" command
-  Uses synload
-vim	Contains autocommands to load a language file when a certain
-		file name (extension) is used
-  And sets up the Syntax menu
-		for the GUI
-  Undo the loading of
-		synload
-
-
-
-A few special files:
-
-2html
-vim	Converts any highlighted file to HTML (GUI only)
-
-colortest
-vim	View the current highlight settings
-txt""
-
-
-If you make a new syntax file which would be useful for others, please send it
-to Bram@vim
-  Include instructions for detecting the file type for this
-language, by file name extension or by checking a few lines in the file
-
-And please write the file in a portable way, see "":help 44
-
-
-If you have remarks about an existing file, send them to the maintainer of
-that file
-
-
-For further info see "":help syntax"" in Vim
-
-
-ccfilter*:	C program to filter the output of a few compilers to a common
-		QuickFix format
-
-
-efm_filter
-*:	Perl script to filter compiler messages to QuickFix format
-
-
-efm_perl
-pl:	Perl script to filter error messages from the Perl interpreter
-		for use with Vim quickfix mode
-
-
-mve
-
-
-pltags
-
-
-vim132:		Shell script to edit in 132 column mode on vt100 compatible
-		terminals
-
-
-vimm:		Shell script to start Vim on a DEC terminal with mouse
-		enabled
-
-
-vimspell
-c:  Example for a client program that communicates with a Vim
-		   server through the X-Windows interface
-vim	Vim script to generate tables for src/mbyte
-c
-
-
-[xxd can be found in the src directory]
-
-
-Tutor is a ""hands on"" tutorial for new users of the Vim editor
-
-
-Most new users can get through it in less than one hour
- The result
-is that you can do a simple editing task using the Vim editor
-  It will make a
-scratch copy of the tutor first
-
-
-I have considered adding more advanced lessons but have not found the
-time
- Please let me know how you like it and send any improvements you
-make
-colorado
-edu bware@slate
-mines
-colorado
-edu bware@mines
-xx and tutor
-utf-8 files are translated files (where xx is the
-language code)
-xx might be latin1 or other traditional
-encoding
-xx
-
-If you need another encoding, you can also prepare a file named tutor
-xx
-vim file
-xx from tutor
-
-See the Makefile for detail
-  (For some languages, tutor
-xx
-utf-8 is created
-from tutor
-]
-
-
-
-
-
-
-
-
-
-","
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- Note that the only valid version of the GPL as far as this project
- is concerned is _this_ particular version of the license (ie v2, not
- v2
-2 or v3
-x or whatever), unless explicitly otherwise stated
-
-
- HOWEVER, in order to allow a migration to GPLv3 if that seems like
- a good idea, I also ask that people involved with the project make
- their preferences known
- In particular, if you trust me to make that
- decision, you might note so in your copyright message, ie something
- like
-
-	This file is licensed under the GPL v2, or a later version
-	at the discretion of Linus
-,
- 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
- Everyone is permitted to copy and distribute verbatim copies
- of this license document, but changing it is not allowed
-
-
-			    Preamble
-
-  The licenses for most software are designed to take away your
-freedom to share and change it
-  (Some other Free Software Foundation software is covered by
-the GNU Lesser General Public License instead
-)  You can apply it to
-your programs, too
-
-
-  We protect your rights with two steps: (1) copyright the software, and
-(2) offer you this license which gives you legal permission to copy,
-distribute and/or modify the software
-  The ""Program"", below,
-refers to any such program or work, and a ""work based on the Program""
-means either the Program or any derivative work under copyright law:
-that is to say, a work containing the Program or a portion of it,
-either verbatim or with modifications and/or translated into another
-language
-)  Each licensee is addressed as ""you""
-
-
-You may charge a fee for the physical act of transferring a copy, and
-you may at your option offer warranty protection in exchange for a fee
-
-
-  2
-
-
-    b) You must cause any work that you distribute or publish, that in
-    whole or in part contains or is derived from the Program or any
-    part thereof, to be licensed as a whole at no charge to all third
-    parties under the terms of this License
-
-
-    c) If the modified program normally reads commands interactively
-    when run, you must cause it, when started running for such
-    interactive use in the most ordinary way, to print or display an
-    announcement including an appropriate copyright notice and a
-    notice that there is no warranty (or else, saying that you provide
-    a warranty) and that users may redistribute the program under
-    these conditions, and telling the user how to view a copy of this
-    License
-  But when you
-distribute the same sections as part of a whole which is a work based
-on the Program, the distribution of the whole must be on the terms of
-this License, whose permissions for other licensees extend to the
-entire whole, and thus to each and every part regardless of who wrote it
- You may copy and distribute the Program (or a work based on it,
-under Section 2) in object code or executable form under the terms of
-Sections 1 and 2 above provided that you also do one of the following:
-
-    a) Accompany it with the complete corresponding machine-readable
-    source code, which must be distributed under the terms of Sections
-    1 and 2 above on a medium customarily used for software interchange; or,
-
-    b) Accompany it with a written offer, valid for at least three
-    years, to give any third party, for a charge no more than your
-    cost of physically performing source distribution, a complete
-    machine-readable copy of the corresponding source code, to be
-    distributed under the terms of Sections 1 and 2 above on a medium
-    customarily used for software interchange; or,
-
-    c) Accompany it with the information you received as to the offer
-    to distribute corresponding source code
-  For an executable work, complete source
-code means all the source code for all modules it contains, plus any
-associated interface definition files, plus the scripts used to
-control compilation and installation of the executable
-
-
-If distribution of executable or object code is made by offering
-access to copy from a designated place, then offering equivalent
-access to copy the source code from the same place counts as
-distribution of the source code, even though third parties are not
-compelled to copy the source along with the object code
-  These actions are
-prohibited by law if you do not accept this License
-  Therefore, by
-modifying or distributing the Program (or any work based on the
-Program), you indicate your acceptance of this License to do so, and
-all its terms and conditions for copying, distributing or modifying
-the Program or works based on it
-
-
-  6
-  You may not impose any further
-restrictions on the recipients' exercise of the rights granted herein
-  If you cannot
-distribute so as to satisfy simultaneously your obligations under this
-License and any other pertinent obligations, then as a consequence you
-may not distribute the Program at all
-  For example, if a patent
-license would not permit royalty-free redistribution of the Program by
-all those who receive copies directly or indirectly through you, then
-the only way you could satisfy both it and this License would be to
-refrain entirely from distribution of the Program
-
-
-  8
- The Free Software Foundation may publish revised and/or new versions
-of the General Public License from time to time
-  Such new versions will
-be similar in spirit to the present version, but may differ in detail to
-address new problems or concerns
-
-
-Each version is given a distinguishing version number
-  If the Program
-specifies a version number of this License which applies to it and ""any
-later version"", you have the option of following the terms and conditions
-either of that version or of any later version published by the Free
-Software Foundation
-  If the Program does not specify a version number of
-this License, you may choose any version ever published by the Free Software
-Foundation
- If you wish to incorporate parts of the Program into other free
-programs whose distribution conditions are different, write to the author
-to ask for permission
-  Our decision will be guided by the two goals
-of preserving the free status of all derivatives of our free software and
-of promoting the sharing and reuse of software generally
-
-
-		     END OF TERMS AND CONDITIONS
-
-	    How to Apply These Terms to Your New Programs
-
-  If you develop a new program, and you want it to be of the greatest
-possible use to the public, the best way to achieve this is to make it
-free software which everyone can redistribute and change under these terms
->
-    Copyright (C) <year>  <name of author>
-
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version
-  See the
-    GNU General Public License for more details
-
-
-Also add information on how to contact you by electronic and paper mail
-
-
-The hypothetical commands `show w' and `show c' should show the appropriate
-parts of the General Public License
-
-
-You should also get your employer (if you work as a programmer) or your
-school, if any, to sign a ""copyright disclaimer"" for the program, if
-necessary
-
-
-  <signature of Ty Coon>, 1 April 1989
-  Ty Coon, President of Vice
-
-This General Public License does not permit incorporating your program into
-proprietary programs
-
-
-
-# Git Credential Manager
-
-[![Build Status][build-status-badge]][workflow-status]
-
----
-
-[Git Credential Manager][gcm] (GCM) is a secure
-[Git credential helper][git-credential-helper] built on [
-
-
-GCM supports (in alphabetical order) [Azure DevOps][azure-devops], Azure DevOps
-Server (formerly Team Foundation Server), Bitbucket, GitHub, and GitLab
-
-
-GCM replaces both the 
-
-
-## Install
-
-See the [installation instructions][install] for the current version of GCM for
-install options for your operating system
-
-
-## Current status
-
-Git Credential Manager is currently available for Windows, macOS, and Linux\*
-
-GCM only works with HTTP(S) remotes; you can still use Git with SSH:
-
-- [Azure DevOps SSH][azure-devops-ssh]
-- [GitHub SSH][github-ssh]
-- [Bitbucket SSH][bitbucket-ssh]
-
-Feature|Windows|macOS|Linux\*
--|:-:|:-:|:-:
-Installer/uninstaller|&#10003;|&#10003;|&#10003;
-Secure platform credential storage [(see more)][gcm-credstores]|&#10003;|&#10003;|&#10003;
-Multi-factor authentication support for Azure DevOps|&#10003;|&#10003;|&#10003;
-Two-factor authentication support for GitHub|&#10003;|&#10003;|&#10003;
-Two-factor authentication support for Bitbucket|&#10003;|&#10003;|&#10003;
-Two-factor authentication support for GitLab|&#10003;|&#10003;|&#10003;
-Windows Integrated Authentication (NTLM/Kerberos) support|&#10003;|_N/A_|_N/A_
-Basic HTTP authentication support|&#10003;|&#10003;|&#10003;
-Proxy support|&#10003;|&#10003;|&#10003;
-`amd64` support|&#10003;|&#10003;|&#10003;
-`x86` support|&#10003;|_N/A_|&#10007;
-`arm64` support|best effort|&#10003;|best effort, no packages
-`armhf` support|_N/A_|_N/A_|best effort, no packages
-
-(\*) GCM guarantees support only for [the Linux distributions that are officially
-supported by dotnet][dotnet-distributions]
-
-
-## Supported Git versions
-
-Git Credential Manager tries to be compatible with the broadest set of Git
-versions (within reason)
- However there are some know problematic releases of
-Git that are not compatible
-26
- For example, when pushing (`git push`) to
-[Azure DevOps][azure-devops], [Bitbucket][bitbucket], or [GitHub][github], a
-window will automatically open and walk you through the sign-in process
-
-
-## License
-
-We're [MIT][gcm-license] licensed
-azure
-svg
-[docs-index]: https://github
-com/GitCredentialManager/git-credential-manager/blob/release/docs/README
-com/docs/gitcredentials
-[gcm]: https://github
-com/GitCredentialManager/git-credential-manager/blob/release/docs/credstores
-md
-[gcm-for-mac-and-linux]: https://github
-com/microsoft/Git-Credential-Manager-for-Mac-and-Linux
-[gcm-for-windows]: https://github
-md
-[git-tools-credential-storage]: https://git-scm
-com/book/en/v2/Git-Tools-Credential-Storage
-[github]: https://github
-microsoft
-com/repos/
-[workflow-status]: https://github
-com)
-for an overview of features
-
-
-## Getting Started
-
-### Downloading
-
-You can install the Git LFS client in several different ways, depending on your
-setup and preferences
-io/github/git-lfs/install)
-
-* **macOS users**
- [Homebrew](https://brew
- In addition, [binary packages](https://github
-org), and the
-available instructions in our
-[Wiki](https://github
-asc` file and verify
-the file you want like so:
-
-```ShellSession
-$ gpg -d sha256sums
-asc | grep git-lfs-linux-amd64-v2
- You can read
-more about this pattern syntax
-[here](https://git-scm
-gitattributes` file_
-gitattributes
-$ git commit -m ""track *
- For example, changing a file named `my
-psd`
-(tracked above via `*
- To migrate existing large files
-> in your history to use Git LFS, use `git lfs migrate`
-psd"" --everything
-```
-
-**Note that this will rewrite history and change all of the Git object IDs in your
-repository, just like the import version of this command
-
-
-## Limitations
-
-Git LFS maintains a list of currently known limitations, which you can find and
-edit [here](https://github
-  Please do not import the `git-lfs`
-module into other Go code and do not rely on it as a source code dependency
-  There's also a [FAQ](https://github
-adoc)
-shipped with Git LFS which answers some common questions
- Related projects are listed on the [Implementations wiki
-page](https://github
-com/u/28857117?s=100&v=4
-[larsxschneider-img]: https://avatars1
-
-
-In alphabetical order:
-
-| [@andyneff][andyneff-user] | [@PastelMobileSuit][PastelMobileSuit-user] | [@rubyist][rubyist-user] | [@sinbad][sinbad-user] | [@technoweenie][technoweenie-user] | [@ttaylorr][ttaylorr-user] |
-| :---: | :---: | :---: | :---: | :---: | :---: |
-| [![][andyneff-img]][andyneff-user] | [![][PastelMobileSuit-img]][PastelMobileSuit-user] | [![][rubyist-img]][rubyist-user] | [![][sinbad-img]][sinbad-user] | [![][technoweenie-img]][technoweenie-user] | [![][ttaylorr-img]][ttaylorr-user] |
-
-[andyneff-img]: https://avatars1
-githubusercontent
-com/u/37254014?s=100&v=4
-[rubyist-img]: https://avatars1
-githubusercontent
-com/u/443245?s=100&v=4
-[andyneff-user]: https://github
-com/sinbad
-[rubyist-user]: https://github
-
-
-Copyright 1998 by the Massachusetts Institute of Technology
-I
-I
-                                    --
---                                                                           --
--- Except as contained in this notice, the name(s) of the above copyright    --
--- holders shall not be used in advertising or otherwise to promote the      --
--- sale, use or other dealings in this Software without prior written        --
--- authorization
-                                                            --
--------------------------------------------------------------------------------
--- $Id: README,v 1
-2
-  Last change: 2022 Mar 02
-
-
-		  VIM REFERENCE MANUAL    by Bram Moolenaar
-
-
-			*uganda* *Uganda* *copying* *copyright* *license*
-SUMMARY
-								*iccf* *ICCF*
-Vim is Charityware
-  Please see |kcc|
-below or visit the ICCF web site, available at these URLs:
-
-	https://iccf-holland
-org/
-	https://www
-vim
-org/iccf/
-	https://www
-  Vim sponsors can vote for
-features
-  You can also distribute
-    unmodified parts of Vim, likewise unrestricted except that they must
-    include this license text
-  You are also allowed to include executables
-    that you made from the unmodified Vim sources, plus your own usage
-    examples and Vim scripts
-org>
-net, www
-vim
-
-       d) When you have a modified Vim which includes changes as mentioned
-	  under c), you can distribute it without the source code for the
-	  changes if the following three conditions are met:
-	  - The license that applies to the changes permits you to distribute
-	    the changes to the Vim maintainer without fee or restriction, and
-	    permits the Vim maintainer to include the changes in the official
-	    version of Vim without fee or restriction
-
-    3) A message must be added, at least in the output of the "":version""
-       command and in the intro screen, such that the user of the modified Vim
-       is able to see that it was modified
-  When distributing as mentioned
-       under 2)e) adding the message is only required for as far as this does
-       not conflict with the license used for the changes
-  The preferred way to do this is
-     by e-mail or by uploading the files to a server and e-mailing the URL
-
-
-=== end of license ===
-
-Note:
-
-- If you are happy with Vim, please express that by reading the rest of this
-  file and consider helping needy children in Uganda
-
-  A few minor changes have been made since he checked it, but that should not
-  make a difference
-  Also when you didn't actually change
-  anything in Vim
-
-
-- Once a change is included that goes under the GNU GPL, this forces all
-  further changes to also be made under the GNU GPL or a compatible license
-  The area is known as Rakai
-District
-  The population is mostly farmers
-  Some say that it started there
-  In this district about 60,000 children
-have lost one or both parents, out of a population of 350,000
-  Now that the government is stable again, the children and parents have
-to learn how to take care of themselves and how to avoid infections
-  Because these families are big and the income
-(if any) is low, a child is lucky if it gets healthy food
-  To help these needy children, a
-sponsorship program was put into place
-
-For a few dollars a month KCC sees to it that the child gets indispensable
-items, is healthy, goes to school and KCC takes care of anything else that
-needs to be done for the child and the family that supports it
-
-Health workers are being trained, hygiene education is carried out and
-households are stimulated to build a proper latrine
-
-They are sold below cost price
-
-
-There is a clinic at the project, which provides children and their family
-medical help
-  When needed, transport to a hospital is offered
-  This is possible because this is a small
-organization that works with volunteers
-  If you would like to sponsor a
-child, you should have the intention to do this for at least one year
-
-
-How do you know that the money will be spent right?  First of all you have my
-personal guarantee as the author of Vim
-org>
-o
-kuwasha
-
-		Please send me a note so that I know what has been donated
-		because of Vim
-kuwasha
-  This will allow for tax deduction if you live in
-		Holland
-org/germany
-  See ""Others"" below for the
-		swift code and IBAN number
-  This is
-		the most widely used Internet based payment system
-paypal
-vim	for editing compressed files
-netrw*
-vim	browsing (remote) directories and editing remote files
-tar
-vim		browsing tar files
-zip
-vim, menu
-vim
-spellfile
-vim	downloading of a missing spell file
-
-Omni completion files:
-ccomplete
-vim		C
-csscomplete
-vim		HTML / CSS
-htmlcomplete
-vim		PHP
-pythoncomplete
-vim	from syntax highlighting
-xmlcomplete
-vim		XML (uses files in the xml directory)
-
-
-
-
-README
-txt for color scheme files
-
-These files are used for the `:colorscheme` command
-  They appear in the
-""Edit/Color Scheme"" menu in the GUI
-com/vim/colorschemes/tree/master/legacy_colors
-
-
-Hints for writing a color scheme file:
-
-There are two basic ways to define a color scheme:
-
-1
- Use the default Normal color and automatically adjust to the value of
-   'background'
-
-  This will also work for groups
-that are added in later versions of Vim
-
-Some attributes (e
-g
-
-	augroup MyColorscheme
-	  au!
-	  au ColorSchemePre * unlet g:term_ansi_colors
-	  au ColorSchemePre * au! MyColorscheme
-	augroup END
-
-To customize a colorscheme use another name, e
-  ""~/
-vim
-	"" change the color of statements
-	hi Statement ctermfg=Blue guifg=Blue
-
-To see which highlight group is used where, see `:help highlight-groups` and
-`:help group-name` 
-  Use the color names instead for better portability
- as possible
-
-
-- Is ""g:terminal_ansi_colors"" set to a list of 16 #RRGGBB values?
-
-- Try to keep your color scheme simple by avoiding unnecessary logic and
-  refraining from adding options
-  The best color scheme is one that only
-  requires: >
-
-  	colorscheme foobar
-
-The color schemes distributed with Vim are built with lifepillar/colortemplate
-(https://github
-
-
-If you want to write your own compiler plugin, have a look at the other files
-for how to do it, the format is simple
-
-
-If you think a compiler plugin you have written is useful for others, please
-send it to Bram@vim
-vim in this directory and subdirectories will be sourced
-by Vim when it detects the filetype that matches the name of the file or
-subdirectory
-vim
-	c_extra
-vim"" is required to separate the filetype name
-from the following arbitrary name
-  See "":help ftplugin"" in Vim
-
-
-
-
-
-This directory contains files to automatically compute the indent for a
-type of file
-
-
-If you want to add your own indent file for your personal use, read the docs
-at "":help indent-expression""
-
-
-If you make a new indent file which would be useful for others, please send it
-to Bram@vim
-org
-
-And please stick to the rules below
-org
-
-
-If you are the maintainer of an indent file and make improvements, e-mail the
-new version to Bram@vim
-
-
-
-Rules for making an indent file:
-
-You should use this check for ""b:did_indent"":
-
-	"" Only load this indent file when no other was loaded yet
-g
-, ""hebrew"", ""greek"")
-
-{layout}	Optional: name of the keyboard layout (e
-g
-  When omitted the layout of the standard
-		US-english keyboard is assumed
-  If necessary, report a problem to the maintainer
-
-
-The format of the keymap lines below ""loadkeymap"" is explained in the Vim help
-files, see "":help keymap-file-format""
- v:lang 
-vim""
-
-When the 'menutrans' option is set, its value will be used instead of v:lang
-
-
-For example, to use the Big5 (Taiwan) menus on MS-Windows the $LANG will be
-
-	Chinese(Taiwan)_Taiwan
-vim
-
-On Unix you should set $LANG, depending on your shell:
-
-	csh/tcsh:	setenv LANG ""zh_TW
-
-
-
-AUTOMATIC CONVERSION
-
-When Vim was compiled with multi-byte support, conversion between latin1 and
-UTF-8 will always be possible
-  Other conversions depend on the iconv
-library, which is not always available
-, between iso-8859-# and
-MS-Windows codepages), thus the converted menu file must be available
-78
-	press ""g""
-
-The ""-u maze
-
-
-
-The original README:
-
-To prove that you can do anything in vi, I wrote a couple of macros that
-allows vi to solve mazes
- run uudecode on the file ""maze
-macros
-macros""
-	(If you can't wait to see the action, jump to step 4)
-	2
- compile maze
-c with ""cc -o maze maze
- run maze > maze
- edit the maze (vi maze
-macros and all will be revealed
-
-Tested on a sparc, a sun and a pyramid (although maze
-c will not compile
-on the pyramid)
-
-
-Anyone who can't get the maze
-c by ""11""
-Thanks to John Tromp (tromp@piring
-c
-
-Thanks to antonyc@nntp-server
- Cat) for maze
-au
-Greg McFarlane	     UUCP:  {uunet,mcvax}!otc
-oz
-
-maze	Macros that solve a maze (amazing!)
-  Add the command to your
-vimrc file to use the package:
-
-packadd! dvorak		"" Dvorak keyboard support; adds mappings
-
-packadd! editexisting	"" when editing a file that is already edited with
-			"" another Vim instance, go to that Vim instance
-
-packadd! justify	"" justifying text
-
-
-Getting started:
-
-type
-in your shell:	 vim urm<RETURN>
-in vim:		 :so urm
- The URM
-concept is used in theoretical computer science to aid in theorem proving
-  A dot marks the end of a program
- (Bug: there must be a space
-after the dot
-
-
-Commands:
-a<n>		increment register <n>
-s<n>		decrement register <n>
-<x>;<y>		execute command <x> and then <y>
-(<x>)<n>	execute command <x> while register <n> is nonzero
-
-
-Note, undo may take a while after a division
-
-
-All files here ending in 
-vim will be sourced by Vim when it starts up
-vim	     edit files over a network and browse (remote) directories
-rrhelper
-vim	     used for --remote-wait editing
-spellfile
-vim	     edit (compressed) tar files
-tohtml
-vim plugin has
-taken over browsing directories (also for remote directories)
-
-
-
-
-
-
-This directory contains Vim scripts for syntax highlighting
-vim
-
-
-synload
-
-
-nosyntax
-vim	Used for the "":syntax off"" command
-vim	Check for color names and actual color on screen
-
-hitest
-
-whitespace
-vim  View Tabs and Spaces
-
-
-
-If you want to write a syntax file, read the docs at "":help usr_44
-org
-  Only when you get no response send a message to Bram@vim
-
-
-If you are the maintainer of a syntax file and make improvements, send the new
-version to Bram@vim
-org
-
-
-
-Some tools that can be used with Vim:
-
-blink
-c:	C program to make the cursor blink in an xterm
-*		Awk script to filter error messages to QuickFix format
-pl:	Perl script to create a tags file from Perl scripts
-
-
-ref:		Shell script for the K command
-*:	Perl script to create a tags file from a shell script
-*:	Shell script for highlighting spelling mistakes
-
-
-vim_vs_net
-cmd: MS-Windows command file to use Vim with MS Visual Studio 7 and
-		later
-
-
-xcmdsrv_client
-
-
-unicode
-
-
-Tutor is a file that contains the tutorial lessons
- You can simply
-execute ""vim tutor"" and then follow the instructions in the lessons
-
-The lessons tell you to modify the file, so DON'T DO THIS ON YOUR
-ORIGINAL COPY
-
-
-On Unix you can also use the ""vimtutor"" program
-
-
+change th",,,
+e groups that you want differently,,,,
+,,,,
+Note that `:highlight clear` uses the value of 'background', thus set it,,,
+before this command,,,,
+, bold) might be set in the defaults that you want,,,
+removed in your color scheme,,,,
+"  Use something like """"gui=NONE"""" to remove the",,,,
+attributes,,,,
+,,,,
+,,,,
+In case you want to set 'background' depending on the colorscheme selected,,,,
+this autocmd might be useful: >,,,,
+,,,,
+     autocmd SourcePre */colors/blue_sky,,,,
+vim set background=dark,,,,
+,,,,
+"Replace """"blue_sky"""" with the name of the colorscheme",,,,
+,,,,
+,,,,
+In case you want to tweak a colorscheme after it was loaded, check out the,,,
+ColorScheme autocommand event,,,,
+,,,,
+,,,,
+To clean up just before loading another colorscheme, use the ColorSchemePre,,,
+autocommand event,,,,
+  For example: >,,,,
+,,,,
+	let g:term_ansi_colors = ,,,,
+g,,,,
+vim/colors/mine,,,,
+"vim""""",,,,
+"and use """":runtime"""" to load the original colorscheme: >",,,,
+,,,,
+"	"""" load the """"evening"""" colorscheme",,,,
+	runtime colors/evening,,,,
+,,,,
+,,,,
+"You can use """":highlight"""" to find out the current colors",,,,
+  Exception: the,,,,
+ctermfg and ctermbg values are numbers, which are only valid for the current,,,
+terminal,,,,
+  See,,,,
+`:help cterm-colors` ,,,,
+,,,,
+,,,,
+The default color settings can be found in the source file src/syntax,,,,
+c,,,,
+,,,,
+"Search for """"highlight_init""""",,,,
+,,,,
+,,,,
+If you think you have a color scheme that is good enough to be used by others,,,,
+please check the following items:,,,,
+,,,,
+- Source the $VIMRUNTIME/colors/tools/check_colors,,,,
+vim script to check for,,,,
+  common mistakes,,,,
+,,,,
+,,,,
+- Does it work in a color terminal as well as in the GUI? Is it consistent?,,,,
+,,,,
+"- Is """"g:colors_name"""" set to a meaningful value?  In case of doubt you can do",,,,
+  it this way: >,,,,
+,,,,
+  	let g:colors_name = expand('<sfile>:t:r'),,,,
+,,,,
+"- Is 'background' either used or appropriately set to """"light"""" or """"dark""""?",,,,
+,,,,
+- Try setting 'hlsearch' and searching for a pattern, is the match easy to,,,
+  spot?,,,,
+,,,,
+"- Split a window with """":split"""" and """":vsplit""""",,,,
+  Are the status lines and,,,,
+  vertical separators clearly visible?,,,,
+,,,,
+- In the GUI, is it easy to find the cursor, also in a file with lots of,,
+  syntax highlighting?,,,,
+,,,,
+- In general, test your color scheme against as many filetypes, Vim features,,
+  environments, etc,,,
+,,,,
+,,,,
+- Do not use hard coded escape sequences, these will not work in other,,,
+  terminals,,,,
+  Always use #RRGGBB for the GUI,,,,
+  Names are more portable,,,,
+  than numbers, though,,,
+,,,,
+,,,,
+- When targetting 256 colors terminals, prefer colors 16-255 to colors 0-15,,,
+  for the same reason,,,,
+) are not,,,,
+  universally supported,,,,
+  Don't count on any of them,,,,
+com/lifepillar/vim-colortemplate),,,,
+  It is therefore highly,,,,
+recommended,,,,
+,,,,
+,,,,
+If you would like your color scheme to be distributed with Vim, make sure,,,
+that:,,,,
+,,,,
+- it satisfies the guidelines above,,,,
+- it was made with colortemplate,,,,
+,,,,
+and join us at vim/colorschemes: (https://github,,,,
+,,,,
+,,,,
+,,,,
+vim: set ft=help :,,,,
+,,,,
+,,,,
+,,,,
+This directory contains Vim scripts to be used with a specific compiler,,,,
+,,,,
+"They are used with the """":compiler"""" command",,,,
+,,,,
+,,,,
+These scripts usually set options, for example 'errorformat',,,
+,,,,
+"See """":help write-compiler-plugin""""",,,,
+,,,,
+,,,,
+,,,,
+,,,,
+The ftplugin directory is for Vim plugin scripts that are only used for a,,,,
+specific filetype,,,,
+,,,,
+For example," these are all loaded for the """"c"""" filetype:",,,
+,,,,
+	c,,,,
+vim,,,,
+	c/settings,,,,
+vim,,,,
+,,,,
+"Note that the """"_"""" in """"c_extra",,,,
+,,,,
+,,,,
+"The filetype plugins are only loaded when the """":filetype plugin"""" command has",,,,
+been used,,,,
+,,,,
+,,,,
+The default filetype plugin files contain settings that 95% of the users will,,,,
+want to use,,,,
+  They do not contain personal preferences, like the value of,,,
+'shiftwidth',,,,
+,,,,
+,,,,
+If you want to do additional settings, or overrule the default filetype,,,
+plugin, you can create your own plugin file,,,
+  Looking at the existing files should give you,,,,
+inspiration,,,,
+,,,,
+,,,,
+If you have remarks about an existing file, send them to the maintainer of,,,
+that file,,,,
+  Only when you get no response send a message to Bram@vim,,,,
+org,,,,
+,,,,
+"	if exists(""""b:did_indent"""")",,,,
+	  finish,,,,
+	endif,,,,
+	let b:did_indent = 1,,,,
+,,,,
+"Always use """":setlocal"""" to set 'indentexpr'",,,,
+  This avoids it being carried over,,,,
+to other buffers,,,,
+,,,,
+,,,,
+You normally set 'indentexpr' to evaluate a function and then define that,,,,
+function,,,,
+  That function only needs to be defined once for as long as Vim is,,,,
+running,,,,
+"  Add a test if the function exists and use """":finish""""", like this:,,,
+"	if exists(""""*GetMyIndent"""")",,,,
+	  finish,,,,
+	endif,,,,
+,,,,
+The user may have several options set unlike you, try to write the file such,,,
+that it works with any option settings,,,,
+  Also be aware of certain features not,,,,
+being compiled in,,,,
+,,,,
+,,,,
+To test the indent file, see testdir/README,,,
+txt,,,,
+,,,,
+,,,,
+,,,,
+keymap files for Vim,,,,
+,,,,
+One of these files is loaded when the 'keymap' option is set,,,,
+,,,,
+,,,,
+The name of the file consists of these parts:,,,,
+,,,,
+	{language}[-{layout}][_{encoding}],,,,
+vim,,,,
+,,,,
+{language}	Name of the language (e,,,,
+,,,,
+,,,,
+{encoding}	Optional: character encoding for which this keymap works,,,,
+,,,,
+"		When omitted the """"normal"""" encoding for the language is",,,,
+		assumed,,,,
+,,,,
+,,,,
+Each file starts with a header, naming the maintainer and the date when it was,,,
+last changed,,,,
+  If you find a problem in a keymap file, check if you have the,,,
+most recent version,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+Language files for Vim: Translated menus,,,,
+,,,,
+"The contents of each menu file is a sequence of lines with """"menutrans""""",,,,
+commands,,,,
+  Read one of the existing files to get an idea of how this works,,,,
+,,,,
+,,,,
+More information in the on-line help:,,,,
+,,,,
+	:help multilang-menus,,,,
+	:help :menutrans,,,,
+	:help 'langmenu',,,,
+	:help :language,,,,
+,,,,
+"The """"$VIMRUNTIME/menu",,,,
+"vim"""" file will search for a menu translation file",,,,
+  This,,,,
+"depends on the value of the """"v:lang"""" variable",,,,
+" """"",,,,
+,,,,
+,,,,
+The file name is always lower case,,,,
+"  It is the full name as the """":language""""",,,,
+command shows (the LC_MESSAGES value),,,,
+950,,,,
+,,,,
+and use the menu translation file:,,,,
+,,,,
+	$VIMRUNTIME/lang/menu_chinese(taiwan)_taiwan,,,,
+950,,,,
+"Big5""""",,,,
+"	sh/bash/ksh:	export LANG=""""zh_TW",,,,
+"Big5""""",,,,
+,,,,
+and the menu translation file is:,,,,
+,,,,
+	$VIMRUNTIME/lang/menu_zh_tw,,,,
+big5,,,,
+vim,,,,
+,,,,
+"The menu translation file should set the """"did_menu_trans"""" variable so that Vim",,,,
+will not load another file,,,,
+,,,,
+For UTF-8 menu files which only use latin1 characters, you can rely on Vim,,,
+doing the conversion,,,,
+  Let the UTF-8 menu file source the latin1 menu file,,,,
+"and put """"scriptencoding latin1"""" in that one",,,,
+g,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+To run the maze macros with Vim:,,,,
+,,,,
+	vim -u maze_mac maze_5,,,,
+"mac"""" loads the maze macros and skips loading your ",,,,
+vimrc, which,,,
+may contain settings and mappings that get in the way,,,,
+ It will solve any maze produced by maze,,,,
+c,,,,
+that was posted to the net recently,,,,
+,,,,
+,,,,
+Just follow this recipe and SEE FOR YOURSELF,,,,
+,,,,
+	1,,,,
+vi,,,,
+"uu"""" to",,,,
+"		produce the file """"maze",,,,
+vi,,,,
+"c""""",,,,
+	3,,,,
+out and input a small number (for example 10 if,,,,
+		you are on a fast machine, 3-5 if slow) which,,,
+		is the size of the maze to produce,,,,
+	4,,,,
+ include the macros with the vi command:,,,,
+		:so maze,,,,
+macros,,,,
+	6,,,,
+" type the letter """"g"""" (for """"go"""") and watch vi solve the maze",,,,
+	7,,,,
+ when vi solves the maze, you will see why it lies,,,
+	8,,,,
+ now look at maze,,,,
+vi,,,,
+c file to compile, get a new compiler,,,
+try maze,,,,
+ansi,,,,
+c which was also posted to the net,,,,
+,,,,
+If you can get it to compile but the maze comes out looking like a fence,,,,
+"and not a maze and you are using SysV or DOS replace the """"27"""" on the",,,,
+last line of maze,,,,
+cwi,,,,
+caltech,,,,
+edu (Bill T,,,,
+ansi,,,,
+,,,,
+,,,,
+Any donations should be in unmarked small denomination bills :^)=,,,,
+otca,,,,
+oz,,,,
+otca,,,,
+au!gregm,,,,
+|||| OTC ||	    Snail:  OTC R&D GPO Box 7000, Sydney 2001, Australia,,
+		    Phone:  +61 2 287 3139    Fax: +61 2 287 3299,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+The macros in the maze, hanoi and urm directories can be used to test Vim for,,,
+vi compatibility,,,,
+,,,,
+life	Macros that run Conway's game of life,,,,
+,,,,
+"urm	Macros that simulate a simple computer: """"Universal Register Machine""""",,,,
+,,,,
+,,,,
+,,,,
+The other files contain some handy utilities,,,,
+  They also serve as examples for,,,,
+how to use Vi and Vim functionality,,,,
+,,,,
+,,,,
+less,,,,
+sh + less,,,,
+vim	make Vim work like less (or more),,,,
+,,,,
+,,,,
+,,,,
+The following have been moved to an optional package,,,,
+,,,,
+"The URM macro package was written by Rudolf Koenig (""""Rudi"""")",,,,
+(rudolf@koeniglich,,,,
+de) for hpux-vi in August 1991,,,,
+vim<RETURN>,,,,
+in vim:		 *	(to load the registers and boot the URM-machine :-),,,,
+in vim:		 g	(for 'go') and watch the fun,,,,
+ Per default, 3 and 4,,,
+			are multiplied,,,,
+ Watch the Program counter, it is,,,
+			visible as a komma moving around,,,,
+,,,,
+,,,,
+"This is a """"standard URM"""" (Universal register machine)  interpreter",,,,
+,,,,
+Here it proves that vim is a general problem solver (if you bring enough,,,,
+patience),,,,
+,,,,
+,,,,
+The interpreter begins with register 1 (not 0), without macros and more-lines,,,
+capability,,,,
+),,,,
+,,,,
+The registers are the first few lines, beginning with a '>' ,,,
+,,,,
+The program is the first line after the registers,,,,
+,,,,
+You should always initialize the registers required by the program,,,,
+,,,,
+,,,,
+Output register:	line 2,,,,
+Input registers:	line 2 to ,,,,
+,,,,
+,,,,
+" 		(""""dot blank"""")  halt the machine",,,,
+,,,,
+,,,,
+Examples:,,,,
+,,,,
+Add register 2 to register 3:,,,,
+	(a2;s3)3,,,,
+,,,,
+Multiply register 2 with register 3:,,,,
+	(a4;a5;s2)2; ((a2;s4)4; s3; (a1;a4;s5)5; (a5;s1)1)3,,,,
+,,,,
+,,,,
+There are more (complicated) examples in the file examples,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+The plugin directory is for standard Vim plugin scripts,,,,
+,,,,
+Look in the file for hints on how it can be disabled without deleting it,,,,
+,,,,
+,,,,
+getscriptPlugin,,,,
+vim  get latest version of Vim scripts,,,,
+gzip,,,,
+vim	     edit compressed files,,,,
+logiPat,,,,
+vim	     logical operators on patterns,,,,
+manpager,,,,
+vim	     using Vim as manpager,,,,
+matchparen,,,,
+vim	     highlight paren matching the one under the cursor,,,,
+netrwPlugin,,,,
+vim	     convert a file with syntax highlighting to HTML,,,,
+vimballPlugin,,,,
+vim    create and unpack ,,,,
+vba files,,,,
+zipPlugin,,,,
+vim	     edit zip archives,,,,
+,,,,
+Note: the explorer,,,,
+vim plugin is no longer here, the netrw,,,
+,,,,
+,,,,
+These scripts are not for a language, but are used by Vim itself:,,,
+,,,,
+syntax,,,,
+"vim	Used for the """":syntax on"""" command",,,,
+  Uses synload,,,,
+vim,,,,
+,,,,
+,,,,
+manual,,,,
+"vim	Used for the """":syntax manual"""" command",,,,
+  Uses synload,,,,
+vim	Contains autocommands to load a language file when a certain,,,,
+		file name (extension) is used,,,,
+  And sets up the Syntax menu,,,,
+		for the GUI,,,,
+  Undo the loading of,,,,
+		synload,,,,
+,,,,
+,,,,
+,,,,
+A few special files:,,,,
+,,,,
+2html,,,,
+vim	Converts any highlighted file to HTML (GUI only),,,,
+,,,,
+colortest,,,,
+vim	View the current highlight settings,,,,
+"txt""""",,,,
+,,,,
+,,,,
+If you make a new syntax file which would be useful for others, please send it,,,
+to Bram@vim,,,,
+  Include instructions for detecting the file type for this,,,,
+language, by file name extension or by checking a few lines in the file,,,
+,,,,
+And please write the file in a portable way," see """":help 44",,,
+,,,,
+,,,,
+If you have remarks about an existing file, send them to the maintainer of,,,
+that file,,,,
+,,,,
+,,,,
+"For further info see """":help syntax"""" in Vim",,,,
+,,,,
+,,,,
+ccfilter*:	C program to filter the output of a few compilers to a common,,,,
+		QuickFix format,,,,
+,,,,
+,,,,
+efm_filter,,,,
+*:	Perl script to filter compiler messages to QuickFix format,,,,
+,,,,
+,,,,
+efm_perl,,,,
+pl:	Perl script to filter error messages from the Perl interpreter,,,,
+		for use with Vim quickfix mode,,,,
+,,,,
+,,,,
+mve,,,,
+,,,,
+,,,,
+pltags,,,,
+,,,,
+,,,,
+vim132:		Shell script to edit in 132 column mode on vt100 compatible,,,,
+		terminals,,,,
+,,,,
+,,,,
+vimm:		Shell script to start Vim on a DEC terminal with mouse,,,,
+		enabled,,,,
+,,,,
+,,,,
+vimspell,,,,
+c:  Example for a client program that communicates with a Vim,,,,
+		   server through the X-Windows interface,,,,
+vim	Vim script to generate tables for src/mbyte,,,,
+c,,,,
+,,,,
+,,,,
+[xxd can be found in the src directory],,,,
+,,,,
+,,,,
+"Tutor is a """"hands on"""" tutorial for new users of the Vim editor",,,,
+,,,,
+,,,,
+Most new users can get through it in less than one hour,,,,
+ The result,,,,
+is that you can do a simple editing task using the Vim editor,,,,
+  It will make a,,,,
+scratch copy of the tutor first,,,,
+,,,,
+,,,,
+I have considered adding more advanced lessons but have not found the,,,,
+time,,,,
+ Please let me know how you like it and send any improvements you,,,,
+make,,,,
+colorado,,,,
+edu bware@slate,,,,
+mines,,,,
+colorado,,,,
+edu bware@mines,,,,
+xx and tutor,,,,
+utf-8 files are translated files (where xx is the,,,,
+language code),,,,
+xx might be latin1 or other traditional,,,,
+encoding,,,,
+xx,,,,
+,,,,
+If you need another encoding, you can also prepare a file named tutor,,,
+xx,,,,
+vim file,,,,
+xx from tutor,,,,
+,,,,
+See the Makefile for detail,,,,
+  (For some languages, tutor,,,
+xx,,,,
+utf-8 is created,,,,
+from tutor,,,,
+],,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+",",,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+ Note that the only valid version of the GPL as far as this project,,,,
+ is concerned is _this_ particular version of the license (ie v2, not,,,
+ v2,,,,
+2 or v3,,,,
+x or whatever), unless explicitly otherwise stated,,,
+,,,,
+,,,,
+ HOWEVER, in order to allow a migration to GPLv3 if that seems like,,,
+ a good idea, I also ask that people involved with the project make,,,
+ their preferences known,,,,
+ In particular, if you trust me to make that,,,
+ decision, you might note so in your copyright message, ie something,,
+ like,,,,
+,,,,
+	This file is licensed under the GPL v2, or a later version,,,
+	at the discretion of Linus,,,,
+,,,,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA,
+ Everyone is permitted to copy and distribute verbatim copies,,,,
+ of this license document, but changing it is not allowed,,,
+,,,,
+,,,,
+			    Preamble,,,,
+,,,,
+  The licenses for most software are designed to take away your,,,,
+freedom to share and change it,,,,
+  (Some other Free Software Foundation software is covered by,,,,
+the GNU Lesser General Public License instead,,,,
+)  You can apply it to,,,,
+your programs, too,,,
+,,,,
+,,,,
+  We protect your rights with two steps: (1) copyright the software, and,,,
+(2) offer you this license which gives you legal permission to copy,,,,
+distribute and/or modify the software,,,,
+"  The """"Program""""", below,,,
+refers to any such program or work," and a """"work based on the Program""""",,,
+means either the Program or any derivative work under copyright law:,,,,
+that is to say, a work containing the Program or a portion of it,,,
+either verbatim or with modifications and/or translated into another,,,,
+language,,,,
+")  Each licensee is addressed as """"you""""",,,,
+,,,,
+,,,,
+You may charge a fee for the physical act of transferring a copy, and,,,
+you may at your option offer warranty protection in exchange for a fee,,,,
+,,,,
+,,,,
+2,,,,
+,,,,
+,,,,
+    b) You must cause any work that you distribute or publish, that in,,,
+    whole or in part contains or is derived from the Program or any,,,,
+    part thereof, to be licensed as a whole at no charge to all third,,,
+    parties under the terms of this License,,,,
+,,,,
+,,,,
+    c) If the modified program normally reads commands interactively,,,,
+    when run, you must cause it, when started running for such,,
+    interactive use in the most ordinary way, to print or display an,,,
+    announcement including an appropriate copyright notice and a,,,,
+    notice that there is no warranty (or else, saying that you provide,,,
+    a warranty) and that users may redistribute the program under,,,,
+    these conditions, and telling the user how to view a copy of this,,,
+    License,,,,
+  But when you,,,,
+distribute the same sections as part of a whole which is a work based,,,,
+on the Program, the distribution of the whole must be on the terms of,,,
+this License, whose permissions for other licensees extend to the,,,
+entire whole, and thus to each and every part regardless of who wrote it,,,
+ You may copy and distribute the Program (or a work based on it,,,,
+under Section 2) in object code or executable form under the terms of,,,,
+Sections 1 and 2 above provided that you also do one of the following:,,,,
+,,,,
+    a) Accompany it with the complete corresponding machine-readable,,,,
+    source code, which must be distributed under the terms of Sections,,,
+    1 and 2 above on a medium customarily used for software interchange; or,,,,
+,,,,
+    b) Accompany it with a written offer, valid for at least three,,,
+    years, to give any third party, for a charge no more than your,,
+    cost of physically performing source distribution, a complete,,,
+    machine-readable copy of the corresponding source code, to be,,,
+    distributed under the terms of Sections 1 and 2 above on a medium,,,,
+    customarily used for software interchange; or,,,,
+,,,,
+    c) Accompany it with the information you received as to the offer,,,,
+    to distribute corresponding source code,,,,
+  For an executable work, complete source,,,
+code means all the source code for all modules it contains, plus any,,,
+associated interface definition files, plus the scripts used to,,,
+control compilation and installation of the executable,,,,
+,,,,
+,,,,
+If distribution of executable or object code is made by offering,,,,
+access to copy from a designated place, then offering equivalent,,,
+access to copy the source code from the same place counts as,,,,
+distribution of the source code, even though third parties are not,,,
+compelled to copy the source along with the object code,,,,
+  These actions are,,,,
+prohibited by law if you do not accept this License,,,,
+  Therefore, by,,,
+modifying or distributing the Program (or any work based on the,,,,
+Program), you indicate your acceptance of this License to do so, and,,
+all its terms and conditions for copying, distributing or modifying,,,
+the Program or works based on it,,,,
+,,,,
+,,,,
+6,,,,
+  You may not impose any further,,,,
+restrictions on the recipients' exercise of the rights granted herein,,,,
+  If you cannot,,,,
+distribute so as to satisfy simultaneously your obligations under this,,,,
+License and any other pertinent obligations, then as a consequence you,,,
+may not distribute the Program at all,,,,
+  For example, if a patent,,,
+license would not permit royalty-free redistribution of the Program by,,,,
+all those who receive copies directly or indirectly through you, then,,,
+the only way you could satisfy both it and this License would be to,,,,
+refrain entirely from distribution of the Program,,,,
+,,,,
+,,,,
+8,,,,
+ The Free Software Foundation may publish revised and/or new versions,,,,
+of the General Public License from time to time,,,,
+  Such new versions will,,,,
+be similar in spirit to the present version, but may differ in detail to,,,
+address new problems or concerns,,,,
+,,,,
+,,,,
+Each version is given a distinguishing version number,,,,
+  If the Program,,,,
+"specifies a version number of this License which applies to it and """"any",,,,
+"later version""""", you have the option of following the terms and conditions,,,
+either of that version or of any later version published by the Free,,,,
+Software Foundation,,,,
+  If the Program does not specify a version number of,,,,
+this License, you may choose any version ever published by the Free Software,,,
+Foundation,,,,
+ If you wish to incorporate parts of the Program into other free,,,,
+programs whose distribution conditions are different, write to the author,,,
+to ask for permission,,,,
+  Our decision will be guided by the two goals,,,,
+of preserving the free status of all derivatives of our free software and,,,,
+of promoting the sharing and reuse of software generally,,,,
+,,,,
+,,,,
+		     END OF TERMS AND CONDITIONS,,,,
+,,,,
+	    How to Apply These Terms to Your New Programs,,,,
+,,,,
+  If you develop a new program, and you want it to be of the greatest,,,
+possible use to the public, the best way to achieve this is to make it,,,
+free software which everyone can redistribute and change under these terms,,,,
+>,,,,
+    Copyright (C) <year>  <name of author>,,,,
+,,,,
+    This program is free software; you can redistribute it and/or modify,,,,
+    it under the terms of the GNU General Public License as published by,,,,
+    the Free Software Foundation; either version 2 of the License, or,,,
+    (at your option) any later version,,,,
+  See the,,,,
+    GNU General Public License for more details,,,,
+,,,,
+,,,,
+Also add information on how to contact you by electronic and paper mail,,,,
+,,,,
+,,,,
+The hypothetical commands `show w' and `show c' should show the appropriate,,,,
+parts of the General Public License,,,,
+,,,,
+,,,,
+You should also get your employer (if you work as a programmer) or your,,,,
+school, if any," to sign a """"copyright disclaimer"""" for the program", if,
+necessary,,,,
+,,,,
+,,,,
+  <signature of Ty Coon>, 1 April 1989,,,
+  Ty Coon, President of Vice,,,
+,,,,
+This General Public License does not permit incorporating your program into,,,,
+proprietary programs,,,,
+,,,,
+,,,,
+,,,,
+# Git Credential Manager,,,,
+,,,,
+[![Build Status][build-status-badge]][workflow-status],,,,
+,,,,
+---,,,,
+,,,,
+[Git Credential Manager][gcm] (GCM) is a secure,,,,
+[Git credential helper][git-credential-helper] built on [,,,,
+,,,,
+,,,,
+GCM supports (in alphabetical order) [Azure DevOps][azure-devops], Azure DevOps,,,
+Server (formerly Team Foundation Server), Bitbucket, GitHub, and GitLab,
+,,,,
+,,,,
+GCM replaces both the ,,,,
+,,,,
+,,,,
+## Install,,,,
+,,,,
+See the [installation instructions][install] for the current version of GCM for,,,,
+install options for your operating system,,,,
+,,,,
+,,,,
+## Current status,,,,
+,,,,
+Git Credential Manager is currently available for Windows, macOS, and Linux\*,,
+,,,,
+GCM only works with HTTP(S) remotes; you can still use Git with SSH:,,,,
+,,,,
+- [Azure DevOps SSH][azure-devops-ssh],,,,
+- [GitHub SSH][github-ssh],,,,
+- [Bitbucket SSH][bitbucket-ssh],,,,
+,,,,
+Feature|Windows|macOS|Linux\*,,,,
+-|:-:|:-:|:-:,,,,
+Installer/uninstaller|&#10003;|&#10003;|&#10003;,,,,
+Secure platform credential storage [(see more)][gcm-credstores]|&#10003;|&#10003;|&#10003;,,,,
+Multi-factor authentication support for Azure DevOps|&#10003;|&#10003;|&#10003;,,,,
+Two-factor authentication support for GitHub|&#10003;|&#10003;|&#10003;,,,,
+Two-factor authentication support for Bitbucket|&#10003;|&#10003;|&#10003;,,,,
+Two-factor authentication support for GitLab|&#10003;|&#10003;|&#10003;,,,,
+Windows Integrated Authentication (NTLM/Kerberos) support|&#10003;|_N/A_|_N/A_,,,,
+Basic HTTP authentication support|&#10003;|&#10003;|&#10003;,,,,
+Proxy support|&#10003;|&#10003;|&#10003;,,,,
+`amd64` support|&#10003;|&#10003;|&#10003;,,,,
+`x86` support|&#10003;|_N/A_|&#10007;,,,,
+`arm64` support|best effort|&#10003;|best effort, no packages,,,
+`armhf` support|_N/A_|_N/A_|best effort, no packages,,,
+,,,,
+(\*) GCM guarantees support only for [the Linux distributions that are officially,,,,
+supported by dotnet][dotnet-distributions],,,,
+,,,,
+,,,,
+## Supported Git versions,,,,
+,,,,
+Git Credential Manager tries to be compatible with the broadest set of Git,,,,
+versions (within reason),,,,
+ However there are some know problematic releases of,,,,
+Git that are not compatible,,,,
+26,,,,
+ For example, when pushing (`git push`) to,,,
+[Azure DevOps][azure-devops], [Bitbucket][bitbucket], or [GitHub][github], a,
+window will automatically open and walk you through the sign-in process,,,,
+,,,,
+,,,,
+## License,,,,
+,,,,
+We're [MIT][gcm-license] licensed,,,,
+azure,,,,
+svg,,,,
+[docs-index]: https://github,,,,
+com/GitCredentialManager/git-credential-manager/blob/release/docs/README,,,,
+com/docs/gitcredentials,,,,
+[gcm]: https://github,,,,
+com/GitCredentialManager/git-credential-manager/blob/release/docs/credstores,,,,
+md,,,,
+[gcm-for-mac-and-linux]: https://github,,,,
+com/microsoft/Git-Credential-Manager-for-Mac-and-Linux,,,,
+[gcm-for-windows]: https://github,,,,
+md,,,,
+[git-tools-credential-storage]: https://git-scm,,,,
+com/book/en/v2/Git-Tools-Credential-Storage,,,,
+[github]: https://github,,,,
+microsoft,,,,
+com/repos/,,,,
+[workflow-status]: https://github,,,,
+com),,,,
+for an overview of features,,,,
+,,,,
+,,,,
+## Getting Started,,,,
+,,,,
+### Downloading,,,,
+,,,,
+You can install the Git LFS client in several different ways, depending on your,,,
+setup and preferences,,,,
+io/github/git-lfs/install),,,,
+,,,,
+* **macOS users**,,,,
+ [Homebrew](https://brew,,,,
+ In addition, [binary packages](https://github,,,
+org), and the,,,
+available instructions in our,,,,
+[Wiki](https://github,,,,
+asc` file and verify,,,,
+the file you want like so:,,,,
+,,,,
+```ShellSession,,,,
+$ gpg -d sha256sums,,,,
+asc | grep git-lfs-linux-amd64-v2,,,,
+ You can read,,,,
+more about this pattern syntax,,,,
+[here](https://git-scm,,,,
+gitattributes` file_,,,,
+gitattributes,,,,
+"$ git commit -m """"track *",,,,
+ For example, changing a file named `my,,,
+psd`,,,,
+(tracked above via `*,,,,
+ To migrate existing large files,,,,
+> in your history to use Git LFS, use `git lfs migrate`,,,
+"psd"""" --everything",,,,
+```,,,,
+,,,,
+**Note that this will rewrite history and change all of the Git object IDs in your,,,,
+repository, just like the import version of this command,,,
+,,,,
+,,,,
+## Limitations,,,,
+,,,,
+Git LFS maintains a list of currently known limitations, which you can find and,,,
+edit [here](https://github,,,,
+  Please do not import the `git-lfs`,,,,
+module into other Go code and do not rely on it as a source code dependency,,,,
+  There's also a [FAQ](https://github,,,,
+adoc),,,,
+shipped with Git LFS which answers some common questions,,,,
+ Related projects are listed on the [Implementations wiki,,,,
+page](https://github,,,,
+com/u/28857117?s=100&v=4,,,,
+[larsxschneider-img]: https://avatars1,,,,
+,,,,
+,,,,
+In alphabetical order:,,,,
+,,,,
+| [@andyneff][andyneff-user] | [@PastelMobileSuit][PastelMobileSuit-user] | [@rubyist][rubyist-user] | [@sinbad][sinbad-user] | [@technoweenie][technoweenie-user] | [@ttaylorr][ttaylorr-user] |,,,,
+| :---: | :---: | :---: | :---: | :---: | :---: |,,,,
+| [![][andyneff-img]][andyneff-user] | [![][PastelMobileSuit-img]][PastelMobileSuit-user] | [![][rubyist-img]][rubyist-user] | [![][sinbad-img]][sinbad-user] | [![][technoweenie-img]][technoweenie-user] | [![][ttaylorr-img]][ttaylorr-user] |,,,,
+,,,,
+[andyneff-img]: https://avatars1,,,,
+githubusercontent,,,,
+com/u/37254014?s=100&v=4,,,,
+[rubyist-img]: https://avatars1,,,,
+githubusercontent,,,,
+com/u/443245?s=100&v=4,,,,
+[andyneff-user]: https://github,,,,
+com/sinbad,,,,
+[rubyist-user]: https://github,,,,
+,,,,
+,,,,
+Copyright 1998 by the Massachusetts Institute of Technology,,,,
+I,,,,
+I,,,,
+                                    --,,,,
+--                                                                           --,,,,
+-- Except as contained in this notice, the name(s) of the above copyright    --,,,
+-- holders shall not be used in advertising or otherwise to promote the      --,,,,
+#NAME?, use or other dealings in this Software without prior written        --,,,
+#NAME?,,,,
+                                                            --,,,,
+-------------------------------------------------------------------------------,,,,
+-- $Id: README,v 1,,,
+2,,,,
+  Last change: 2022 Mar 02,,,,
+,,,,
+,,,,
+		  VIM REFERENCE MANUAL    by Bram Moolenaar,,,,
+,,,,
+,,,,
+			*uganda* *Uganda* *copying* *copyright* *license*,,,,
+SUMMARY,,,,
+								*iccf* *ICCF*,,,,
+Vim is Charityware,,,,
+  Please see |kcc|,,,,
+below or visit the ICCF web site, available at these URLs:,,,
+,,,,
+	https://iccf-holland,,,,
+org/,,,,
+	https://www,,,,
+vim,,,,
+org/iccf/,,,,
+	https://www,,,,
+  Vim sponsors can vote for,,,,
+features,,,,
+  You can also distribute,,,,
+    unmodified parts of Vim, likewise unrestricted except that they must,,,
+    include this license text,,,,
+  You are also allowed to include executables,,,,
+    that you made from the unmodified Vim sources, plus your own usage,,,
+    examples and Vim scripts,,,,
+org>,,,,
+net, www,,,
+vim,,,,
+,,,,
+       d) When you have a modified Vim which includes changes as mentioned,,,,
+	  under c), you can distribute it without the source code for the,,,
+	  changes if the following three conditions are met:,,,,
+	  - The license that applies to the changes permits you to distribute,,,,
+	    the changes to the Vim maintainer without fee or restriction, and,,,
+	    permits the Vim maintainer to include the changes in the official,,,,
+	    version of Vim without fee or restriction,,,,
+,,,,
+    3) A message must be added," at least in the output of the """":version""""",,,
+       command and in the intro screen, such that the user of the modified Vim,,,
+       is able to see that it was modified,,,,
+  When distributing as mentioned,,,,
+       under 2)e) adding the message is only required for as far as this does,,,,
+       not conflict with the license used for the changes,,,,
+  The preferred way to do this is,,,,
+     by e-mail or by uploading the files to a server and e-mailing the URL,,,,
+,,,,
+,,,,
+=== end of license ===,,,,
+,,,,
+Note:,,,,
+,,,,
+- If you are happy with Vim, please express that by reading the rest of this,,,
+  file and consider helping needy children in Uganda,,,,
+,,,,
+  A few minor changes have been made since he checked it, but that should not,,,
+  make a difference,,,,
+  Also when you didn't actually change,,,,
+  anything in Vim,,,,
+,,,,
+,,,,
+- Once a change is included that goes under the GNU GPL, this forces all,,,
+  further changes to also be made under the GNU GPL or a compatible license,,,,
+  The area is known as Rakai,,,,
+District,,,,
+  The population is mostly farmers,,,,
+  Some say that it started there,,,,
+  In this district about 60,000 children,,,
+have lost one or both parents, out of a population of 350,0,,
+  Now that the government is stable again, the children and parents have,,,
+to learn how to take care of themselves and how to avoid infections,,,,
+  Because these families are big and the income,,,,
+(if any) is low, a child is lucky if it gets healthy food,,,
+  To help these needy children, a,,,
+sponsorship program was put into place,,,,
+,,,,
+For a few dollars a month KCC sees to it that the child gets indispensable,,,,
+items, is healthy, goes to school and KCC takes care of anything else that,,
+needs to be done for the child and the family that supports it,,,,
+,,,,
+Health workers are being trained, hygiene education is carried out and,,,
+households are stimulated to build a proper latrine,,,,
+,,,,
+They are sold below cost price,,,,
+,,,,
+,,,,
+There is a clinic at the project, which provides children and their family,,,
+medical help,,,,
+  When needed, transport to a hospital is offered,,,
+  This is possible because this is a small,,,,
+organization that works with volunteers,,,,
+  If you would like to sponsor a,,,,
+child, you should have the intention to do this for at least one year,,,
+,,,,
+,,,,
+How do you know that the money will be spent right?  First of all you have my,,,,
+personal guarantee as the author of Vim,,,,
+org>,,,,
+o,,,,
+kuwasha,,,,
+,,,,
+		Please send me a note so that I know what has been donated,,,,
+		because of Vim,,,,
+kuwasha,,,,
+  This will allow for tax deduction if you live in,,,,
+		Holland,,,,
+org/germany,,,,
+"  See """"Others"""" below for the",,,,
+		swift code and IBAN number,,,,
+  This is,,,,
+		the most widely used Internet based payment system,,,,
+paypal,,,,
+vim	for editing compressed files,,,,
+netrw*,,,,
+vim	browsing (remote) directories and editing remote files,,,,
+tar,,,,
+vim		browsing tar files,,,,
+zip,,,,
+vim, menu,,,
+vim,,,,
+spellfile,,,,
+vim	downloading of a missing spell file,,,,
+,,,,
+Omni completion files:,,,,
+ccomplete,,,,
+vim		C,,,,
+csscomplete,,,,
+vim		HTML / CSS,,,,
+htmlcomplete,,,,
+vim		PHP,,,,
+pythoncomplete,,,,
+vim	from syntax highlighting,,,,
+xmlcomplete,,,,
+vim		XML (uses files in the xml directory),,,,
+,,,,
+,,,,
+,,,,
+,,,,
+README,,,,
+txt for color scheme files,,,,
+,,,,
+These files are used for the `:colorscheme` command,,,,
+  They appear in the,,,,
+"Edit/Color Scheme"""" menu in the GUI",,,,
+com/vim/colorschemes/tree/master/legacy_colors,,,,
+,,,,
+,,,,
+Hints for writing a color scheme file:,,,,
+,,,,
+There are two basic ways to define a color scheme:,,,,
+,,,,
+1,,,,
+ Use the default Normal color and automatically adjust to the value of,,,,
+   'background',,,,
+,,,,
+  This will also work for groups,,,,
+that are added in later versions of Vim,,,,
+,,,,
+Some attributes (e,,,,
+g,,,,
+,,,,
+	augroup MyColorscheme,,,,
+	  au!,,,,
+	  au ColorSchemePre * unlet g:term_ansi_colors,,,,
+	  au ColorSchemePre * au! MyColorscheme,,,,
+	augroup END,,,,
+,,,,
+To customize a colorscheme use another name, e,,,
+"  """"~/",,,,
+vim,,,,
+"	"""" change the color of statements",,,,
+	hi Statement ctermfg=Blue guifg=Blue,,,,
+,,,,
+To see which highlight group is used where, see `:help highlight-groups` and,,,
+`:help group-name` ,,,,
+  Use the color names instead for better portability,,,,
+ as possible,,,,
+,,,,
+,,,,
+"- Is """"g:terminal_ansi_colors"""" set to a list of 16 #RRGGBB values?",,,,
+,,,,
+- Try to keep your color scheme simple by avoiding unnecessary logic and,,,,
+  refraining from adding options,,,,
+  The best color scheme is one that only,,,,
+  requires: >,,,,
+,,,,
+  	colorscheme foobar,,,,
+,,,,
+The color schemes distributed with Vim are built with lifepillar/colortemplate,,,,
+(https://github,,,,
+,,,,
+,,,,
+If you want to write your own compiler plugin, have a look at the other files,,,
+for how to do it, the format is simple,,,
+,,,,
+,,,,
+If you think a compiler plugin you have written is useful for others, please,,,
+send it to Bram@vim,,,,
+vim in this directory and subdirectories will be sourced,,,,
+by Vim when it detects the filetype that matches the name of the file or,,,,
+subdirectory,,,,
+vim,,,,
+	c_extra,,,,
+"vim"""" is required to separate the filetype name",,,,
+from the following arbitrary name,,,,
+"  See """":help ftplugin"""" in Vim",,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+This directory contains files to automatically compute the indent for a,,,,
+type of file,,,,
+,,,,
+,,,,
+If you want to add your own indent file for your personal use, read the docs,,,
+"at """":help indent-expression""""",,,,
+,,,,
+,,,,
+If you make a new indent file which would be useful for others, please send it,,,
+to Bram@vim,,,,
+org,,,,
+,,,,
+And please stick to the rules below,,,,
+org,,,,
+,,,,
+,,,,
+If you are the maintainer of an indent file and make improvements, e-mail the,,,
+new version to Bram@vim,,,,
+,,,,
+,,,,
+,,,,
+Rules for making an indent file:,,,,
+,,,,
+"You should use this check for """"b:did_indent"""":",,,,
+,,,,
+"	"""" Only load this indent file when no other was loaded yet",,,,
+g,,,,
+," """"hebrew"""""," """"greek"""")",,
+,,,,
+{layout}	Optional: name of the keyboard layout (e,,,,
+g,,,,
+  When omitted the layout of the standard,,,,
+		US-english keyboard is assumed,,,,
+  If necessary, report a problem to the maintainer,,,
+,,,,
+,,,,
+"The format of the keymap lines below """"loadkeymap"""" is explained in the Vim help",,,,
+files," see """":help keymap-file-format""""",,,
+ v:lang ,,,,
+"vim""""",,,,
+,,,,
+When the 'menutrans' option is set, its value will be used instead of v:lang,,,
+,,,,
+,,,,
+For example, to use the Big5 (Taiwan) menus on MS-Windows the $LANG will be,,,
+,,,,
+	Chinese(Taiwan)_Taiwan,,,,
+vim,,,,
+,,,,
+On Unix you should set $LANG, depending on your shell:,,,
+,,,,
+"	csh/tcsh:	setenv LANG """"zh_TW",,,,
+,,,,
+,,,,
+,,,,
+AUTOMATIC CONVERSION,,,,
+,,,,
+When Vim was compiled with multi-byte support, conversion between latin1 and,,,
+UTF-8 will always be possible,,,,
+  Other conversions depend on the iconv,,,,
+library, which is not always available,,,
+, between iso-8859-# and,,,
+MS-Windows codepages), thus the converted menu file must be available,,,
+78,,,,
+"	press """"g""""",,,,
+,,,,
+"The """"-u maze",,,,
+,,,,
+,,,,
+,,,,
+The original README:,,,,
+,,,,
+To prove that you can do anything in vi, I wrote a couple of macros that,,,
+allows vi to solve mazes,,,,
+" run uudecode on the file """"maze",,,,
+macros,,,,
+"macros""""",,,,
+	(If you can't wait to see the action, jump to step 4),,,
+	2,,,,
+ compile maze,,,,
+"c with """"cc -o maze maze",,,,
+ run maze > maze,,,,
+ edit the maze (vi maze,,,,
+macros and all will be revealed,,,,
+,,,,
+Tested on a sparc, a sun and a pyramid (although maze,,,
+c will not compile,,,,
+on the pyramid),,,,
+,,,,
+,,,,
+Anyone who can't get the maze,,,,
+"c by """"11""""",,,,
+Thanks to John Tromp (tromp@piring,,,,
+c,,,,
+,,,,
+Thanks to antonyc@nntp-server,,,,
+ Cat) for maze,,,,
+au,,,,
+Greg McFarlane	     UUCP:  {uunet,mcvax}!otc,,,
+oz,,,,
+,,,,
+maze	Macros that solve a maze (amazing!),,,,
+  Add the command to your,,,,
+vimrc file to use the package:,,,,
+,,,,
+"packadd! dvorak		"""" Dvorak keyboard support; adds mappings",,,,
+,,,,
+"packadd! editexisting	"""" when editing a file that is already edited with",,,,
+"			"""" another Vim instance", go to that Vim instance,,,
+,,,,
+"packadd! justify	"""" justifying text",,,,
+,,,,
+,,,,
+Getting started:,,,,
+,,,,
+type,,,,
+in your shell:	 vim urm<RETURN>,,,,
+in vim:		 :so urm,,,,
+ The URM,,,,
+concept is used in theoretical computer science to aid in theorem proving,,,,
+  A dot marks the end of a program,,,,
+ (Bug: there must be a space,,,,
+after the dot,,,,
+,,,,
+,,,,
+Commands:,,,,
+a<n>		increment register <n>,,,,
+s<n>		decrement register <n>,,,,
+<x>;<y>		execute command <x> and then <y>,,,,
+(<x>)<n>	execute command <x> while register <n> is nonzero,,,,
+,,,,
+,,,,
+Note, undo may take a while after a division,,,
+,,,,
+,,,,
+All files here ending in ,,,,
+vim will be sourced by Vim when it starts up,,,,
+vim	     edit files over a network and browse (remote) directories,,,,
+rrhelper,,,,
+vim	     used for --remote-wait editing,,,,
+spellfile,,,,
+vim	     edit (compressed) tar files,,,,
+tohtml,,,,
+vim plugin has,,,,
+taken over browsing directories (also for remote directories),,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+This directory contains Vim scripts for syntax highlighting,,,,
+vim,,,,
+,,,,
+,,,,
+synload,,,,
+,,,,
+,,,,
+nosyntax,,,,
+"vim	Used for the """":syntax off"""" command",,,,
+vim	Check for color names and actual color on screen,,,,
+,,,,
+hitest,,,,
+,,,,
+whitespace,,,,
+vim  View Tabs and Spaces,,,,
+,,,,
+,,,,
+,,,,
+If you want to write a syntax file," read the docs at """":help usr_44",,,
+org,,,,
+  Only when you get no response send a message to Bram@vim,,,,
+,,,,
+,,,,
+If you are the maintainer of a syntax file and make improvements, send the new,,,
+version to Bram@vim,,,,
+org,,,,
+,,,,
+,,,,
+,,,,
+Some tools that can be used with Vim:,,,,
+,,,,
+blink,,,,
+c:	C program to make the cursor blink in an xterm,,,,
+*		Awk script to filter error messages to QuickFix format,,,,
+pl:	Perl script to create a tags file from Perl scripts,,,,
+,,,,
+,,,,
+ref:		Shell script for the K command,,,,
+*:	Perl script to create a tags file from a shell script,,,,
+*:	Shell script for highlighting spelling mistakes,,,,
+,,,,
+,,,,
+vim_vs_net,,,,
+cmd: MS-Windows command file to use Vim with MS Visual Studio 7 and,,,,
+		later,,,,
+,,,,
+,,,,
+xcmdsrv_client,,,,
+,,,,
+,,,,
+unicode,,,,
+,,,,
+,,,,
+Tutor is a file that contains the tutorial lessons,,,,
+ You can simply,,,,
+"execute """"vim tutor"""" and then follow the instructions in the lessons",,,,
+,,,,
+The lessons tell you to modify the file, so DON'T DO THIS ON YOUR,,,
+ORIGINAL COPY,,,,
+,,,,
+,,,,
+"On Unix you can also use the """"vimtutor"""" program",,,,
+,,,,
+,,,,
 Bob Ware, Colorado School of Mines, Golden, Co 80401, USA
-(303) 273-3987
-bware@mines
-bitnet
-
-
-Translation
------------
-
-The tutor
-xx
-  The encoding of tutor
-  If you don't need a translation with such traditional encoding,
-you just need to prepare the tutor
-utf-8 file
-enc
-(replace enc with the actual encoding name)
-  You might also need to adjust the
-tutor
-xx
-utf-8
-xx for historical reasons
-)
-
-[This file was modified for Vim by Bram Moolenaar et al","  By contrast, the GNU General Public
+(303) 273-3987,,,,
+bware@mines,,,,
+bitnet,,,,
+,,,,
+,,,,
+Translation,,,,
+-----------,,,,
+,,,,
+The tutor,,,,
+xx,,,,
+  The encoding of tutor,,,,
+  If you don't need a translation with such traditional encoding,,,,
+you just need to prepare the tutor,,,,
+utf-8 file,,,,
+enc,,,,
+(replace enc with the actual encoding name),,,,
+  You might also need to adjust the,,,,
+tutor,,,,
+xx,,,,
+utf-8,,,,
+xx for historical reasons,,,,
+),,,,
+,,,,
+"[This file was modified for Vim by Bram Moolenaar et al""","  By contrast, the GNU General Public
 License is intended to guarantee your freedom to share and change free
 software--to make sure the software is free for all its users
 
@@ -3496,7 +3497,7 @@ com/git-lfs/git-lfs
 
 - Run `make`
 
-- Place the `git-lfs` binary, which can be found in `bin`, on your systemâ€™s executable `$PATH` or equivalent
+- Place the `git-lfs` binary, which can be found in `bin`, on your system????s executable `$PATH` or equivalent
  This can be done by running:
 
 ```bash
@@ -3643,8 +3644,8 @@ org
 
 shtags
 
-The ""make"" command can be used for creating tutor"
-JetBrains,,,
+The ""make"" command can be used for creating tutor",,,
+JetBrains,,,,
 AMD," 
 
 This file shows how to run the AMDRyzenMasterCLI and 
@@ -3966,9 +3967,9 @@ exe --api SetVDDCR_SOC 1
 exe --api SetCurrentPState 2
 				- Sets the new P-state to 2 for the processor
 				|value|P-State|
-				-  0   â€“> P0
-				-  1   â€“> P1
-				-  2   â€“> P2
+				-  0   ???�? P0
+				-  1   ???�? P1
+				-  2   ???�? P2
 ===========================================================================================
 - API		: GetMinMaxStepBuffer
 - Usage		: AMDRyzenMasterCLI
@@ -3992,7 +3993,7 @@ exe -a DisablePROCHOT
 
 ","
 
-ï»¿========================================================================
+???========================================================================
     CONSOLE APPLICATION : AMDRyzenMasterCLI Project Overview
 ========================================================================
 
@@ -4026,7 +4027,7 @@ exe --api SetCurrentVoltage 1
 
 				
 
-				"
+				",
 obs-studio,", 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed
 
 
@@ -4284,7 +4285,7 @@ The precise terms and conditions for copying, distribution and modification foll
  If identifiable sections of that work are not derived from the Program, and can be reasonably considered independent and separate works in themselves, then this License, and its terms, do not apply to those sections when you distribute them as separate works
 )
 
-The source code for a work means the preferred form of the work for making modifications to it"
+The source code for a work means the preferred form of the work for making modifications to it",
 Steam,"
 
 
@@ -7467,7 +7468,7 @@ io/guides
 
 
 
-",mod
+",mod,
 telegram,"
 
 
@@ -7628,7 +7629,7 @@ github
 *    copies or substantial portions of the Software
 
 *
-* THE SOFTWARE IS PROVIDED �AS IS�, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
+* THE SOFTWARE IS PROVIDED ??S IS?? WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
 * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
 * PARTICULAR PURPOSE AND NONINFRINGEMENT
  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
@@ -7923,10 +7924,10 @@ Original ICSharpCode
 * http://icsharpcode
 io/SharpZipLib/
 
-/* Copyright � 2000-2019 SharpZipLib Contributors
+/* Copyright ??2000-2019 SharpZipLib Contributors
 
 * Permission is hereby granted, free of charge, to any person obtaining a copy of 
-* this software and associated documentation files (the �Software�), to deal in the
+* this software and associated documentation files (the ??oftware??, to deal in the
 * Software without restriction, including without limitation the rights to use, copy, 
 * modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
 * and to permit persons to whom the Software is furnished to do so, subject to the 
@@ -7968,7 +7969,7 @@ Redistribution and use in source and binary forms, with or without modification,
     Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer
 
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS” AND ANY EXPRESS OR IMPLIED
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ??S IS??AND ANY EXPRESS OR IMPLIED
 WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIEDWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
 PURPOSE ARE DISCLAIMED
 
@@ -8110,7 +8111,7 @@ This directory contains Vim scripts for syntax highlighting
 utf-8 file
   You might also need to adjust the
 tutor
-xx for historical reasons"
+xx for historical reasons",
 yahoo,"
  *
  * Redistribution and use in source and binary forms, with or without
@@ -8215,7 +8216,7 @@ SharpZipLib License
 github
 
 *
-* THE SOFTWARE IS PROVIDED �AS IS�, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
+* THE SOFTWARE IS PROVIDED ??S IS?? WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
 * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
 * PARTICULAR PURPOSE AND NONINFRINGEMENT
 
@@ -8302,7 +8303,7 @@ net SARL
     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution
 
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS” AND ANY EXPRESS OR IMPLIED
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ??S IS??AND ANY EXPRESS OR IMPLIED
 WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIEDWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
 PURPOSE ARE DISCLAIMED
  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
@@ -8593,10 +8594,10 @@ com)""
 * http://icsharpcode
 io/SharpZipLib/
 
-/* Copyright � 2000-2019 SharpZipLib Contributors
+/* Copyright ??2000-2019 SharpZipLib Contributors
 
 * Permission is hereby granted, free of charge, to any person obtaining a copy of 
-* this software and associated documentation files (the �Software�), to deal in the
+* this software and associated documentation files (the ??oftware??, to deal in the
 * Software without restriction, including without limitation the rights to use, copy, 
 * modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
 * and to permit persons to whom the Software is furnished to do so, subject to the 
@@ -8753,5 +8754,221 @@ vim	Vim script to generate tables for src/mbyte
 c
  The result
 is that you can do a simple editing task using the Vim editor
-xx"
-google,,,
+xx",
+Ableton,"Get started with synthesis using a web-based synth and accompanying lessons
+Some tips from 74 Creative Strategies for Electronic Producers
+IMPORTANT:PLEASE CAREFULLY READ THE FOLLOWING LEGAL AGREEMENTPLEASE NOTE THAT THIS DOCUMENT IS INTENDED TO APPLY TO ALL USERS, THOUGH SEVERAL SECTIONS ARE LOCALIZED FOR EUROPE IN ORDER TO COMPLY WITH LOCAL LAWS AND SUCH SECTIONS SHALL ONLY APPLY TO CUSTOMERS WHO ACQUIRED THE ABLETON PRODUCT IN EUROPEThis End User License Agreement (the “EULA”) is a legal agreement between You (either in Your individual capacity, or on behalf of an entity) (“You”), and Ableton in order to give you a license to use the Ableton Products (as defined below) as set forth in this EULA under the conditions in this EULA, as well as to use the additional services provided by Ableton or by third-parties for paying customers
+By clicking the acceptance button that follows this EULA and/or installing and/or otherwise using the Ableton Products, You acknowledge that You have read this EULA, understand its terms and conditions, and agree to be bound by such terms and conditions
+ If at any time You no longer agree to be bound by this EULA, You should immediately and permanently cease all use of the Ableton Products
+  If You are accepting the EULA on behalf of a corporation or other entity, You declare that You are authorized to do so
+g
+ via the internet or an Authorized Store)
+ In addition to this EULA, additional terms may apply, such as the Ableton General Terms and Conditions, or other terms as applicable
+  For these additional/alternative terms and conditions please see Annex 1
+(3) The term ""Ableton Product"" means all Software, Packs and Software Bundles developed, licensed and/or supplied by Ableton
+(5) The term ""Consumer"" means You as a natural person who licensed Ableton Products for a purpose which can be regarded as being outside Your trade or profession
+(7) The term ""Extensions"" means any add-ons to Ableton Products supplied separately by Ableton to You, including, but not limited to, Third-Party Content, Packs and all updates and upgrades to the add-ons
+(8) The term ""Free Versions"" means Ableton Products that are provided by Ableton for free, including, but not limited to, OEM Versions and Trial Versions
+(10) The term ""Note"" means the Software “Ableton Note” and all presets, sound samples, loops, musical phrases, musical examples, included software instruments and effects, STEM, data and other contents or versions of other Ableton Products supplied by Ableton with Ableton Note and all updates and upgrades
+(11) The term ""OEM Versions"" means free modified versions of Ableton Products that are supplied together with third-party hardware
+ These components are not licensed hereunder but directly under the respective applicable open source licenses and delivered and included in Ableton Products or Third-Party Content, as the case may be
+(13) The term ""Packs"" means products supplied separately by Ableton that may contain Software, Third-Party Content, and/or other copyrighted materials, including, but not limited to, presets, sound samples, loops, musical phrases, musical examples, software instruments and effects, STEM, data and other content and all updates and upgrades
+com/packs(14) The term ""Previous Version"" means a former version of an Ableton Product to which an upgrade/update is made to the most recent version, and a former version of an Ableton Product with limited features to which more features or Extensions are added
+(17) The term ""STEM"" means a part or separate track of library music
+(18) The term ""Third-Party Applications"" means third-party applications or websites which Ableton Products may be connected with
+(19) The term ""Third-Party Content"" means content developed, manufactured, licensed or supplied by third-parties or other copyrighted third-party material, which may be utilized or included in Ableton Products including, but not limited to, presets, sound samples, loops, musical phrases, musical examples, software instruments and effects, STEM, data and other content and all updates and upgrades
+(20) The term ""Trial Versions"" means Ableton Products available for a limited trial period as determined by Ableton for the purpose of facilitating the decision-making process with regard to acquiring a commercial version
+(21) The term ""User Account"" means the online account for the registration and authorization of Ableton Products (as the case may be) as well as other user activities, for details please see: ableton
+com/signupThe use of such terms herein of the plural shall include the singular and vice versa
+(2) Trademarks contained in or displayed on Ableton Products are trademarks or registered trademarks of Ableton AG or Ableton Affiliates in Germany, the United States and/or other countries
+ Third-party trademarks, trade names, product names and logos may be the trademarks or registered trademarks of their respective owners
+ You may not remove or alter any trademark, trade name, product names, logo, copyright or other proprietary notices, legends, symbols or labels in or on any Ableton Product
+ This EULA does not authorize You to use Ableton's or its licensors' names or any of their respective trademarks
+(3) NB
+: THIS CLAUSE DOES NOT APPLY IF YOU ACQUIRED THE ABLETON PRODUCT IN EUROPE(a) Ableton, or Ableton's licensor for Third-Party Content included in Ableton Products (""Imputed Content"") and for Third-Party Content made available as optional Packs, is the owner of all right, title and interest in and to Ableton Products (including all copyrights, trademarks and patents) regardless of the media or form of the Ableton Product, whether online, by physical media or otherwise
+	(b) You shall not, at any time during or after the effective Term of the EULA, dispute or contest, directly or indirectly, Ableton's, or Ableton's licensors' (with respect to Imputed Content only), exclusive right and title to the Ableton Products or the validity thereof
+(c) You shall not attempt to develop any software or other product that contains the ""look and feel"" of any Ableton Product, or is otherwise derivative thereof
+Under the condition that:(a) You have legally acquired the Ableton Product or purchased the product key and received the allowance to download the Ableton Product by Ableton or an Authorized Store and have not withdrawn from the applicable purchase agreement,(b) You have paid the applicable price, and(c) You are using an authorized copy of the Ableton Product, and(d) Where applicable, You have registered and are holding a valid User Account or an account of an Authorized Store,Ableton grants You a personal, limited, non-exclusive license to use and/or copy the Ableton Product in accordance with this EULA for use on(a) Your computer or file server for local use within Your network, provided that the Ableton Product is only used on one device at a time; and (b) Your compatible Ableton hardware
+com/support
+(1) You may not translate, reverse engineer, decompile, disassemble, or create derivative works from the Ableton Product or provide the respective Ableton Product as „software as a service”
+g
+ terms of Third-Party Content) prevail, the following applies with regard to materials such as presets, sound samples, loops, musical phrases, musical examples, software instruments and effects, STEM, data and other contents that are contained in the Ableton Product: (a) These materials are provided for Your use only with the Ableton Product, for use as musical instruments and sound design elements, and for integration into, or use in development of, musical compositions
+ The materials are not to be resold, sublicensed, or otherwise distributed, except as expressly provided herein
+ This means You may not reformat, mix, filter, re-synthesize or otherwise alter any of the materials contained in the Ableton Product for use in any kind of standalone commercial sampling product/package or software without the express written consent of Ableton
+(b) Use of unmodified materials appearing in isolation including, but not limited to, in film or game soundtracks, is not permitted without obtaining a separate license
+(c) You may use the materials contained in the Ableton Product such as presets, sound samples, loops, musical phrases and musical examples to create your own original musical compositions, provided that additional material is added, and the respective presets, sound samples, loops, musical phrases and musical examples will be significantly transformed
+(d) You may neither use any demo songs provided to You with the Ableton Product in Your musical composition nor may You reformat, mix, filter, re-synthesize or otherwise alter any demo songs, unless and to the extent there is an exception under applicable copyright law
+(5) All restrictions within this Section 5 only apply to the extent as permitted by law
+(1) You may not rent, lease, or sublicense the Ableton Product on a temporary or permanent basis
+ You may, however, transfer the license to use the Ableton Product as a whole to another person or entity
+ However, every transfer requires that You uninstall the Ableton Product and/or cease to use the Ableton Product with all components and that the transferee accepts the EULA and other applicable terms (e
+(2) The license to use the Ableton Product labelled NFR („Not for Resale”) may not be sold or transferred
+(3) The license to use a Free Version may not be sold or transferred without the prior written consent of Ableton
+(4) The license to use a Software Bundle may only be sold or transferred as a whole
+ The right to use Ableton Products included within the Software Bundle may not be sold or transferred separately
+(5) The license to use a Trial Version is limited to a one time-use per user and per hardware device
+ Only one user may register per hardware device
+(6) If You transfer possession of an Ableton Product, including, but not limited to, any copy of the Ableton Product, to another person or entity except as described above, this license is automatically terminated
+ (7) With regard to Ableton Products purchased via an Authorized Store, further restrictions may apply that may not allow for a transfer of the license due to technical restrictions outside of Ableton’s control
+ Please see Annex 1
+(8) For further information visit Ableton’s website at ableton
+com/support
+(3) In case of an upgrade or update from a Previous Version of an Ableton Product to a Software Bundle, the license to use the Previous Version of the respective Ableton Product will immediately expire and be replaced by the license to use the Software Bundle
+ The restriction on transfer described above in Section 6 of this EULA will then apply to all products and components included in the Software Bundle
+(4) Upgrades and updates to Ableton Products will be downloaded automatically
+ You may opt out of these automatic downloads by changing the corresponding preferences in Your settings
+ Further information about Ableton’s data processing and privacy policies can be found at: ableton
+ This condition extends beyond the trial period, regardless of whether the Ableton Product is running with a restricted feature set or not
+ Educational Versions may require the inclusion of additional terms and conditions and/or license terms and may only be used in a restricted way; in particular, they may only be transferred to a transferee meeting the requirements for licensing such version of Ableton Product
+ Furthermore, Section 5 of this EULA applies
+ For more information on such requirements, please refer to the Ableton website at ableton
+I
+ I
+ In the event of any other kind of negligence, Ableton shall only be liable in the event of a breach of a material contractual obligation, the fulfilment of which is essential for the proper performance of the contract and the observance of which You may regularly rely on, as well as in the event of damage resulting from injury to life, limb or health
+ A claim for damages arising from a legal defect or a defect in the Ableton Product with regard to Free Versions is only permissible If Ableton fraudulently conceals such defect
+ Subject to any statutory claims You may have under law (which shall not be affected), Ableton is not obliged to provide any additional technical support to Live Lite users
+II
+ YOU EXPRESSLY ACKNOWLEDGE AND AGREE THAT USE OF THE ABLETON PRODUCT IS AT YOUR SOLE RISK AND THAT THE ENTIRE RISK AS TO SATISFACTORY QUALITY, PERFORMANCE, AND ACCURACY IS WITH YOU
+  ABLETON DOES NOT WARRANT AGAINST INTERFERENCE WITH YOUR ENJOYMENT OF THE ABLETON PRODUCT, THAT THE FUNCTIONS CONTAINED IN THE ABLETON PRODUCT WILL MEET YOUR REQUIREMENTS, THAT THE OPERATION OF THE ABLETON PRODUCT WILL BE UNINTERRUPTED OR ERROR-FREE, OR THAT DEFECTS IN THE ABLETON PRODUCT WILL BE CORRECTED
+  SHOULD THE ABLETON PRODUCT PROVE DEFECTIVE, ABLETON MAY CHOOSE TO REPLACE YOUR COPY OF THE ABLETON PRODUCT
+  SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF IMPLIED WARRANTIES OR LIMITATION ON APPLICABLE STATUTORY RIGHTS OF A CONSUMER, SO THE ABOVE EXCLUSION AND LIMITATIONS MAY NOT APPLY TO YOU
+I
+ IF YOU ACQUIRED THE ABLETON PRODUCT IN EUROPELimitation of Liability:(1) Ableton shall only be liable without restriction according to the statutory provisions for Your damages to You caused by the intentional or grossly negligent conduct of Ableton or its agents, with the exception of liability under the Product Liability Act [ProdHaftG] or comparable laws in other jurisdictions that may apply and due to injury to life, body or health
+(2) Otherwise, the liability of Ableton for damage claims – for whatever legal reason – is limited in accordance with the following conditions, unless otherwise provided by an explicit guarantee of Ableton:(a) For damages caused by slight negligence, Ableton is only liable insofar as they cause damage to contractual obligations („Cardinal Obligations”)
+ Cardinal Obligations are those contractual obligations which must be fulfilled in order to ensure orderly implementation of the contract and for which observance You should be able to trust
+ Insofar as Ableton is responsible for simple negligence hereafter, the liability of Ableton is limited to the typically foreseeable losses
+(c) The provisions of the above paragraph apply correspondingly to the limitation of damages for unsuccessful expenses (§ 284 of the German Civil Code [BGB])
+ IF YOU ACQUIRED THE ABLETON PRODUCT OUTSIDE EUROPELIMITATION OF LIABILITY: TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL ABLETON OR ITS LICENSORS (EXCLUDING YOU) BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THE ABLETON PRODUCT OR ANY DEFECT IN OR CAUSED BY THE ABLETON PRODUCT, INCLUDING BUT NOT LIMITED TO COMPROMISING THE SECURITY OF YOUR COMPUTER, OPERATING SYSTEM OR FILES, OR THE PROVISION OF OR FAILURE TO PROVIDE SUPPORT SERVICES, EVEN IF ABLETON HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES
+  IN ANY CASE, ABLETON’S ENTIRE LIABILITY UNDER ANY PROVISION OF THIS EULA SHALL BE LIMITED TO THE AMOUNT ACTUALLY PAID BY YOU FOR THE ABLETON PRODUCT OR REPLACEMENT OF THE ABLETON PRODUCT WITH PRODUCT OF COMPARABLE RETAIL VALUE, AS ABLETON MAY ELECT IN ITS SOLE DISCRETION
+  BECAUSE SOME STATES AND JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF LIABILITY, THE ABOVE LIMITATION MAY NOT APPLY TO YOU IN PART OR WHOLE
+NB: THIS CLAUSE DOES NOT APPLY IF YOU ACQUIRED THE ABLETON PRODUCT IN EUROPEYou agree to indemnify, defend and hold harmless Ableton and its affiliates and licensors, and each and all of their respective officers, employees, directors, agents, licensees (excluding You), sublicensees (excluding You), successors and assigns, from and against any and all claims, liability, costs, losses, damages, and expenses (including reasonable attorneys’ fees and expenses) arising out of any claim, suit, or cause of action relating to and/or arising from(a) Your breach of any term of this EULA;(b) Your violation of any rights of any third-party to Imputed Content; or(c) Your use or misuse of the Ableton Product
+Your indemnification obligations set forth in the immediately preceding sentence shall survive the termination of this EULA
+(1) The Ableton Product may now or in the future utilize or include Third-Party Content
+ The terms and conditions of Your use of Third-Party Content, if any are utilized or included in Ableton Product, can be found on ableton
+com
+ Your use of such Third-Party Content is governed by their respective terms and conditions
+ By accepting this EULA, You are also accepting the additional terms and conditions, if any, set forth therein
+ The license will cease automatically with effect for the future when this EULA terminates, e
+g
+ with Ableton or an Authorized Store) or a trial period ends
+  Your use of Third-Party Applications is governed by the terms and conditions thereof
+ By accepting this EULA, You are also accepting the additional terms and conditions, if any, set forth therein
+(3) Ableton expressly disclaims any all warranties under this EULA in connection with the Third-Party Content and Third-Party Applications, and shall have no liability in connection therewith
+(5) Rights and obligations under any applicable Open Source license remain unaffected by this EULA
+ is subject to Section 12
+ I
+ (1) of this EULA
+ Ableton has no control over the functionality and terms of use of Authorized Stores, respective accounts, services or other terms
+ In some instances (and subject to the terms and conditions of your agreement with the applicable Authorized Store from which you purchased said Ableton Product), if there is a failure of the Ableton Product to conform to any applicable warranty, it may be possible for You to notify the applicable Authorized Store for a refund of the purchase price; however, any such refund, if any, is subject to the terms, conditions and policies required by the applicable Authorized Store, which are beyond the control of Ableton
+(1) You may terminate this EULA at any time by irreversibly deleting or destroying the Ableton Product together with all copies in any form
+ with an Authorized Store) or other acquisition of the Ableton Product, e
+g
+ by rescission, voidance or withdrawal from the contract, at the latest when Your payment has been refunded
+ In these cases You are no longer allowed to use the Ableton Product or the included components
+(3) If the termination of this EULA involves Packs, Third-Party Content or other licensed materials (e
+g
+, sound samples, loops, musical phrases, etc
+), You may not redistribute or publicly perform, make available to the public, or otherwise commercially exploit music containing these elements after the termination of this EULA without obtaining a separate license from Ableton for such content
+(4) The right of use in the Ableton Product and/or Third-Party Content ends at the latest when the termination of the EULA becomes effective
+(5)nbsp;Certain terms and conditions contained in this EULA shall survive termination where specified herein
+IF YOU ACQUIRED THE ABLETON PRODUCT OUTSIDE EUROPE: This EULA will also terminate automatically upon conditions set forth elsewhere in this EULA, or if You fail to comply with any term or condition of this EULA, without notice to You
+ Upon such termination, You agree to immediately and irreversibly delete or destroy the Ableton Product together with all copies in any form
+ Your use of Ableton Cloud and Ableton Products may be subject to the export and import laws of the United States and other countries
+ You agree to comply with all applicable export and import laws
+ For example, if applicable, You may not export or re-export the Ableton Products except as authorized by United States law and the laws of the jurisdiction in which the Ableton Product was obtained; in particular, but without limitation, the Ableton Product may not be exported or re-exported (a) into or to a nation or a resident of any U
+S
+ Department of Commerce Denied Person’s List or Entity List
+  By installing or using any component of the Ableton Product, You represent and warrant that You are not located in, under control of, or a national or resident of any such country or on any such list
+I
+ IF YOU ACQUIRED THE ABLETON PRODUCT IN EUROPE(1) This EULA is governed by the laws of the Federal Republic of Germany
+ If You are a Consumer this choice of law applies to You, but only insofar as the protection granted by mandatory provisions of the laws of the country, in which You have your habitual residence, is not withdrawn thereby
+ The choice of law furthermore only applies to You insofar as no other law is chosen for certain provisions under this EULA
+ The provisions of the CISG and the conflict of law rules are not applicable
+(2) The place of performance is Berlin, Germany
+(3) Exclusive jurisdiction for all legal disputes arising from or in connection with this EULA is Berlin, if You are a merchant according to § 14 of the German Civil Code [BGB]
+ The same applies, if You have no general jurisdiction in Germany, or if their domicile or habitual residence are not known at the time the action is brought
+(4) By agreeing to these terms and conditions, in the event of any claim You may have arising from or related to Ableton Products or this EULA You hereby agree to waive any right to participate in any type of law suit brought and/or maintained as a class action or similar in nature to a class action
+II
+  IF YOU ACQUIRED THE ABLETON PRODUCT OUTSIDE EUROPEGoverning Law/Dispute Resolution: These Terms will be governed by and construed in accordance with the Federal and State laws of the State of New York and of the United States of America
+A
+BY AGREEING TO THIS EULA, YOU hereby waive any right to participate in any type of lawsuit brought and/or maintained as a class action
+I
+ IF YOU ACQUIRED THE ABLETON PRODUCT IN EUROPE(1) All rights not explicitly granted in this EULA are reserved
+(3) As You will make not any direct contractual transactions and purchases with Ableton under this EULA directly, this EULA is not a consumer contract on digital goods according to § 327 of the German Civil Code [BGB]
+ All rights not explicitly granted in this EULA are reserved","
+
+
+Watch Talks, Performances and Features from Ableton's Summit for Music MakersLearn the fundamentals of music making right in your browser
+ Ableton, not any Authorized Store, is solely responsible for this application and the content thereof
+As used in this EULA, capitalized terms shall have the following meanings:(1)  ""Ableton"" means Ableton AG, Schönhauser Allee 6-7, 10119 Berlin, Germany and any Ableton Affiliate (for contact information please see: ableton
+com/contact-us)(2)  The term ""Ableton Affiliate"" means any entity affiliated with or controlled by Ableton AG, its affiliates and its corporate group, which includes, but is not limited to, Ableton AG’s majority-owned subsidiaries, any parent company having a majority-owned interest in such, and such parent's majority-owned subsidiaries
+(9) The term ""Live"" means the Software “Ableton Live” and all presets, sound samples, loops, musical phrases, musical examples, included software instruments and effects, STEM, data and other contents or versions of other Ableton Products supplied by Ableton with Ableton Live
+  The term “Live” also includes, but is not limited to, Ableton Live Suite, Ableton Live Intro, LE versions, Lite Versions, OEM versions or modified versions of Live licensed to You by Ableton and all updates and upgrades
+ For details please see: ableton
+ If the license to the Previous Version of the Ableton Product is transferred to another person or entity, no upgrades or updates will be made to it, unless transferred in compliance with Section 6, herein
+(15) The term ""Software"" means any software product developed, manufactured, licensed and/or supplied by Ableton, including, but not limited to, Live, Note, any software that is included in Ableton hardware and Extensions, any presets, sound samples, loops, musical phrases, musical examples, software instruments and effects, STEM, data and other contents contained and all updates and upgrades
+(16) The term ""Software Bundle"" means the combination of Software and Extensions and other products that are licensed as a bundle to You, such as Ableton Live Suite
+ Additional terms may be defined throughout the EULA
+(1) You, through your act of downloading, installing, copying or using any Ableton Product, do not acquire any ownership rights to such Ableton Product
+ Ableton Products are protected by copyright laws and international copyright treaties, as well as other intellectual property laws and treaties
+  The rights to use Ableton Products as set out in this EULA are licensed, not sold, to You by Ableton
+In case of the use within a network, the network must be owned, leased and/or controlled by You or a member of your corporate group, which includes a corporate licensee, a corporate licensee's majority-owned subsidiaries, any parent company having a majority-owned interest in such corporate licensee, and such parent's majority-owned subsidiaries
+ For purchases made through Authorized Stores, additional/alternative license terms may apply
+ Please see Annex 1
+ For further information, you can visit Ableton’s website at ableton
+ The transfer or assignment of the User Account without the express consent of Ableton is prohibited
+(2) You may not use, copy, modify or transfer the Ableton Product, or any copy in whole or in part, except as expressly provided for in this license
+  (3) Unless other license terms (e
+(4) You must comply with the applicable terms and conditions of any third-party agreements between You and said third-parties when using the Ableton Products (to the extent not in conflict with this EULA)
+g
+ terms of an Authorized Store), and may require transferee to register for a User Account and activation of the Ableton Product (while your initial installation will be unregistered)
+ You may not re-register under a different name or different account, or from a different hardware device
+(1) In order to upgrade or update Ableton Products, a valid license to use the Previous Version of the respective Ableton Product is required
+Ableton may process information from Your use of the Ableton Products under applicable data protection and privacy regulations
+com/privacy-policyThe purpose of the Trial Versions is to facilitate the decision-making process with regard to acquiring a commercial version only
+ Any other use, including, but not limited to, resale, transfer, or public use, is strictly prohibited
+Educational Versions may only be acquired in an educational context by schools, teachers, instructors and students
+ (1) of this EULA, the liability in connection with the Free Versions is excluded except for intent or gross negligence
+ IF YOU ACQUIRED THE ABLETON PRODUCT OUTSIDE EUROPEDISCLAIMER OF WARRANTIES: FOR PURPOSES OF THIS SUBSECTION II ONLY, THE TERM „ABLETON” INCLUDES ABLETON AND ABLETON’S LICENSORS (EXCLUDING YOU), AND OTHER PARTNERS FOR ABLETON PRODUCTS
+  TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE ABLETON PRODUCT IS PROVIDED „AS IS,” WITH ALL FAULTS AND WITHOUT WARRANTY OF ANY KIND, AND ABLETON HEREBY DISCLAIMS ALL WARRANTIES AND CONDITIONS WITH RESPECT TO THE ABLETON PRODUCT, EITHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES AND/OR CONDITIONS OF MERCHANTABILITY, OF SATISFACTORY QUALITY, OF FITNESS FOR A PARTICULAR PURPOSE, OF ACCURACY, OF QUIET ENJOYMENT, AND NON-INFRINGEMENT OF THIRD PARTY RIGHTS
+  NO ORAL OR WRITTEN INFORMATION OR ADVICE GIVEN BY ABLETON OR AN ABLETON AUTHORIZED REPRESENTATIVE SHALL CREATE A WARRANTY
+(b) The liability of the Ableton for damages caused by loss of data and/or programs lost by slight negligence is limited to the typical cost of restoration, which would have been incurred in case of regular and appropriate your data backup and data protection by You
+(3) The above liability restrictions shall also apply to agents of Ableton
+II
+This clause shall survive the termination of this EULA
+g
+ when You withdraw from the respective purchase agreement (e
+(2) Your use of the Ableton Product may allow You to connect with Third-Party Applications
+(4) Ableton is not liable for costs arising out of services that are not provided by Ableton
+(1) With the regard to purchases made via Authorized Stores, Ableton is not the contracting party selling the product or service
+ Ableton is not affiliated with any Authorized Stores, but uses their services through a separate agreement
+ Access to Authorized Stores may require a registration to the respective store
+(2) The rights to use the Ableton Product and this EULA ceases (expires) automatically if You cancel the separate purchase agreement of this Ableton Product (e
+ embargoed countries or (b) to anyone on the U
+ By agreeing to these Terms, in the event of any claim You may have arising from or related to Ableton Cloud or these Terms You agree to the exclusive personal and subject matter jurisdiction of the courts located within Manhattan, New York, U
+S
+ for making and resolving any such claims, Ableton reserves the right to make any claim against You and seek and be granted any legal or equitable remedy against You in any court anywhere in the world
+(2) The failure or delay of Ableton to exercise any of its rights under this EULA or upon any breach of this EULA shall not be deemed a waiver of those rights or of the breach
+II
+ IF YOU ACQUIRED THE ABLETON PRODUCT OUTSIDE EUROPEThis EULA, together with the other policies and documents expressly referenced herein, constitutes the complete and exclusive agreement between Ableton and You with respect to the subject matter hereof and supersedes all proposals, representations, understandings, and prior agreements, whether oral or written, and all other related communication between the parties
+ Any clause in this EULA, which is found to be invalid or unenforceable shall be deemed deleted and the rest of this EULA shall remain unaffected, and an enforceable term will be substituted reflecting the original intention of the parties as nearly as possible
+ The failure or delay of Ableton to exercise any of its rights under this EULA or upon any breach of this EULA shall not be deemed a waiver of those rights or of the breach","  This EULA has no relation to Your purchase agreement when you bought the Ableton Product (e
+Additional or alternative terms and conditions may apply if You purchase any Ableton Products through an Authorized Store
+(4) The term ""Authorized Store"" means any third-party store that has been officially appointed by Ableton to sell or make Ableton Products available to You
+(6) The term ""Educational Versions"" means Ableton Products designated for use by schools, teachers, instructors and students and other educational institutions
+(12) The term ""Open Source""  refers to the free or open source software or elements which may be contained in Ableton Products, as the case may be
+ In the event the respective Ableton Product is protected by an account-based license management system, You need to register and connect it to a User Account and receive an unlock key
+ The usage of any materials (in particular presets, sound samples, loops, musical phrases and musical examples) for the creation of other sound packs, as a sound library for any kind of (software) synthesizer, virtual instrument, sample library, sample-based product or other musical instrument, is prohibited
+ Isolated materials, including, but not limited to, sound samples, loops, musical phrases and musical examples, must not to be distributed or licensed or sold as individually licensable content, even if such content is part of a composition, if the sound material is provided in an isolated file such as a STEM
+(2) If the Previous Version of the Ableton Product is or was labelled as NFR, the restriction on transfer described above will also apply to the upgraded or updated version
+com
+ IF YOU ACQUIRED THE ABLETON PRODUCT IN EUROPEDISCLAIMER OF WARRANTIES for Free Versions: Subject to Section 12
+ However, You receive a personal, limited, non-exclusive, non-transferable right to use the Third-Party Content in accordance with this EULA and the additional terms for such Third-Party Content only under the condition subsequent that the respective payment has been made in full
+IF YOU ACQUIRED THE ABLETON PRODUCT IN EUROPE: All set forth in this Section 14
+(2) For further information on terms and conditions of this EULA which are specific to Ableton Products purchased through Authorized Stores, please see Annex 1
+g
+S
+ Treasury Department’s list of Specially Designated Nationals or the U
+S
+ These Terms shall not be governed by the United Nations Convention on Contracts for the International Sale of Goods, the application of which is expressly excluded
+---",
