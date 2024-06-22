@@ -1,9 +1,39 @@
 import sys
-from ai import AI
-import pandas as pd
+import pickle
 import os
+from sentence_transformers import SentenceTransformer
+from sklearn.base import BaseEstimator, TransformerMixin
+import pandas as pd
+import numpy as np
+import re
 
-ai = AI()
+def clean_rtf_content(text):
+    # Regex to match RTF control words and curly braces
+    pattern = r"\\[a-zA-Z]+[0-9]*[ ]?|{\\*\\[^{}]+}|[{}]|\\'..|\\[a-z]+\n"
+    # Replace matched patterns with an empty string
+    cleaned_text = re.sub(pattern, '', text)
+    return cleaned_text
+
+minilm_path = os.path.join(os.path.dirname(__file__), '../public/minilm')
+class SentenceTransformerFeatures(BaseEstimator, TransformerMixin):
+    def __init__(self, model_name='sentence-transformers/all-MiniLM-L6-v2'):
+        self.model = SentenceTransformer(minilm_path)
+        self.model_name = model_name
+    
+    def fit(self, X, y=None):
+        return self
+    
+    def transform(self, X):
+        embeddings = self.model.encode(X if type(X) == list else X.tolist(), convert_to_tensor=False)
+        return np.array(embeddings)
+    
+def predict(sentence):
+    # Load the model from the file
+    model_path = os.path.join(os.path.dirname(__file__), '../ai_models/model2.pkl')
+    with open(model_path, 'rb') as file:
+        model = pickle.load(file)
+    return model.predict([sentence])[0]
+
 def analyse_tos(tos, app=""):
     scans_path = os.path.join(os.path.dirname(__file__), '../src/scans.csv')
     scans = pd.read_csv(scans_path)
@@ -14,7 +44,7 @@ def analyse_tos(tos, app=""):
         sentences = tos.split('.')
         categorized_sentences = [[], [], []]
         for sentence in sentences:
-            categorized_sentences[ai.getHarmLevel(sentence)].append(sentence)
+            categorized_sentences[predict(sentence)].append(sentence)
         categorized_sentences = ["\n".join(categorized_sentences[0]), 
                                 "\n".join(categorized_sentences[1]), 
                                 "\n".join(categorized_sentences[2])]

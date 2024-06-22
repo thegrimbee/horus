@@ -2,7 +2,7 @@
   "name": "horus",
   "productName": "horus",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "An application that summarises harmful terms and conditions",
   "main": ".vite/build/main.js",
   "scripts": {
     "start": "electron-forge start",
@@ -27,7 +27,7 @@
   },
   "keywords": [],
   "author": {
-    "name": "thegrimbee",
+    "name": "thegrimbee and datletu",
     "email": "gabriel.mario.antaputra@gmail.com"
   },
   "license": "MIT",

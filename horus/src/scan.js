@@ -40,7 +40,7 @@ function isTos(name, isFolder = false, includeAll = false) {
     // Keep this array sorted alphabetically
     var possibleNames = ["agreement", "docs", "eula", "legal", "license", "license_agreement", "policy", "privacy_policy", 
      "terms", "terms_and_conditions", "terms_of_service", "terms_of_use", "tos"];
-    var possibleFileTypes = [".md", ".txt"];
+    var possibleFileTypes = [".md", ".rtf", ".txt"];
     // Update the minimum and maximum length of the TOS file name accordingly
     const MIN_LENGTH = 3;
     const MAX_LENGTH = 24;
@@ -176,7 +176,8 @@ function scan() {
                 loadingBar.value = 100;
                 const resultArray = result;
                 for (var i = 0; i < resultArray.length; i++) {
-                    resultArray[i] = resultArray[i].replace(/\r/g, '').replace(/\n+/g, '<br>');
+                    resultArray[i] = resultArray[i].replace(/\n+/g, '<br>')
+                        .replace(/\\[a-zA-Z]+[0-9]*[ ]?|{\\*\\[^{}]+}|[{}]|\\'..|\\[a-z]+\n|\\[*]/g, '');
                 }
                 var endResult = {'danger': resultArray[2], 'warning': resultArray[1], 'normal': resultArray[0]};
                 console.log(endResult);

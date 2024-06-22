@@ -1,18 +1,1 @@
-7-Zip
-  ~~~~~
-  License for use and distribution
-  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  7-Zip Copyright (C) 1999-2023 Igor Pavlov
-1 of the License, or (at your option) any later version
-
-
-    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-
-    1
-
-
-    The license for original unRAR code has the following restriction:
-
-      The unRAR sources cannot be used to re-create the RAR compression algorithm,
-      which is proprietary
+nan
