@@ -7,6 +7,7 @@ from sklearn.base import BaseEstimator, TransformerMixin
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 import numpy as np
+from scipy.sparse import csr_matrix
 
 scope = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
 creds = ServiceAccountCredentials.from_json_keyfile_name(os.path.join(os.path.dirname(__file__), 'horus-427302-72ce0e6285e7.json'), scope)
