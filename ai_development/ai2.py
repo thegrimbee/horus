@@ -12,8 +12,6 @@ from sklearn.feature_selection import SelectFromModel
 from textblob import TextBlob
 from sentence_transformers import SentenceTransformer
 from imblearn.over_sampling import ADASYN
-from xgboost import XGBClassifier
-from lightgbm import LGBMClassifier
 import numpy as np
 import pickle
 import os
@@ -32,7 +30,7 @@ class TextBlobFeatures(BaseEstimator, TransformerMixin):
             subjectivities.append(blob.sentiment.subjectivity)
         return np.array([polarities, subjectivities]).T
 
-minilm_path = os.path.join(__file__, '../minilm')
+minilm_path = os.path.join(__file__, '../../horus/public/minilm')
 # Custom transformer for Sentence Transformers
 class SentenceTransformerFeatures(BaseEstimator, TransformerMixin):
     def __init__(self, model_name='sentence-transformers/all-MiniLM-L6-v2'):
@@ -43,6 +41,8 @@ class SentenceTransformerFeatures(BaseEstimator, TransformerMixin):
         return self
     
     def transform(self, X):
+        print(X.tolist())
+        print(type(X)) 
         embeddings = self.model.encode(X.tolist(), convert_to_tensor=False)
         return np.array(embeddings)
     
@@ -60,7 +60,7 @@ def custom_loss(y_true, y_pred):
         elif true == 0 and pred == 1:
             score -= 4
         elif true == 0 and pred == 2:
-            score -= 13
+            score -= 17
         elif true == pred:
             score += 10 # keep this constant
     return score
@@ -68,8 +68,6 @@ def custom_loss(y_true, y_pred):
 custom_scorer = make_scorer(custom_loss, greater_is_better=True)
 data = get_data()
 train_data, val_data = train_test_split(data, test_size=0.2, stratify=data['Harm Level'])
-# Initialize the model
-model = RandomForestClassifier(n_estimators=100, random_state=42)
 
 # Extract features and labels for training data
 X_train = train_data['Sentence']
