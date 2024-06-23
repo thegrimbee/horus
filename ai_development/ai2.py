@@ -12,8 +12,6 @@ from sklearn.feature_selection import SelectFromModel
 from textblob import TextBlob
 from sentence_transformers import SentenceTransformer
 from imblearn.over_sampling import ADASYN
-from xgboost import XGBClassifier
-from lightgbm import LGBMClassifier
 import numpy as np
 import pickle
 import os
