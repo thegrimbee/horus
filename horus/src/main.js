@@ -97,11 +97,18 @@ if (require('electron-squirrel-startup')) {
 
 let mainWindow;
 const createWindow = () => {
+  let icon;
+  if (process.platform === 'win32') {
+    icon = path.join(__dirname, '/icon.ico');
+  }
+  else if(process.platform === 'darwin') {
+    icon = path.join(__dirname, '/icon.icns');
+  }
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    icon: path.join(__dirname, '/icon.ico'),
+    icon: icon,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       // prevent the renderer process from accessing the Node.js API to increase security
