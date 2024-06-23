@@ -1,18 +1,17 @@
 import sys
 import pickle
 import os
+import gspread
 from sentence_transformers import SentenceTransformer
 from sklearn.base import BaseEstimator, TransformerMixin
+from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 import numpy as np
-import re
 
-def clean_rtf_content(text):
-    # Regex to match RTF control words and curly braces
-    pattern = r"\\[a-zA-Z]+[0-9]*[ ]?|{\\*\\[^{}]+}|[{}]|\\'..|\\[a-z]+\n"
-    # Replace matched patterns with an empty string
-    cleaned_text = re.sub(pattern, '', text)
-    return cleaned_text
+scope = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
+creds = ServiceAccountCredentials.from_json_keyfile_name(os.path.join(os.path.dirname(__file__), 'horus-427302-72ce0e6285e7.json'), scope)
+client = gspread.authorize(creds)
+sheet = client.open('scanned-apps').worksheet('Sheet1')
 
 minilm_path = os.path.join(os.path.dirname(__file__), '../public/minilm')
 class SentenceTransformerFeatures(BaseEstimator, TransformerMixin):
@@ -37,9 +36,13 @@ def predict(sentence):
 def analyse_tos(tos, app=""):
     scans_path = os.path.join(os.path.dirname(__file__), '../src/scans.csv')
     scans = pd.read_csv(scans_path)
+    online_scans_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQjd7DmxuwsQccfgX02enJf-g4DnWnvN5ZAkEHSfedfpqTF9JjYoSkvFUWNoTIy_PW6Kl_yhuzYtHy5/pub?gid=0&single=true&output=csv' 
+    online_scans = pd.read_csv(online_scans_url)
     print(scans['App'].values)
     if app in scans['App'].values:
         categorized_sentences = scans[scans['App'] == app].iloc[0].tolist()[1:]
+    elif app in online_scans['App'].values:
+        categorized_sentences = online_scans[online_scans['App'] == app].iloc[0].tolist()[1:]
     else:
         sentences = tos.split('.')
         categorized_sentences = [[], [], []]
@@ -56,6 +59,7 @@ def analyse_tos(tos, app=""):
         scans = pd.concat([scans, pd.DataFrame(dct)], 
                               ignore_index=True)
         scans.to_csv(scans_path, index=False)
+        sheet.append_row([app, categorized_sentences[0], categorized_sentences[1], categorized_sentences[2]])
 
     normal_path = os.path.join(os.path.dirname(__file__), 'results', 'normal.txt')
     with open(normal_path, 'w', encoding='utf-8', errors='ignore') as f:
