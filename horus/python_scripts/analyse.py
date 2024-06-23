@@ -8,7 +8,10 @@ import os
 from googlesearch import search
 from bs4 import BeautifulSoup
 import requests
-ai = AI()
+
+
+
+
 import numpy as np
 import re
 

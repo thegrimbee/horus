@@ -101,11 +101,12 @@ const createWindow = () => {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    icon: path.join(__dirname, '/icon.ico'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       // prevent the renderer process from accessing the Node.js API to increase security
       contextIsolation: true,
-    },
+    }
   });
 
   // and load the index.html of the app.
