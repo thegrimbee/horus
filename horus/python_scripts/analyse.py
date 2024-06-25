@@ -18,7 +18,7 @@ creds = ServiceAccountCredentials.from_json_keyfile_name(os.path.join(os.path.di
 client = gspread.authorize(creds)
 sheet = client.open('scanned-apps').worksheet('Sheet1')
 
-minilm_path = os.path.join(os.path.dirname(__file__), '../public/minilm')
+minilm_path = os.path.join(os.path.dirname(__file__), '../ai_models/minilm')
 class SentenceTransformerFeatures(BaseEstimator, TransformerMixin):
     def __init__(self, model_name='sentence-transformers/all-MiniLM-L6-v2'):
         self.model = SentenceTransformer(minilm_path)
@@ -39,7 +39,7 @@ def predict(sentence):
     return model.predict([sentence])[0]
 
 def analyse_tos(tos, app=""):
-    scans_path = os.path.join(os.path.dirname(__file__), '../src/scans.csv')
+    scans_path = os.path.join(os.path.dirname(__file__), '../scans.csv')
     scans = pd.read_csv(scans_path)
     online_scans_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQjd7DmxuwsQccfgX02enJf-g4DnWnvN5ZAkEHSfedfpqTF9JjYoSkvFUWNoTIy_PW6Kl_yhuzYtHy5/pub?gid=0&single=true&output=csv' 
     online_scans = pd.read_csv(online_scans_url)

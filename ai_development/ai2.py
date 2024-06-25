@@ -9,7 +9,6 @@ from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.metrics import accuracy_score, classification_report, make_scorer
 from sklearn.preprocessing import StandardScaler
 from sklearn.feature_selection import SelectFromModel
-from textblob import TextBlob
 from sentence_transformers import SentenceTransformer
 from imblearn.over_sampling import ADASYN
 import numpy as np
@@ -17,18 +16,18 @@ import pickle
 import os
 
 # Custom transformer to extract TextBlob features
-class TextBlobFeatures(BaseEstimator, TransformerMixin):
-    def fit(self, X, y=None):
-        return self
+# class TextBlobFeatures(BaseEstimator, TransformerMixin):
+#     def fit(self, X, y=None):
+#         return self
 
-    def transform(self, X):
-        polarities = []
-        subjectivities = []
-        for text in X:
-            blob = TextBlob(text)
-            polarities.append(blob.sentiment.polarity)
-            subjectivities.append(blob.sentiment.subjectivity)
-        return np.array([polarities, subjectivities]).T
+#     def transform(self, X):
+#         polarities = []
+#         subjectivities = []
+#         for text in X:
+#             blob = TextBlob(text)
+#             polarities.append(blob.sentiment.polarity)
+#             subjectivities.append(blob.sentiment.subjectivity)
+#         return np.array([polarities, subjectivities]).T
 
 minilm_path = os.path.join(__file__, '../../horus/public/minilm')
 # Custom transformer for Sentence Transformers
@@ -127,7 +126,7 @@ pipeline = ImbPipeline([
 # grid_search.fit(X_train, Y_train)
 # model = grid_search.best_estimator_
 # print(grid_search.best_params_)
-
+print('testing1')
 pipeline.fit(X_train, Y_train)
 model = pipeline
 
@@ -138,7 +137,7 @@ with open(model_path, 'wb') as file:
 
 # Predict on the test set
 Y_pred = model.predict(X_test) 
-
+print('testing2')
 # Evaluate the model
 
 accuracy = accuracy_score(Y_test, Y_pred)
