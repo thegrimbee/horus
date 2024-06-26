@@ -25,29 +25,41 @@ If you want the fully functional version there are a few steps:
 Terms and services have been infamous for being very long winded and confusing to read. As such, people normally skip reading these terms and conditions. However, these terms and conditions may have terms which are harmful for the users. As such, an application is needed to summarise and highlight these harmful terms for the users.
 
 User Stories:
-1. As a user of certain apps, I do not want to read long terms and conditions
-2. As a user of certain apps, I want to know if an application has harmful terms and conditions
-3. As a user of certain apps, I want to know which apps are safe to use and which aren't
+1. As an average windows user, I do not want to read nor have the time to read long terms and conditions of apps I install
+2. As an average windows user, I want to know if an application I use has harmful terms and conditions
+3. As an average windows user, I want to know which apps are safe to use and which aren't
+4. As a user of Horus, I don't want the app to take too long to scan the apps
 
-4. 
-# Project details
+# Features
 
-This is the repository for the desktop application, Horus. Horus is an app that scans terms of services of apps for the user and highlights potentially harmful terms.
+### Our current available features:
+1. Active Scanning, allows the user to scan the terms of services (TOS) of the app of their choice to find the harmful terms and conditions of their chosen app <br/>
+The users can select which app they want to scan through the dropdown. The list provided is based on the apps in the user's Program Files and Program Files (x86) folder. Once selected, a recursive search will be run on the app's folder to find the TOS text files. This can be in many forms (e.g. tos.txt, license.rtf, etc.). The combined text will be processed by our AI model, and the results will be shown in three different levels: danger, warning, and normal (sorted in decreasing harm levels).
+2. Online Scanning, searches TOS online when there is no TOS found locally <br/>
+We noticed that although majority of apps store the TOS in the folders, some apps simply do not store the TOS locally. The online scanning feature does a google search on the app's TOS and uses the result as the TOS. The AI will then process just like in Active Scanning
+3. Database <br/>
+Although our application can function without a database, we decided to add a shared database to improve runtime for the users by saving TOS that are already scanned. We noticed that it takes quite a while for the AI to scan TOS, so this database improves the runtime for apps that have already been scanned by other users. For now, we are using csv and the database is hosted in google sheets. However, this might change in Milestone 3, since we plan to move most of the processing to a server instead of the user.
+4. App Suggestion, suggests alternative apps which may be safer <br/>
+Currently, it shows the list of apps from different categories that we deem are safer than the others. Originally we wanted to make another AI model for this feature, however we did not have time to do it as training one model took longer than we thought. 
+5. User Guide, the user can click the hyperlink in the user guide section to show a popup explaining how to locate the folders <br/>
 
-Our current available features:
-1. Active Scanning, allows the user to scan a folder of the app of their choice to find the harmful terms and conditions of their chosen app
-a. Choosing folder: Users can click the browse button and select one of their application folders (usually in Program Files or Program Files(x86) refer to app's user guide)
-b. Scanning: Users can click the scan button and a loading bar will show the progress of the scan
-c. Showing results: A new window of the app will be opened once the scanning is done
-2. User Guide, the user can click the hyperlink in the user guide section to show a popup explaining how to locate the folders
+We removed passive scanning from our features as we realise that not only is it a breach of user privacy, its benefits do not justify the amount of resources it use.
 
-Future Possible Features:
-1. Online scanning, allows the app to search for the app's terms of service online, since some apps may not store it locally
-2. Improved active scanning, gives the users choices of apps instead of asking the users to find folders. This is because some users may still be confused on how to locate the app's folder
-3. Passive scanning, allow the app to run in the background and notify the user of harmful terms of service when installing app
-4. Database, improves efficiency by checking if the app have been scanned before (possibly by other users), thus removing the need to scan again. This is because, from what we have seen, the AI takes around half a second to process each sentence, which can build up to a very large scan time
-5. Contextualised scanning, we realise that some users may want to use the app differently (e.g. a personal user, or an enterprise). This means, the terms and conditions also apply differently depending on the context. We want to modify our AI to take this into account
-6. App Suggestion, suggests similar apps with safer terms and conditions to the users
+### Future Possible Features:
+1. Contextualised scanning, the scanning will give different results for the average user and an enterprise user. <br/>
+Terms of services apply differently depending on the user's context, so contextualised scanning aims to increase the accuracy of the scans by adding the context of the user. We will do this by modifying our training data 
+2. Moving the Processing to a Server <br/>
+The aim of this is to make the app less heavy for the user. The downside of this is that the app must now have internet connection to run (before, only online scanning and updating database requires internet)
+
+# Software Engineering Principles
+We use K.I.S.S as our main software engineering design pattern. This is because we want to focus mainly on making sure the app is light and fast, so we avoid unnecessarily advanced technologies. For example, we use CSV instead of a more advanced database like SQL and MongoDB since CSV is lighter and faster (since we only have one table).
+
+### Github
+1. Issues <br\>
+We use issues to highlight the problems that we need to fix or add in the app. We also use it to distribute work to each other. Whoever is more suited to do the issue can assign himself to the issue and work on it on a new branch
+2. Branching <br\>
+We use a new branch for every feature and will tell each other beforehand before merging two branches. 
+
 
 Our tech stack includes:
 1. Electron, to design the app itself including its UI and file watching system
