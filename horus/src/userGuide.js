@@ -1,5 +1,6 @@
 window.electron.on('open-user-guide', () => {
-    $('#userGuidePopup').modal({
-        keyboard: false
-      })
+  var galleryModal = new bootstrap.Modal(document.getElementById('userGuidePopup'), {
+    keyboard: false
+  });
+  galleryModal.show();
 });

@@ -10,12 +10,22 @@ body {
 
 .dropdown-menu {
     max-height: 200px;
-    overflow-y: auto;
+    overflow-y: visible;
     overflow-x: hidden;
+    
 }
 
-#scanningForm {
-  transform: translate(+20px, -25px);
+#dropdownStuff {
+  transform: translate(-20px,+0px,0);
+
+}
+
+#loadingBar {
+  transform: translate(+10px,+20px);
+
+}
+#appScanned {
+  z-index: -1;
 }
 
 #twoScanningButtons {
@@ -23,13 +33,12 @@ body {
 }
 
 #appName {
-  transform: translate(+40px, -20px);
+  transform: translate(+20px, -20px);
   
 }
 
-
 #Apps {
-  transform: translateY(-40px);
+  transform: translateY(-0px);
 }
 
 #altAppsButton {
