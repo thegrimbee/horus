@@ -58,12 +58,25 @@ We use K.I.S.S as our main software engineering design pattern. This is because 
 1. Issues <br\>
 We use issues to highlight the problems that we need to fix or add in the app. We also use it to distribute work to each other. Whoever is more suited to do the issue can assign himself to the issue and work on it on a new branch
 2. Branching <br\>
-We use a new branch for every feature and will tell each other beforehand before merging two branches. 
+We use a new branch for every feature and will tell each other beforehand before merging two branches.
+
+### Coding Standard
+We don't use a single coding standard for all the languages, but we use the most preferred coding standard for each language
+1. Python - snake_case
+2. JS - camelCase
+
+### Separation of Concerns
+We try to maximise separating our program into their respective functionality. For example, the JS backend is split into many JS files named based on their respective functionality e.g. appSelection.js is in charge of handling the app selection.
 
 
-Our tech stack includes:
-1. Electron, to design the app itself including its UI and file watching system
-2. Python, to handle the backend processing and the AI to analyse the TOS
+
+
+### Tech Stack
+1. Electron JS, to design the app itself including its UI and file watching system
+2. Vite, the template used for Electron
+3. Electron Forge, to specifiy how the app and installer is built 
+4. Python, to handle the backend processing and the AI to analyse the TOS
+5. MiniLM, the base model which we further trained upon
 
 Our progress can be seen here: https://github.com/users/thegrimbee/projects/1/<br/>
 Our AI model will be trained based on this data: https://docs.google.com/spreadsheets/d/1r6mS8WzukVhHnVFOEGmQtwL2VmSqkGXQy1H2Al6IO2o/edit?usp=sharing
