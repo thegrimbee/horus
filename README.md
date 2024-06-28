@@ -49,7 +49,7 @@ We removed passive scanning from our features as we realise that not only is it 
 1. Contextualised scanning, the scanning will give different results for the average user and an enterprise user. <br/>
 Terms of services apply differently depending on the user's context, so contextualised scanning aims to increase the accuracy of the scans by adding the context of the user. We will do this by modifying our training data 
 2. Moving the Processing to a Server <br/>
-The aim of this is to make the app less heavy for the user. The downside of this is that the app must now have internet connection to run (before, only online scanning and updating database requires internet)
+The aim of this is to make the app less heavy for the user. The downside of this is that the app must now have internet connection to run (before, only online scanning and updating database requires internet).
 
 # Software Engineering Principles
 We use K.I.S.S as our main software engineering design pattern. This is because we want to focus mainly on making sure the app is light and fast, so we avoid unnecessarily advanced technologies. For example, we use CSV instead of a more advanced database like SQL and MongoDB since CSV is lighter and faster (since we only have one table).
@@ -69,8 +69,6 @@ We don't use a single coding standard for all the languages, but we use the most
 We try to maximise separating our program into their respective functionality. For example, the JS backend is split into many JS files named based on their respective functionality e.g. appSelection.js is in charge of handling the app selection.
 
 
-
-
 ### Tech Stack
 1. Electron JS, to design the app itself including its UI and file watching system
 2. Vite, the template used for Electron
@@ -80,15 +78,29 @@ We try to maximise separating our program into their respective functionality. F
 
 
 Here is a diagram to show the structure of our app:
-![image](https://github.com/thegrimbee/horus/assets/54467946/0810e789-3cfa-45d9-bfbf-f6e09fa2c926)
+![image](https://github.com/thegrimbee/horus/assets/54467946/2ce8eb3d-f69a-4b97-9ec4-bbb69d6e299a)
+
 
 Our progress can be seen here: https://github.com/users/thegrimbee/projects/1/<br/>
 
 # AI Development
-The base model of our AI is MiniLM, which is a pre-trained transformer which we further build upon
-The development was mostly trial and error, the focus on getting harm level 2 (danger) as accurate as possible. 
-Our AI model will be trained based on this data: https://docs.google.com/spreadsheets/d/1r6mS8WzukVhHnVFOEGmQtwL2VmSqkGXQy1H2Al6IO2o/edit?usp=sharing
+### The base model
+We changed from using TextBlob to using MiniLM. We chose it as it is not only faster than LegalBert, but also performs better than both TextBlob and LegalBert. This was a bit of a surprise as we thought that LegalBert would perform better since they are pretrained with legal context
 
+### Training Data
+At first we started our training data with our own examples of what constitutes as a harmless (harm level 0) and harmful terms (harm level 1 or 2). Then, we decided to take sentences from
+the TOS of different apps such as 7-Zip. We noticed that there are also sentences in TOS which needs to be ignored, such as . So, we also added them into our training data to make the AI ignore them.
+
+Our AI model wwere trained based on this data: https://docs.google.com/spreadsheets/d/1r6mS8WzukVhHnVFOEGmQtwL2VmSqkGXQy1H2Al6IO2o/edit?usp=sharing
+
+### Challenges
+1. Limited Training Data: It was time consuming to build the training data as the most reliable way was to do it manually. We couldn't find a good reliable solution to this problem, but in the end the performance of the AI was satisfactory
+2. Imbalanced Datasets: It was difficult to make the dataset balanced, so we instead tried different transformers in our pipeline such as SMOTE and ADASYN. We found ADASYN to have performed much better
+3. Finding the best classifier: This is the most time consuming part of training the AI as to test each classifier, we needed to do hyperparameter tuning to find the best arguments for the classifier. To do the hyperparameter tuning, we used GridSearchCV and found RandomForestClassifer to have the best performance
+4. Balancing the Loss Function: It was quite difficult determining the different weights of mistakes the AI made. For example, we made an emphasis on ensuring that the AI would get heavily penalised if they miss out a term with harm level 2. However, in doing so, it increased the number of false positives for harm level 2 as well. As such, balancing the custom loss function took a lot of time due to trial and error.
+
+### Results
+Even with limited data, our AI performs quite well, recognising certain patterns consistently (e.g. when the term mentions that there is no warranty in the app, the model consistently labels it with a harm level of 1). 
 
 
 # Our Workflow
