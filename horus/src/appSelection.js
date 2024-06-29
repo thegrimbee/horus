@@ -31,8 +31,8 @@ async function appSelection() {
         dropdown.appendChild(newOption);
         console.log('success')
     }
+    allFolders.sort();
     console.log(allFolders);
     window.allFolders = allFolders;
 }
-
 appSelection();
