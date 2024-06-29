@@ -32,7 +32,6 @@ async function appSelection() {
     const folders86 = await window.dialogAPI.fs.readDir(programFiles86Path);
 
     var allFolders = [...folders, ...folders86];
-    allFolders = folderSort(allFolders);
     for (var i = 0; i < allFolders.length; i++) {
         var newOption = document.createElement("a");
         const folder = allFolders[i];
@@ -55,6 +54,7 @@ async function appSelection() {
         dropdown.appendChild(newOption);
         console.log('success')
     }
+    allFolders = folderSort(allFolders);
     allFolders = removeIdentical(allFolders);
     console.log(allFolders);
     window.allFolders = allFolders;
