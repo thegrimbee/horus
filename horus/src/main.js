@@ -7,6 +7,12 @@ const fs = require('fs');
 
 const spawn = require('child_process').spawn;
 const { Menu } = require('electron');
+const { shell } = require('electron')
+
+ipcMain.handle('open-external', async (event, url) => {
+  await shell.openExternal(url);
+});
+
 
 ipcMain.handle('get-env', (event, variable) => {
   return process.env[variable];
