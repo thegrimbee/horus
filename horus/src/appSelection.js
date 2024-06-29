@@ -22,6 +22,25 @@ function removeIdentical(folders) {
     return uniqueFolders;
 }
 
+/**
+ * Checks if the given path is a folder.
+ * @param {string} path - The path to check.
+ * @returns {Promise<boolean>} A promise that resolves to `true` if the path is a folder, `false` otherwise.
+ */
+async function isFolder(path) {
+    return await window.dialogAPI.fs.statSync(path);
+}
+
+async function removeNonFolders(folders) {
+    var foldersOnly = [];
+    for (var i = 0; i < folders.length; i++) {
+        if (await isFolder(folders[i])) {
+            foldersOnly.push(folders[i]);
+        }
+    }
+    return foldersOnly;
+}
+
 async function appSelection() {    
     var dropdown = document.getElementById('appSelectionDropdown');
     var dropdownButton = document.getElementById('appSelectionDropdownButton');
@@ -56,6 +75,7 @@ async function appSelection() {
     }
     allFolders = folderSort(allFolders);
     allFolders = removeIdentical(allFolders);
+    allFolders = await removeNonFolders(allFolders);
     console.log(allFolders);
     window.allFolders = allFolders;
 }
