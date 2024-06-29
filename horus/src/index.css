@@ -1,32 +1,46 @@
 
-body::after {
-  content: ""; 
-  background: url('../public/Logo.jpeg');
-  opacity: 0.3; /* Adjust to your preference, 0 is fully transparent, 1 is fully opaque */
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;  
-  background-position: center top 10%;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif;
   margin: auto;
   max-width: 60rem;
   padding: 2rem;
+  overflow-y:hidden;
 }
 
 .dropdown-menu {
     max-height: 200px;
-    overflow-y: auto;
+    overflow-y: visible;
     overflow-x: hidden;
+    
 }
 
+#dropdownStuff {
+  transform: translate(-20px,+0px,0);
 
+}
 
+#loadingBar {
+  transform: translate(+10px,+20px);
+
+}
+#appScanned {
+  z-index: -1;
+}
+
+#twoScanningButtons {
+  transform: translateY(+5px);
+}
+
+#appName {
+  transform: translate(+20px, -20px);
+  
+}
+
+#Apps {
+  transform: translateY(-0px);
+}
+
+#altAppsButton {
+  transform: translateY(-35px);
+}
