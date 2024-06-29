@@ -116,19 +116,19 @@ pipeline = ImbPipeline([
 ])
 
 # Define parameter grid for GridSearchCV
-# param_grid = {
-#     'clf__n_estimators': [100, 200, 300],
-# }
+param_grid = {
+    'clf__n_estimators': [100, 200, 300],
+}
 
 
-# stratified_kfold = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
-# grid_search = GridSearchCV(pipeline, param_grid, cv=stratified_kfold, n_jobs=-1, verbose=1, scoring=custom_scorer)
-# grid_search.fit(X_train, Y_train)
-# model = grid_search.best_estimator_
-# print(grid_search.best_params_)
-print('testing1')
-pipeline.fit(X_train, Y_train)
-model = pipeline
+stratified_kfold = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+grid_search = GridSearchCV(pipeline, param_grid, cv=stratified_kfold, n_jobs=-1, verbose=1, scoring=custom_scorer)
+grid_search.fit(X_train, Y_train)
+model = grid_search.best_estimator_
+print(grid_search.best_params_)
+# print('testing1')
+# pipeline.fit(X_train, Y_train)
+# model = pipeline
 
 model_path = os.path.join(os.path.dirname(__file__), '../horus/ai_models/model2.pkl')
 # Save the model to a file
@@ -146,5 +146,3 @@ print('Classification Report:')
 print(classification_report(Y_test, Y_pred))
 print(Y_pred.tolist())
 print(Y_test.tolist())
-
-print(model.predict(np.array(["We will steal your data and you will die no warranty nothing you die"])))
