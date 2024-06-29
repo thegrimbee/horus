@@ -232,7 +232,7 @@ scanAllButton.addEventListener("click", function(event) {
 
 document.addEventListener('DOMContentLoaded', () => {
     document.body.addEventListener('click', (event) => {
-      if (event.target.tagName === 'A' && event.target.href.startsWith('http')) {
+      if (event.target.tagName === 'A' && event.target.href.startsWith('http') && !event.target.href.includes('localhost')){
         event.preventDefault(); // Prevent default action
         window.electron.openExternal(event.target.href); // Open the link in the default browser
       }
