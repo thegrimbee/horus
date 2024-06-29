@@ -217,7 +217,7 @@ scanButton.addEventListener("click", function(event) {
     scanButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanning...';
     event.preventDefault();
     scan();
-    //scanButton.innerHTML = 'Scan';
+    scanButton.innerHTML = 'Scan';
 });
 
 scanAllButton.addEventListener("click", function(event) {
