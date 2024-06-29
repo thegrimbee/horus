@@ -1,108 +1,29 @@
----
-license: apache-2.0
-library_name: sentence-transformers
-tags:
-- sentence-transformers
-- feature-extraction
-- sentence-similarity
-- transformers
-pipeline_tag: sentence-similarity
----
+# Horus <br/>
 
-# sentence-transformers/paraphrase-MiniLM-L6-v2
+**Team ID:** 6004
 
-This is a [sentence-transformers](https://www.SBERT.net) model: It maps sentences & paragraphs to a 384 dimensional dense vector space and can be used for tasks like clustering or semantic search.
+**Team Members:** Gabriel Mario Antaputra, Le Tu Quoc Dat
 
+**Level of Achievement:** Gemini 
+<br/>
 
+# Project details
 
-## Usage (Sentence-Transformers)
+This is the repository for the desktop application, Horus. Horus is an app that scans terms of services of apps for the user and highlights potentially harmful terms.
 
-Using this model becomes easy when you have [sentence-transformers](https://www.SBERT.net) installed:
+Currently, Horus is in its earliest stage of development and our team will focus on implementing the following over the few weeks:
+1. Being able to locate the terms of service files
+2. Being able to scan potentially harmful terms (may not have high accuracy)
+3. Having a functional UI
 
-```
-pip install -U sentence-transformers
-```
+Our tech stack will include:
+1. Electron, to design the app itself including its UI and file watching system
+2. Python, to handle the backend processing and the AI to analyse the TOS
 
-Then you can use the model like this:
+Our progress can be seen here: https://github.com/users/thegrimbee/projects/1/<br/>
+Our AI model will be trained based on this data: https://docs.google.com/spreadsheets/d/1r6mS8WzukVhHnVFOEGmQtwL2VmSqkGXQy1H2Al6IO2o/edit?usp=sharing
 
-```python
-from sentence_transformers import SentenceTransformer
-sentences = ["This is an example sentence", "Each sentence is converted"]
-
-model = SentenceTransformer('sentence-transformers/paraphrase-MiniLM-L6-v2')
-embeddings = model.encode(sentences)
-print(embeddings)
-```
-
-
-
-## Usage (HuggingFace Transformers)
-Without [sentence-transformers](https://www.SBERT.net), you can use the model like this: First, you pass your input through the transformer model, then you have to apply the right pooling-operation on-top of the contextualized word embeddings.
-
-```python
-from transformers import AutoTokenizer, AutoModel
-import torch
-
-
-#Mean Pooling - Take attention mask into account for correct averaging
-def mean_pooling(model_output, attention_mask):
-    token_embeddings = model_output[0] #First element of model_output contains all token embeddings
-    input_mask_expanded = attention_mask.unsqueeze(-1).expand(token_embeddings.size()).float()
-    return torch.sum(token_embeddings * input_mask_expanded, 1) / torch.clamp(input_mask_expanded.sum(1), min=1e-9)
-
-
-# Sentences we want sentence embeddings for
-sentences = ['This is an example sentence', 'Each sentence is converted']
-
-# Load model from HuggingFace Hub
-tokenizer = AutoTokenizer.from_pretrained('sentence-transformers/paraphrase-MiniLM-L6-v2')
-model = AutoModel.from_pretrained('sentence-transformers/paraphrase-MiniLM-L6-v2')
-
-# Tokenize sentences
-encoded_input = tokenizer(sentences, padding=True, truncation=True, return_tensors='pt')
-
-# Compute token embeddings
-with torch.no_grad():
-    model_output = model(**encoded_input)
-
-# Perform pooling. In this case, max pooling.
-sentence_embeddings = mean_pooling(model_output, encoded_input['attention_mask'])
-
-print("Sentence embeddings:")
-print(sentence_embeddings)
-```
-
-
-
-## Evaluation Results
-
-
-
-For an automated evaluation of this model, see the *Sentence Embeddings Benchmark*: [https://seb.sbert.net](https://seb.sbert.net?model_name=sentence-transformers/paraphrase-MiniLM-L6-v2)
-
-
-
-## Full Model Architecture
-```
-SentenceTransformer(
-  (0): Transformer({'max_seq_length': 128, 'do_lower_case': False}) with Transformer model: BertModel 
-  (1): Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False})
-)
-```
-
-## Citing & Authors
-
-This model was trained by [sentence-transformers](https://www.sbert.net/). 
-        
-If you find this model helpful, feel free to cite our publication [Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks](https://arxiv.org/abs/1908.10084):
-```bibtex 
-@inproceedings{reimers-2019-sentence-bert,
-    title = "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks",
-    author = "Reimers, Nils and Gurevych, Iryna",
-    booktitle = "Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing",
-    month = "11",
-    year = "2019",
-    publisher = "Association for Computational Linguistics",
-    url = "http://arxiv.org/abs/1908.10084",
-}
-```
+We are currently trying different approaches for our AI and analysing which one works best:
+1. Training the pre-trained LegalBERT model
+2. Training the TextBlob model
+3. Using GPT API
