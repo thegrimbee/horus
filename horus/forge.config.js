@@ -7,7 +7,9 @@ module.exports = {
     extraResource: ['python_scripts/',
                     'ai_models/',
                     'src/scans.csv',
-    ]
+    ],
+    icon: "public/icon.ico"
+
   },
   rebuildConfig: {},
   makers: [

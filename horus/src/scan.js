@@ -174,7 +174,8 @@ function scan() {
             .then(tosText => analyseTos(tosText, appName))
             .then(result => {
                 loadingBar.value = 100;
-                const resultArray = result;
+                const resultArray = result;                
+
                 for (var i = 0; i < resultArray.length; i++) {
                     resultArray[i] = resultArray[i].replace(/\n+/g, '<br>')
                         .replace(/\\[a-zA-Z]+[0-9]*[ ]?|{\\*\\[^{}]+}|[{}]|\\'..|\\[a-z]+\n|\\[*]/g, '');
@@ -213,14 +214,27 @@ function scan() {
 
 // Add a click event listener to the button
 scanButton.addEventListener("click", function(event) {
+    scanButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanning...';
     event.preventDefault();
     scan();
+    //scanButton.innerHTML = 'Scan';
 });
 
 scanAllButton.addEventListener("click", function(event) {
+    scanAllButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanning...';
     event.preventDefault();
     for (var i = 0; i < window.allFolders.length; i++) {
         window.selectedAppFolder = window.allFolders[i];
         scan();
     }
+    scanAllButton.innerHTML = 'Scan All';
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.addEventListener('click', (event) => {
+      if (event.target.tagName === 'A' && event.target.href.startsWith('http') && !event.target.href.includes('localhost')){
+        event.preventDefault(); // Prevent default action
+        window.electron.openExternal(event.target.href); // Open the link in the default browser
+      }
+    });
+  });

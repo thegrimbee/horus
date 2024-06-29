@@ -2,6 +2,8 @@
 // https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
 console.log('preload.js loaded');
 const { contextBridge, ipcRenderer } = require('electron');
+const { shell } = require('electron')
+
 
 // Allows browseFolder.js to use dialog.showOpenDialog. Increases security by only exposing the needed api
 contextBridge.exposeInMainWorld(
@@ -31,7 +33,8 @@ contextBridge.exposeInMainWorld(
 contextBridge.exposeInMainWorld(
   'electron', {
     openUserGuide: () => ipcRenderer.send('open-user-guide'),
-    on: (channel, func) => ipcRenderer.on(channel, (event, ...args) => func(...args))
+    on: (channel, func) => ipcRenderer.on(channel, (event, ...args) => func(...args)),
+    openExternal: (url) => ipcRenderer.invoke('open-external', url),
   }
 );
 
