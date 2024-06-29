@@ -190,7 +190,7 @@ function scan() {
                 const listItem = document.createElement("li");
                 listItem.id = "appListItem-" + appName;
                 listItem.className = "list-group-item list-group-item-action";
-                listItem.innerHTML = `<a class="app-scanned link-offset-2 link-underline link-underline-opacity-0" data-toggle="list" href="#appListItem-${appName}">${appName}</a>`;
+                listItem.innerHTML = `<a class="app-scanned link-offset-2 link-underline link-underline-opacity-0" data-bs-toggle="list" href="#appListItem-${appName}">${appName}</a>`;
                 if (!document.getElementById("appListItem-appName")) {
                     scannedAppList.appendChild(listItem);
                 }
