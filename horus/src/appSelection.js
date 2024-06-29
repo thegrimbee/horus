@@ -4,9 +4,21 @@ function folderSort(folders) {
         const folderNameB = b.split('\\').pop();
         return folderNameA.localeCompare(folderNameB);
     });
-    console.log('askjghakghakjgs');
-    console.log(folders);
     return folders;
+}
+
+function removeIdentical(folders) {
+    var uniqueFolders = [];
+    for (var i = 0; i < folders.length - 1; i++) {
+        if (folders[i].split('\\').pop() !== folders[i].split('\\').pop()) {
+            uniqueFolders.push(folders[i]);
+        } else {
+            uniqueFolders.push(folders[i + 1]);
+            i++;
+        }
+    }
+    console.log(uniqueFolders);
+    return uniqueFolders;
 }
 
 async function appSelection() {    
@@ -19,7 +31,7 @@ async function appSelection() {
     const folders86 = await window.dialogAPI.fs.readDir(programFiles86Path);
 
     var allFolders = [...folders, ...folders86];
-    allFolders = folderSort(allFolders);
+    allFolders = removeIdentical(folderSort(allFolders));
     for (var i = 0; i < allFolders.length; i++) {
         var newOption = document.createElement("a");
         const folder = allFolders[i];
