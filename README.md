@@ -50,20 +50,25 @@ We removed passive scanning from our features as we realise that not only is it 
 Terms of services apply differently depending on the user's context, so contextualised scanning aims to increase the accuracy of the scans by adding the context of the user. We will do this by modifying our training data 
 2. Moving the Processing to a Server <br/>
 The aim of this is to make the app less heavy for the user. The downside of this is that the app must now have internet connection to run (before, only online scanning and updating database requires internet).
+3. Improved app selection, allows users to scan apps that have not been installed in the computer yet <br/>
+Since we removed passive scanning, we now need a feature to allow users to check the safety of TOS before installing the app. This feature allows the user to scan an app by typing its name in a search bar.
 
 # Software Engineering Principles
 We use K.I.S.S as our main software engineering design pattern. This is because we want to focus mainly on making sure the app is light and fast, so we avoid unnecessarily advanced technologies. For example, we use CSV instead of a more advanced database like SQL and MongoDB since CSV is lighter and faster (since we only have one table).
 
 ### Github
-1. Issues <br\>
+1. Issues <br/>
 We use issues to highlight the problems that we need to fix or add in the app. We also use it to distribute work to each other. Whoever is more suited to do the issue can assign himself to the issue and work on it on a new branch
-2. Branching <br\>
+2. Branching <br/>
 We use a new branch for every feature and will tell each other beforehand before merging two branches.
+3. Reviewing <br/>
+When mering branches that have conflicts, we cross review them before merging
 
 ### Coding Standard
 We don't use a single coding standard for all the languages, but we use the most preferred coding standard for each language
 1. Python - snake_case
 2. JS - camelCase
+3. Git branches - hyphens (e.g. git-branch)
 
 ### Separation of Concerns
 We try to maximise separating our program into their respective functionality. For example, the JS backend is split into many JS files named based on their respective functionality e.g. appSelection.js is in charge of handling the app selection.
