@@ -3,7 +3,7 @@
 // Get the button element
 const scanButton = document.getElementById("scanButton");
 // const folderNameInput = document.getElementById("folderNameInput");
-const scanAllButton = document.getElementById("scanAllButton");
+const scanAllButton = document.getElementById("scanAllAnywayButton");
 const loadingBar = document.getElementById("loadingBar");
 const dangerButton = document.getElementById('dangerButton');
 const HIGHLIGHT_COLOR = 'rgba(34, 139, 34, 0.5)'; //'#3a3a3a' for grey;

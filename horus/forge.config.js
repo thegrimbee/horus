@@ -8,7 +8,7 @@ module.exports = {
                     'ai_models/',
                     'src/scans.csv',
     ],
-    icon: "public/icon.ico"
+    icon: "public/cropped-icon.ico"
 
   },
   rebuildConfig: {},

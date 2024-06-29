@@ -105,7 +105,7 @@ let mainWindow;
 const createWindow = () => {
   let icon;
   if (process.platform === 'win32') {
-    icon = path.join(__dirname, '/icon.ico');
+    icon = path.join(__dirname, '/cropped-icon.ico');
   }
   else if(process.platform === 'darwin') {
     icon = path.join(__dirname, '/icon.icns');
