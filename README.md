@@ -9,16 +9,14 @@
 
 **Github link:** https://github.com/thegrimbee/horus/
 <br/>
+# WARNING: AFTER YOU DOWNLOADED THE APP DO NOT RUN "SCAN ALL" BUTTON
+We are currently having issues making the scan all button work. Some issues we encountered is limiting RAM usage, currently it has no limit, meaning it can use up to multiple GBs of RAM. We also experience unprecedented errors which we suspect is due to asyncrhonous issues.
 
 # Installation Guide
 1. Install Python. Our app has python scripts that require you to have Python 3. If you don't already have python 3, install python here: https://www.python.org/downloads/
 2. Download our installer in this link:
 3. Run the installer
-
-If you want the fully functional version there are a few steps:
-1. Clone our github branch (either show-results for the version with the newer UI or main-in-review-with-ai for the version with the newer AI)
-2. Ensure you have node.js and python installed
-3. Run the command: npm start
+4. The shortcut should be made in the desktop (REMEMBER DONT RUN SCAN ALL)
 
 # Motivation
 Terms and services have been infamous for being very long winded and confusing to read. As such, people normally skip reading these terms and conditions. However, these terms and conditions may have terms which are harmful for the users. As such, an application is needed to summarise and highlight these harmful terms for the users.
@@ -105,9 +103,6 @@ Our AI model wwere trained based on this data: https://docs.google.com/spreadshe
 
 ### Results
 Even with limited data, our AI performs quite well, recognising certain patterns consistently (e.g. when the term mentions that there is no warranty in the app, the model consistently labels it with a harm level of 1). 
-
-
-# Our Workflow
 
 
 
