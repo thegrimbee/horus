@@ -1,3 +1,14 @@
+function folderSort(folders) {
+    folders.sort((a, b) => {
+        const folderNameA = a.split('\\').pop();
+        const folderNameB = b.split('\\').pop();
+        return folderNameA.localeCompare(folderNameB);
+    });
+    console.log('askjghakghakjgs');
+    console.log(folders);
+    return folders;
+}
+
 async function appSelection() {    
     var dropdown = document.getElementById('appSelectionDropdown');
     var dropdownButton = document.getElementById('appSelectionDropdownButton');
@@ -7,8 +18,8 @@ async function appSelection() {
     const folders = await window.dialogAPI.fs.readDir(programFilesPath);
     const folders86 = await window.dialogAPI.fs.readDir(programFiles86Path);
 
-    const allFolders = [...folders, ...folders86];
-
+    var allFolders = [...folders, ...folders86];
+    allFolders = folderSort(allFolders);
     for (var i = 0; i < allFolders.length; i++) {
         var newOption = document.createElement("a");
         const folder = allFolders[i];
@@ -31,7 +42,6 @@ async function appSelection() {
         dropdown.appendChild(newOption);
         console.log('success')
     }
-    allFolders.sort();
     console.log(allFolders);
     window.allFolders = allFolders;
 }
