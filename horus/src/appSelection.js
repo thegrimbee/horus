@@ -9,11 +9,12 @@ function folderSort(folders) {
 
 function removeIdentical(folders) {
     var uniqueFolders = [];
+    console.log(folders);
     for (var i = 0; i < folders.length - 1; i++) {
-        if (folders[i].split('\\').pop() !== folders[i].split('\\').pop()) {
+        if (folders[i].split('\\').pop() !== folders[i + 1].split('\\').pop()) {
             uniqueFolders.push(folders[i]);
         } else {
-            uniqueFolders.push(folders[i + 1]);
+            uniqueFolders.push(folders[i]);
             i++;
         }
     }
@@ -31,7 +32,7 @@ async function appSelection() {
     const folders86 = await window.dialogAPI.fs.readDir(programFiles86Path);
 
     var allFolders = [...folders, ...folders86];
-    allFolders = removeIdentical(folderSort(allFolders));
+    allFolders = folderSort(allFolders);
     for (var i = 0; i < allFolders.length; i++) {
         var newOption = document.createElement("a");
         const folder = allFolders[i];
@@ -54,6 +55,7 @@ async function appSelection() {
         dropdown.appendChild(newOption);
         console.log('success')
     }
+    allFolders = removeIdentical(allFolders);
     console.log(allFolders);
     window.allFolders = allFolders;
 }
