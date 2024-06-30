@@ -113,22 +113,29 @@ async function getTos(path, includeAll = false) {
  * @returns {Promise<string>} A promise that resolves to the highlighted potentially harmful terms in the TOS text.
  */
 async function analyseTos(tosText, appName) {
-    console.log('analysing TOS of', appName);
-    
-    // NOTE: change these two paths when packaging the app
-    const scriptPath = await window.spawnAPI.pathJoin('..', '..', '..', 'python_scripts', 'analyse.py');
-    const tosPath = await window.spawnAPI.pathJoin('..', '..', '..', 'python_scripts', 'tos.txt');
+    try {
+        console.log('analysing TOS of', appName);
+        
+        // NOTE: change these two paths when packaging the app
+        const scriptPath = await window.spawnAPI.pathJoin('..', '..', '..', 'python_scripts', 'analyse.py');
+        const tosPath = await window.spawnAPI.pathJoin('..', '..', '..', 'python_scripts', 'tos.txt');
 
-    window.dialogAPI.fs.writeFile(tosPath, tosText);
-    await window.spawnAPI.spawn('python', [scriptPath, appName]);
+        window.dialogAPI.fs.writeFile(tosPath, tosText);
+        await window.spawnAPI.spawn('python', [scriptPath, appName]);
 
-    const normalPath = await window.spawnAPI.pathJoin('..', '..', '..', 'python_scripts', 'results', 'normal.txt');
-    const normal = await window.dialogAPI.fs.readFile(normalPath, 'utf8');
-    const warningPath = await window.spawnAPI.pathJoin('..', '..', '..', 'python_scripts', 'results', 'warning.txt');
-    const warning = await window.dialogAPI.fs.readFile(warningPath, 'utf8');
-    const dangerPath = await window.spawnAPI.pathJoin('..', '..', '..', 'python_scripts', 'results', 'danger.txt');
-    const danger = await window.dialogAPI.fs.readFile(dangerPath, 'utf8');
-    return [normal, warning, danger];
+        const normalPath = await window.spawnAPI.pathJoin('..', '..', '..', 'python_scripts', 'results', 'normal.txt');
+        const normal = await window.dialogAPI.fs.readFile(normalPath, 'utf8');
+        const warningPath = await window.spawnAPI.pathJoin('..', '..', '..', 'python_scripts', 'results', 'warning.txt');
+        const warning = await window.dialogAPI.fs.readFile(warningPath, 'utf8');
+        const dangerPath = await window.spawnAPI.pathJoin('..', '..', '..', 'python_scripts', 'results', 'danger.txt');
+        const danger = await window.dialogAPI.fs.readFile(dangerPath, 'utf8');
+        return [normal, warning, danger, false];
+    } catch (error) {
+        console.error(error);
+        return ["An error occurred while analysing the TOS text. Please try again later.", "An error occurred while analysing the TOS text. Please try again later.", 
+            "An error occurred while analysing the TOS text. Please try again later.",
+            "An error occurred while analysing the TOS text. Please try again later."];
+    }
 }
 
 /**
@@ -181,6 +188,7 @@ function scan() {
                         .replace(/\\[a-zA-Z]+[0-9]*[ ]?|{\\*\\[^{}]+}|[{}]|\\'..|\\[a-z]+\n|\\[*]/g, '');
                 }
                 var endResult = {'danger': resultArray[2], 'warning': resultArray[1], 'normal': resultArray[0]};
+                const error = resultArray[3];
                 console.log(endResult);
                 // Set the text of the paragraph to the result
                 window.scanResult = endResult;
@@ -191,8 +199,10 @@ function scan() {
                 listItem.id = "appListItem-" + appName;
                 listItem.className = "list-group-item list-group-item-action";
                 listItem.innerHTML = `<a class="app-scanned link-offset-2 link-underline link-underline-opacity-0" data-bs-toggle="list" href="#appListItem-${appName}">${appName}</a>`;
-                if (!document.getElementById("appListItem-" + appName)) {
+                if (!document.getElementById(listItem.id)) {
                     scannedAppList.appendChild(listItem);
+                } else {
+                    scannedAppList.replaceChild(listItem, document.getElementById(listItem.id));
                 }
                 //For now I'm relying on frame to store the result, might change later
                 listItem.addEventListener("click", function(event) {
