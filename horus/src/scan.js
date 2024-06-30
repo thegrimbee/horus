@@ -191,7 +191,7 @@ function scan() {
                 listItem.id = "appListItem-" + appName;
                 listItem.className = "list-group-item list-group-item-action";
                 listItem.innerHTML = `<a class="app-scanned link-offset-2 link-underline link-underline-opacity-0" data-bs-toggle="list" href="#appListItem-${appName}">${appName}</a>`;
-                if (!document.getElementById("appListItem-appName")) {
+                if (!document.getElementById("appListItem-" + appName)) {
                     scannedAppList.appendChild(listItem);
                 }
                 //For now I'm relying on frame to store the result, might change later
@@ -203,6 +203,8 @@ function scan() {
 
                 selectApp(listItem);
                 dangerButton.click();
+                scanButton.innerHTML = 'Scan';
+                
             })
             .catch(error => {
                 console.error(error);
@@ -217,7 +219,7 @@ scanButton.addEventListener("click", function(event) {
     scanButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanning...';
     event.preventDefault();
     scan();
-    scanButton.innerHTML = 'Scan';
+    
 });
 
 scanAllButton.addEventListener("click", function(event) {
