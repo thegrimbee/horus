@@ -15,7 +15,7 @@
 
 # Installation Guide
 1. Install Python. Our app has python scripts that require you to have Python 3. If you don't already have python 3, install python here: https://www.python.org/downloads/
-2. Download our installer in this link:
+2. Download  and extract our installer in this link: https://drive.google.com/file/d/1UVW_mOgh1nqh1TYmS_sv5G3cZUiSdgCd/view?usp=sharing
 3. Run the installer
 4. The shortcut should be made in the desktop (REMEMBER DONT RUN SCAN ALL)
 
