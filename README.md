@@ -39,7 +39,7 @@ We noticed that although majority of apps store the TOS in the folders, some app
 Although our application can function without a database, we decided to add a shared database to improve runtime for the users by saving TOS that are already scanned. We noticed that it takes quite a while for the AI to scan TOS, so this database improves the runtime for apps that have already been scanned by other users. For now, we are using csv and the database is hosted in google sheets. However, this might change in Milestone 3, since we plan to move most of the processing to a server instead of the user.
 4. App Suggestion, suggests alternative apps which may be safer <br/>
 Currently, it shows the list of apps from different categories that we deem are safer than the others. Originally we wanted to make another AI model for this feature, however we did not have time to do it as training one model took longer than we thought. 
-5. User Guide, the user can click the hyperlink in the user guide section to show a popup explaining how to locate the folders <br/>
+5. User Guide, the user can click the help button at the top of the screen to view the user guide <br/>
 
 We removed passive scanning from our features as we realise that not only is it a breach of user privacy, its benefits do not justify the amount of resources it use.
 
