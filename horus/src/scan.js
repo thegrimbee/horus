@@ -129,7 +129,7 @@ async function analyseTos(tosText, appName) {
         const warning = await window.dialogAPI.fs.readFile(warningPath, 'utf8');
         const dangerPath = await window.spawnAPI.pathJoin('..', '..', '..', 'python_scripts', 'results', 'danger.txt');
         const danger = await window.dialogAPI.fs.readFile(dangerPath, 'utf8');
-        return [normal, warning, danger, false];
+        return [normal, warning, danger];
     } catch (error) {
         console.error(error);
         return ["An error occurred while analysing the TOS text. Please try again later.", "An error occurred while analysing the TOS text. Please try again later.", 
