@@ -99,11 +99,15 @@ Our AI model wwere trained based on this data: https://docs.google.com/spreadshe
 ### Challenges
 1. Limited Training Data: It was time consuming to build the training data as the most reliable way was to do it manually. We couldn't find a good reliable solution to this problem, but in the end the performance of the AI was satisfactory
 2. Imbalanced Datasets: It was difficult to make the dataset balanced, so we instead tried different transformers in our pipeline such as SMOTE and ADASYN. We found ADASYN to have performed much better
-3. Finding the best classifier: This is the most time consuming part of training the AI as to test each classifier, we needed to do hyperparameter tuning to find the best arguments for the classifier. To do the hyperparameter tuning, we used GridSearchCV and found RandomForestClassifer to have the best performance
+3. Finding the best classifier: This is the most time consuming part of training the AI as to test each classifier, we needed to do hyperparameter tuning to find the best arguments for the classifier. To do the hyperparameter tuning, we used GridSearchCV and found GradientBoostingClassifier and RandomForestClassifer to have the best performance
 4. Balancing the Loss Function: It was quite difficult determining the different weights of mistakes the AI made. For example, we made an emphasis on ensuring that the AI would get heavily penalised if they miss out a term with harm level 2. However, in doing so, it increased the number of false positives for harm level 2 as well. As such, balancing the custom loss function took a lot of time due to trial and error.
 
 ### Results
 Even with limited data, our AI performs quite well, recognising certain patterns consistently (e.g. when the term mentions that there is no warranty in the app, the model consistently labels it with a harm level of 1). 
+
+### Model's Pipeline
+![image](https://github.com/thegrimbee/horus/assets/54467946/dfbbc003-10ef-45cc-aea4-30dc80e079f2)
+
 
 
 
