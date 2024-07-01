@@ -47,9 +47,11 @@ We removed passive scanning from our features as we realise that not only is it 
 1. Contextualised scanning, the scanning will give different results for the average user and an enterprise user. <br/>
 Terms of services apply differently depending on the user's context, so contextualised scanning aims to increase the accuracy of the scans by adding the context of the user. We will do this by modifying our training data 
 2. Moving the Processing to a Server <br/>
-The aim of this is to make the app less heavy for the user. The downside of this is that the app must now have internet connection to run (before, only online scanning and updating database requires internet).
+The aim of this is to make the app less heavy for the user. The downside of this is that the app must now have internet connection to run (before, only online scanning and updating database requires internet). We will do this using Heroku
 3. Improved app selection, allows users to scan apps that have not been installed in the computer yet <br/>
 Since we removed passive scanning, we now need a feature to allow users to check the safety of TOS before installing the app. This feature allows the user to scan an app by typing its name in a search bar.
+4. TLDR Feature, gives a tldr of the danger and warning terms
+We realised that the danger and warning terms may still be too long/confusing. Thus, we want to add a TLDR Feature which summarises and explains the terms in a simpler way. We're still not sure how we will do this, but we will most likely use the GPT API.
 
 # Software Engineering Principles
 We use K.I.S.S as our main software engineering design pattern. This is because we want to focus mainly on making sure the app is light and fast, so we avoid unnecessarily advanced technologies. For example, we use CSV instead of a more advanced database like SQL and MongoDB since CSV is lighter and faster (since we only have one table).
@@ -71,6 +73,8 @@ We don't use a single coding standard for all the languages, but we use the most
 ### Separation of Concerns
 We try to maximise separating our program into their respective functionality. For example, the JS backend is split into many JS files named based on their respective functionality e.g. appSelection.js is in charge of handling the app selection.
 
+### User Testing
+We allow other users' to test our apps' and gather their opinions for improvements.
 
 ### Tech Stack
 1. Electron JS, to design the app itself including its UI and file watching system
