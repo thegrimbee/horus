@@ -13,6 +13,7 @@
 1. Scan All Button (DO NOT PRESS IT), We are currently having issues making the scan all button work. Some issues we encountered is limiting RAM usage, currently it has no limit, meaning it can use up to multiple GBs of RAM. We also experience unprecedented errors which we suspect is due to asyncrhonous issues.
 2. Online Scanning, sometimes the operation takes too long, giving an error
 3. Logo not having a transparent background. We have no idea why this happens sometimes
+4. The scanning might take a while. THIS IS NORMAL because the AI model is running locally (in the future we will move the processing to a server)
 
 # Installation Guide
 1. Install Python. Our app has python scripts that require you to have Python 3. If you don't already have python 3, install python here: https://www.python.org/downloads/
