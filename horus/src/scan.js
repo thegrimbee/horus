@@ -118,17 +118,17 @@ async function analyseTos(tosText, appName) {
         console.log('analysing TOS of', appName);
         
         // NOTE: change these two paths when packaging the app
-        const scriptPath = await window.spawnAPI.pathJoin('..', '..', '..', 'python_scripts', 'analyse.py');
+        const scriptPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts', 'analyse.py');
         const tosPath = await window.spawnAPI.pathJoin('..', '..', '..', 'python_scripts', 'tos.txt');
 
         window.dialogAPI.fs.writeFile(tosPath, tosText);
         await window.spawnAPI.spawn('python', [scriptPath, appName]);
 
-        const normalPath = await window.spawnAPI.pathJoin('..', '..', '..', 'python_scripts', 'results', 'normal.txt');
+        const normalPath = await window.spawnAPI.pathJoin('..', '..',  'python_scripts', 'results', 'normal.txt');
         const normal = await window.dialogAPI.fs.readFile(normalPath, 'utf8');
-        const warningPath = await window.spawnAPI.pathJoin('..', '..', '..', 'python_scripts', 'results', 'warning.txt');
+        const warningPath = await window.spawnAPI.pathJoin('..', '..',  'python_scripts', 'results', 'warning.txt');
         const warning = await window.dialogAPI.fs.readFile(warningPath, 'utf8');
-        const dangerPath = await window.spawnAPI.pathJoin('..', '..', '..', 'python_scripts', 'results', 'danger.txt');
+        const dangerPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts', 'results', 'danger.txt');
         const danger = await window.dialogAPI.fs.readFile(dangerPath, 'utf8');
         return [normal, warning, danger];
     } catch (error) {
