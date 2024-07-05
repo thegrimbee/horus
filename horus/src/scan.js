@@ -119,7 +119,7 @@ async function analyseTos(tosText, appName) {
         
         // NOTE: change these two paths when packaging the app
         const scriptPath = await window.spawnAPI.pathJoin('..', '..', 'python_scripts', 'analyse.py');
-        const tosPath = await window.spawnAPI.pathJoin('..', '..', '..', 'python_scripts', 'tos.txt');
+        const tosPath = await window.spawnAPI.pathJoin('..', '..',  'python_scripts', 'tos.txt');
 
         window.dialogAPI.fs.writeFile(tosPath, tosText);
         await window.spawnAPI.spawn('python', [scriptPath, appName]);

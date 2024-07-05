@@ -38,6 +38,8 @@ class SentenceTransformerFeatures(BaseEstimator, TransformerMixin):
         return np.array(embeddings)
     
 def summarize(text):
+    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+    text = text.replace("\n", ". \n")
     # Tokenizing the text 
     stopWords = set(stopwords.words("english")) 
     words = word_tokenize(text) 
@@ -58,6 +60,7 @@ def summarize(text):
     # Creating a dictionary to keep the score 
     # of each sentence 
     sentences = sent_tokenize(text) 
+    sentences = [sentence for sentence in sentences if any(char in alphabet for char in sentence)]
     sentenceValue = dict() 
     
     for sentence in sentences: 
@@ -77,7 +80,7 @@ def summarize(text):
     # Average value of a sentence from the original text 
     
     average = int(sumValues / len(sentenceValue)) 
-    
+    print(sentenceValue)
     # Storing sentences into our summary. 
     summary = '' 
     for sentence in sentences: 
@@ -112,7 +115,7 @@ def analyse_tos(tos, app=""):
             tos += i.get_text()
     print(scans['App'].values)
     #tos = summarize(tos)
-    print(tos)
+    #print(tos)
     if app in scans['App'].values:
         categorized_sentences = scans[scans['App'] == app].iloc[0].tolist()
         #print(categorized_sentences)
@@ -124,14 +127,18 @@ def analyse_tos(tos, app=""):
         categorized_sentences = [[], [], []]
         for sentence in sentences:
             categorized_sentences[predict(sentence)].append(sentence)
+            #print(categorized_sentences[i])
         categorized_sentences = ["\n".join(categorized_sentences[0]), 
                                 "\n".join(categorized_sentences[1]), 
                                 "\n".join(categorized_sentences[2])]
+        for i in range(3):
+            categorized_sentences[i] = summarize(categorized_sentences[i])
         dct = {'App': app, 
                               'Level_0': categorized_sentences[0], 
                               'Level_1': categorized_sentences[1], 
                               'Level_2': categorized_sentences[2]}
         dct = {k:[v] for k,v in dct.items()}
+
         scans = pd.concat([scans, pd.DataFrame(dct)], 
                               ignore_index=True)
         scans.to_csv(scans_path, index=False)
