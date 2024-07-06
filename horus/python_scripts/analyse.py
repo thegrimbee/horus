@@ -39,7 +39,7 @@ class SentenceTransformerFeatures(BaseEstimator, TransformerMixin):
     
 def summarize(text):
     alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-    text = text.replace("\n", ". \n")
+    text = text.replace("\n\n", ". \n")
     # Tokenizing the text 
     stopWords = set(stopwords.words("english")) 
     words = word_tokenize(text) 
