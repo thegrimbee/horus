@@ -3,7 +3,8 @@
 // Get the button element
 const scanButton = document.getElementById("scanButton");
 // const folderNameInput = document.getElementById("folderNameInput");
-const scanAllButton = document.getElementById("scanAllAnywayButton");
+const scanAllAnywayButton = document.getElementById("scanAllAnywayButton");
+const scanAllButton = document.getElementById("scanAllButton");
 const loadingBar = document.getElementById("loadingBar");
 const dangerButton = document.getElementById('dangerButton');
 const HIGHLIGHT_COLOR = 'rgba(34, 139, 34, 0.5)'; //'#3a3a3a' for grey;
@@ -212,9 +213,18 @@ function scan() {
                 });
 
                 selectApp(listItem);
-                dangerButton.click();
-                scanButton.innerHTML = 'Scan';
-                
+                // Ensure dangerButton exists before clicking
+                if (dangerButton) {
+                    dangerButton.click();
+                }
+                // Assuming scanButton exists and is intended to reset its label to 'Scan'
+                if (scanButton) {
+                    scanButton.innerHTML = 'Scan';
+                }
+                let scanAppListLength = scannedAppList.children.length;
+                if (scanAppListLength === window.allFolders.length) {
+                    scanAllButton.innerHTML = 'Scan All';
+                }
             })
             .catch(error => {
                 console.error(error);
@@ -232,14 +242,16 @@ scanButton.addEventListener("click", function(event) {
     
 });
 
-scanAllButton.addEventListener("click", function(event) {
+scanAllAnywayButton.addEventListener("click", function(event) {
     scanAllButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanning...';
     event.preventDefault();
     for (var i = 0; i < window.allFolders.length; i++) {
         window.selectedAppFolder = window.allFolders[i];
         scan();
     }
-    scanAllButton.innerHTML = 'Scan All';
+    const scannedAppList = document.getElementById("appScannedList");
+    
+    
 });
 
 document.addEventListener('DOMContentLoaded', () => {
