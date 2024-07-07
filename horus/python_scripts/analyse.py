@@ -16,10 +16,6 @@ import warnings
 
 # Ignore FutureWarning
 warnings.simplefilter(action='ignore', category=FutureWarning)
-# importing libraries 
-import nltk 
-from nltk.corpus import stopwords 
-from nltk.tokenize import word_tokenize, sent_tokenize 
 
 #Using torch
 import torch
@@ -96,17 +92,20 @@ def analyse_tos(tos, app=""):
                                 "\n".join(categorized_sentences[1]), 
                                 "\n".join(categorized_sentences[2])]
         for i in range(3):
-            categorized_sentences[i] = summarize(categorized_sentences[i])
+            categorized_sentences.append(summarize(categorized_sentences[i]))
         dct = {'App': app, 
                               'Level_0': categorized_sentences[0], 
                               'Level_1': categorized_sentences[1], 
-                              'Level_2': categorized_sentences[2]}
+                              'Level_2': categorized_sentences[2],
+                              'Summary_0': categorized_sentences[3],
+                              'Summary_1': categorized_sentences[4],
+                              'Summary_2': categorized_sentences[5]}
         dct = {k:[v] for k,v in dct.items()}
 
         scans = pd.concat([scans, pd.DataFrame(dct)], 
                               ignore_index=True)
         scans.to_csv(scans_path, index=False)
-        sheet.append_row([app, categorized_sentences[0], categorized_sentences[1], categorized_sentences[2]])
+        sheet.append_row([app, categorized_sentences[0], categorized_sentences[1], categorized_sentences[2], categorized_sentences[3], categorized_sentences[4], categorized_sentences[5]])
 
     normal_path = os.path.join(os.path.dirname(__file__), 'results', 'normal.txt')
     with open(normal_path, 'w', encoding='utf-8', errors='ignore') as f:
@@ -117,7 +116,15 @@ def analyse_tos(tos, app=""):
     danger_path = os.path.join(os.path.dirname(__file__), 'results', 'danger.txt')
     with open(danger_path, 'w', encoding='utf-8', errors='ignore') as f:
         f.write(str(categorized_sentences[2]))
-
+    normal_summary_path = os.path.join(os.path.dirname(__file__), 'results', 'normal_summary.txt')
+    with open(normal_summary_path, 'w', encoding='utf-8', errors='ignore') as f:
+        f.write(str(categorized_sentences[3]))
+    warning_summary_path = os.path.join(os.path.dirname(__file__), 'results', 'warning_summary.txt')
+    with open(warning_summary_path, 'w', encoding='utf-8', errors='ignore') as f:
+        f.write(str(categorized_sentences[4]))
+    danger_summary_path = os.path.join(os.path.dirname(__file__), 'results', 'danger_summary.txt')
+    with open(danger_summary_path, 'w', encoding='utf-8', errors='ignore') as f:
+        f.write(str(categorized_sentences[5]))
     return categorized_sentences
 
 if __name__ == '__main__':
