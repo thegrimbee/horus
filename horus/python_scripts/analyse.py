@@ -39,13 +39,12 @@ def predict(sentence):
     return model.predict([sentence])[0]
 
 def analyse_tos(tos, app=""):
-    scans_path = os.path.join(os.path.dirname(__file__), '../scans.csv')
+    scans_path = os.path.join(os.path.dirname(__file__), '../src/scans.csv')
     scans = pd.read_csv(scans_path)
     online_scans_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQjd7DmxuwsQccfgX02enJf-g4DnWnvN5ZAkEHSfedfpqTF9JjYoSkvFUWNoTIy_PW6Kl_yhuzYtHy5/pub?gid=0&single=true&output=csv' 
     online_scans = pd.read_csv(online_scans_url)
-    print(scans['App'].values)
     
-    if tos.strip()== '':
+    if len(tos.strip()) < 10:
         print("No terms of service found for " + app + ". Searching the web...")
         tos_urls = search(app + " terms of service", num=1, stop=1)
         url = ''
@@ -57,7 +56,6 @@ def analyse_tos(tos, app=""):
         tos_list = soup.find_all('p')
         for i in tos_list:
             tos += i.get_text()
-    print(scans['App'].values)
     if app in scans['App'].values:
         categorized_sentences = scans[scans['App'] == app].iloc[0].tolist()
         #print(categorized_sentences)
