@@ -12,11 +12,18 @@ from bs4 import BeautifulSoup
 import requests
 import numpy as np
 from scipy.sparse import csr_matrix
+import warnings
 
+# Ignore FutureWarning
+warnings.simplefilter(action='ignore', category=FutureWarning)
 # importing libraries 
 import nltk 
 from nltk.corpus import stopwords 
 from nltk.tokenize import word_tokenize, sent_tokenize 
+
+#Using torch
+import torch
+from transformers import AutoTokenizer, T5ForConditionalGeneration
 
 
 scope = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
@@ -38,55 +45,13 @@ class SentenceTransformerFeatures(BaseEstimator, TransformerMixin):
         return np.array(embeddings)
     
 def summarize(text):
-    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-    text = text.replace("\n\n", ". \n")
-    # Tokenizing the text 
-    stopWords = set(stopwords.words("english")) 
-    words = word_tokenize(text) 
-    
-    # Creating a frequency table to keep the  
-    # score of each word 
-    
-    freqTable = dict() 
-    for word in words: 
-        word = word.lower() 
-        if word in stopWords: 
-            continue
-        if word in freqTable: 
-            freqTable[word] += 1
-        else: 
-            freqTable[word] = 1
-    
-    # Creating a dictionary to keep the score 
-    # of each sentence 
-    sentences = sent_tokenize(text) 
-    sentences = [sentence for sentence in sentences if any(char in alphabet for char in sentence)]
-    sentenceValue = dict() 
-    
-    for sentence in sentences: 
-        for word, freq in freqTable.items(): 
-            if word in sentence.lower(): 
-                if sentence in sentenceValue: 
-                    sentenceValue[sentence] += freq 
-                else: 
-                    sentenceValue[sentence] = freq 
-    
-    
-    
-    sumValues = 0
-    for sentence in sentenceValue: 
-        sumValues += sentenceValue[sentence] 
-    
-    # Average value of a sentence from the original text 
-    
-    average = int(sumValues / len(sentenceValue)) 
-    print(sentenceValue)
-    # Storing sentences into our summary. 
-    summary = '' 
-    for sentence in sentences: 
-        if (sentence in sentenceValue) and (sentenceValue[sentence] > (1.2 * average)): 
-            summary += " " + sentence 
-    return summary
+    if text == '':
+        return text
+    tokenizer = AutoTokenizer.from_pretrained("t5-base")
+    model = T5ForConditionalGeneration.from_pretrained("t5-base", return_dict=True)
+    inputs = tokenizer.encode("summarize: " + text, return_tensors="pt", max_length=512, truncation=True)
+    ouputs = model.generate(inputs, max_length=150, min_length=75, length_penalty=5.0, num_beams=2, early_stopping=True)
+    return tokenizer.decode(ouputs[0], skip_special_tokens=True)
 
 def predict(sentence):
     # Load the model from the file
@@ -114,7 +79,6 @@ def analyse_tos(tos, app=""):
         for i in tos_list:
             tos += i.get_text()
     print(scans['App'].values)
-    #tos = summarize(tos)
     #print(tos)
     if app in scans['App'].values:
         categorized_sentences = scans[scans['App'] == app].iloc[0].tolist()
