@@ -4,10 +4,7 @@ const { FuseV1Options, FuseVersion } = require('@electron/fuses');
 module.exports = {
   packagerConfig: {
     asar: true,
-    extraResource: ['python_scripts/',
-                    'ai_models/',
-                    'src/scans.csv',
-    ],
+    extraResource: ['src/scans.csv'],
     icon: "public/cropped-icon.ico"
 
   },

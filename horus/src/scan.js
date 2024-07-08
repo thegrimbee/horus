@@ -116,29 +116,19 @@ async function getTos(path, includeAll = false) {
 async function analyseTos(tosText, appName) {
     try {
         console.log('analysing TOS of', appName);
-        
-        // NOTE: change these two paths when packaging the app
-        const scriptPath = await window.spawnAPI.pathJoin('..', '..', '..', 'python_scripts', 'analyse.py');
-        const tosPath = await window.spawnAPI.pathJoin('..', '..', '..',  'python_scripts', 'tos.txt');
-
-        window.dialogAPI.fs.writeFile(tosPath, tosText);
-        await window.spawnAPI.spawn('python', [scriptPath, appName]);
-
-        const normalPath = await window.spawnAPI.pathJoin('..', '..', '..',  'python_scripts', 'results', 'normal.txt');
-        const normal = await window.dialogAPI.fs.readFile(normalPath, 'utf8');
-        const warningPath = await window.spawnAPI.pathJoin('..', '..', '..',  'python_scripts', 'results', 'warning.txt');
-        const warning = await window.dialogAPI.fs.readFile(warningPath, 'utf8');
-        const dangerPath = await window.spawnAPI.pathJoin('..', '..', '..', 'python_scripts', 'results', 'danger.txt');
-        const danger = await window.dialogAPI.fs.readFile(dangerPath, 'utf8');
-        const summarizedNormalPath = await window.spawnAPI.pathJoin('..', '..', '..',  'python_scripts', 'results', 'normal_summary.txt');
-        const summarizedNormal = await window.dialogAPI.fs.readFile(summarizedNormalPath, 'utf8');
-        const summarizedWarningPath = await window.spawnAPI.pathJoin('..', '..', '..',  'python_scripts', 'results', 'warning_summary.txt');
-        const summarizedWaring = await window.dialogAPI.fs.readFile(summarizedWarningPath, 'utf8');
-        const summarizedDangerPath = await window.spawnAPI.pathJoin('..', '..', '..',  'python_scripts', 'results', 'danger_summary.txt');
-        const summarizedDanger = await window.dialogAPI.fs.readFile(summarizedDangerPath, 'utf8');
-        
-        return [normal, warning, danger, summarizedNormal, summarizedWaring, summarizedDanger];
-
+    
+        const data = { tos: tosText, appName: appName};
+        const response = await fetch('http://localhost:5000/analyse', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ tos: tosText, appName: appName })
+        });
+        const resultJson = await response.json();
+        const { danger, danger_summary, normal, normal_summary, warning, warning_summary } = resultJson;
+        return [normal, warning, danger, normal_summary, warning_summary, danger_summary];
+    
     } catch (error) {
         console.error(error);
         return ["An error occurred while analysing the TOS text. Please try again later.", "An error occurred while analysing the TOS text. Please try again later.", 
