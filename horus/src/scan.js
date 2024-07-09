@@ -122,7 +122,7 @@ async function analyseTos(tosText, appName) {
         const tosPath = await window.spawnAPI.pathJoin('..', '..',  'python_scripts', 'tos.txt');
 
         window.dialogAPI.fs.writeFile(tosPath, tosText);
-        await window.spawnAPI.spawn('python', [scriptPath, appName]);
+        await window.spawnAPI.spawn('py', [scriptPath, appName]);
 
         const normalPath = await window.spawnAPI.pathJoin('..', '..',  'python_scripts', 'results', 'normal.txt');
         const normal = await window.dialogAPI.fs.readFile(normalPath, 'utf8');
