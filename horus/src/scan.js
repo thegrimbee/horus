@@ -118,14 +118,13 @@ async function analyseTos(tosText, appName) {
         console.log('analysing TOS of', appName);
     
         const data = { tos: tosText, appName: appName};
-        const response = await fetch('http://localhost:5000/analyse', {
+        const resultJson = await fetch('http://localhost:5000/analyse', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ tos: tosText, appName: appName })
-        });
-        const resultJson = await response.json();
+        }).then(response => response.json());
         const { danger, danger_summary, normal, normal_summary, warning, warning_summary } = resultJson;
         return [normal, warning, danger, normal_summary, warning_summary, danger_summary];
     
