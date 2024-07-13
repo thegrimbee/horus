@@ -9,6 +9,7 @@ const loadingBar = document.getElementById("loadingBar");
 const dangerButton = document.getElementById('dangerButton');
 const HIGHLIGHT_COLOR = 'rgba(34, 139, 34, 0.5)'; //'#3a3a3a' for grey;
 const DEFAULT_COLOR = 'transparent';
+const horusText = document.getElementById("appName");
 window.selectedApp = null;
 console.log("scan.js loaded");
 
@@ -168,6 +169,8 @@ function selectApp(listItem) {
     window.selectedApp.style.backgroundColor = HIGHLIGHT_COLOR;
 }
 
+
+
 function scan() {
     const folderPath = window.selectedAppFolder;
     console.log(folderPath);
@@ -226,17 +229,18 @@ function scan() {
             .catch(error => {
                 console.error(error);
             });
+        
     } else {
         console.error("No folder path provided");
     }
 }
+
 
 // Add a click event listener to the button
 scanButton.addEventListener("click", function(event) {
     scanButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanning...';
     event.preventDefault();
     scan();
-    
 });
 
 scanAllAnywayButton.addEventListener("click", function(event) {
