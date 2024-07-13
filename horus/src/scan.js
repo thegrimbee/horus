@@ -10,6 +10,7 @@ const dangerButton = document.getElementById('dangerButton');
 const HIGHLIGHT_COLOR = 'rgba(34, 139, 34, 0.5)'; //'#3a3a3a' for grey;
 const DEFAULT_COLOR = 'transparent';
 const horusText = document.getElementById("appName");
+const customUrl = document.getElementById("customUrlInput");
 window.selectedApp = null;
 console.log("scan.js loaded");
 
@@ -124,7 +125,7 @@ async function analyseTos(tosText, appName) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ tos: tosText, appName: appName })
+            body: JSON.stringify({ tos: tosText, appName: appName, url: customUrl.value })
         }).then(response => response.json());
         const { danger, danger_summary, normal, normal_summary, warning, warning_summary } = resultJson;
         return [normal, warning, danger, normal_summary, warning_summary, danger_summary];
