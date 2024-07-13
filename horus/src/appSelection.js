@@ -43,12 +43,21 @@ async function removeNonFolders(folders) {
 
 async function appSelection() {    
     var dropdown = document.getElementById('appSelectionDropdown');
-    var dropdownButton = document.getElementById('appSelectionDropdownButton');
+    var dropdownInput = document.getElementById('appSelectionDropdownInput');
     var programFilesPath = await window.processAPI.getEnv('programfiles');
     var programFiles86Path = await window.processAPI.getEnv('programfiles(x86)');
 
     const folders = await window.dialogAPI.fs.readDir(programFilesPath);
     const folders86 = await window.dialogAPI.fs.readDir(programFiles86Path);
+
+    dropdownInput.addEventListener('focus', function() {
+        console.log('dropdownInput is in focus');
+        dropdown.style.width = dropdownInput.offsetWidth + 'px';
+    });
+
+    dropdownInput.addEventListener('resize', function() {
+        dropdown.style.width = dropdownInput.offsetWidth + 'px';
+    });
 
     var allFolders = [...folders, ...folders86];
     for (var i = 0; i < allFolders.length; i++) {
@@ -65,7 +74,7 @@ async function appSelection() {
         const folderPath = allFolders[i];
         newOption.onclick = (function(path) {
             return function() {
-                dropdownButton.textContent = this.textContent;
+                dropdownInput.value = this.textContent;
                 window.selectedAppFolder = path;
                 console.log(window.selectedAppFolder);
             }
