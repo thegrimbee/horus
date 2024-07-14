@@ -11,6 +11,7 @@ const HIGHLIGHT_COLOR = 'rgba(34, 139, 34, 0.5)'; //'#3a3a3a' for grey;
 const DEFAULT_COLOR = 'transparent';
 const horusText = document.getElementById("appName");
 const customUrl = document.getElementById("customUrlInput");
+const dropdownInput = document.getElementById("appSelectionDropdownInput");
 window.selectedApp = null;
 console.log("scan.js loaded");
 
@@ -87,6 +88,9 @@ async function isFolder(path) {
 // REMINDER to standardise Tos or tos instead of TOS when naming function and variables
 async function getTos(path, includeAll = false) {
     // Get the files in the directory
+    if (path == "") {
+        return "";
+    }
     const files = await window.dialogAPI.fs.readDir(path);
     // Get the possible TOS files
     var tosText = "";
@@ -176,64 +180,59 @@ function scan() {
     const folderPath = window.selectedAppFolder;
     console.log(folderPath);
     //I made this change to get the app name from the folder path, assuming it's always after Program Files
-    const appName = folderPath.split("\\")[2];
+    const appName = dropdownInput.value;
     startLoading();
-    if (folderPath) {
-        getTos(folderPath)
-            .then(tosText => analyseTos(tosText, appName))
-            .then(result => {
-                loadingBar.value = 100;
-                const resultArray = result;                
+    getTos(folderPath)
+        .then(tosText => analyseTos(tosText, appName))
+        .then(result => {
+            loadingBar.value = 100;
+            const resultArray = result;                
 
-                for (var i = 0; i < resultArray.length; i++) {
-                    resultArray[i] = resultArray[i].replace(/\n+/g, '<br>')
-                        .replace(/\\[a-zA-Z]+[0-9]*[ ]?|{\\*\\[^{}]+}|[{}]|\\'..|\\[a-z]+\n|\\[*]/g, '');
-                }
-                var endResult = {'danger': resultArray[2], 'warning': resultArray[1], 'normal': resultArray[0], 'normal_summarized': resultArray[3], 'warning_summarized': resultArray[4], 'danger_summarized': resultArray[5]};
-                console.log(endResult);
+            for (var i = 0; i < resultArray.length; i++) {
+                resultArray[i] = resultArray[i].replace(/\n+/g, '<br>')
+                    .replace(/\\[a-zA-Z]+[0-9]*[ ]?|{\\*\\[^{}]+}|[{}]|\\'..|\\[a-z]+\n|\\[*]/g, '');
+            }
+            var endResult = {'danger': resultArray[2], 'warning': resultArray[1], 'normal': resultArray[0], 'normal_summarized': resultArray[3], 'warning_summarized': resultArray[4], 'danger_summarized': resultArray[5]};
+            console.log(endResult);
 
-                // Set the text of the paragraph to the result
+            // Set the text of the paragraph to the result
+            window.scanResult = endResult;
+
+            // Add a list item to the scannedAppList, make sure the list items are unique
+            const scannedAppList = document.getElementById("appScannedList");
+            const listItem = document.createElement("li");
+            listItem.id = "appListItem-" + appName;
+            listItem.className = "list-group-item list-group-item-action";
+            listItem.innerHTML = `<a class="app-scanned link-offset-2 link-underline link-underline-opacity-0" data-bs-toggle="list" href="#appListItem-${appName}">${appName}</a>`;
+            if (!document.getElementById(listItem.id)) {
+                scannedAppList.appendChild(listItem);
+            } else {
+                scannedAppList.replaceChild(listItem, document.getElementById(listItem.id));
+            }
+            //For now I'm relying on frame to store the result, might change later
+            listItem.addEventListener("click", function(event) {
                 window.scanResult = endResult;
-
-                // Add a list item to the scannedAppList, make sure the list items are unique
-                const scannedAppList = document.getElementById("appScannedList");
-                const listItem = document.createElement("li");
-                listItem.id = "appListItem-" + appName;
-                listItem.className = "list-group-item list-group-item-action";
-                listItem.innerHTML = `<a class="app-scanned link-offset-2 link-underline link-underline-opacity-0" data-bs-toggle="list" href="#appListItem-${appName}">${appName}</a>`;
-                if (!document.getElementById(listItem.id)) {
-                    scannedAppList.appendChild(listItem);
-                } else {
-                    scannedAppList.replaceChild(listItem, document.getElementById(listItem.id));
-                }
-                //For now I'm relying on frame to store the result, might change later
-                listItem.addEventListener("click", function(event) {
-                    window.scanResult = endResult;
-                    dangerButton.click();
-                    selectApp(listItem);
-                });
-
+                dangerButton.click();
                 selectApp(listItem);
-                // Ensure dangerButton exists before clicking
-                if (dangerButton) {
-                    dangerButton.click();
-                }
-                // Assuming scanButton exists and is intended to reset its label to 'Scan'
-                if (scanButton) {
-                    scanButton.innerHTML = 'Scan';
-                }
-                let scanAppListLength = scannedAppList.children.length;
-                if (scanAppListLength === window.allFolders.length) {
-                    scanAllButton.innerHTML = 'Scan All';
-                }
-            })
-            .catch(error => {
-                console.error(error);
             });
-        
-    } else {
-        console.error("No folder path provided");
-    }
+
+            selectApp(listItem);
+            // Ensure dangerButton exists before clicking
+            if (dangerButton) {
+                dangerButton.click();
+            }
+            // Assuming scanButton exists and is intended to reset its label to 'Scan'
+            if (scanButton) {
+                scanButton.innerHTML = 'Scan';
+            }
+            let scanAppListLength = scannedAppList.children.length;
+            if (scanAppListLength === window.allFolders.length) {
+                scanAllButton.innerHTML = 'Scan All';
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        });
 }
 
 
