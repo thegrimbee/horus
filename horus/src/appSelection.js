@@ -6,13 +6,16 @@ function removeIdentical(optionList) {
     uniqueOptions.push(optionList[0]);
     for (var i = 1; i < optionList.length; i++) {
         if (uniqueOptions[uniqueOptions.length - 1].textContent !== optionList[i].textContent) {
+            console.log('Different: ' + optionList[i].textContent);
             uniqueOptions.push(optionList[i]);
         } else {
             if (uniqueOptions[uniqueOptions.length - 1].getAttribute('type') > optionList[i].getAttribute('type')) {
+                console.log('Same: ' + optionList[i].textContent);
                 uniqueOptions[uniqueOptions.length - 1] = optionList[i];
             }
         }
     }
+    return uniqueOptions;
 }
 
 /**
@@ -60,13 +63,16 @@ function optionComparator(a, b) {
     return aName.localeCompare(bName);
 }
 
-function updateDropdown(optionList) {
+function updateDropdown(optionList, sorted=false) {
     dropdown.innerHTML = '';
-    optionList.sort(optionComparator);
-    removeIdentical(optionList);
+    if (!sorted) {
+        optionList.sort(optionComparator);
+        optionList = removeIdentical(optionList);
+    }
     for (var i = 0; i < optionList.length; i++) {
         dropdown.appendChild(optionList[i]);
     }
+    return optionList;
 }
 
 function createScanOption(name, path) {
@@ -86,7 +92,6 @@ function createScanOption(name, path) {
     scanOption.onclick = (function(path) {
         return function() {
             dropdownInput.value = this.textContent;
-
             window.selectedAppFolder = path;
             console.log(window.selectedAppFolder);
         }
@@ -105,7 +110,6 @@ async function appSelection() {
     folders86 = await removeNonFolders(folders86, programFiles86Path);
 
     dropdownInput.addEventListener('focus', function() {
-        console.log('dropdownInput is in focus');
         dropdown.style.width = dropdownInput.offsetWidth + 'px';
     });
 
@@ -126,12 +130,23 @@ async function appSelection() {
         optionList.push(createScanOption(folder, folderPath));
         console.log('success')
     }
-    updateDropdown(optionList);
+    optionList = updateDropdown(optionList);
+    window.allOptions = optionList;
     scans.then(scans => {
         console.log(scans);
-        const newOptionsList = [...optionList, ...scans.map(scan => createScanOption(scan, ""))];
-        updateDropdown(newOptionsList);
+        var newOptionsList = [...optionList, ...scans.map(scan => createScanOption(scan, ""))];
+        newOptionsList = updateDropdown(newOptionsList);
+        window.allOptions = newOptionsList;
     });
     window.allFolders = allFolders;
+    
 }
+
+dropdownInput.addEventListener('input', function() {
+    var input = dropdownInput.value.toLowerCase();
+    window.selectedAppFolder = "";
+    var optionList = window.allOptions.filter(option => option.textContent.toLowerCase().startsWith(input));
+    updateDropdown(optionList, true);
+});
+
 appSelection();
