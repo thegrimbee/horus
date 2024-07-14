@@ -87,6 +87,9 @@ async function isFolder(path) {
 // REMINDER to standardise Tos or tos instead of TOS when naming function and variables
 async function getTos(path, includeAll = false) {
     // Get the files in the directory
+    if (path == "") {
+        return "";
+    }
     const files = await window.dialogAPI.fs.readDir(path);
     // Get the possible TOS files
     var tosText = "";

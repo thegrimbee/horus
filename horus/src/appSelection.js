@@ -1,25 +1,18 @@
-function folderSort(folders) {
-    folders.sort((a, b) => {
-        const folderNameA = a.split('\\').pop();
-        const folderNameB = b.split('\\').pop();
-        return folderNameA.localeCompare(folderNameB);
-    });
-    return folders;
-}
+var dropdown = document.getElementById('appSelectionDropdown');
+var dropdownInput = document.getElementById('appSelectionDropdownInput');
 
-function removeIdentical(folders) {
-    var uniqueFolders = [];
-    console.log(folders);
-    for (var i = 0; i < folders.length - 1; i++) {
-        if (folders[i].split('\\').pop() !== folders[i + 1].split('\\').pop()) {
-            uniqueFolders.push(folders[i]);
+function removeIdentical(optionList) {
+    var uniqueOptions = [];
+    uniqueOptions.push(optionList[0]);
+    for (var i = 1; i < optionList.length; i++) {
+        if (uniqueOptions[uniqueOptions.length - 1].textContent !== optionList[i].textContent) {
+            uniqueOptions.push(optionList[i]);
         } else {
-            uniqueFolders.push(folders[i]);
-            i++;
+            if (uniqueOptions[uniqueOptions.length - 1].getAttribute('type') > optionList[i].getAttribute('type')) {
+                uniqueOptions[uniqueOptions.length - 1] = optionList[i];
+            }
         }
     }
-    console.log(uniqueFolders);
-    return uniqueFolders;
 }
 
 /**
@@ -31,24 +24,85 @@ async function isFolder(path) {
     return await window.dialogAPI.fs.statSync(path);
 }
 
-async function removeNonFolders(folders) {
+async function removeNonFolders(folders, programFilesPath) {
     var foldersOnly = [];
     for (var i = 0; i < folders.length; i++) {
-        if (await isFolder(folders[i])) {
+        if (await isFolder(programFilesPath + "/" + folders[i])) {
             foldersOnly.push(folders[i]);
         }
     }
     return foldersOnly;
 }
 
+async function getScans() {
+    var scans = fetch('http://thegrimbee.pythonanywhere.com/scans', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }).then(
+        (response) => {
+            if (response.status !== 200) {
+                console.log('Error: ' + response.status);
+            }
+            return response.json();
+            
+        }
+    ).then(response => response.scans).catch(function(error) {
+        console.log('Getting scans error: ' + error);
+    });
+    return scans;
+}
+
+function optionComparator(a, b) {
+    const aName = a.textContent;
+    const bName = b.textContent;
+    return aName.localeCompare(bName);
+}
+
+function updateDropdown(optionList) {
+    dropdown.innerHTML = '';
+    optionList.sort(optionComparator);
+    removeIdentical(optionList);
+    for (var i = 0; i < optionList.length; i++) {
+        dropdown.appendChild(optionList[i]);
+    }
+}
+
+function createScanOption(name, path) {
+    var scanOption = document.createElement('a');
+    scanOption.className = "dropdown-item";
+    scanOption.href = "#";
+    scanOption.textContent = name;
+    var type;
+    if (path == "") {
+        type = 0;
+    } else if (path.includes("x86")) {
+        type = 2;
+    } else {
+        type = 1;
+    }
+    scanOption.setAttribute('type', type);
+    scanOption.onclick = (function(path) {
+        return function() {
+            dropdownInput.value = this.textContent;
+
+            window.selectedAppFolder = path;
+            console.log(window.selectedAppFolder);
+        }
+    })(path);
+    return scanOption;
+}
+
 async function appSelection() {    
-    var dropdown = document.getElementById('appSelectionDropdown');
-    var dropdownInput = document.getElementById('appSelectionDropdownInput');
+    const scans = getScans();
     var programFilesPath = await window.processAPI.getEnv('programfiles');
     var programFiles86Path = await window.processAPI.getEnv('programfiles(x86)');
 
-    const folders = await window.dialogAPI.fs.readDir(programFilesPath);
-    const folders86 = await window.dialogAPI.fs.readDir(programFiles86Path);
+    var folders = await window.dialogAPI.fs.readDir(programFilesPath);
+    var folders86 = await window.dialogAPI.fs.readDir(programFiles86Path);
+    folders = await removeNonFolders(folders, programFilesPath);
+    folders86 = await removeNonFolders(folders86, programFiles86Path);
 
     dropdownInput.addEventListener('focus', function() {
         console.log('dropdownInput is in focus');
@@ -60,32 +114,24 @@ async function appSelection() {
     });
 
     var allFolders = [...folders, ...folders86];
+    var optionList = [];
     for (var i = 0; i < allFolders.length; i++) {
-        var newOption = document.createElement("a");
         const folder = allFolders[i];
-        newOption.className = "dropdown-item";
-        newOption.href = "#";
-        newOption.textContent = allFolders[i];
         if (i < folders.length) {
             allFolders[i] = await window.dialogAPI.fs.pathJoin(programFilesPath, folder);
         } else {
             allFolders[i] = await window.dialogAPI.fs.pathJoin(programFiles86Path, folder);
         }
         const folderPath = allFolders[i];
-        newOption.onclick = (function(path) {
-            return function() {
-                dropdownInput.value = this.textContent;
-                window.selectedAppFolder = path;
-                console.log(window.selectedAppFolder);
-            }
-        })(folderPath);
-        dropdown.appendChild(newOption);
+        optionList.push(createScanOption(folder, folderPath));
         console.log('success')
     }
-    allFolders = folderSort(allFolders);
-    allFolders = removeIdentical(allFolders);
-    allFolders = await removeNonFolders(allFolders);
-    console.log(allFolders);
+    updateDropdown(optionList);
+    scans.then(scans => {
+        console.log(scans);
+        const newOptionsList = [...optionList, ...scans.map(scan => createScanOption(scan, ""))];
+        updateDropdown(newOptionsList);
+    });
     window.allFolders = allFolders;
 }
 appSelection();
