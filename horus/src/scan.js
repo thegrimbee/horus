@@ -12,6 +12,8 @@ const DEFAULT_COLOR = 'transparent';
 const horusText = document.getElementById("appName");
 const customUrl = document.getElementById("customUrlInput");
 const dropdownInput = document.getElementById("appSelectionDropdownInput");
+var numFiles = 0;
+var scanAll = false;
 window.selectedApp = null;
 console.log("scan.js loaded");
 
@@ -95,8 +97,14 @@ async function getTos(path, includeAll = false) {
     // Get the possible TOS files
     var tosText = "";
     var tempTos;
+
     for (const file of files) {
         const filePath = path + '/' + file;
+        numFiles++;
+        if (!scanAll) {
+            scanButton.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanned ${numFiles} files...`;
+        }
+        
         if (await isFolder(filePath)) {
             if (isTos(file, true) || includeAll) {
                 tempTos = (await getTos(filePath, true)).trim();
@@ -111,6 +119,7 @@ async function getTos(path, includeAll = false) {
             if (fileContent) tosText += fileContent + '\n';
         }
     }
+    
     return tosText.trim();
 }
 
@@ -183,7 +192,12 @@ function scan() {
     const appName = dropdownInput.value;
     startLoading();
     getTos(folderPath)
-        .then(tosText => analyseTos(tosText, appName))
+        .then(tosText => {
+            numFiles = 0;
+            if (tosText === "" && !scanAll) {
+                scanButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanning online...';
+            }
+            return analyseTos(tosText, appName);})
         .then(result => {
             loadingBar.value = 100;
             const resultArray = result;                
@@ -228,6 +242,10 @@ function scan() {
             let scanAppListLength = scannedAppList.children.length;
             if (scanAppListLength === window.allFolders.length) {
                 scanAllButton.innerHTML = 'Scan All';
+                scanAll = false;
+            }
+            else if (scanAllButton.innerHTML!=='Scan All') {
+                scanAllButton.innerHTML = 'Scanning (' + scanAppListLength + '/' + window.allFolders.length + ' apps)';
             }
         })
         .catch(error => {
@@ -238,19 +256,20 @@ function scan() {
 
 // Add a click event listener to the button
 scanButton.addEventListener("click", function(event) {
-    scanButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanning...';
+    scanButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanning local folders...';
     event.preventDefault();
     scan();
 });
 
 scanAllAnywayButton.addEventListener("click", function(event) {
+    scanAll = true;
     scanAllButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanning...';
     event.preventDefault();
     for (var i = 0; i < window.allFolders.length; i++) {
         window.selectedAppFolder = window.allFolders[i];
         scan();
     }
-    const scannedAppList = document.getElementById("appScannedList");
+    
     
     
 });
