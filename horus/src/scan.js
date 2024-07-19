@@ -102,7 +102,7 @@ async function getTos(path, includeAll = false) {
         const filePath = path + '/' + file;
         numFiles++;
         if (!scanAll) {
-            scanButton.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanned ${numFiles} files...`;
+            scanButton.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanned ${numFiles} local files...`;
         }
         
         if (await isFolder(filePath)) {
