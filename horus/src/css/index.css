@@ -23,6 +23,25 @@ body {
 }
 
 
+abbr {
+  position: relative;
+}
+
+
+abbr:hover::after { 
+  position: absolute;
+  
+  z-index: 100;
+  font-size: small;
+  
+  max-height: fit-content;
+  max-width: fit-content;
+  display: flex;
+  padding: 1em;
+  background: rgb(5, 2, 43);
+  content: attr(content);
+}
+
 
 
 
