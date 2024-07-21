@@ -123,12 +123,24 @@ async function getTos(path, includeAll = false) {
     return tosText.trim();
 }
 
+
 /**
  * Function to analyse the TOS text and give the potentially harmful terms.
  * @param {string} tosText - The TOS text to analyse.
  * @returns {Promise<string>} A promise that resolves to the highlighted potentially harmful terms in the TOS text.
  */
 async function analyseTos(tosText, appName) {
+    //Make a fetch to google to check if internet is working
+    try {
+        const response = await fetch('http://www.google.com', { method: 'HEAD' });
+    } catch (error) {
+        console.log('Internet connection is not available.', error);
+
+        return ["You are disconnected. Please check your Internet connection.", "You are disconnected. Please check your Internet connection.", 
+            "You are disconnected. Please check your Internet connection.",
+            "You are disconnected. Please check your Internet connection."];
+    }
+
     try {
         console.log('analysing TOS of', appName);
     
