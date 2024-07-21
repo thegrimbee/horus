@@ -1,7 +1,6 @@
 const dangerButton = document.getElementById('dangerButton');
 const warningButton = document.getElementById('warningButton');
 const normalButton = document.getElementById('normalButton');
-const summarizedButton = document.getElementById('summarizedButton');
 const resultParagraph = document.getElementById('resultParagraph');
 const termsOfServiceGlossary = {
     "acceptance": "The act of agreeing to the terms and conditions of the service. Typically, users must accept the terms to use the service.",
@@ -127,10 +126,9 @@ normalButton.addEventListener("click", function(event) {
     }
 );
 
-summarizedButton.addEventListener("click", function(event) {
-    summarized = !summarized;
-    if (summarized) {
-        summarizedButton.classList.add('active');
+document.getElementById('summarizeCheckbox').addEventListener('change', function() {
+    if (this.checked) {
+        summarized = true;
         if (dangerButton.classList.contains('active')) {
             updateResult('danger_summarized');
         }
@@ -143,9 +141,9 @@ summarizedButton.addEventListener("click", function(event) {
         else {
             resultParagraph.style.display = 'none';
         }
-    } 
-    else {
-        summarizedButton.classList.remove('active');
+
+    } else {
+        summarized = false;
         if (dangerButton.classList.contains('active')) {
             updateResult('danger');
         }
@@ -159,6 +157,4 @@ summarizedButton.addEventListener("click", function(event) {
             resultParagraph.style.display = 'none';
         }
     }
-
-})
-
+});
