@@ -269,9 +269,6 @@ scanAllAnywayButton.addEventListener("click", function(event) {
         window.selectedAppFolder = window.allFolders[i];
         scan();
     }
-    
-    
-    
 });
 
 document.addEventListener('DOMContentLoaded', () => {
