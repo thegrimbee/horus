@@ -6,11 +6,9 @@ function removeIdentical(optionList) {
     uniqueOptions.push(optionList[0]);
     for (var i = 1; i < optionList.length; i++) {
         if (uniqueOptions[uniqueOptions.length - 1].textContent !== optionList[i].textContent) {
-            console.log('Different: ' + optionList[i].textContent);
             uniqueOptions.push(optionList[i]);
         } else {
             if (uniqueOptions[uniqueOptions.length - 1].getAttribute('type') > optionList[i].getAttribute('type')) {
-                console.log('Same: ' + optionList[i].textContent);
                 uniqueOptions[uniqueOptions.length - 1] = optionList[i];
             }
         }
@@ -38,7 +36,7 @@ async function removeNonFolders(folders, programFilesPath) {
 }
 
 async function getScans() {
-    var scans = fetch('http://thegrimbee.pythonanywhere.com/scans', {
+    var scans = fetch('http://localhost:5000/scans', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -76,6 +74,7 @@ function updateDropdown(optionList, sorted=false) {
 }
 
 function createScanOption(name, path) {
+    console.log(name, path);
     var scanOption = document.createElement('a');
     scanOption.className = "dropdown-item";
     scanOption.href = "#";
@@ -127,8 +126,8 @@ async function appSelection() {
             allFolders[i] = await window.dialogAPI.fs.pathJoin(programFiles86Path, folder);
         }
         const folderPath = allFolders[i];
+        console.log(folder, folderPath);
         optionList.push(createScanOption(folder, folderPath));
-        console.log('success')
     }
     optionList = updateDropdown(optionList);
     window.allOptions = optionList;

@@ -133,7 +133,7 @@ async function analyseTos(tosText, appName) {
         console.log('analysing TOS of', appName);
     
         const data = { tos: tosText, appName: appName};
-        const resultJson = await fetch('http://thegrimbee.pythonanywhere.com/analyse', {
+        const resultJson = await fetch('http://localhost:5000/analyse', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -256,6 +256,9 @@ function scan() {
 
 // Add a click event listener to the button
 scanButton.addEventListener("click", function(event) {
+    if (dropdownInput.value == '') {
+        return;
+    }
     scanButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanning local folders...';
     event.preventDefault();
     scan();
