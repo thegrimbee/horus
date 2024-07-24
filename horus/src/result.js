@@ -72,7 +72,7 @@ function normalizeKey(key) {
 function getDefinition(term) {
     const normalizedTerm = normalizeKey(term);
     if (normalizedTerm) {
-        return '<dfn><abbr class="initialism text-info" content="' + termsOfServiceGlossary[normalizedTerm] + '">' + term + '</abbr><dfn>';
+        return '<dfn><abbr style="font-style: italic;" class="initialism text-info" content="' + termsOfServiceGlossary[normalizedTerm] + '">' + term + '</abbr><dfn>';
     } else {
         return term;
     }
