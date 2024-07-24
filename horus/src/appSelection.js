@@ -36,7 +36,7 @@ async function removeNonFolders(folders, programFilesPath) {
 }
 
 async function getScans() {
-    var scans = fetch('http://localhost:5000/scans', {
+    var scans = fetch('http://thegrimbee.pythonanywhere.com/scans', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

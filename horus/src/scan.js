@@ -133,7 +133,7 @@ async function analyseTos(tosText, appName) {
         console.log('analysing TOS of', appName);
     
         const data = { tos: tosText, appName: appName};
-        const resultJson = await fetch('http://localhost:5000/analyse', {
+        const resultJson = await fetch('http://thegrimbee.pythonanywhere.com/analyse', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
