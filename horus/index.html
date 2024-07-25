@@ -70,22 +70,6 @@
         </div>
       </div>
     </div>
-    <div class="modal fade" id="scanAllWarning" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Warning!</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            The scan all function might take a significant of time and resources to run. Running this function might slow down your computer. Are you sure you want to continue?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="scanAllAnywayButton">Scan all anyway</button>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="row">
       <div class="col-md-4 p-3 mb-5" >
           <nav class="navbar navbar-dark bg-dark" style="display:flex;flex-direction:column;align-items:center;">
@@ -104,9 +88,8 @@
               id="customUrlInput" aria-expanded="false" style="border-color: #6c757dd3;">
             </div>
             <div id="twoScanningButtons">
-              <button class="btn btn-outline-info my-sm-0 mr-2" type="button" id="scanButton" >
-                Scan</button>
-              <button type="button" class="btn btn-outline-info my-sm-0"  data-bs-toggle="modal" data-bs-target="#scanAllWarning" id="scanAllButton" >Scan All</button>
+              <button class="btn btn-outline-info my-sm-0 mr-2" type="button" id="scanButton">Scan</button>
+              <button type="button" class="btn btn-outline-info my-sm-0" id="cancelButton">Cancel</button>
               <!-- Modal -->
             </div>  
             <progress class="progress is-primary is-large" id="loadingBar" value="0" max="100" style="display:none;"></progress>
