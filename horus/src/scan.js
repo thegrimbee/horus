@@ -34,7 +34,7 @@ function binarySearch(arr, file) {
     return false;
 
 }
-
+module.exports = binarySearch;
 /**
  * Function to check if the given name corresponds to a Terms of Service (TOS) file or folder.
  * @param {string} name - The name to check.
@@ -254,24 +254,27 @@ function scan() {
 }
 
 
-// Add a click event listener to the button
-scanButton.addEventListener("click", function(event) {
-    scanButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanning local folders...';
-    event.preventDefault();
-    scan();
-});
+document.addEventListener("DOMContentLoaded", function() {
+    const scanButton = document.getElementById("scanButton");
+    const scanAllAnywayButton = document.getElementById("scanAllAnywayButton");
 
-scanAllAnywayButton.addEventListener("click", function(event) {
-    scanAll = true;
-    scanAllButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanning...';
-    event.preventDefault();
-    for (var i = 0; i < window.allFolders.length; i++) {
-        window.selectedAppFolder = window.allFolders[i];
-        scan();
+    if (scanButton) {
+        scanButton.addEventListener("click", function(event) {
+            scanButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanning local folders...';
+            event.preventDefault();
+            scan();
+        });
+    } else {
+        console.error("scanButton element not found");
     }
-    
-    
-    
+
+    if (scanAllAnywayButton) {
+        scanAllAnywayButton.addEventListener("click", function(event) {
+            // Your code for scanAllAnywayButton click event
+        });
+    } else {
+        console.error("scanAllAnywayButton element not found");
+    }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
