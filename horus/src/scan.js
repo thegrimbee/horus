@@ -35,6 +35,7 @@ function binarySearch(arr, file) {
 
 }
 module.exports = binarySearch;
+
 /**
  * Function to check if the given name corresponds to a Terms of Service (TOS) file or folder.
  * @param {string} name - The name to check.
@@ -80,7 +81,7 @@ function isTos(name, isFolder = false, includeAll = false) {
 async function isFolder(path) {
     return await window.dialogAPI.fs.statSync(path);
 }
-
+module.exports = isFolder;
 /**
  * Function to get the TOS text from the files in the folder.
  * @param {string} path - The path of the folder.
@@ -255,6 +256,7 @@ function scan() {
 
 
 document.addEventListener("DOMContentLoaded", function() {
+    console.log("DOM fully loaded and parsed");
     const scanButton = document.getElementById("scanButton");
     const scanAllAnywayButton = document.getElementById("scanAllAnywayButton");
 
