@@ -34,7 +34,6 @@ function binarySearch(arr, file) {
     return false;
 
 }
-module.exports = binarySearch;
 
 /**
  * Function to check if the given name corresponds to a Terms of Service (TOS) file or folder.
@@ -81,7 +80,7 @@ function isTos(name, isFolder = false, includeAll = false) {
 async function isFolder(path) {
     return await window.dialogAPI.fs.statSync(path);
 }
-module.exports = isFolder;
+
 /**
  * Function to get the TOS text from the files in the folder.
  * @param {string} path - The path of the folder.
@@ -102,7 +101,7 @@ async function getTos(path, includeAll = false) {
     for (const file of files) {
         const filePath = path + '/' + file;
         numFiles++;
-        if (!scanAll) {
+        if (!scanAll && scanButton) {
             scanButton.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanned ${numFiles} local files...`;
         }
         
@@ -123,6 +122,9 @@ async function getTos(path, includeAll = false) {
     
     return tosText.trim();
 }
+
+//THE FOLLOWING EXPORT LINE IS FOR TESTING PURPOSES ONLY, COMMENT BEFORE DEPLOYMENT
+//module.exports ={binarySearch, isFolder,getTos,isTos};
 
 /**
  * Function to analyse the TOS text and give the potentially harmful terms.
