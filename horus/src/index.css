@@ -8,6 +8,10 @@ body {
   overflow-y:hidden;
 }
 
+dfn {
+  font-style: normal;
+}
+
 .dropdown-menu {
     max-height: 200px;
     overflow-y: visible;
@@ -123,6 +127,6 @@ input:checked + .slider:before {
 }
 
 .right-rounded {
-  border-top-right-radius: 0.25rem !important; /* Adjust the radius as needed */
-  border-bottom-right-radius: 0.25rem !important; /* Adjust the radius as needed */
+  border-top-right-radius: 0.375rem !important; /* Adjust the radius as needed */
+  border-bottom-right-radius: 0.375rem !important; /* Adjust the radius as needed */
 }

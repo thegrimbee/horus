@@ -54,7 +54,34 @@ const termsOfServiceGlossary = {
     "usage data": "Data collected about how the user interacts with the service.",
     "waiver": "The voluntary relinquishment of a known right, often stated in the terms of service to limit future legal claims.",
     "warranty": "A guarantee provided by the service provider regarding the condition or functionality of the service.",
-    "warranties": "Guarantees provided by the service provider regarding the condition or functionality of the service."
+    "warranties": "Guarantees provided by the service provider regarding the condition or functionality of the service.",
+    "agent": "A person authorized to act on behalf of another, especially in business or legal matters.",
+    "amendment": "A change or addition to the terms of service, often requiring acceptance by the user.",
+    "arbitrator": "A neutral third party who conducts the arbitration process and makes a binding decision.",
+    "class action": "A lawsuit filed by one or more plaintiffs on behalf of a larger group who are affected by the same issue.",
+    "compliance": "Adherence to laws, regulations, and policies governing the use of the service.",
+    "consumer": "An individual who uses the service for personal, non-commercial purposes.",
+    "contract": "A legally binding agreement between two or more parties.",
+    "counterclaim": "A claim made by a defendant against the plaintiff in a legal proceeding.",
+    "cure period": "A specified time frame in which a party must rectify a breach of the terms before further action is taken.",
+    "damages cap": "A limitation on the maximum amount of damages that can be awarded in a lawsuit.",
+    "derivative work": "A new, original work based on or derived from one or more existing works.",
+    "disclosure": "The act of making information known or public.",
+    "due process": "The legal requirement that the parties be given a fair and impartial process.",
+    "enforcement": "The act of ensuring compliance with laws, regulations, and terms of service.",
+    "exclusive license": "A license that restricts the use of the service or intellectual property to one party.",
+    "fiduciary": "A person or organization that has the duty to act in the best interests of another party.",
+    "injunction": "A court order requiring a party to do or cease doing a specific action.",
+    "material breach": "A significant violation of the terms that substantially affects the agreement and may justify termination.",
+    "mediation": "A method of dispute resolution involving a neutral third party who helps the parties reach a voluntary agreement.",
+    "preliminary injunction": "A temporary court order issued early in a lawsuit to prevent harm before the court has a chance to decide the case.",
+    "recourse": "The legal right to seek a remedy or compensation.",
+    "remedy": "A means of enforcing a right or compensating for a violation of the terms.",
+    "representation": "A statement or assertion made by one party to induce another party into the agreement.",
+    "restitution": "Compensation for loss or injury, typically involving the return of property or funds.",
+    "statute of limitations": "The time period within which a legal action must be brought.",
+    "subcontractor": "A third party hired by the service provider to perform certain tasks or services.",
+    "unauthorized access": "Use of the service or data without permission, often a violation of the terms.",
 };
 var summarized = false;
 
@@ -72,7 +99,7 @@ function normalizeKey(key) {
 function getDefinition(term) {
     const normalizedTerm = normalizeKey(term);
     if (normalizedTerm) {
-        return '<dfn><abbr class="initialism text-info" content="' + termsOfServiceGlossary[normalizedTerm] + '">' + term + '</abbr><dfn>';
+        return '<dfn><abbr style="font-style: italic;" class="initialism text-info" content="' + termsOfServiceGlossary[normalizedTerm] + '">' + term + '</abbr><dfn>';
     } else {
         return term;
     }

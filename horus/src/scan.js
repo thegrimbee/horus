@@ -2,9 +2,8 @@
 
 // Get the button element
 const scanButton = document.getElementById("scanButton");
+const cancelButton = document.getElementById("cancelButton");
 // const folderNameInput = document.getElementById("folderNameInput");
-const scanAllAnywayButton = document.getElementById("scanAllAnywayButton");
-const scanAllButton = document.getElementById("scanAllButton");
 const loadingBar = document.getElementById("loadingBar");
 const dangerButton = document.getElementById('dangerButton');
 const HIGHLIGHT_COLOR = 'rgba(34, 139, 34, 0.5)'; //'#3a3a3a' for grey;
@@ -13,9 +12,11 @@ const horusText = document.getElementById("appName");
 const customUrl = document.getElementById("customUrlInput");
 const dropdownInput = document.getElementById("appSelectionDropdownInput");
 var numFiles = 0;
-var scanAll = false;
 window.selectedApp = null;
 console.log("scan.js loaded");
+
+var controller;
+var signal;
 
 /**
  * Performs a binary search on the array of possible names
@@ -101,10 +102,7 @@ async function getTos(path, includeAll = false) {
     for (const file of files) {
         const filePath = path + '/' + file;
         numFiles++;
-        if (!scanAll && scanButton) {
-            scanButton.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanned ${numFiles} local files...`;
-        }
-        
+        scanButton.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanned ${numFiles} local files...`;
         if (await isFolder(filePath)) {
             if (isTos(file, true) || includeAll) {
                 tempTos = (await getTos(filePath, true)).trim();
@@ -141,16 +139,40 @@ async function analyseTos(tosText, appName) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ tos: tosText, appName: appName, url: customUrl.value })
+            body: JSON.stringify({ tos: tosText, appName: appName, url: customUrl.value }),
+            signal: signal,
         }).then(response => response.json());
         const { danger, danger_summary, normal, normal_summary, warning, warning_summary } = resultJson;
         return [normal, warning, danger, normal_summary, warning_summary, danger_summary];
     
     } catch (error) {
+        if (error.name === 'AbortError') {
+            console.log('Fetch aborted');
+            return [`Scan cancelled`, `Scan cancelled`, `Scan cancelled`, `Scan cancelled`, `Scan cancelled`, `Scan cancelled`];
+        } else {
+            console.error(error);
+            return [`An error occurred while analysing the TOS text.\n${error}`,
+                `An error occurred while analysing the TOS text.\n${error}`,
+                `An error occurred while analysing the TOS text.\n${error}`,
+                `An error occurred while analysing the TOS text.\n${error}`,
+                `An error occurred while analysing the TOS text.\n${error}`,
+                `An error occurred while analysing the TOS text.\n${error}`];
+        }
+        
+    }
+}
+
+async function cancelScan() {
+    try {
+        const response = await fetch('http://thegrimbee.pythonanywhere.com/cancel', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+        return response;
+    } catch (error) {
         console.error(error);
-        return ["An error occurred while analysing the TOS text. Please try again later.", "An error occurred while analysing the TOS text. Please try again later.", 
-            "An error occurred while analysing the TOS text. Please try again later.",
-            "An error occurred while analysing the TOS text. Please try again later."];
     }
 }
 
@@ -191,13 +213,15 @@ function selectApp(listItem) {
 function scan() {
     const folderPath = window.selectedAppFolder;
     console.log(folderPath);
+    controller = new AbortController();
+    signal = controller.signal;
     //I made this change to get the app name from the folder path, assuming it's always after Program Files
     const appName = dropdownInput.value;
     startLoading();
     getTos(folderPath)
         .then(tosText => {
             numFiles = 0;
-            if (tosText === "" && !scanAll) {
+            if (tosText === "") {
                 scanButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanning online...';
             }
             return analyseTos(tosText, appName);})
@@ -242,14 +266,6 @@ function scan() {
             if (scanButton) {
                 scanButton.innerHTML = 'Scan';
             }
-            let scanAppListLength = scannedAppList.children.length;
-            if (scanAppListLength === window.allFolders.length) {
-                scanAllButton.innerHTML = 'Scan All';
-                scanAll = false;
-            }
-            else if (scanAllButton.innerHTML!=='Scan All') {
-                scanAllButton.innerHTML = 'Scanning (' + scanAppListLength + '/' + window.allFolders.length + ' apps)';
-            }
         })
         .catch(error => {
             console.error(error);
@@ -257,28 +273,21 @@ function scan() {
 }
 
 
-document.addEventListener("DOMContentLoaded", function() {
-    console.log("DOM fully loaded and parsed");
-    const scanButton = document.getElementById("scanButton");
-    const scanAllAnywayButton = document.getElementById("scanAllAnywayButton");
-
-    if (scanButton) {
-        scanButton.addEventListener("click", function(event) {
-            scanButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanning local folders...';
-            event.preventDefault();
-            scan();
-        });
-    } else {
-        console.error("scanButton element not found");
+// Add a click event listener to the button
+scanButton.addEventListener("click", function(event) {
+    if (dropdownInput.value == '') {
+        return;
     }
+    scanButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanning local folders...';
+    event.preventDefault();
+    scan();
+});
 
-    if (scanAllAnywayButton) {
-        scanAllAnywayButton.addEventListener("click", function(event) {
-            // Your code for scanAllAnywayButton click event
-        });
-    } else {
-        console.error("scanAllAnywayButton element not found");
-    }
+cancelButton.addEventListener("click", function(event) {
+    controller.abort();
+    cancelScan();   
+    loadingBar.style.display = "none";
+    scanButton.innerHTML = 'Scan';
 });
 
 document.addEventListener('DOMContentLoaded', () => {
