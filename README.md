@@ -58,11 +58,11 @@ Users will be able to click on each sentence on each level and the app will show
 We use K.I.S.S as our main software engineering design pattern. This is because we want to focus mainly on making sure the app is light and fast, so we avoid unnecessarily advanced technologies. For example, we use CSV instead of a more advanced database like SQL and MongoDB since CSV is lighter and faster (since we only have one table).
 
 ### Github
-1. Issues <br/><br/>
+1. Issues <br/>
 We use issues to highlight the problems that we need to fix or add in the app. We also use it to distribute work to each other. Whoever is more suited to do the issue can assign himself to the issue and work on it on a new branch<br/>
-2. Branching <br/><br/>
+2. Branching <br/>
 We use a new branch for every feature and will tell each other beforehand before merging two branches.<br/>
-3. Reviewing <br/><br/>
+3. Reviewing <br/>
 When mering branches that have conflicts, we cross review them before merging
 
 ### Coding Standard
@@ -91,7 +91,10 @@ We add useful comments to functions and steps
 ![image](https://github.com/user-attachments/assets/2703c0b6-f971-478f-8b7c-9d18ca6602e6)
 
 ### User Testing
-We allow other users' to test our apps' and gather their opinions for improvements.
+We allow other users' to test our apps' and gather their opinions for improvements. Some examples are:
+1. Comments on the design of the app
+2. Finding bugs
+3. Comments on the features and their functionality
 
 ### Unit testing
 We added unit tests for both our server and app functions.
