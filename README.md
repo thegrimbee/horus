@@ -29,21 +29,21 @@ User Stories:
 
 ### Current Features:
 1. Active Scanning, allows the user to scan the terms of services (TOS) of the app of their choice to find the harmful terms and conditions of their chosen app <br/><br/>
-The users can select which app they want to scan through the dropdown. The list provided is based on the apps in the user's Program Files and Program Files (x86) folder. Once selected, a recursive search will be run on the app's folder to find the TOS text files. This can be in many forms (e.g. tos.txt, license.rtf, etc.). The combined text will be processed by our AI model, and the results will be shown in three different levels: danger, warning, and normal (sorted in decreasing harm levels).<br/>
+The users can select which app they want to scan through the dropdown. The list provided is based on the apps in the user's Program Files and Program Files (x86) folder. Once selected, a recursive search will be run on the app's folder to find the TOS text files. This can be in many forms (e.g. tos.txt, license.rtf, etc.). The combined text will be processed by our AI model, and the results will be shown in three different levels: danger, warning, and normal (sorted in decreasing harm levels).<br/><br/>
 2. Online Scanning, searches TOS online when there is no TOS found locally <br/><br/>
-We noticed that although majority of apps store the TOS in the folders, some apps simply do not store the TOS locally. The online scanning feature does a google search on the app's TOS and uses the result as the TOS. The AI will then process just like in Active Scanning<br/>
+We noticed that although majority of apps store the TOS in the folders, some apps simply do not store the TOS locally. The online scanning feature does a google search on the app's TOS and uses the result as the TOS. The AI will then process just like in Active Scanning<br/><br/>
 3. Search bar, allows user to search apps that are already scanned / apps that are found locally <br/><br/>
-The search bar will show suggested apps which come from a list of scanned apps combined with the apps found locally on the user's computer. <br/>
+The search bar will show suggested apps which come from a list of scanned apps combined with the apps found locally on the user's computer. <br/><br/>
 4. Custom URL, scrapes TOS from the specific URL <br/><br/>
-Our automatic google search may not work perfectly 100% of the time, so the custom url ensures that the tos is from the correct link<br/>
+Our automatic google search may not work perfectly 100% of the time, so the custom url ensures that the tos is from the correct link<br/><br/>
 5. Database <br/><br/>
-Although our application can function without a database, we decided to add a shared database to improve runtime for the users by saving TOS that are already scanned. We noticed that it takes quite a while for the AI to scan TOS, so this database improves the runtime for apps that have already been scanned by other users. For now, we are using csv and the database is hosted in google sheets. However, this might change in Milestone 3, since we plan to move most of the processing to a server instead of the user.<br/>
+Although our application can function without a database, we decided to add a shared database to improve runtime for the users by saving TOS that are already scanned. We noticed that it takes quite a while for the AI to scan TOS, so this database improves the runtime for apps that have already been scanned by other users. For now, we are using csv and the database is hosted in google sheets. However, this might change in Milestone 3, since we plan to move most of the processing to a server instead of the user.<br/><br/>
 6. TLDR, gives a tldr of the terms <br/><br/>
-We realised that the terms may still be too long/confusing. Thus, we want to add a TLDR Feature which summarises and explains the terms in a simpler way.<br/>
+We realised that the terms may still be too long/confusing. Thus, we want to add a TLDR Feature which summarises and explains the terms in a simpler way.<br/><br/>
 7. App Suggestion, suggests alternative apps which may be safer <br/><br/>
-Currently, it shows the list of apps from different categories that we deem are safer than the others. Originally we wanted to make another AI model for this feature, however we did not have time to do it as training one model took longer than we thought.<br/>
+Currently, it shows the list of apps from different categories that we deem are safer than the others. Originally we wanted to make another AI model for this feature, however we did not have time to do it as training one model took longer than we thought.<br/><br/>
 8. Term Definition, shows the definition of legal terms <br/><br/>
-Users can hover their mouse on the highlighted words to see the definition. We added this feature as we also found difficulty understanding some words in TOS, so we thought such a feature would help users understand the TOS better.<br/>
+Users can hover their mouse on the highlighted words to see the definition. We added this feature as we also found difficulty understanding some words in TOS, so we thought such a feature would help users understand the TOS better.<br/><br/>
 9. User Guide, the user can click the help button at the top of the screen to view the user guide <br/><br/>
 
 We removed passive scanning from our features as we realise that not only is it a breach of user privacy, its benefits do not justify the amount of resources it use.
