@@ -1,8 +1,22 @@
+//const { app } = require("electron");
 
 // Get the button element
 const scanButton = document.getElementById("scanButton");
-const folderNameInput = document.getElementById("folderNameInput");
+const cancelButton = document.getElementById("cancelButton");
+// const folderNameInput = document.getElementById("folderNameInput");
 const loadingBar = document.getElementById("loadingBar");
+const dangerButton = document.getElementById('dangerButton');
+const HIGHLIGHT_COLOR = 'rgba(34, 139, 34, 0.5)'; //'#3a3a3a' for grey;
+const DEFAULT_COLOR = 'transparent';
+const horusText = document.getElementById("appName");
+const customUrl = document.getElementById("customUrlInput");
+const dropdownInput = document.getElementById("appSelectionDropdownInput");
+var numFiles = 0;
+window.selectedApp = null;
+console.log("scan.js loaded");
+
+var controller;
+var signal;
 
 /**
  * Performs a binary search on the array of possible names
@@ -32,8 +46,8 @@ function isTos(name, isFolder = false, includeAll = false) {
     name = name.toLowerCase();
     // Keep this array sorted alphabetically
     var possibleNames = ["agreement", "docs", "eula", "legal", "license", "license_agreement", "policy", "privacy_policy", 
-    "readme", "terms", "terms_and_conditions", "terms_of_service", "terms_of_use", "tos"];
-    var possibleFileTypes = [".md", ".txt"];
+     "terms", "terms_and_conditions", "terms_of_service", "terms_of_use", "tos"];
+    var possibleFileTypes = [".md", ".rtf", ".txt"];
     // Update the minimum and maximum length of the TOS file name accordingly
     const MIN_LENGTH = 3;
     const MAX_LENGTH = 24;
@@ -77,32 +91,89 @@ async function isFolder(path) {
 // REMINDER to standardise Tos or tos instead of TOS when naming function and variables
 async function getTos(path, includeAll = false) {
     // Get the files in the directory
+    if (path == "") {
+        return "";
+    }
     const files = await window.dialogAPI.fs.readDir(path);
     // Get the possible TOS files
     var tosText = "";
+    var tempTos;
+
     for (const file of files) {
         const filePath = path + '/' + file;
+        numFiles++;
+        scanButton.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanned ${numFiles} local files...`;
         if (await isFolder(filePath)) {
             if (isTos(file, true) || includeAll) {
-                tosText += await getTos(filePath, true) + '\n';
+                tempTos = (await getTos(filePath, true)).trim();
             } else {
-                tosText += await getTos(filePath) + '\n';
+                tempTos = (await getTos(filePath)).trim();
+            }
+            if (tempTos) {
+                tosText += tempTos + '\n';
             }
         } else if (isTos(file, false, includeAll)) {
             const fileContent = await window.dialogAPI.fs.readFile(filePath);
-            tosText += fileContent + '\n';
+            if (fileContent) tosText += fileContent + '\n';
         }
     }
-    return tosText;
+    
+    return tosText.trim();
 }
+
+//THE FOLLOWING EXPORT LINE IS FOR TESTING PURPOSES ONLY, COMMENT BEFORE DEPLOYMENT
+//module.exports ={binarySearch, isFolder,getTos,isTos};
 
 /**
  * Function to analyse the TOS text and give the potentially harmful terms.
  * @param {string} tosText - The TOS text to analyse.
  * @returns {Promise<string>} A promise that resolves to the highlighted potentially harmful terms in the TOS text.
  */
-async function analyseTos(tosText) {
-    return tosText;
+async function analyseTos(tosText, appName) {
+    try {
+        console.log('analysing TOS of', appName);
+    
+        const data = { tos: tosText, appName: appName};
+        const resultJson = await fetch('http://thegrimbee.pythonanywhere.com/analyse', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ tos: tosText, appName: appName, url: customUrl.value }),
+            signal: signal,
+        }).then(response => response.json());
+        const { danger, danger_summary, normal, normal_summary, warning, warning_summary } = resultJson;
+        return [normal, warning, danger, normal_summary, warning_summary, danger_summary];
+    
+    } catch (error) {
+        if (error.name === 'AbortError') {
+            console.log('Fetch aborted');
+            return [`Scan cancelled`, `Scan cancelled`, `Scan cancelled`, `Scan cancelled`, `Scan cancelled`, `Scan cancelled`];
+        } else {
+            console.error(error);
+            return [`An error occurred while analysing the TOS text.\n${error}`,
+                `An error occurred while analysing the TOS text.\n${error}`,
+                `An error occurred while analysing the TOS text.\n${error}`,
+                `An error occurred while analysing the TOS text.\n${error}`,
+                `An error occurred while analysing the TOS text.\n${error}`,
+                `An error occurred while analysing the TOS text.\n${error}`];
+        }
+        
+    }
+}
+
+async function cancelScan() {
+    try {
+        const response = await fetch('http://thegrimbee.pythonanywhere.com/cancel', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+        return response;
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 /**
@@ -110,8 +181,8 @@ async function analyseTos(tosText) {
  * @param {number} intervalId - the interval id for the setInterval function
  */
 function updateLoading(intervalId) {
-    if (loadingBar.value < 99.5) {
-        loadingBar.value += 0.5;
+    if (loadingBar.value < 98) {
+        loadingBar.value += 0.1;
     } else {
         clearInterval(intervalId);
     }
@@ -129,29 +200,101 @@ function startLoading() {
 
 }
 
-// Add a click event listener to the button
-scanButton.addEventListener("click", function() {
-    const folderPath = folderNameInput.value;
-    startLoading();
-    if (folderPath) {
-        getTos(folderPath)
-            .then(tosText => analyseTos(tosText))
-            .then(result => {
-                console.log(result);
-                loadingBar.value = 100;           
-                // Open a new window or tab
-                let resultWindow = window.open('result.html', '_blank');
-                // Pass the result to the new window
-                resultWindow.addEventListener('load', function() {
-                    // Pass the result to the new window
-                    resultWindow.postMessage(result, '*');
-                });
-                
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    } else {
-        console.error("No folder path provided");
+function selectApp(listItem) {
+    if (window.selectedApp) {
+        window.selectedApp.style.backgroundColor = DEFAULT_COLOR;
     }
+    window.selectedApp = listItem;
+    window.selectedApp.style.backgroundColor = HIGHLIGHT_COLOR;
+}
+
+
+
+function scan() {
+    const folderPath = window.selectedAppFolder;
+    console.log(folderPath);
+    controller = new AbortController();
+    signal = controller.signal;
+    //I made this change to get the app name from the folder path, assuming it's always after Program Files
+    const appName = dropdownInput.value;
+    startLoading();
+    getTos(folderPath)
+        .then(tosText => {
+            numFiles = 0;
+            if (tosText === "") {
+                scanButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanning online...';
+            }
+            return analyseTos(tosText, appName);})
+        .then(result => {
+            loadingBar.value = 100;
+            const resultArray = result;                
+
+            for (var i = 0; i < resultArray.length; i++) {
+                resultArray[i] = resultArray[i].replace(/\n+/g, '<br>')
+                    .replace(/\\[a-zA-Z]+[0-9]*[ ]?|{\\*\\[^{}]+}|[{}]|\\'..|\\[a-z]+\n|\\[*]/g, '');
+            }
+            var endResult = {'danger': resultArray[2], 'warning': resultArray[1], 'normal': resultArray[0], 'normal_summarized': resultArray[3], 'warning_summarized': resultArray[4], 'danger_summarized': resultArray[5]};
+            console.log(endResult);
+
+            // Set the text of the paragraph to the result
+            window.scanResult = endResult;
+
+            // Add a list item to the scannedAppList, make sure the list items are unique
+            const scannedAppList = document.getElementById("appScannedList");
+            const listItem = document.createElement("li");
+            listItem.id = "appListItem-" + appName;
+            listItem.className = "list-group-item list-group-item-action";
+            listItem.innerHTML = `<a class="app-scanned link-offset-2 link-underline link-underline-opacity-0" data-bs-toggle="list" href="#appListItem-${appName}">${appName}</a>`;
+            if (!document.getElementById(listItem.id)) {
+                scannedAppList.appendChild(listItem);
+            } else {
+                scannedAppList.replaceChild(listItem, document.getElementById(listItem.id));
+            }
+            //For now I'm relying on frame to store the result, might change later
+            listItem.addEventListener("click", function(event) {
+                window.scanResult = endResult;
+                dangerButton.click();
+                selectApp(listItem);
+            });
+
+            selectApp(listItem);
+            // Ensure dangerButton exists before clicking
+            if (dangerButton) {
+                dangerButton.click();
+            }
+            // Assuming scanButton exists and is intended to reset its label to 'Scan'
+            if (scanButton) {
+                scanButton.innerHTML = 'Scan';
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
+
+
+// Add a click event listener to the button
+scanButton.addEventListener("click", function(event) {
+    if (dropdownInput.value == '') {
+        return;
+    }
+    scanButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Scanning local folders...';
+    event.preventDefault();
+    scan();
 });
+
+cancelButton.addEventListener("click", function(event) {
+    controller.abort();
+    cancelScan();   
+    loadingBar.style.display = "none";
+    scanButton.innerHTML = 'Scan';
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.addEventListener('click', (event) => {
+      if (event.target.tagName === 'A' && event.target.href.startsWith('http') && !event.target.href.includes('localhost')){
+        event.preventDefault(); // Prevent default action
+        window.electron.openExternal(event.target.href); // Open the link in the default browser
+      }
+    });
+  });
