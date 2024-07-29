@@ -118,7 +118,8 @@ The images shown are not complete, to see further details go to:
 
 ### Structure of App
 Here is a diagram to show the structure of our app:
-![image](https://github.com/user-attachments/assets/fad89ce2-2590-4c81-830e-41c2dd6e819f)
+![image](https://github.com/user-attachments/assets/e3c2e127-c2a5-476e-b6c8-8e1bb80e9be3)
+
 
 ### Server
 We are using pythonanywhere to host our flask application to receive the app's fetch requests. We switched from Heroku due to several reasons:
@@ -190,7 +191,7 @@ Nearly all servers have incredibly limited resources which are not suitable for 
 We didn't want to spend too much, which is why we chose heroku at first as our student developer pack covered the costs. We eventually switched to pythonanywhere which had really cheap costs for the first month of use
 3. Differing behaviour <br/>
 Pythonanywhere did not work the same as our local computers. Despite our code working perfectly when we set up a local flask server, we couldn't replicate the results in the actual server.
-For example, at first we couldn't load the model as there were some importing issues. We ended up having to make our own custom unpickler to unpickle the model.
+For example, at first we couldn't load the model as there were some importing issues. We ended up having to make our own custom unpickler to unpickle the model. Another example was the different operating system. Pythonanywhere uses Linux while our local computers uses Windows. This created some problems such as the drivers needed for Selenium. However, we realised that Linux had Firefox installed, allowing us to use that instead of our default MsEdge.
 4. Slow testing <br/>
 Because of the differing behaviours of local and pythonanywhere, we had to test some of the functions through pythonanywhere, which made testing much slower than if we did it locally
 
