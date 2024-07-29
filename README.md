@@ -185,3 +185,29 @@ Our AI model wwere trained based on this data: https://docs.google.com/spreadshe
 Even with limited data, our AI performs quite well, recognising certain patterns consistently (e.g. when the term mentions that there is no warranty in the app, the model consistently labels it with a harm level of 1).<br/><br/>
 We also found that our model tends to under-predict. This means that the precision of the danger and warning terms are very high (i.e. the model only predicts high when it is sure of it). The reason for this may be due to the high penalties of over-predicting.<br/><br/>
 Despite having much greater accuracy and precision, our model performs much much faster than previous models as the previous ones used two classifiers and were not optimised.
+
+# Challenges
+### Making the server work
+There are countless reasons why the server was the most tough part of our app development. Here are some of them
+1. Resource management <br/>
+Nearly all servers have incredibly limited resources which are not suitable for AI processing. For example, our original server was supposed to be in heroku, but just deploying it was incredibly difficult since the slug size limit was 500 MB, while the modules necessary for AI were hundreds of MB (e.g. default torch exceeded the 500 MB limit). Not only that, the RAM and CPU was also not sufficient for processing the model. Even after switching to pythonanywhere, the workers kept dying when processing the model, so we needed to heavily optimise our processes and model. This was not easy as we also wanted to make sure our model had high accuracy and precision
+2. Pricing <br/>
+We didn't want to spend too much, which is why we chose heroku at first as our student developer pack covered the costs. We eventually switched to pythonanywhere which had really cheap costs for the first month of use
+3. Differing behaviour <br/>
+Pythonanywhere did not work the same as our local computers. Despite our code working perfectly when we set up a local flask server, we couldn't replicate the results in the actual server.
+For example, at first we couldn't load the model as there were some importing issues. We ended up having to make our own custom unpickler to unpickle the model.
+4. Slow testing <br/>
+Because of the differing behaviours of local and pythonanywhere, we had to test some of the functions through pythonanywhere, which made testing much slower than if we did it locally
+
+### AI Development
+1. Finding the right classifier<br/>
+Our model changed drastically each milestone, including the classifiers. In Milestone 2 we had the idea of combining RandomForest and GradientBoost which did increase our performance. However, we realised that was way too heavy for our servers. We also needed to customise the loss function of our classifier as we wanted to modify the penalty behaviours, which is why we ended up with XGBoost classifier
+2. Testing time<br/>
+AI training is very heavy and may thus take a while to run. This makes it slow to test our parameters.
+3. Training data<br/>
+This has always been a difficult process and the reason our app exists in the first place. Reading whole terms of services was incredibly tiring and the hardest part was the standardisation of harm levels between us two as we had different opinions for some of the terms.
+4. Finding out new methods to improve the model<br/>
+There were a lot of times when we did not know how to improve. A lot of those times we decided to try out completely new things. One example is the custom loss function. Another, is the realisation that it was better to extract the keywords based on our training data instead of making our own list.
+
+### Bugs
+It was difficult to locate bugs and a lot of the times we found them were through user testing. We would ask our friends to try out the app and they would sometimes find bugs that we couldn't find. One example is that the scan would run indefinitely if no app was inputted. Another is that the app gets permanently darker when the help button is clicked multiple times. As we realise the difficulty of finding the bugs, we decided to increase our testing of functions through better unit testing.
