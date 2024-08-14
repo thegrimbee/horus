@@ -5,7 +5,7 @@
 
 **Team Members:** Gabriel Mario Antaputra, Le Tu Quoc Dat
 
-**Level of Achievement:** Gemini 
+**Level of Achievement:** Gemini -> Apollo
 
 **Github link:** https://github.com/thegrimbee/horus/
 <br/>
@@ -17,6 +17,13 @@
 
 # Motivation
 Terms and services have been infamous for being very long winded and confusing to read. As such, people normally skip reading these terms and conditions. However, these terms and conditions may have terms which are harmful for the users. As such, an application is needed to summarise and highlight these harmful terms for the users.
+<br/>
+<br/>
+Let's take TikTok as an example, which is one of the most used mobile appplications. Its terms of service has 7398 words, meaning that the average person will take more than half an hour to finish reading it! Not only that, there are a lot of legal jargons and convoluted sentences which makes it even harder to read it. From the terms of service we found a potentially harmful section as seen below
+![image](https://github.com/user-attachments/assets/bc97070e-8b15-4c6b-9956-04399fb6bd07)
+![image](https://github.com/user-attachments/assets/313a2689-d772-4ead-abbc-4ac6f0005e3c)
+
+
 
 User Stories:
 1. As an average windows user, I do not want to read nor have the time to read long terms and conditions of apps I install
@@ -37,7 +44,7 @@ The search bar will show suggested apps which come from a list of scanned apps c
 4. Custom URL, scrapes TOS from the specific URL <br/><br/>
 Our automatic google search may not work perfectly 100% of the time, so the custom url ensures that the tos is from the correct link<br/><br/>
 5. Database <br/><br/>
-Although our application can function without a database, we decided to add a shared database to improve runtime for the users by saving TOS that are already scanned. We noticed that it takes quite a while for the AI to scan TOS, so this database improves the runtime for apps that have already been scanned by other users. For now, we are using csv and the database is hosted in google sheets. However, this might change in Milestone 3, since we plan to move most of the processing to a server instead of the user.<br/><br/>
+Although our application can function without a database, we decided to add a shared database to improve runtime for the users by saving TOS that are already scanned. We noticed that it takes quite a while for the AI to scan TOS, so this database improves the runtime for apps that have already been scanned by other users. For now, we are using csv and the database is hosted in google sheets. However, this might change in the future as our database becomes more complex. <br/><br/>
 6. TLDR, gives a tldr of the terms <br/><br/>
 We realised that the terms may still be too long/confusing. Thus, we want to add a TLDR Feature which summarises and explains the terms in a simpler way.<br/><br/>
 7. App Suggestion, suggests alternative apps which may be safer <br/><br/>
@@ -55,7 +62,7 @@ Terms of services apply differently depending on the user's context, so contextu
 Users will be able to click on each sentence on each level and the app will show the location of the sentence in the original tos. The purpose of this is to provide context of the sentence as sometimes the sentence may not make sense alone. This also covers the weakness of the AI model which is that it only takes sentence by sentence and thus may not be accurate when the context of the paragraph is needed. E.g. There might be a sentence "Continued use of the service signifies acceptance of the changed terms and services" which the model would mark as dangerous. However, there might be an extra following sentence of "We will notify you of the change in terms and services over a reasonable amount of time", making the term less dangerous.
 
 # Software Engineering Principles
-We use K.I.S.S as our main software engineering design pattern. This is because we want to focus mainly on making sure the app is light and fast, so we avoid unnecessarily advanced technologies. For example, we use CSV instead of a more advanced database like SQL and MongoDB since CSV is lighter and faster (since we only have one table).
+We use K.I.S.S as our main software engineering design pattern. This is because we want to focus mainly on making sure the app is light and fast, so we avoid unnecessarily advanced technologies. For example, we use CSV instead of a more advanced database like SQL and MongoDB since we found that CSV is much lighter and faster when there is only one table.
 
 ### Github
 1. Issues <br/>
@@ -178,9 +185,10 @@ the TOS of different apps such as 7-Zip. We noticed that there are also sentence
 Our AI model wwere trained based on this data: https://docs.google.com/spreadsheets/d/1r6mS8WzukVhHnVFOEGmQtwL2VmSqkGXQy1H2Al6IO2o/edit?usp=sharing
 
 ### Results
-Even with limited data, our AI performs quite well, recognising certain patterns consistently (e.g. when the term mentions that there is no warranty in the app, the model consistently labels it with a harm level of 1).<br/><br/>
+Even with limited data, our AI performs very well, recognising certain patterns consistently (e.g. when the term mentions that there is no warranty in the app, the model consistently labels it with a harm level of 1).<br/><br/>
 We also found that our model tends to under-predict. This means that the precision of the danger and warning terms are very high (i.e. the model only predicts high when it is sure of it). The reason for this may be due to the high penalties of over-predicting.<br/><br/>
 Despite having much greater accuracy and precision, our model performs much much faster than previous models as the previous ones used two classifiers and were not optimised.
+
 
 # Challenges
 ### Making the server work
