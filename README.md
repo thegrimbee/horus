@@ -7,7 +7,7 @@
 
 **Level of Achievement:** Gemini -> Apollo
 
-**Github link:** https://github.com/thegrimbee/horus/
+**Github link:** https://github.com/thegrimbee/horus/, Server: https://github.com/thegrimbee/horus-server/ 
 <br/>
 
 # Installation Guide
